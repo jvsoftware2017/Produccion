@@ -17,6 +17,7 @@
     <link href="/dashboard/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
     <!-- Custom Theme Style -->
     <link href="/dashboard/build/css/custom.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/custom.css" />
 
     <!-- Datatables -->
     <link href="/dashboard/vendors/iCheck/skins/flat/green.css" rel="stylesheet">

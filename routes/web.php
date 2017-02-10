@@ -11,11 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+Route::get('/', 'Auth\LoginController@showLoginForm');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/plants', 'PlantsController@index');
+
+Route::get('/clients', 'ClientsController@index');
+Route::get('/clients/create', 'ClientsController@create');
+Route::post('/clients', 'ClientsController@store');
+Route::get('/clients/{client}/edit', 'ClientsController@edit');
+Route::put('/clients/{client}', 'ClientsController@update');
