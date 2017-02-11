@@ -161,9 +161,9 @@
                                                 <div class="form-group">
                                                     <label class="control-label" for="title">Cliente:</label>
                                                     <select class="form-control" name="id_client" id="id_client">
-                                                    @foreach($dataClient as $rowclient)
-                                                        <option value="{{$rowclient->id}}">{{$rowclient->name}}</option>
-                                                    @endforeach
+                                                        @foreach($dataClient as $rowclient)
+                                                            <option value="{{$rowclient->id}}">{{$rowclient->name}}</option>
+                                                        @endforeach
                                                     </select>
                                                     <!--<input type="text" name="clientId" class="form-control" data-error="Please enter title." required />-->
                                                     <div class="help-block with-errors"></div>
