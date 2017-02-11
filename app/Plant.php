@@ -14,4 +14,7 @@ class Plant extends Model
     public function client(){
         return $this->belongsTo('App\Client', 'id_client');
     }
+    public function equipment() {
+    	return $this->hasMany('App\Equipment');
+    }
 }

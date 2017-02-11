@@ -22,9 +22,27 @@
                             <div class="text-muted font-13 m-b-30">
                                 Aquí podrás Ver, Modificar, Eliminar, Crear Plantas según tu Rol
                             <p align="right">
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create-item">Crear</button>
+                                <button type="button" class="btn btn-round btn-success" data-toggle="modal" data-target="#create-item">Crear</button>
                             </p>
                             </div>
+                            @if($flash = session('message'))
+							<div class="alert alert-success alert-dismissible fade in"
+								role="alert">
+								<button type="button" class="close" data-dismiss="alert"
+									aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+								<strong>{{ $flash }}</strong>
+							</div>
+							@endif
+							@if (count($errors) > 0)
+								<div class="alert alert-danger">
+									<ul>
+										@foreach ($errors->all() as $error)
+										<li>{{ $error }}</li> @endforeach
+									</ul>
+								</div>
+							@endif
 
                             <table id="datatable" class="table table-striped table-bordered">
                                 <thead>
@@ -53,25 +71,25 @@
                                         <td>{{$rowplant->updated_at}}</td>
                                         <td>{{$rowplant->status}}</td>
                                         <td>
-                                            <button data-toggle="modal" data-target="#edit-item{{$rowplant->id}}" class="btn btn-primary edit-item">Editar</button>
+                                            <button data-toggle="modal" data-target="#edit-item{{$rowplant->id}}" class="btn btn-round btn-warning edit-item">Editar</button>
                                         </td>
                                     </tr>
 
 
 
-                                    <!-- Create Item Modal -->
+                                    <!-- Edit Item Modal -->
                                     <div class="modal fade" id="edit-item{{$rowplant->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                    <h4 class="modal-title" id="myModalLabel">Editar Planta(Sede)</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Editar Planta(Sede) <strong>{{ $rowplant->name }}</strong></h4>
                                                 </div>
                                                 <div class="modal-body">
 
-                                                    <form data-toggle="validator" action="/plants/edit/{{$rowplant->id}}" method="POST">
+                                                    <form data-toggle="validator" action="/plants/{{$rowplant->id}}" method="POST">
                                                         {{ csrf_field() }}
-
+														{{ method_field('PUT') }}
                                                         <div class="form-group">
                                                             <label class="control-label" for="title">Ciudad:</label>
                                                             <select class="form-control" name="id_city" id="id_city">
@@ -119,7 +137,7 @@
 
 
                                                         <div class="form-group">
-                                                            <button type="submit" class="btn crud-submit btn-success">Editar</button>
+                                                            <button type="submit" class="btn btn-round crud-submit btn-success">Editar</button>
                                                         </div>
 
                                                     </form>
@@ -192,7 +210,7 @@
 
 
                                                 <div class="form-group">
-                                                    <button type="submit" class="btn crud-submit btn-success">Guardar</button>
+                                                    <button type="submit" class="btn btn-round crud-submit btn-success">Guardar</button>
                                                 </div>
 
                                             </form>

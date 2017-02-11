@@ -43,6 +43,14 @@ class ClientsController extends Controller
      */
     public function store(Request $request)
     {
+    	$this->validate($request, [
+    			'name' => 'required|max:255|',
+    			'email' => 'required|email|max:255',
+    			'phone' => 'required|numeric',
+    			'status' => 'required',
+    			'id_city' => 'required',
+    	]);
+    	
     	$client = $request->all();
     	Client::create($client);
     	session()->flash('message', 'Se ha creado el cliente correctamente.');
@@ -84,7 +92,16 @@ class ClientsController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        $client->update($request->all());
+    	$this->validate($request, [
+    			'name' => 'required|max:255|',
+    			'email' => 'required|email|max:255',
+    			'phone' => 'required|numeric',
+    			'status' => 'required',
+    			'id_city' => 'required',
+    	]);
+    	 
+    	
+    	$client->update($request->all());
         session()->flash('message', 'Se ha actualizado el cliente');
         return redirect('/clients');
     }

@@ -10,9 +10,6 @@
 
                 <!-- menu profile quick info -->
                 <div class="profile clearfix">
-                    <div class="profile_pic">
-                        <img src="images/img.jpg" alt="..." class="img-circle profile_img">
-                    </div>
                     <div class="profile_info">
                         <span>Bienvenido,</span>
                         <h2>{{ Auth::user()->name }}</h2>
@@ -31,7 +28,8 @@
                                 <ul class="nav child_menu">
                                     <li><a href="/clients">Clientes</a></li>
                                     <li><a href="/plants">Plantas</a></li>
-                                    <li><a href="index3.html">Usuarios</a></li>
+                                    <li><a href="/equipments">Equipos</a></li>
+                                    <li><a href="/users">Usuarios</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-edit"></i> Monitor <span class="fa fa-chevron-down"></span></a>

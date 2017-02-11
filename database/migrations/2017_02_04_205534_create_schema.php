@@ -28,7 +28,7 @@ class CreateSchema extends Migration
         	$table->string('name', 100);
         	$table->string('email');
         	$table->integer('phone');
-        	$table->string('adress', 100);
+        	$table->string('adress', 100)->nullable();
         	$table->timestamps();
         });
         
@@ -43,7 +43,7 @@ class CreateSchema extends Migration
         	$table->integer('id_city')->unsigned();
         	$table->integer('id_client')->unsigned();
         	$table->string('name', 100);
-        	$table->string('adress', 100);
+        	$table->string('adress', 100)->nullable();
         	$table->timestamps();
         });
         
@@ -53,7 +53,7 @@ class CreateSchema extends Migration
         	$table->integer('id_type')->unsigned();
         	$table->string('name', 100);
         	$table->string('model', 100);
-        	$table->string('geolocation', 100);
+        	$table->string('geolocation', 100)->nullable();
         	$table->dateTime('last_event');
         	$table->timestamps();
         });

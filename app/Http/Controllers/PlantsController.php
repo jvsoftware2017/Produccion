@@ -20,7 +20,7 @@ class PlantsController extends Controller
         $dataPlant = Plant::All();
         $dataCity = City::All();
         $dataClient = Client::All();
-        return view('plant', compact('dataPlant','dataCity','dataClient'));
+        return view('plants.plants', compact('dataPlant','dataCity','dataClient'));
     }
 
     /**
@@ -41,10 +41,15 @@ class PlantsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    	$this->validate($request, [
+    			'name' => 'required|max:255|',
+    			'id_city' => 'required',
+    			'id_client' => 'required',
+    			'status' => 'required',
+    	]);
         $plant = $request->all();
         Plant::create($plant);
-        //session()->flash('message', 'Se ha creado la planta correctamente.');
+        session()->flash('message', 'Se ha creado la planta correctamente.');
         return redirect('/plants');
 
     }
@@ -80,8 +85,14 @@ class PlantsController extends Controller
      */
     public function update(Request $request, Plant $plant)
     {
-        $plant->update($request->all());
-        //session()->flash('message', 'Se ha actualizado el cliente');
+    	$this->validate($request, [
+    			'name' => 'required|max:255|',
+    			'id_city' => 'required',
+    			'id_client' => 'required',
+    			'status' => 'required',
+    	]);
+    	$plant->update($request->all());
+        session()->flash('message', 'Se ha actualizado la información de la planta');
         return redirect('/plants');
     }
 
