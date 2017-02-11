@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\City;
 use Illuminate\Http\Request;
 
 class ClientsController extends Controller
@@ -19,9 +20,9 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        $clients = Client::all();
-    	$clients->city = Client::find(1)->city->name;
-    	return view('clients.clients', compact('clients'));
+        $dataClient = Client::all();
+        $dataCity = City::All();
+    	return view('clients.clients', compact('dataCity','dataClient'));
     }
 
     /**
@@ -84,7 +85,6 @@ class ClientsController extends Controller
     public function update(Request $request, Client $client)
     {
         $client->update($request->all());
-        //return redirect('/clients');
         session()->flash('message', 'Se ha actualizado el cliente');
         return redirect('/clients');
     }

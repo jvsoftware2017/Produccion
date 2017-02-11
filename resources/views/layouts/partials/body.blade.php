@@ -29,7 +29,7 @@
                         <ul class="nav side-menu">
                             <li><a><i class="fa fa-home"></i> Panel de Control <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="index.html">Clientes</a></li>
+                                    <li><a href="/clients">Clientes</a></li>
                                     <li><a href="/plants">Plantas</a></li>
                                     <li><a href="index3.html">Usuarios</a></li>
                                 </ul>

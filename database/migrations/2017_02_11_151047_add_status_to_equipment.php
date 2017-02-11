@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCitiesTable extends Migration
+class AddStatusToEquipment extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateCitiesTable extends Migration
      */
     public function up()
     {
-    	if (!Schema::hasTable('cities')) {
-	    	Schema::create('cities', function (Blueprint $table) {
-	            $table->increments('id');
-	            $table->timestamps();
-	        });
-    	}
+    	Schema::table('equipments', function (Blueprint $table) {
+    		$table->enum('status', ['active', 'inactive']);
+    	});
     }
 
     /**
@@ -28,6 +25,8 @@ class CreateCitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cities');
+    	Schema::table('equipments', function (Blueprint $table) {
+    		$table->dropColumn(['status']);
+    	});
     }
 }

@@ -10,6 +10,6 @@ class City extends Model
         return $this->hasMany('App\Plant');
     }
 	public function clients() {
-		return $this->hasMany('App\Client', 'id_city');
+		return $this->hasMany('App\Client');
 	}
 }
