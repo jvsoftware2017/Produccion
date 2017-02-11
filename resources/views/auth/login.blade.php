@@ -14,6 +14,7 @@
 			</div>
 			<div class="{{ $errors->has('password') ? ' has-error' : '' }}">
 				<input type="password" id="password" class="form-control" placeholder="Contraseña" name="password" required="" />
+
 				@if ($errors->has('password')) 
 					<span class="help-block"> <strong>{{ $errors->first('password') }}</strong>
 					</span> 
@@ -24,6 +25,7 @@
 					<div class="checkbox">
 						<label> <input type="checkbox" name="remember"{{ old('remember') ? 'checked' : '' }}>
 							Recordarme
+
 						</label>
 					</div>
 				</div>

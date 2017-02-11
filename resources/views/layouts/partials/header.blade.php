@@ -18,6 +18,9 @@
     <!-- Custom Theme Style -->
     <link href="/dashboard/build/css/custom.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="/css/custom.css" />
+
+
     <!-- Datatables -->
     <link href="/dashboard/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <link href="/dashboard/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">

@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ClientsController extends Controller
 {
+	
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,9 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        //
+        $clients = Client::all();
+    	$clients->city = Client::find(1)->city->name;
+    	return view('clients.clients', compact('clients'));
     }
 
     /**
@@ -24,7 +31,7 @@ class ClientsController extends Controller
      */
     public function create()
     {
-        //
+    	return view('clients.create');
     }
 
     /**
@@ -35,13 +42,17 @@ class ClientsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    	$client = $request->all();
+    	Client::create($client);
+    	session()->flash('message', 'Se ha creado el cliente correctamente.');
+    	return redirect('/clients');
     }
 
     /**
      * Display the specified resource.
      *
      * @param  \App\Client  $client
+
      * @return \Illuminate\Http\Response
      */
     public function show(Client $client)
@@ -52,30 +63,37 @@ class ClientsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Client  $client
+     * @param  \App\Clients  $clients
+
      * @return \Illuminate\Http\Response
      */
     public function edit(Client $client)
     {
-        //
+    	return view('clients.edit', compact('client'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Client  $client
+
+     * @param  \App\Clients  $clients
+
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Client $client)
     {
-        //
+        $client->update($request->all());
+        //return redirect('/clients');
+        session()->flash('message', 'Se ha actualizado el cliente');
+        return redirect('/clients');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Client  $client
+     * @param  \App\Clients  $clients
+
      * @return \Illuminate\Http\Response
      */
     public function destroy(Client $client)

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Plant;
 use App\City;
 use App\Client;
+
 use Illuminate\Http\Request;
 
 class PlantsController extends Controller
@@ -45,6 +46,7 @@ class PlantsController extends Controller
         Plant::create($plant);
         //session()->flash('message', 'Se ha creado la planta correctamente.');
         return redirect('/plants');
+
     }
 
     /**
@@ -78,9 +80,6 @@ class PlantsController extends Controller
      */
     public function update(Request $request, Plant $plant)
     {
-        //
-        //echo "PlantaId: ".$plant;
-        //dd($request);
         $plant->update($request->all());
         //session()->flash('message', 'Se ha actualizado el cliente');
         return redirect('/plants');
