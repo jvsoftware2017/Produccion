@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
+use App\Client;
+use App\Role;
+
 class UsersController extends Controller
 {
     /**
@@ -13,7 +17,10 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $dataUser = User::all();
+        $dataClient = Client::all();
+        $dataRole = Role::all();
+    	return view('users.users', compact('dataClient', 'dataUser', 'dataRole'));
     }
 
     /**
@@ -34,7 +41,21 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    	$this->validate($request, [
+    			'name' => 'required|max:255|',
+    			'email' => 'required|email|max:255',
+    			'id_client' => 'required|numeric',
+    			'id_role' => 'required|numeric',
+    			'status' => 'required',
+    			'password' => 'required',
+    	]);
+    	
+    	$request->merge(['password' => bcrypt($request->password)]);
+    	
+    	$user = $request->all();
+    	User::create($user);
+    	session()->flash('message', 'Se ha creado el usuario correctamente.');
+    	return redirect('/users');
     }
 
     /**
@@ -66,9 +87,28 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+    	$this->validate($request, [
+    			'name' => 'required|max:255|',
+    			'email' => 'required|email|max:255',
+    			'id_client' => 'required|numeric',
+    			'id_role' => 'required|numeric',
+    			'status' => 'required',
+    	]);
+    	 
+    	if (isset($request->password)){
+    		$request->merge(['password' => bcrypt($request->password)]);
+    	}
+    	 
+    	$user->name = $request->name;
+    	$user->email = $request->email;
+    	$user->id_client = $request->id_client;
+    	$user->id_role = $request->id_role;
+    	$user->status = $request->status;
+    	$user->update();
+    	session()->flash('message', 'Se ha editado el usuario correctamente.');
+    	return redirect('/users');
     }
 
     /**

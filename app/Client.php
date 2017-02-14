@@ -15,5 +15,9 @@ class Client extends Model
 	public function city() {
 		return $this->belongsTo('App\City', 'id_city');
 	}
+	
+	public function user() {
+		return $this->hasMany('App\User', 'id_client');
+	}
 
 }
