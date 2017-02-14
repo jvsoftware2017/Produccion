@@ -7,12 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Equipment extends Model
 {
     protected $table = 'equipments';
-    
+    protected $fillable = ['id_plant', 'id_type', 'name', 'model', 'status'];
+
     public function Plant() {
-    	return $this->belongsTo('App\Plant', 'id_plant');
+        return $this->belongsTo('App\Plant', 'id_plant');
     }
     public function Type() {
-    	return $this->belongsTo('App\Type', 'id_type');
+        return $this->belongsTo('App\Type', 'id_type');
     }
-    
+
 }

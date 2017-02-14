@@ -11,7 +11,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::get('/plants', 'PlantsController@index');
-Route::post('/plants/store', 'PlantsController@store');
+Route::post('/plants', 'PlantsController@store');
 Route::put('/plants/{plant}', 'PlantsController@update');
 
 Route::get('/clients', 'ClientsController@index');
