@@ -16,10 +16,10 @@ class EquipmentsController extends Controller
      */
     public function index()
     {
-    	$dataEquipment = Equipment::all();
-    	$dataPlant = Plant::All();
-    	$dataType = Type::All();
-    	return view('equipments.equipments', compact('dataEquipment','dataPlant','dataType'));
+        $dataEquipment = Equipment::all();
+        $dataPlant = Plant::All();
+        $dataType = Type::All();
+        return view('equipments.equipments', compact('dataEquipment','dataPlant','dataType'));
     }
 
     /**
@@ -40,7 +40,18 @@ class EquipmentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'model' => 'required',
+            'id_type' => 'required',
+            'id_plant' => 'required',
+            'status' => 'required',
+        ]);
+        $equipment = $request->all();
+        Equipment::create($equipment);
+        session()->flash('message', 'Se ha creado el Equipo correctamente.');
+        return redirect('/equipments');
+
     }
 
     /**
@@ -74,7 +85,16 @@ class EquipmentsController extends Controller
      */
     public function update(Request $request, Equipment $equipment)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'model' => 'required',
+            'id_type' => 'required',
+            'id_plant' => 'required',
+            'status' => 'required',
+        ]);
+        $equipment->update($request->all());
+        session()->flash('message', 'Se ha actualizado la información del Equipo');
+        return redirect('/equipments');
     }
 
     /**
