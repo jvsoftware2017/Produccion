@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->dateTime('last_login')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestamps(); //comment
         });
     }
 
