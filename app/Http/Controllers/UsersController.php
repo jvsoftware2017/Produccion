@@ -10,6 +10,10 @@ use App\Role;
 
 class UsersController extends Controller
 {
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +21,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $dataUser = User::all();
+    	$dataUser = User::all();
         $dataClient = Client::all();
         $dataRole = Role::all();
     	return view('users.users', compact('dataClient', 'dataUser', 'dataRole'));
@@ -47,7 +51,7 @@ class UsersController extends Controller
     			'id_client' => 'required|numeric',
     			'id_role' => 'required|numeric',
     			'status' => 'required',
-    			'password' => 'required',
+    			'password' => 'required|min:6',
     	]);
     	
     	$request->merge(['password' => bcrypt($request->password)]);
@@ -89,18 +93,25 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
+    	$passwordValidation = '';
+    	
+    	if (isset($request->password)){
+    		$user->password = bcrypt($request->password);
+    		$passwordValidation = 'required|min:6';
+    	}
+    	
+    	
     	$this->validate($request, [
     			'name' => 'required|max:255|',
     			'email' => 'required|email|max:255',
     			'id_client' => 'required|numeric',
     			'id_role' => 'required|numeric',
     			'status' => 'required',
+    			'password' => $passwordValidation
+    			
     	]);
-    	 
-    	if (isset($request->password)){
-    		$request->merge(['password' => bcrypt($request->password)]);
-    	}
-    	 
+    	
+    	
     	$user->name = $request->name;
     	$user->email = $request->email;
     	$user->id_client = $request->id_client;

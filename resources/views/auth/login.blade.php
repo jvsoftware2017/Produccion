@@ -5,6 +5,10 @@
 		<form  role="form" method="POST" action="{{ route('login') }}">
 			{{ csrf_field() }}
 			<h1>Siemens Monitor</h1>
+			@if ($errors->has('inactive')) 
+				<span class="help-block"> <strong>{{ $errors->first('inactive') }}</strong>
+				</span> 
+			@endif
 			<div class="{{ $errors->has('email') ? ' has-error' : '' }}">
 				<input type="email" id="email" class="form-control" placeholder="Dirección E-Mail" name="email" value="{{ old('email') }}" autofocus required="" />
 					@if ($errors->has('email'))
