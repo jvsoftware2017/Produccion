@@ -37,5 +37,9 @@ class LoginController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
     
-    
+    public function active()
+    {
+    	$errors = ['email' => 'La cuenta del usuario está inactiva, por favor contacte al administrador.'];
+    	return view('auth.login')->withErrors($errors);
+    }
 }
