@@ -24,6 +24,7 @@
                     <div class="menu_section">
                         <h3>General</h3>
                         <ul class="nav side-menu">
+                            @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
                             <li><a><i class="fa fa-home"></i> Panel de Control <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="/clients">Clientes</a></li>
@@ -32,6 +33,7 @@
                                     <li><a href="/users">Usuarios</a></li>
                                 </ul>
                             </li>
+                            @endif
                             <li><a><i class="fa fa-edit"></i> Monitor <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="form.html">Monitor</a></li>
