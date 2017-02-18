@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Log In</title>
-
     <!-- Bootstrap -->
     <link href="/dashboard/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -19,7 +18,7 @@
     <link href="/dashboard/vendors/animate.css/animate.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="/dashboard/build/css/custom.min.css" rel="stylesheet">
+    <link href="/dashboard/build/css/custom.css" rel="stylesheet">
      <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),

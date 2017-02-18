@@ -1,6 +1,8 @@
 @extends('layouts.appLogIn')
 
 @section('content')
+	<div id="login-panel" class="panel panel-default">
+	<div class="panel-body">
 	<section class="login_content">
 		<form  role="form" method="POST" action="{{ route('login') }}">
 			{{ csrf_field() }}
@@ -43,4 +45,6 @@
 			</div>
 		</form>
 	</section>
+	</div>
+	</div>
 @endsection
