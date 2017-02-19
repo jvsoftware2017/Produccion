@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Client;
 use App\City;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+
 
 class ClientsController extends Controller
 {
@@ -99,7 +101,8 @@ class ClientsController extends Controller
     			'status' => 'required',
     			'id_city' => 'required',
     	]);
-    	 
+    	
+    	$client->updated_at = Carbon::now();
     	
     	$client->update($request->all());
         session()->flash('message', 'Se ha actualizado el cliente');
