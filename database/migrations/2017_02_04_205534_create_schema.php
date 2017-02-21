@@ -28,7 +28,7 @@ class CreateSchema extends Migration
         	$table->string('name', 100);
         	$table->string('email');
         	$table->integer('phone');
-        	$table->string('adress', 100)->nullable();
+        	$table->string('adress', 100);
         	$table->timestamps();
         });
         
@@ -43,7 +43,7 @@ class CreateSchema extends Migration
         	$table->integer('id_city')->unsigned();
         	$table->integer('id_client')->unsigned();
         	$table->string('name', 100);
-        	$table->string('adress', 100)->nullable();
+        	$table->string('adress', 100);
         	$table->timestamps();
         });
         
@@ -53,7 +53,7 @@ class CreateSchema extends Migration
         	$table->integer('id_type')->unsigned();
         	$table->string('name', 100);
         	$table->string('model', 100);
-        	$table->string('geolocation', 100)->nullable();
+        	$table->string('geolocation', 100);
         	$table->dateTime('last_event');
         	$table->timestamps();
         });
@@ -72,18 +72,10 @@ class CreateSchema extends Migration
         Schema::create('events', function (Blueprint $table) {
         	$table->increments('id');
         	$table->integer('id_equipment')->unsigned();
-        	$table->integer('id_state')->unsigned();
         	$table->string('name', 100);
         	$table->timestamps();
         });
-        
-        Schema::create('states', function (Blueprint $table) {
-        	$table->increments('id');
-        	$table->string('name', 100);
-        	$table->string('description', 100);
-        	$table->timestamps();
-        });
-        
+
         Schema::create('user_access', function (Blueprint $table) {
         	$table->increments('id');
         	$table->integer('id_user')->unsigned();
