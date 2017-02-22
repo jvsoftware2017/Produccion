@@ -40,7 +40,7 @@ class CreateRelationships extends Migration
     	Schema::table('events', function (Blueprint $table) {
     		$table->engine = 'InnoDB';
     		$table->foreign('id_equipment')->references('id')->on('equipments');
-    		$table->foreign('id_state')->references('id')->on('states');
+    		//$table->foreign('id_state')->references('id')->on('states');
     	});
     	
     	Schema::table('user_access', function (Blueprint $table) {
