@@ -57,7 +57,7 @@
 							<tbody>
 								@foreach($dataEquipment as $rowEquipment)
 									@if($rowEquipment->status == 'inactive')
-										<tr style="background-color: #aa0000;color: white">
+										<tr style="background-color: #953b39;color: white">
 									@else
 										<tr>
 									@endif

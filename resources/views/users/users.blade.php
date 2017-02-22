@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('title', 'Usuarios')
+l@extends('layouts.app') @section('title', 'Usuarios')
 
 @section('content')
 <!-- page content -->
@@ -122,8 +122,8 @@
 									<th>E-mail</th>
 									<th>Cliente</th>
 									<th>Role</th>
-									<th>Fecha de registro</th>
-									<th>Fecha de modificación</th>
+									<th>Creado</th>
+									<th>Último Acceso</th>
 									<th>Estado</th>
 									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 										<th>Acción</th>
@@ -132,22 +132,29 @@
 							</thead>
 							<tbody>
 								@foreach($dataUser as $rowuser)
-								<tr>
-									<td>{{ $rowuser->id }}</td>
-									<td>{{ $rowuser->name }}</td>
-									<td>{{ $rowuser->email }}</td>
-									<td>{{ $rowuser->client->name }}</td>
-									<td>{{ $rowuser->role->description }}</td>
-									<td>{{ $rowuser->created_at }}</td>
-									<td>{{ $rowuser->updated_at }}</td>
-									<td>{{ $rowuser->status }}</td>
-									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
-										<td>
-											<!-- Large modal -->
-											<div type="button" id="edit-client" class="btn btn-round btn-warning" data-toggle="modal" data-target="#edit-item{{ $rowuser->id }}" >Editar</div>
-										</td>
-									@endif
-								</tr>
+								@if($rowuser->status == 'inactive')
+									<tr style="background-color: #953b39;color: white">
+								@else
+									<tr>
+								@endif
+										<td>{{ $rowuser->id }}</td>
+										<td>{{ $rowuser->name }}</td>
+										<td>{{ $rowuser->email }}</td>
+										<td>{{ $rowuser->client->name }}</td>
+										<td>{{ $rowuser->role->description }}</td>
+										<td>{{ $rowuser->created_at }}</td>
+										<td>{{ $rowuser->updated_at }}</td>
+										<td>{{ $rowuser->status }}</td>
+										@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+											<td>
+												<!-- Large modal -->
+												<div type="button" id="edit-client" class="btn btn-round btn-warning" data-toggle="modal" data-target="#edit-item{{ $rowuser->id }}" >Editar</div>
+											</td>
+											@if($rowuser->status == 'active')
+												<div type="button" id="access-user" class="btn btn-round btn-dark" data-toggle="modal" data-target="#access-item{{ $rowuser->id }}" >Acceso</div>
+											@endif
+										@endif
+									</tr>
 									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 										<!-- Edit Item Modal -->
 	                                    <div class="modal fade" id="edit-item{{ $rowuser->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -218,6 +225,56 @@
 	                                            </div>
 	                                        </div>
 	                                    </div>
+
+										<!-- Access Item Modal -->
+										<div class="modal fade" id="access-item{{ $rowuser->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+														<h4 class="modal-title" id="myModalLabel">Asignar permisos a <strong>{{ $rowuser->name }}</strong></h4>
+													</div>
+													<div class="modal-body">
+
+														<form data-toggle="validator" action="/users_access/{{ $rowuser->id }}" method="POST">
+															{{ csrf_field() }}
+															{{ method_field('PUT') }}
+
+															<div class="form-group">
+																<label class="control-label" for="name">Planta</label>
+																<select class="form-control" name="id_plant" id="plant">
+																	<@foreach($dataPlant as $rowplant)
+																		@if($rowuser->client->id == $rowplant->id_client && $rowplant->status == 'active')
+																			<option value="{{$rowplant->id}}">{{$rowplant->name}}</option>
+																		@endif
+																	@endforeach
+																</select>
+																<div class="help-block with-errors"></div>
+															</div>
+															<div class="form-group">
+																<label class="control-label" for="equipment">Seleciones Equipos</label>
+																<select class="select2_multiple form-control" multiple="multiple">
+																	<option>Choose option</option>
+																	<option>Option one</option>
+																	<option>Option two</option>
+																	<option>Option three</option>
+																	<option>Option four</option>
+																	<option>Option five</option>
+																	<option>Option six</option>
+																</select>
+																<div class="help-block with-errors"></div>
+															</div>
+															<div class="form-group">
+																<button type="submit" class="btn btn-round crud-submit btn-success">Asignar</button>
+															</div>
+
+														</form>
+
+													</div>
+												</div>
+											</div>
+										</div>
+
                                     @endif
 								@endforeach
 							</tbody>

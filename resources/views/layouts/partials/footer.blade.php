@@ -1,7 +1,7 @@
 <!-- footer content -->
 <footer>
   <div class="pull-right">
-    JVSoftware pal mundo - <a href="https://colorlib.com">NuestraWeb</a>
+    ©Copyright <a href="https://colorlib.com">deitydev.com</a>
   </div>
   <div class="clearfix"></div>
 </footer>

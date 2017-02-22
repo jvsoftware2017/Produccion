@@ -65,11 +65,11 @@
 
                             <tbody>
                             @foreach($dataPlant as $rowplant)
-                                @if($rowplant->status == 'inactive')
-                                    <tr style="background-color: #aa0000;color: white">
-                                @else
-                                    <tr>
-                                        @endif
+								@if($rowplant->status == 'inactive')
+									<tr style="background-color: #953b39;color: white">
+								@else
+									<tr>
+								@endif
                                         <td>{{$rowplant->id}}</td>
                                         <td>{{$rowplant->city->name}}</td>
                                         <td>{{$rowplant->client->name}}</td>

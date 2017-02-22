@@ -136,7 +136,11 @@
 							</thead>
 							<tbody>
 								@foreach($dataClient as $rowclient)
+								@if($rowclient->status == 'inactive')
+									<tr style="background-color: #953b39;color: white">
+								@else
 									<tr>
+								@endif
 										<td>{{ $rowclient->id }}</td>
 										<td>{{ $rowclient->name }}</td>
 										<td>{{ $rowclient->email }}</td>
