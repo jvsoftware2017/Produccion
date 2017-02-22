@@ -36,15 +36,11 @@ class CreateRelationships extends Migration
     		$table->foreign('id_type')->references('id')->on('types');
     	});
     	
-    	Schema::table('measured_variables', function (Blueprint $table) {
-    		$table->engine = 'InnoDB';
-    		$table->foreign('id_equipment')->references('id')->on('equipments');
-    	});
     	
     	Schema::table('events', function (Blueprint $table) {
     		$table->engine = 'InnoDB';
     		$table->foreign('id_equipment')->references('id')->on('equipments');
-    		$table->foreign('id_state')->references('id')->on('states');
+    		//$table->foreign('id_state')->references('id')->on('states');
     	});
     	
     	Schema::table('user_access', function (Blueprint $table) {

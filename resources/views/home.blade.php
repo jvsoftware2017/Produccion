@@ -6,7 +6,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Bienvenido <small> a la mejor herramienta del mundo mundial</small></h3>
+                    <h3>Bienvenido <small> al sistema de monitoreo.</small></h3>
 					{{ csrf_field() }}
                 </div>
             </div>
