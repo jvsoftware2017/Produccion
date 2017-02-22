@@ -28,7 +28,7 @@ class CreateSchema extends Migration
         	$table->string('name', 100);
         	$table->string('email');
         	$table->integer('phone');
-        	$table->string('adress', 100);
+        	$table->string('adress', 100)->nullable();
         	$table->timestamps();
         });
         
