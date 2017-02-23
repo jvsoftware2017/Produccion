@@ -1,4 +1,4 @@
-l@extends('layouts.app') @section('title', 'Usuarios')
+@extends('layouts.app') @section('title', 'Usuarios')
 
 @section('content')
 <!-- page content -->
