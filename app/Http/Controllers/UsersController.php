@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Plant;
 use Illuminate\Http\Request;
 
 use App\User;
 use App\Client;
 use App\Role;
-use Carbon\Carbon;
 
 class UsersController extends Controller
 {
@@ -25,7 +25,8 @@ class UsersController extends Controller
     	$dataUser = User::all();
         $dataClient = Client::all();
         $dataRole = Role::all();
-    	return view('users.users', compact('dataClient', 'dataUser', 'dataRole'));
+        $dataPlant = Plant::all();
+    	return view('users.users', compact('dataClient', 'dataUser', 'dataRole', 'dataPlant'));
     }
 
     /**
@@ -118,7 +119,6 @@ class UsersController extends Controller
     	$user->id_client = $request->id_client;
     	$user->id_role = $request->id_role;
     	$user->status = $request->status;
-    	$user->updated_at = Carbon::now();
     	$user->update();
     	session()->flash('message', 'Se ha editado el usuario correctamente.');
     	return redirect('/users');
