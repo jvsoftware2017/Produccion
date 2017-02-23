@@ -149,10 +149,10 @@
 											<td>
 												<!-- Large modal -->
 												<div type="button" id="edit-client" class="btn btn-round btn-warning" data-toggle="modal" data-target="#edit-item{{ $rowuser->id }}" >Editar</div>
-											</td>
-											@if($rowuser->status == 'active')
+												@if($rowuser->status == 'active')
 												<div type="button" id="access-user" class="btn btn-round btn-dark" data-toggle="modal" data-target="#access-item{{ $rowuser->id }}" >Acceso</div>
-											@endif
+												@endif
+											</td>											
 										@endif
 									</tr>
 									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
