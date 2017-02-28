@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Client;
 use App\Role;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -55,6 +56,10 @@ class UsersController extends Controller
     			'status' => 'required',
     			'password' => 'required|min:6',
     	]);
+    	
+    	if ($request->id_role == 1 && Auth::user()->id_role != 1) {
+    		$request->merge(['id_role' => 2]);
+    	}
     	
     	$request->merge(['password' => bcrypt($request->password)]);
     	
@@ -113,6 +118,9 @@ class UsersController extends Controller
     			
     	]);
     	
+    	if ($request->id_role == 1 && Auth::user()->id_role != 1) {
+    		$request->merge(['id_role' => 2]);
+    	}
     	
     	$user->name = $request->name;
     	$user->email = $request->email;
