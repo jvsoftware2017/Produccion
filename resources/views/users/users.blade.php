@@ -129,6 +129,7 @@
 									<th>Cliente</th>
 									<th>Role</th>
 									<th>Creado</th>
+									<th>Modificado</th>
 									<th>Último Acceso</th>
 									<th>Estado</th>
 									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
@@ -151,6 +152,7 @@
 									<td>{{ $rowuser->role->description }}</td>
 									<td>{{ $rowuser->created_at }}</td>
 									<td>{{ $rowuser->updated_at }}</td>
+									<td>{{ $rowuser->last_login }}</td>
 									<td>{{ $rowuser->status }}</td>
 									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 										<td>
