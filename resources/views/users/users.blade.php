@@ -74,7 +74,8 @@
 													<div class="help-block with-errors"></div>
 												</div>
 												<div class="form-group">
-													<label class="control-label" for="client">Cliente:</label> <select
+													<label class="control-label" for="client">Cliente:</label>
+													<select
 														class="form-control" name="id_client" id="client">
 														@foreach($dataClient as $rowclient)
 														<option value="{{$rowclient->id}}">{{$rowclient->name}}</option>
@@ -86,13 +87,7 @@
 													<label class="control-label" for="role">Role:</label> <select
 														class="form-control" name="id_role" id="role">
 														@foreach($dataRole as $rowrole)
-															@if($rowrole->description != 'developer')
-																<option value="{{$rowrole->id}}">{{$rowrole->description}}</option>
-															@else
-																@if(Gate::allows('developer', Auth::user()))
-																	<option value="{{$rowrole->id}}">{{$rowrole->description}}</option>
-																@endif
-															@endif
+														<option value="{{$rowrole->id}}">{{$rowrole->description}}</option>
 														@endforeach
 													</select>
 													<div class="help-block with-errors"></div>
@@ -129,7 +124,6 @@
 									<th>Cliente</th>
 									<th>Role</th>
 									<th>Creado</th>
-									<th>Modificado</th>
 									<th>Último Acceso</th>
 									<th>Estado</th>
 									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
@@ -139,30 +133,29 @@
 							</thead>
 							<tbody>
 								@foreach($dataUser as $rowuser)
-									@if(($rowuser->id_role == 1 && Auth::user()->id_role == 1) || ($rowuser->id_role != 1 && Auth::user()->id_role == 1) || !($rowuser->id_role == 1 && Auth::user()->id_role != 1) || ($rowuser->id_role != 1 && Auth::user()->id_role != 1))
-									@if($rowuser->status == 'inactive')
-										<tr style="background-color: #953b39;color: white">
-									@else
-										<tr>
-									@endif
-									<td>{{ $rowuser->id }}</td>
-									<td>{{ $rowuser->name }}</td>
-									<td>{{ $rowuser->email }}</td>
-									<td>{{ $rowuser->client->name }}</td>
-									<td>{{ $rowuser->role->description }}</td>
-									<td>{{ $rowuser->created_at }}</td>
-									<td>{{ $rowuser->updated_at }}</td>
-									<td>{{ $rowuser->last_login }}</td>
-									<td>{{ $rowuser->status }}</td>
-									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
-										<td>
-											<!-- Large modal -->
-											<div type="button" id="edit-client" class="btn btn-round btn-warning" data-toggle="modal" data-target="#edit-item{{ $rowuser->id }}" >Editar</div>
-											@if($rowuser->status == 'active')
-											<div type="button" id="access-user" class="btn btn-round btn-dark" data-toggle="modal" data-target="#access-item{{ $rowuser->id }}" >Acceso</div>
-											@endif
-										</td>											
-									@endif
+								@if($rowuser->status == 'inactive')
+									<tr style="background-color: #953b39;color: white">
+								@else
+									<tr>
+								@endif
+										<td>{{ $rowuser->id }}</td>
+										<td>{{ $rowuser->name }}</td>
+										<td>{{ $rowuser->email }}</td>
+										<td>{{ $rowuser->client->name }}</td>
+										<td>{{ $rowuser->role->description }}</td>
+										<td>{{ $rowuser->created_at }}</td>
+										<td>{{ $rowuser->updated_at }}</td>
+										<td>{{ $rowuser->status }}</td>
+										@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+											<td>
+												<!-- Large modal -->
+												<div type="button" id="edit-client" class="btn btn-round btn-warning" data-toggle="modal" data-target="#edit-item{{ $rowuser->id }}" >Editar</div>
+												@if($rowuser->status == 'active')
+													<div type="button" id="access-user" class="btn btn-round btn-dark" data-toggle="modal" data-target="#access-item{{ $rowuser->id }}" >Acceso</div>
+												@endif
+											</td>
+
+										@endif
 									</tr>
 									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 										<!-- Edit Item Modal -->
@@ -194,9 +187,9 @@
 	                                                            <label class="control-label" for="client">Cliente:</label>
 	                                                            <select class="form-control" name="id_client" id="client">
 	                                                                    <option selected value="{{$rowuser->client->id}}">{{$rowuser->client->name}}</option>
-	                                                                @foreach($dataClient as $rowclient)
-	                                                                 <option value="{{$rowclient->id}}">{{$rowclient->name}}</option>  
-	                                                                @endforeach 
+	                                                                <@foreach($dataClient as $rowclient)
+	                                                                 <option value="{{$rowclient->id}}">{{$rowclient->name}}</option>
+	                                                                @endforeach
 	                                                            </select>
 	                                                            <div class="help-block with-errors"></div>
 	                                                        </div>
@@ -204,14 +197,8 @@
 	                                                            <label class="control-label" for="role">Role:</label>
 	                                                            <select class="form-control" name="id_role" id="role">
 	                                                                    <option selected value="{{$rowuser->role->id}}">{{$rowuser->role->description}}</option>
-	                                                                @foreach($dataRole as $rowrole)
-	                                                                	@if($rowrole->description != 'developer')
-																			<option value="{{$rowrole->id}}">{{$rowrole->description}}</option>
-																		@else
-																			@if(Gate::allows('developer', Auth::user()))
-																				<option value="{{$rowrole->id}}">{{$rowrole->description}}</option>
-																			@endif
-																		@endif  
+	                                                                <@foreach($dataRole as $rowrole)
+	                                                                 <option value="{{$rowrole->id}}">{{$rowrole->description}}</option>  
 	                                                                @endforeach 
 	                                                            </select>
 	                                                            <div class="help-block with-errors"></div>
@@ -256,8 +243,8 @@
 															{{ method_field('PUT') }}
 
 															<div class="form-group">
-																<label class="control-label" for="name">Planta</label>
-																<select class="form-control" name="id_plant" id="plant">
+																<label class="control-label" for="plant">Planta</label>
+																<select class="form-control" name="us_plant" id="us_plant">
 																	<@foreach($dataPlant as $rowplant)
 																		@if($rowuser->client->id == $rowplant->id_client && $rowplant->status == 'active')
 																			<option value="{{$rowplant->id}}">{{$rowplant->name}}</option>
@@ -267,8 +254,8 @@
 																<div class="help-block with-errors"></div>
 															</div>
 															<div class="form-group">
-																<label class="control-label" for="equipment">Seleciones Equipos</label>
-																<select class="select2_multiple form-control" multiple="multiple">
+																<label class="control-label" for="equipment">Equipo</label>
+																<!--<select class="select2_multiple form-control" multiple="multiple">
 																	<option>Choose option</option>
 																	<option>Option one</option>
 																	<option>Option two</option>
@@ -276,6 +263,9 @@
 																	<option>Option four</option>
 																	<option>Option five</option>
 																	<option>Option six</option>
+																</select>-->
+																<select class="form-control" name="us_equipment" id="us_equipment">
+																	<option>Seleccione</option>
 																</select>
 																<div class="help-block with-errors"></div>
 															</div>
@@ -289,7 +279,7 @@
 												</div>
 											</div>
 										</div>
-									@endif
+
                                     @endif
 								@endforeach
 							</tbody>

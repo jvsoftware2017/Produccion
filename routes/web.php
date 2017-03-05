@@ -28,6 +28,8 @@ Route::group(['middleware' => 'active'], function () {
 			
 			Route::post('/users', 'UsersController@store');
 			Route::put('/users/{user}', 'UsersController@update');
+
+			Route::get('/us_equipments/{plant}', 'PlantsController@getEquipments');
 		});
 		
 		Route::get('/plants', 'PlantsController@index');

@@ -13,12 +13,12 @@ class CreateCitiesTable extends Migration
      */
     public function up()
     {
-    	if (!Schema::hasTable('cities')) {
-	    	Schema::create('cities', function (Blueprint $table) {
-	            $table->increments('id');
-	            $table->timestamps();
-	        });
-    	}
+        if (!Schema::hasTable('cities')) {
+            Schema::create('cities', function (Blueprint $table) {
+                $table->increments('id');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

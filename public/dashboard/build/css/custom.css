@@ -3393,7 +3393,7 @@ ul.project_files li a i {
 }
 .login {
     /*background: #F7F7F7*/
-    background-image: url("/../../img/siemensBuilding.jpg");
+    background-image: url("/../../img/siemens-fondo.png");
      background-position: center center;
 
   /* La imagen de fondo no se repite */
@@ -3413,7 +3413,8 @@ ul.project_files li a i {
 
 }
 #login-panel {
-	background-color: rgba(245, 245, 245, 0.8);
+    background-color: #FFFFFF;
+	/*background-color: rgba(245, 245, 245, 0.8);*/
 }
 .login .fa-paw {
     font-size: 26px

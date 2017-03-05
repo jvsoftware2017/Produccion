@@ -38,3 +38,5 @@
 <script src="/dashboard/vendors/pdfmake/build/pdfmake.min.js"></script>
 <script src="/dashboard/vendors/pdfmake/build/vfs_fonts.js"></script>
 
+<script src="/dashboard/vendors/jquery/src/jquery.js"></script>
+<script src="/js/selectDependientes.js"></script>
