@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\PasswordReset;
 
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -27,16 +28,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    
+
     public function client() {
-    	return $this->belongsTo('App\Client', 'id_client');
+        return $this->belongsTo('App\Client', 'id_client');
     }
-    
+
     public function role() {
-    	return $this->belongsTo('App\Role', 'id_role');
+        return $this->belongsTo('App\Role', 'id_role');
     }
     
-    /**
+       /**
      * Send the password reset notification.
      *
      * @param  string  $token

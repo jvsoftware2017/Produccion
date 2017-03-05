@@ -58,6 +58,16 @@ class CreateSchema extends Migration
         	$table->timestamps();
         });
         
+        Schema::create('measured_variables', function (Blueprint $table) {
+        	$table->increments('id');
+        	$table->integer('id_equipment')->unsigned();
+        	$table->integer('total_starts');
+        	$table->integer('temperature');
+        	$table->integer('relative_humidity');
+        	$table->integer('voltage');
+        	$table->integer('horometer');
+        	$table->timestamps();
+        });
         
         Schema::create('events', function (Blueprint $table) {
         	$table->increments('id');

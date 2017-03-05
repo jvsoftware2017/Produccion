@@ -6,7 +6,6 @@ use App\Equipment;
 use App\Plant;
 use App\Type;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 
 class EquipmentsController extends Controller
 {
@@ -97,7 +96,6 @@ class EquipmentsController extends Controller
             'id_plant' => 'required',
             'status' => 'required',
         ]);
-        $equipment->updated_at = Carbon::now();
         $equipment->update($request->all());
         session()->flash('message', 'Se ha actualizado la información del Equipo');
         return redirect('/equipments');

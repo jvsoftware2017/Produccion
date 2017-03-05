@@ -10,14 +10,15 @@ class Client extends Model
         return $this->hasMany('App\Plant');
     }
 
-	protected $fillable = ['name', 'email', 'phone', 'adress', 'status', 'id_city'];
-	
-	public function city() {
-		return $this->belongsTo('App\City', 'id_city');
-	}
-	
-	public function user() {
-		return $this->hasMany('App\User', 'id_client');
-	}
+    protected $fillable = ['name', 'email', 'phone', 'adress', 'status', 'id_city'];
+
+    public function city() {
+        return $this->belongsTo('App\City', 'id_city');
+    }
+
+    public function user() {
+        return $this->hasMany('App\User', 'id_client');
+    }
 
 }
+

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Plant;
 use App\City;
 use App\Client;
-use Carbon\Carbon;
+use App\Equipment;
 
 use Illuminate\Http\Request;
 
@@ -96,7 +96,6 @@ class PlantsController extends Controller
     			'id_client' => 'required',
     			'status' => 'required',
     	]);
-    	$plant->updated_at = Carbon::now();
     	$plant->update($request->all());
         session()->flash('message', 'Se ha actualizado la información de la planta');
         return redirect('/plants');
@@ -111,5 +110,12 @@ class PlantsController extends Controller
     public function destroy(Plant $plant)
     {
         //
+    }
+
+    public function getEquipments(Request $request, $id){
+        //if($request->ajax()){
+            $equipments = Equipment::equipmentsByIdPlant($id);
+            return response()->json($equipments);
+        //}
     }
 }

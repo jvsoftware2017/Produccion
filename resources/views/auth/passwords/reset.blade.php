@@ -15,7 +15,7 @@
 
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('password.request') }}">
                         {{ csrf_field() }}
-						<h1>Reset Password</h1>
+						<h1>Cambio Contraseña</h1>
                         <input type="hidden" name="token" value="{{ $token }}">
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
