@@ -1,11 +1,10 @@
-@extends('layouts.appNotAuth')
+@extends('layouts.appLogIn')
 
 @section('content')
-<div class="container">
+<div  class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
+        <div class="login_content">
+            <div id="login-panel" class="panel panel-default">
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -16,14 +15,14 @@
 
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('password.request') }}">
                         {{ csrf_field() }}
-
+						<h1>Reset Password</h1>
                         <input type="hidden" name="token" value="{{ $token }}">
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                        
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ $email or old('email') }}" required autofocus>
+                            <div class="">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ $email or old('email') }}" placeholder="Dirección Email" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -34,10 +33,8 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                            <div class="">
+                                <input id="password" type="password" class="form-control" name="password" placeholder="Contraseña" required>
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -48,9 +45,8 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            <div class="">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirmar contraseña" required>
 
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
@@ -61,9 +57,9 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="">
                                 <button type="submit" class="btn btn-primary">
-                                    Reset Password
+                                    Cambiar Contraseña
                                 </button>
                             </div>
                         </div>
