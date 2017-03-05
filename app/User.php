@@ -34,4 +34,15 @@ class User extends Authenticatable
     public function role() {
         return $this->belongsTo('App\Role', 'id_role');
     }
+    
+       /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+    	$this->notify(new PasswordReset($token));
+    }
 }
