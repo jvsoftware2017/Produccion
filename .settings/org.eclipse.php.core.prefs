@@ -1,6 +1,5 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=0453b60af37e2c90dffd40045268ac87a142f106
 eclipse.preferences.version=1
-<<<<<<< HEAD
-include_path=0;/siemens
-=======
-include_path=0;/Produccion
->>>>>>> 0453b60af37e2c90dffd40045268ac87a142f106
+include_path=0;/ProduccionFinal
