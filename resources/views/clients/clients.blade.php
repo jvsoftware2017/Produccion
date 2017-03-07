@@ -146,7 +146,7 @@
 								@else
 									<tr>
 								@endif
-										<td><img src="clientLogo/{{ $rowclient->urlLogo }}" class="img-responsive" alt="Responsive image" style="max-width: 50px;"></td>
+										<td><img src="clientLogo/{{ $rowclient->urlLogo }}" class="img-responsive" alt="Logo del Cliente" style="max-width: 50px;"></td>
 										<td>{{ $rowclient->name }}</td>
 										<td>{{ $rowclient->email }}</td>
 										<td>{{ $rowclient->phone }}</td>
