@@ -10,7 +10,7 @@ class Client extends Model
         return $this->hasMany('App\Plant');
     }
 
-    protected $fillable = ['name', 'email', 'phone', 'adress', 'status', 'id_city'];
+    protected $fillable = ['name', 'email', 'phone', 'adress', 'status', 'id_city', 'urlLogo'];
 
     public function city() {
         return $this->belongsTo('App\City', 'id_city');

@@ -29,6 +29,7 @@ class CreateSchema extends Migration
         	$table->string('email');
         	$table->integer('phone');
         	$table->string('adress', 100);
+        	$table->string('urlLogo', 100)->nullable()->default('No Image');
         	$table->timestamps();
         });
         

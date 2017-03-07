@@ -14,6 +14,8 @@
 <script src="/dashboard/vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
 <script src="/dashboard/vendors/nprogress/nprogress.js"></script>
+<!-- Dropzone.js -->
+<script src="/dashboard/vendors/dropzone/dist/min/dropzone.min.js"></script>
 <!-- jQuery custom content scroller -->
 <script src="/dashboard/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
 

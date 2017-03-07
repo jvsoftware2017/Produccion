@@ -53,7 +53,7 @@
 										<div class="modal-body">
 		
 											<form data-toggle="validator"
-												action="/clients" method="POST">
+												action="/clients" method="POST" enctype="multipart/form-data">
 												{{ csrf_field() }}
 												<div class="form-group">
 													<label class="control-label" for="name">Nombre:</label> <input
@@ -109,6 +109,11 @@
 													<div class="help-block with-errors"></div>
 												</div>
 												<div class="form-group">
+													<label for="logo">Logo:</label>
+													<input type="file" id="logo" name="urlLogo">
+													<p class="help-block">Seleccionar el logo del cliente, no debe pesar más de 2MB.</p>
+												</div>
+												<div class="form-group">
 													<button type="submit" class="btn btn-round crud-submit btn-success">Crear</button>
 												</div>
 											</form>
@@ -120,7 +125,7 @@
 					<table id="datatable" class="table table-striped table-bordered">
 							<thead>
 								<tr>
-									<th>Id</th>
+									<th>Logo</th>
 									<th>Nombre</th>
 									<th>E-mail</th>
 									<th>Teléfono</th>
@@ -141,7 +146,7 @@
 								@else
 									<tr>
 								@endif
-										<td>{{ $rowclient->id }}</td>
+										<td><img src="clientLogo/{{ $rowclient->urlLogo }}" class="img-responsive" alt="Responsive image" style="max-width: 50px;"></td>
 										<td>{{ $rowclient->name }}</td>
 										<td>{{ $rowclient->email }}</td>
 										<td>{{ $rowclient->phone }}</td>
@@ -168,7 +173,7 @@
 	                                                </div>
 	                                                <div class="modal-body">
 	
-	                                                    <form data-toggle="validator" action="/clients/{{ $rowclient->id }}" method="POST">
+	                                                    <form data-toggle="validator" action="/clients/{{ $rowclient->id }}" method="POST" enctype="multipart/form-data">
 	                                                        {{ csrf_field() }}
 															{{ method_field('PUT') }}
 															
@@ -213,11 +218,15 @@
 	                                                            <div class="help-block with-errors"></div>
 	                                                        </div>
 	                                                        <div class="form-group">
+																<label for="logo">Logo:</label>
+																<input type="file" id="logo" name="urlLogo">
+																<p class="help-block">Seleccionar el logo del cliente, no debe pesar más de 2MB.</p>
+															</div>
+															<input class="hide" type="text" name="prevLogo" value="{{ $rowclient->urlLogo }}" >
+	                                                        <div class="form-group">
 	                                                            <button type="submit" class="btn btn-round crud-submit btn-success">Editar</button>
 	                                                        </div>
-	
 	                                                    </form>
-	
 	                                                </div>
 	                                            </div>
 	                                        </div>

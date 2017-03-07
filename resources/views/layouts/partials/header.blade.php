@@ -17,6 +17,8 @@
     <link href="/dashboard/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
     <!-- Custom Theme Style -->
     <link href="/dashboard/build/css/custom.min.css" rel="stylesheet">
+    <!-- Dropzone.js -->
+    <link href="/dashboard/vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="/css/custom.css" />
 
