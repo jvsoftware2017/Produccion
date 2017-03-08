@@ -12,6 +12,8 @@ Auth::routes();
 Route::group(['middleware' => 'active'], function () {
 
 	Route::get('/home', 'HomeController@index');
+	Route::get('/user_profile', 'UsersController@showProfile');
+	Route::put('/user_profile', 'UsersController@updateProfile');
 	
 	Route::group(['middleware' => 'client'], function () {
 		

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Client;
 use App\Role;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -93,7 +94,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
     	$passwordValidation = '';
     	
@@ -113,13 +114,13 @@ class UsersController extends Controller
     			
     	]);
     	
-    	
+    	$user = User::find($id);
     	$user->name = $request->name;
     	$user->email = $request->email;
     	$user->id_client = $request->id_client;
     	$user->id_role = $request->id_role;
     	$user->status = $request->status;
-    	$user->update();
+    	$user->save();
     	session()->flash('message', 'Se ha editado el usuario correctamente.');
     	return redirect('/users');
     }
@@ -133,5 +134,32 @@ class UsersController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    public function showProfile(){
+    	
+    	$user = User::find(Auth::user()->id);
+    	return view('users.profile', compact('user'));
+    }
+    
+    public function updateProfile(Request $request){
+    	 
+    	$user = User::find(Auth::user()->id);
+    	$passwordValidation = '';
+    	 
+    	if (isset($request->password)){
+    		$user->password = bcrypt($request->password);
+    		$passwordValidation = 'required|min:6';
+    	}
+    	
+    	$this->validate($request, [
+    			'name' => 'required|max:255|',
+    			'password' => $passwordValidation
+    	]);
+    	
+    	$user->name = $request->name;
+    	$user->save();
+    	session()->flash('message', 'Se ha editado el usuario correctamente.');
+    	return redirect('/user_profile');
     }
 }

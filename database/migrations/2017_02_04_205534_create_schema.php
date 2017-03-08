@@ -54,7 +54,7 @@ class CreateSchema extends Migration
         	$table->integer('id_type')->unsigned();
         	$table->string('name', 100);
         	$table->string('model', 100);
-        	$table->string('geolocation', 100);
+        	$table->string('geolocation', 100)->nullable();
         	$table->string('urlImg', 100)->nullable()->default('No Image');
         	$table->timestamp('last_event')->default(DB::raw('CURRENT_TIMESTAMP'));
         	$table->timestamps();
