@@ -43,6 +43,11 @@ return [
 
     'disks' => [
 
+    	'equipmentImg' => [
+    		'driver' => 'local',
+    		'root' => public_path('equipmentImg'),
+    	],
+    		
     	'clientLogo' => [
     		'driver' => 'local',
     		'root' => public_path('clientLogo'),

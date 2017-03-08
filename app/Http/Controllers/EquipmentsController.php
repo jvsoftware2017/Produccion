@@ -6,6 +6,7 @@ use App\Equipment;
 use App\Plant;
 use App\Type;
 use Illuminate\Http\Request;
+use Storage;
 
 class EquipmentsController extends Controller
 {
@@ -51,8 +52,25 @@ class EquipmentsController extends Controller
             'id_plant' => 'required',
             'status' => 'required',
         ]);
-        $equipment = $request->all();
-        Equipment::create($equipment);
+        $equipment = new Equipment();
+        $equipment->name = $request->name;
+        $equipment->model = $request->model;
+        $equipment->id_type = $request->id_type;
+        $equipment->id_plant = $request->id_plant;
+        $equipment->status = $request->status;
+        
+        if (isset($request->urlImg) && $request->urlImg != null){
+        	$this->validate($request, [
+        			'urlImg' => 'required|image|max:2000',
+        	]);
+        	$equipmentImg = $request->file('urlImg');
+        	$route_file = time(). "_" .$equipmentImg->getClientOriginalName();
+        	Storage::disk('equipmentImg')->put($route_file, file_get_contents( $equipmentImg->getRealPath() ));
+        	$equipment->urlImg = $route_file;
+        }
+        $equipment->save();
+        /*$equipment = $request->all();
+        Equipment::create($equipment);*/
         session()->flash('message', 'Se ha creado el Equipo correctamente.');
         return redirect('/equipments');
 
@@ -87,7 +105,7 @@ class EquipmentsController extends Controller
      * @param  \App\Equipment  $equipment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Equipment $equipment)
+    public function update(Request $request, $id)
     {
         $this->validate($request, [
             'name' => 'required',
@@ -96,7 +114,24 @@ class EquipmentsController extends Controller
             'id_plant' => 'required',
             'status' => 'required',
         ]);
-        $equipment->update($request->all());
+        $equipment = Equipment::find($id);
+        $equipment->name = $request->name;
+        $equipment->model = $request->model;
+        $equipment->id_type = $request->id_type;
+        $equipment->id_plant = $request->id_plant;
+        $equipment->status = $request->status;
+        
+        if (isset($request->urlImg) && $request->urlImg != null){
+        	$this->validate($request, [
+        			'urlImg' => 'image|max:2000',
+        	]);
+        	$equipmentImg = $request->file('urlImg');
+        	$route_file = time(). "_" .$equipmentImg->getClientOriginalName();
+        	Storage::disk('equipmentImg')->put($route_file, file_get_contents( $equipmentImg->getRealPath() ));
+        	Storage::disk('equipmentImg')->delete($request->prevImg);
+        	$equipment->urlImg = $route_file;
+        }
+        $equipment->save();
         session()->flash('message', 'Se ha actualizado la información del Equipo');
         return redirect('/equipments');
     }

@@ -40,7 +40,7 @@
 						<table id="datatable" class="table table-striped table-bordered">
 							<thead>
 							<tr>
-								<th>Id</th>
+								<th>Preview</th>
 								<th>Nombre</th>
 								<th>Tipo</th>
 								<th>Planta</th>
@@ -61,7 +61,7 @@
 									@else
 										<tr>
 									@endif
-											<td>{{ $rowEquipment->id }}</td>
+											<td><img src="equipmentImg/{{ $rowEquipment->urlImg }}" class="img-responsive" alt="Logo del Cliente" style="max-width: 50px;"></td>
 											<td>{{ $rowEquipment->name }}</td>
 											<td>{{ $rowEquipment->type->name }}</td>
 											<td>{{ $rowEquipment->plant->name }}</td>
@@ -88,7 +88,7 @@
 													</div>
 													<div class="modal-body">
 	
-														<form data-toggle="validator" action="/equipments/{{$rowEquipment->id}}" method="POST">
+														<form data-toggle="validator" action="/equipments/{{$rowEquipment->id}}" method="POST" enctype="multipart/form-data">
 															{{ csrf_field() }}
 															{{ method_field('PUT') }}
 															<div class="form-group">
@@ -134,7 +134,12 @@
 																</select>
 																<div class="help-block with-errors"></div>
 															</div>
-	
+															<div class="form-group">
+																<label for="img">Imagen:</label>
+																<input type="file" id="img" name="urlImg">
+																<p class="help-block">Seleccionar imagen para el equipo, no debe pesar más de 2MB.</p>
+															</div>
+															<input class="hide" type="text" name="prevImg" value="{{ $rowEquipment->urlImg }}" >
 															<div class="form-group">
 																<button type="submit" class="btn btn-round crud-submit btn-success">Editar</button>
 															</div>
@@ -160,7 +165,7 @@
 										</div>
 										<div class="modal-body">
 	
-											<form data-toggle="validator" action="/equipments" method="POST">
+											<form data-toggle="validator" action="/equipments" method="POST" enctype="multipart/form-data">
 												{{ csrf_field() }}
 	
 												<div class="form-group">
@@ -203,7 +208,11 @@
 													</select>
 													<div class="help-block with-errors"></div>
 												</div>
-	
+												<div class="form-group">
+													<label for="img">Imagen:</label>
+													<input type="file" id="img" name="urlImg" required>
+													<p class="help-block">Seleccionar imagen para el equipo, no debe pesar más de 2MB. <span class="label label-danger">Campo Obligatorio!</span></p>
+												</div>
 												<div class="form-group">
 													<button type="submit" class="btn btn-round crud-submit btn-success">Guardar</button>
 												</div>
