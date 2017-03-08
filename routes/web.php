@@ -42,5 +42,7 @@ Route::group(['middleware' => 'active'], function () {
 		
 		Route::get('/users', 'UsersController@index');
 		
+		Route::get('/user-access', 'UserAccessController@index');
+		
 	});
 });

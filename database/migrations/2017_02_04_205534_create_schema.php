@@ -75,6 +75,7 @@ class CreateSchema extends Migration
         	$table->increments('id');
         	$table->integer('id_equipment')->unsigned();
         	$table->string('name', 100);
+        	$table->enum('type', ['event', 'alarm']);
         	$table->timestamps();
         });
 

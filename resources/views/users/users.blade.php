@@ -150,9 +150,6 @@
 											<td>
 												<!-- Large modal -->
 												<div type="button" id="edit-client" class="btn btn-round btn-warning" data-toggle="modal" data-target="#edit-item{{ $rowuser->id }}" >Editar</div>
-												@if($rowuser->status == 'active')
-													<div type="button" id="access-user" class="btn btn-round btn-dark" data-toggle="modal" data-target="#access-item{{ $rowuser->id }}" >Acceso</div>
-												@endif
 											</td>
 
 										@endif
@@ -227,58 +224,6 @@
 	                                            </div>
 	                                        </div>
 	                                    </div>
-
-										<!-- Access Item Modal -->
-										<div class="modal fade" id="access-item{{ $rowuser->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-header">
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-														<h4 class="modal-title" id="myModalLabel">Asignar permisos a <strong>{{ $rowuser->name }}</strong></h4>
-													</div>
-													<div class="modal-body">
-
-														<form data-toggle="validator" action="/users_access/{{ $rowuser->id }}" method="POST">
-															{{ csrf_field() }}
-															{{ method_field('PUT') }}
-
-															<div class="form-group">
-																<label class="control-label" for="plant">Planta</label>
-																<select class="form-control" name="us_plant" id="us_plant">
-																	<@foreach($dataPlant as $rowplant)
-																		@if($rowuser->client->id == $rowplant->id_client && $rowplant->status == 'active')
-																			<option value="{{$rowplant->id}}">{{$rowplant->name}}</option>
-																		@endif
-																	@endforeach
-																</select>
-																<div class="help-block with-errors"></div>
-															</div>
-															<div class="form-group">
-																<label class="control-label" for="equipment">Equipo</label>
-																<!--<select class="select2_multiple form-control" multiple="multiple">
-																	<option>Choose option</option>
-																	<option>Option one</option>
-																	<option>Option two</option>
-																	<option>Option three</option>
-																	<option>Option four</option>
-																	<option>Option five</option>
-																	<option>Option six</option>
-																</select>-->
-																<select class="form-control" name="us_equipment" id="us_equipment">
-																	<option>Seleccione</option>
-																</select>
-																<div class="help-block with-errors"></div>
-															</div>
-															<div class="form-group">
-																<button type="submit" class="btn btn-round crud-submit btn-success">Asignar</button>
-															</div>
-
-														</form>
-
-													</div>
-												</div>
-											</div>
-										</div>
 
                                     @endif
 								@endforeach

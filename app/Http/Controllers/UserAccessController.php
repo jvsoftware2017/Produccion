@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\user_access;
+use App\UserAccess;
+use App\User;
+use App\Plant;
 use Illuminate\Http\Request;
 
 class UserAccessController extends Controller
@@ -14,7 +16,11 @@ class UserAccessController extends Controller
      */
     public function index()
     {
-        //
+    	$dataUser = User::all();
+    	$dataUserAccess = UserAccess::all();
+    	$dataPlant = Plant::all();
+    	return view('usersAccess.usersAccess', compact('dataUser', 'dataUserAccess', 'dataPlant'));
+    	
     }
 
     /**

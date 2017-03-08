@@ -2,7 +2,7 @@
 
 @section('content')
 	<div id="login-panel" align="center" class="panel panel-default">
-		<h><img src="/img/siemens-logo.png"></h>
+		<img src="/img/logo3d.fw.png">
 	<div class="panel-body">
 	<section class="login_content">
 
