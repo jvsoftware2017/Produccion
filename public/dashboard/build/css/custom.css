@@ -3393,11 +3393,12 @@ ul.project_files li a i {
 }
 .login {
     /*background: #F7F7F7*/
-    background-image: url("/../../img/siemens-fondo.png");
-     background-position: center center;
+    background-image: url("/../../img/siemens-fondo3.png");
+    
+    background-position: center center;
 
-  /* La imagen de fondo no se repite */
-  background-repeat: no-repeat;
+  	/* La imagen de fondo no se repite */
+  	background-repeat: no-repeat;
 
   /* La imagen de fondo está fija en el viewport, de modo que no se mueva cuando
      la altura del contenido supere la altura de la imagen. */
@@ -3413,7 +3414,11 @@ ul.project_files li a i {
 
 }
 #login-panel {
+	/* comment */ 
     background-color: #FFFFFF;
+    -webkit-box-shadow: -15px -15px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: -15px -15px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: -15px -15px 5px 0px rgba(0,0,0,0.75);
 	/*background-color: rgba(245, 245, 245, 0.8);*/
 }
 .login .fa-paw {
@@ -3433,7 +3438,7 @@ a.hiddenanchor {
 .login_form {
     position: absolute;
     top: 0px;
-    width: 100%
+    width: 99%
 }
 .registration_form {
     z-index: 21;
