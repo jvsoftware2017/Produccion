@@ -170,7 +170,8 @@ html , body{
     z-index: 2
 }
 .nav-sm .navbar.nav_title {
-    width: 70px
+    width: 70px;
+    /*background-image: url("/../../img/siemens-logo2.fw.png") no-repeat center center fixed;*/
 }
 .nav-sm .navbar.nav_title a span {
     display: none
