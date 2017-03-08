@@ -171,7 +171,6 @@ html , body{
 }
 .nav-sm .navbar.nav_title {
     width: 70px;
-    /*background-image: url("/../../img/siemens-logo2.fw.png") no-repeat center center fixed;*/
 }
 .nav-sm .navbar.nav_title a span {
     display: none
@@ -3394,7 +3393,7 @@ ul.project_files li a i {
 }
 .login {
     /*background: #F7F7F7*/
-    background-image: url("/../../img/siemens-fondo3.png");
+    background-image: url("/../../img/siemens-fondo.png");
     
     background-position: center center;
 
