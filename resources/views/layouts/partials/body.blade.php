@@ -25,7 +25,7 @@
                         <h3>General</h3>
                         <ul class="nav side-menu">
                             @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
-                            <li><a><i class="fa fa-home"></i> Panel de Control <span class="fa fa-chevron-down"></span></a>
+                            <li><a><i class="fa fa-wrench"></i> Panel de Control <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="/clients">Clientes</a></li>
                                     <li><a href="/plants">Plantas</a></li>
@@ -64,6 +64,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
                                 <li><a href="/home">Home</a></li>
+                                <li><a href="/user_profile"><i class="fa fa-user pull-right"></i>Perfil</a></li>
                                 <li><a href="javascript:;">Ayuda</a></li>
                                 <li>
                                     <a href="#" onclick="document.getElementById('logout-form').submit();">
