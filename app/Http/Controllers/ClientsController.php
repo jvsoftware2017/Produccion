@@ -6,6 +6,7 @@ use App\Client;
 use App\City;
 use Illuminate\Http\Request;
 use Storage;
+use Carbon\Carbon;
 
 
 class ClientsController extends Controller
@@ -134,6 +135,7 @@ class ClientsController extends Controller
 	    	Storage::disk('clientLogo')->delete($request->prevLogo);
 	    	$client->urlLogo = $route_file;
     	}
+    	$client->updated_at = Carbon::now();
     	$client->save();
         session()->flash('message', 'Se ha actualizado el cliente');
         return redirect('/clients');

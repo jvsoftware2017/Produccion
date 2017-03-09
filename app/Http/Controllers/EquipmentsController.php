@@ -7,6 +7,7 @@ use App\Plant;
 use App\Type;
 use Illuminate\Http\Request;
 use Storage;
+use Carbon\Carbon;
 
 class EquipmentsController extends Controller
 {
@@ -131,6 +132,7 @@ class EquipmentsController extends Controller
         	Storage::disk('equipmentImg')->delete($request->prevImg);
         	$equipment->urlImg = $route_file;
         }
+        $equipment->updated_at = Carbon::now();
         $equipment->save();
         session()->flash('message', 'Se ha actualizado la información del Equipo');
         return redirect('/equipments');

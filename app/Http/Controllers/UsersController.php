@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Plant;
 use Illuminate\Http\Request;
-
 use App\User;
 use App\Client;
 use App\Role;
@@ -56,6 +55,10 @@ class UsersController extends Controller
     			'status' => 'required',
     			'password' => 'required|min:6',
     	]);
+    	
+    	if ($request->id_role == 1 && Auth::user()->id_role != 1) {
+    	    		$request->merge(['id_role' => 2]);
+    	}
     	
     	$request->merge(['password' => bcrypt($request->password)]);
     	
@@ -113,6 +116,10 @@ class UsersController extends Controller
     			'password' => $passwordValidation
     			
     	]);
+    	
+    	if ($request->id_role == 1 && Auth::user()->id_role != 1) {
+    	    		$request->merge(['id_role' => 2]);
+    	}
     	
     	$user = User::find($id);
     	$user->name = $request->name;

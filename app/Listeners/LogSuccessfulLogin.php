@@ -30,6 +30,6 @@ class LogSuccessfulLogin
     {
     	$user = User::find($event->user->id);
     	$user->last_login = Carbon::now();
-        $user->update();
+        $user->save();
     }
 }
