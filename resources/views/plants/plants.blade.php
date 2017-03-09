@@ -66,7 +66,7 @@
                             <tbody>
                             @foreach($dataPlant as $rowplant)
 								@if($rowplant->status == 'inactive')
-									<tr style="background-color: #953b39;color: white">
+									<tr class="danger"">
 								@else
 									<tr>
 								@endif

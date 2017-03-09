@@ -135,7 +135,7 @@
 							<tbody>
 								@foreach($dataUser as $rowuser)
 								@if($rowuser->status == 'inactive')
-									<tr style="background-color: #953b39;color: white">
+									<tr class="danger">
 								@else
 									<tr>
 								@endif
