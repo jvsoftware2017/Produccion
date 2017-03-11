@@ -62,7 +62,7 @@ class EquipmentsController extends Controller
         
         if (isset($request->urlImg) && $request->urlImg != null){
         	$this->validate($request, [
-        			'urlImg' => 'required|image|max:2000',
+        			'urlImg' => 'required|image|max:2000'
         	]);
         	$equipmentImg = $request->file('urlImg');
         	$route_file = time(). "_" .$equipmentImg->getClientOriginalName();
@@ -124,7 +124,7 @@ class EquipmentsController extends Controller
         
         if (isset($request->urlImg) && $request->urlImg != null){
         	$this->validate($request, [
-        			'urlImg' => 'image|max:2000',
+        			'urlImg' => 'max:2000',
         	]);
         	$equipmentImg = $request->file('urlImg');
         	$route_file = time(). "_" .$equipmentImg->getClientOriginalName();
