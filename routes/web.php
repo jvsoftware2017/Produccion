@@ -32,6 +32,8 @@ Route::group(['middleware' => 'active'], function () {
 			Route::put('/users/{user}', 'UsersController@update');
 
 			Route::get('/us_equipments/{plant}', 'PlantsController@getEquipments');
+			
+			Route::get('/monitor', 'EquiposController@index');
 		});
 		
 		Route::get('/plants', 'PlantsController@index');

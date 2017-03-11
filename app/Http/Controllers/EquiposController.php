@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\equipo;
+use App\Equipo;
 use Illuminate\Http\Request;
 
 class EquiposController extends Controller
