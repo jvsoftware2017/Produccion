@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Closure;
 
-class UserMiddleware
+class MaintenanceMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class UserMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->role->description == 'developer' || Auth::user()->role->description == 'admin' || Auth::user()->role->description == 'client' || Auth::user()->role->description == 'reports' || Auth::user()->role->description == 'user') {
+        if (Auth::user()->roles->description == 'developer' || Auth::user()->roles->description == 'admin' || Auth::user()->roles->description == 'client' || Auth::user()->roles->description == 'maintenance') {
         	return $next($request);
         }
         return redirect('/home');

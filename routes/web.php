@@ -19,22 +19,22 @@ Route::group(['middleware' => 'active'], function () {
 		
 		Route::group(['middleware' => 'admin'], function () {
 			
-			Route::post('/plants', 'PlantsController@store');
-			Route::put('/plants/{plant}', 'PlantsController@update');
-			
 			Route::post('/clients', 'ClientsController@store');
-			Route::put('/clients/{client}', 'ClientsController@update');
 			
-			Route::post('/equipments', 'EquipmentsController@store');
-			Route::put('/equipments/{equipment}', 'EquipmentsController@update');
-			
-			Route::post('/users', 'UsersController@store');
-			Route::put('/users/{user}', 'UsersController@update');
-
 			Route::get('/us_equipments/{plant}', 'PlantsController@getEquipments');
 			
-			Route::get('/monitor', 'EquiposController@index');
 		});
+		
+		Route::post('/users', 'UsersController@store');
+		Route::put('/users/{user}', 'UsersController@update');
+		
+		Route::post('/equipments', 'EquipmentsController@store');
+		Route::put('/equipments/{equipment}', 'EquipmentsController@update');
+		
+		Route::post('/plants', 'PlantsController@store');
+		Route::put('/plants/{plant}', 'PlantsController@update');
+		
+		Route::put('/clients/{client}', 'ClientsController@update');
 		
 		Route::get('/plants', 'PlantsController@index');
 		
@@ -47,4 +47,6 @@ Route::group(['middleware' => 'active'], function () {
 		Route::get('/user-access', 'UserAccessController@index');
 		
 	});
+	
+	Route::get('/monitor', 'EquiposController@index');
 });

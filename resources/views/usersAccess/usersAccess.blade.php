@@ -44,7 +44,7 @@
 									<th>Creado</th>
 									<th>Último Acceso</th>
 									<th>Estado</th>
-									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 										<th>Acción</th>
 									@endif
 								</tr>
@@ -64,7 +64,7 @@
 										<td>{{ $rowuser->created_at }}</td>
 										<td>{{ $rowuser->updated_at }}</td>
 										<td>{{ $rowuser->status }}</td>
-										@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+										@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 											<td>
 												<!-- Large modal -->
 												@if($rowuser->status == 'active')
@@ -74,7 +74,7 @@
 
 										@endif
 									</tr>
-									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 										<!-- Access Item Modal -->
 										<div class="modal fade" id="access-item{{ $rowuser->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 											<div class="modal-dialog" role="document">
@@ -90,7 +90,7 @@
 															{{ method_field('PUT') }}
 
 															<div class="form-group">
-																<label class="control-label" for="plant">Planta</label>
+																<label class="control-label" for="plant">Usuario</label>
 																<select class="form-control" name="us_plant" id="us_plant">
 																	<@foreach($dataPlant as $rowplant)
 																		@if($rowuser->client->id == $rowplant->id_client && $rowplant->status == 'active')

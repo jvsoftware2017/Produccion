@@ -8,6 +8,7 @@ use App\Type;
 use Illuminate\Http\Request;
 use Storage;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class EquipmentsController extends Controller
 {
@@ -22,8 +23,13 @@ class EquipmentsController extends Controller
      */
     public function index()
     {
-        $dataEquipment = Equipment::all();
-        $dataPlant = Plant::All();
+    	if(Auth::user()->role->description == 'client'){
+    		$dataPlant = Plant::where('id_client', Auth::user()->id_client)->get();
+    		$dataEquipment = Equipment::join('plants', 'equipments.id_plant', '=', 'plants.id')->where('plants.id_client', Auth::user()->id_client)->select('equipments.*')->get();
+    	}else{
+    		$dataEquipment = Equipment::all();
+        	$dataPlant = Plant::All();
+    	}
         $dataType = Type::All();
         return view('equipments.equipments', compact('dataEquipment','dataPlant','dataType'));
     }

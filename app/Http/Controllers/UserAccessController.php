@@ -6,6 +6,7 @@ use App\UserAccess;
 use App\User;
 use App\Plant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserAccessController extends Controller
 {
@@ -16,10 +17,14 @@ class UserAccessController extends Controller
      */
     public function index()
     {
-    	$dataUser = User::all();
-    	$dataUserAccess = UserAccess::all();
-    	$dataPlant = Plant::all();
-    	return view('usersAccess.usersAccess', compact('dataUser', 'dataUserAccess', 'dataPlant'));
+    	if(Auth::user()->role->description == 'client'){
+    		$dataUser = User::where('id_client', Auth::user()->id_client)->get();
+    		$dataPlant = User::where('id_client', Auth::user()->id_client)->get();
+    	}else{
+    		$dataUser = User::all();
+    		$dataPlant = Plant::all();
+    	}
+    	return view('usersAccess.usersAccess', compact('dataUser', 'dataPlant'));
     	
     }
 

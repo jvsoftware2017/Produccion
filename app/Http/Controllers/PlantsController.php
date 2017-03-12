@@ -9,6 +9,7 @@ use App\Equipment;
 use Carbon\Carbon;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PlantsController extends Controller
 {
@@ -23,9 +24,17 @@ class PlantsController extends Controller
      */
     public function index()
     {
-        $dataPlant = Plant::All();
+    	if(Auth::user()->role->description == 'client'){
+    		$dataPlant = Plant::where('id_client', Auth::user()->id_client)->get();
+    		$dataClient = Client::where('id', Auth::user()->id_client)->get();
+    	}else{
+    		$dataClient = Client::all();
+    		$dataPlant = Plant::All();
+    	}
+    	
+    	//$dataPlant = Plant::All();
         $dataCity = City::All();
-        $dataClient = Client::All();
+        //$dataClient = Client::All();
         return view('plants.plants', compact('dataPlant','dataCity','dataClient'));
     }
 
@@ -48,7 +57,7 @@ class PlantsController extends Controller
     public function store(Request $request)
     {
     	$this->validate($request, [
-    			'name' => 'required|max:255|',
+    			'name' => 'required|max:255|unique:plants,name',
     			'id_city' => 'required',
     			'id_client' => 'required',
     			'status' => 'required',
@@ -92,7 +101,7 @@ class PlantsController extends Controller
     public function update(Request $request, Plant $plant)
     {
     	$this->validate($request, [
-    			'name' => 'required|max:255|',
+    			'name' => 'required|max:255|unique:plants,name',
     			'id_city' => 'required',
     			'id_client' => 'required',
     			'status' => 'required',

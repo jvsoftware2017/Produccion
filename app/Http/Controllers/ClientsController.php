@@ -7,6 +7,7 @@ use App\City;
 use Illuminate\Http\Request;
 use Storage;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 
 class ClientsController extends Controller
@@ -23,7 +24,12 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        $dataClient = Client::all();
+        if(Auth::user()->role->description == 'client'){
+        	$dataClient = Client::where('id', Auth::user()->id_client)->get();
+        }else{
+        	$dataClient = Client::all();
+        }
+			
         $dataCity = City::All();
     	return view('clients.clients', compact('dataCity','dataClient'));
     }
