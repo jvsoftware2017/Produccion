@@ -56,52 +56,50 @@
                                 @endif
                             </tr>
                             </thead>
-
                             <tbody>
-                            @foreach($dataEquipo as $rowmonitor)
-								@if($rowmonitor->status == 'inactive')
-									<tr class="danger"">
-								@else
-									<tr>
-								@endif
-                                        <td>{{$rowmonitor->ID_EQUIPO}}</td>
-                                        <td>{{$rowmonitor->NOMBRE_EQUIPO}}</td>
-                                        <td>{{$rowmonitor->ESTADO_EQUIPO}}</td>
-                                        <td>{{ord($rowmonitor->DP_1)}}</td>
-                                        <td>{{ord($rowmonitor->DP_2)}}</td>
-                                        <td>{{ord($rowmonitor->DP_3)}}</td>
-                                        <td>{{ord($rowmonitor->DP_4)}}</td>
-                                        <td>{{ord($rowmonitor->DP_7)}}</td>
-                                        @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
-	                                        <td>
-	                                            <button data-toggle="modal" data-target="#edit-item{{$rowmonitor->id}}" class="btn btn-round btn-warning edit-item">Editar</button>
-	                                        </td>
-                                        @endif
-                                    </tr>
-									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
-	                                    <!-- Edit Item Modal -->
-	                                    <div class="modal fade" id="edit-item{{$rowmonitor->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	                                        <div class="modal-dialog" role="document">
-	                                            <div class="modal-content">
-	                                                <div class="modal-header">
-	                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	                                                    <h4 class="modal-title" id="myModalLabel">Estado monitor <strong>{{ $rowmonitor->NOMBRE_EQUIPO }}</strong></h4>
-	                                                </div>
-	                                                <div class="modal-body">
-	                                                <div align="center"> <img alt="Equipo ID XXX" src="equipmentImg/{{ $rowmonitor->Equipment->urlImg }}" class="img-responsive"> </div>	
-	                                                    <form data-toggle="validator" action="/plants/{{$rowmonitor->id}}" method="POST">
-	                                                        {{ csrf_field() }}
-	                                                        {{ method_field('PUT') }}
-	
-	
-	                                                    </form>
-	
-	                                                </div>
-	                                            </div>
-	                                        </div>
-	                                    </div>
-									@endif
-                                    @endforeach
+	                            @foreach($dataEquipo as $row)
+		                            @foreach($row as $rowmonitor)  
+										@if($rowmonitor->equipo->ESTADO_EQUIPO != 'ok')
+											<tr class="danger"">
+										@else
+											<tr>
+										@endif
+		                                <td>{{$rowmonitor->equipo->ID_EQUIPO}}</td>
+		                                <td>{{$rowmonitor->equipo->NOMBRE_EQUIPO}}</td>
+		                                <td>{{$rowmonitor->equipo->ESTADO_EQUIPO}}</td>
+		                                <td>{{chr(ord($rowmonitor->equipo->DP_1))}}</td>
+		                                <td>{{chr(ord($rowmonitor->equipo->DP_2))}}</td>
+		                                <td>{{chr(ord($rowmonitor->equipo->DP_3))}}</td>
+		                                <td>{{chr(ord($rowmonitor->equipo->DP_4))}}</td>
+		                                <td>{{chr(ord($rowmonitor->equipo->DP_7))}}</td>
+		                                @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+			                                <td>
+			                                <button data-toggle="modal" data-target="#edit-item{{$rowmonitor->equipo->ID_EQUIPO}}" class="btn btn-round btn-warning edit-item">Editar</button>
+			                                </td>
+		                                @endif
+		                                </tr>
+										@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+			                                <!-- Edit Item Modal -->
+			                                <div class="modal fade" id="edit-item{{$rowmonitor->equipo->ID_EQUIPO}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			                                    <div class="modal-dialog" role="document">
+			                                        <div class="modal-content">
+			                                            <div class="modal-header">
+			                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			                                                <h4 class="modal-title" id="myModalLabel">Estado monitor <strong>{{ $rowmonitor->equipo->NOMBRE_EQUIPO }}</strong></h4>
+			                                            </div>
+			                                            <div class="modal-body">                
+			                                                <div align="center"> <img alt="Equipo ID XXX" src="equipmentImg/{{ $rowmonitor->urlImg }}" class="img-responsive"> </div>	
+			                                                <form data-toggle="validator" action="/plants/{{$rowmonitor->id}}" method="POST">
+			                                                    {{ csrf_field() }}
+			                                                    {{ method_field('PUT') }}
+			                                                </form>
+			                                            </div>
+			                                        </div>
+			                                    </div>
+			                                </div>
+										@endif
+		                            @endforeach
+	                            @endforeach
                             </tbody>
                         </table>
                     </div>

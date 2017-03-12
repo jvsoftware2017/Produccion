@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Equipo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth;
+use App\UserAccess;
+use App\Equipment;
 
 class EquiposController extends Controller
 {
@@ -14,8 +19,11 @@ class EquiposController extends Controller
      */
     public function index()
     {
-
-    	$dataEquipo = Equipo::all();
+    	$dataEquipo = array();
+    	$equipos = UserAccess::where('id_user' , Auth::user()->id)->get();
+    	foreach ($equipos as $equipo){
+    		array_push($dataEquipo, Equipment::where('id', $equipo->id_equipment)->get());
+    	}
     	return view('monitor.monitor', compact('dataEquipo'));
     }
 

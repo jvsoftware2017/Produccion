@@ -37,6 +37,10 @@ class User extends Authenticatable
         return $this->belongsTo('App\Role', 'id_role');
     }
     
+    public function Equipments() {
+    	return $this->belongsToMany('App\Equipment', 'user_access', 'id_user', 'id_equipment');
+    }
+    
        /**
      * Send the password reset notification.
      *
@@ -47,4 +51,6 @@ class User extends Authenticatable
     {
     	$this->notify(new PasswordReset($token));
     }
+    
+    
 }

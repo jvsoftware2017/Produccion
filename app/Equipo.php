@@ -9,6 +9,6 @@ class Equipo extends Model
 	protected $table = 'equipo';
 		
 	public function Equipment() {
-		return $this->belongsTo('App\Equipment', 'ID_EQUIPO', 'id_equipo');
+		return $this->belongsTo('App\Equipment', 'id_equipo', 'ID_EQUIPO');
 	}
 }

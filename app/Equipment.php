@@ -18,4 +18,12 @@ class Equipment extends Model
     public static function equipmentsByIdPlant($idPlant){
         return Equipment::where("id_plant","=", $idPlant)->get();
     }
+    
+    public function Equipo() {
+    	return $this->hasOne('App\Equipo', 'ID_EQUIPO', 'id_equipo');
+    }
+    
+    public function Users() {
+    	return $this->belongsToMany('App\User', 'user_access', 'id_equipment', 'id_user');
+    }
 }
