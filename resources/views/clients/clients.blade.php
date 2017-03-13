@@ -37,7 +37,7 @@
 								</ul>
 							</div>
 						@endif
-						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 							<!-- Create Item Modal -->
 							<div class="modal fade" id="create-item"
 								tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -134,7 +134,7 @@
 									<th>Fecha de registro</th>
 									<th>Fecha de modificación</th>
 									<th>Estado</th>
-									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 										<th>Acción</th>
 									@endif
 								</tr>
@@ -155,14 +155,14 @@
 										<td>{{ $rowclient->created_at }}</td>
 										<td>{{ $rowclient->updated_at }}</td>
 										<td>{{ $rowclient->status }}</td>
-										@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+										@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 											<td>
 												<!-- Large modal -->
 												<div type="button" id="edit-client" class="btn btn-round btn-warning" data-toggle="modal" data-target="#edit-item{{ $rowclient->id }}" >Editar</div>
 											</td>
 										@endif
 									</tr>
-									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 										<!-- Edit Item Modal -->
 	                                    <div class="modal fade" id="edit-item{{ $rowclient->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	                                        <div class="modal-dialog" role="document">

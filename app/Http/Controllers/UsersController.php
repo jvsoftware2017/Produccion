@@ -23,10 +23,16 @@ class UsersController extends Controller
      */
     public function index()
     {
-    	$dataUser = User::all();
-        $dataClient = Client::all();
-        $dataRole = Role::all();
-        $dataPlant = Plant::all();
+    	if(Auth::user()->role->description == 'client'){
+    		$dataClient = Client::where('id', Auth::user()->id_client)->get();
+    		$dataUser = User::where('id_client', Auth::user()->id_client)->get();
+    		$dataPlant = Plant::where('id_client', Auth::user()->id_client)->get();
+    	}else{
+    		$dataClient = Client::all();
+    		$dataUser = User::all();
+    		$dataPlant = Plant::all();
+    	}
+    	$dataRole = Role::where('id', '>' , Auth::user()->id_role)->get();
     	return view('users.users', compact('dataClient', 'dataUser', 'dataRole', 'dataPlant'));
     }
 
@@ -118,8 +124,10 @@ class UsersController extends Controller
     			
     	]);
     	
-    	if ($request->id_role == 1 && Auth::user()->id_role != 1) {
-    	    		$request->merge(['id_role' => 2]);
+    	if (($request->id_role == 1) && Auth::user()->id_role != 1) {
+    	    $request->merge(['id_role' => 2]);
+    	}elseif (($request->id_role == 2) && (Auth::user()->id_role != 1 || Auth::user()->id_role != 2)){
+    		$request->merge(['id_role' => 3]);
     	}
     	
     	$user = User::find($id);

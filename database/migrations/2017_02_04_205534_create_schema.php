@@ -15,7 +15,7 @@ class CreateSchema extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('description', ['developer', 'admin', 'client', 'reports', 'user']);
+            $table->enum('description', ['developer','admin','client','maintenance','operator','supervisor']);
             $table->timestamps();
         });
         

@@ -21,7 +21,7 @@
                     <div class="x_content">
                         <div class="text-muted font-13 m-b-30">
                             Aquí podrás Ver, Editar, y Crear Plantas según tu Rol
-                            @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+                            @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 	                            <p align="right">
 	                                <button type="button" class="btn btn-round btn-success" data-toggle="modal" data-target="#create-item">Crear</button>
 	                            </p>
@@ -57,7 +57,7 @@
                                 <th>Fecha Registro</th>
                                 <th>Fecha Modificación</th>
                                 <th>Estado</th>
-                                @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+                                @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
                                 	<th>Acción</th>
                                 @endif
                             </tr>
@@ -78,13 +78,13 @@
                                         <td>{{$rowplant->created_at}}</td>
                                         <td>{{$rowplant->updated_at}}</td>
                                         <td>{{$rowplant->status}}</td>
-                                        @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+                                        @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 	                                        <td>
 	                                            <button data-toggle="modal" data-target="#edit-item{{$rowplant->id}}" class="btn btn-round btn-warning edit-item">Editar</button>
 	                                        </td>
                                         @endif
                                     </tr>
-									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 	                                    <!-- Edit Item Modal -->
 	                                    <div class="modal fade" id="edit-item{{$rowplant->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	                                        <div class="modal-dialog" role="document">
@@ -125,6 +125,7 @@
 	                                                            <label class="control-label" for="title">Nombre:</label>
 	                                                            <input type="text" name="name" id="name" class="form-control" value="{{$rowplant->name}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
 	                                                            <div class="help-block with-errors"></div>
+	                                                            <p class="help-block">El nombre debe ser único</p>
 	                                                        </div>
 	
 	                                                        <div class="form-group">
@@ -158,7 +159,7 @@
                                     @endforeach
                             </tbody>
                         </table>
-						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 	                        <!-- Create Item Modal -->
 	                        <div class="modal fade" id="create-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	                            <div class="modal-dialog" role="document">
@@ -197,6 +198,7 @@
 	                                                <label class="control-label" for="title">Nombre:</label>
 	                                                <input type="text" name="name" id="name" class="form-control" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
 	                                                <div class="help-block with-errors"></div>
+	                                                <p class="help-block">El nombre debe ser único</p>
 	                                            </div>
 	
 	                                            <div class="form-group">
