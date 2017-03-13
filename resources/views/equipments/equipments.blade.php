@@ -14,7 +14,7 @@
 
 					<div class="x_content">
 						<p class="text-muted font-13 m-b-30">Por medio de este módulo, puedes crear y editar equipos.</p>
-						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 							<p align="right">
 								<button type="button" class="btn btn-round btn-success" data-toggle="modal" data-target="#create-item">Crear</button>
 							</p>
@@ -45,11 +45,11 @@
 								<th>Tipo</th>
 								<th>Planta</th>
 								<th>Modelo</th>
-								<th>Ultimo Evento</th>
+								<th>Identificacion</th>
 								<th>Fecha registro</th>
 								<th>Fecha modificación</th>
 								<th>Estado</th>
-								@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+								@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 									<th>Acción</th>
 								@endif
 							</tr>
@@ -66,18 +66,18 @@
 											<td>{{ $rowEquipment->type->name }}</td>
 											<td>{{ $rowEquipment->plant->name }}</td>
 											<td>{{ $rowEquipment->model }}</td>
-											<td>{{ $rowEquipment->last_event }}</td>
+											<td>{{ $rowEquipment->id_equipo }}</td>
 											<td>{{ $rowEquipment->created_at }}</td>
 											<td>{{ $rowEquipment->updated_at }}</td>
 											<td>{{ $rowEquipment->status }}</td>
-											@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+											@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 												<td>
 													<!-- Large modal -->
 													<div type="button" id="edit-client" class="btn btn-round btn-warning" data-toggle="modal" data-target="#edit-item{{ $rowEquipment->id }}" >Editar</div>
 												</td>
 											@endif
 										</tr>
-									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 										<!-- Edit Item Modal -->
 										<div class="modal fade" id="edit-item{{$rowEquipment->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 											<div class="modal-dialog" role="document">
@@ -94,6 +94,12 @@
 															<div class="form-group">
 																<label class="control-label" for="title">Nombre:</label>
 																<input type="text" name="name" id="name" class="form-control" value="{{$rowEquipment->name}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+																<div class="help-block with-errors"></div>
+															</div>
+															
+															<div class="form-group">
+																<label class="control-label" for="title">Identificación (Id Equipo):</label>
+																<input type="text" name="id_equipo" id="id_equipo" class="form-control" value="{{$rowEquipment->id_equipo}}"" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
 																<div class="help-block with-errors"></div>
 															</div>
 	
@@ -154,7 +160,7 @@
 								@endforeach
 							</tbody>
 						</table>
-						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 							<!-- Create Item Modal -->
 							<div class="modal fade" id="create-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 								<div class="modal-dialog" role="document">
@@ -171,6 +177,12 @@
 												<div class="form-group">
 													<label class="control-label" for="title">Nombre:</label>
 													<input type="text" name="name" id="name" class="form-control" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+													<div class="help-block with-errors"></div>
+												</div>
+												
+												<div class="form-group">
+													<label class="control-label" for="title">Identificación (Id Equipo):</label>
+													<input type="text" name="id_equipo" id="id_equipo" class="form-control" oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
 													<div class="help-block with-errors"></div>
 												</div>
 	

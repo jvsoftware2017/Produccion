@@ -8,6 +8,7 @@ use App\Type;
 use Illuminate\Http\Request;
 use Storage;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class EquipmentsController extends Controller
 {
@@ -22,8 +23,13 @@ class EquipmentsController extends Controller
      */
     public function index()
     {
-        $dataEquipment = Equipment::all();
-        $dataPlant = Plant::All();
+    	if(Auth::user()->role->description == 'client'){
+    		$dataPlant = Plant::where('id_client', Auth::user()->id_client)->get();
+    		$dataEquipment = Equipment::join('plants', 'equipments.id_plant', '=', 'plants.id')->where('plants.id_client', Auth::user()->id_client)->select('equipments.*')->get();
+    	}else{
+    		$dataEquipment = Equipment::all();
+        	$dataPlant = Plant::All();
+    	}
         $dataType = Type::All();
         return view('equipments.equipments', compact('dataEquipment','dataPlant','dataType'));
     }
@@ -52,6 +58,7 @@ class EquipmentsController extends Controller
             'id_type' => 'required',
             'id_plant' => 'required',
             'status' => 'required',
+        	'id_equipo' => 'required',
         ]);
         $equipment = new Equipment();
         $equipment->name = $request->name;
@@ -59,6 +66,7 @@ class EquipmentsController extends Controller
         $equipment->id_type = $request->id_type;
         $equipment->id_plant = $request->id_plant;
         $equipment->status = $request->status;
+        $equipment->id_equipo = $request->id_equipo;
         
         if (isset($request->urlImg) && $request->urlImg != null){
         	$this->validate($request, [
@@ -114,6 +122,7 @@ class EquipmentsController extends Controller
             'id_type' => 'required',
             'id_plant' => 'required',
             'status' => 'required',
+        	'id_equipo' => 'required',
         ]);
         $equipment = Equipment::find($id);
         $equipment->name = $request->name;
@@ -121,6 +130,7 @@ class EquipmentsController extends Controller
         $equipment->id_type = $request->id_type;
         $equipment->id_plant = $request->id_plant;
         $equipment->status = $request->status;
+        $equipment->id_equipo = $request->id_equipo;
         
         if (isset($request->urlImg) && $request->urlImg != null){
         	$this->validate($request, [

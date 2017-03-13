@@ -45,12 +45,12 @@
                             <tr>
                                 <th>Id Equipo</th>
                                 <th>Nombre</th>
+                                <th>Planta</th>
                                 <th>Estado</th>
                                 <th>DP_1</th>
                                 <th>DP_2</th>
                                 <th>DP_3</th>
                                 <th>DP_4</th>
-                                <th>DP_7</th>
                                 @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
                                 	<th>Acción</th>
                                 @endif
@@ -66,38 +66,70 @@
 										@endif
 		                                <td>{{$rowmonitor->equipo->ID_EQUIPO}}</td>
 		                                <td>{{$rowmonitor->equipo->NOMBRE_EQUIPO}}</td>
+		                                <td>{{$rowmonitor->plant->name}}</td>
 		                                <td>{{$rowmonitor->equipo->ESTADO_EQUIPO}}</td>
 		                                <td>{{chr(ord($rowmonitor->equipo->DP_1))}}</td>
 		                                <td>{{chr(ord($rowmonitor->equipo->DP_2))}}</td>
 		                                <td>{{chr(ord($rowmonitor->equipo->DP_3))}}</td>
-		                                <td>{{chr(ord($rowmonitor->equipo->DP_4))}}</td>
-		                                <td>{{chr(ord($rowmonitor->equipo->DP_7))}}</td>
-		                                @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+		                                <td>{{chr(ord($rowmonitor->equipo->DP_4))}}</td>		                                
 			                                <td>
-			                                <button data-toggle="modal" data-target="#edit-item{{$rowmonitor->equipo->ID_EQUIPO}}" class="btn btn-round btn-warning edit-item">Editar</button>
-			                                </td>
-		                                @endif
-		                                </tr>
-										@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+			                                <button data-toggle="modal" data-target="#edit-item{{$rowmonitor->equipo->ID_EQUIPO}}" class="btn btn-round btn-warning edit-item">Ver</button>
+			                                
 			                                <!-- Edit Item Modal -->
 			                                <div class="modal fade" id="edit-item{{$rowmonitor->equipo->ID_EQUIPO}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			                                    <div class="modal-dialog" role="document">
 			                                        <div class="modal-content">
 			                                            <div class="modal-header">
 			                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			                                                <h4 class="modal-title" id="myModalLabel">Estado monitor <strong>{{ $rowmonitor->equipo->NOMBRE_EQUIPO }}</strong></h4>
+			                                                <h4 class="modal-title" id="myModalLabel">Estado monitor <strong>{{ $rowmonitor->equipo->MODELO_EQUIPO." - ".$rowmonitor->equipo->NOMBRE_EQUIPO }}</strong></h4>
 			                                            </div>
-			                                            <div class="modal-body">                
-			                                                <div align="center"> <img alt="Equipo ID XXX" src="equipmentImg/{{ $rowmonitor->urlImg }}" class="img-responsive"> </div>	
-			                                                <form data-toggle="validator" action="/plants/{{$rowmonitor->id}}" method="POST">
-			                                                    {{ csrf_field() }}
-			                                                    {{ method_field('PUT') }}
-			                                                </form>
+			                                            <div class="modal-body">                 
+			                                                
+			                                                <table align="center" style="border-collapse:separate;border-spacing:15px;" border="0">
+															  <tr>
+															    <td align="right">Run FW <canvas id="circle{{chr(ord($rowmonitor->equipo->DP_2))}}"></canvas> </td>
+															    <th rowspan="6">
+															    <div align="center"> <img alt="Equipo {{ $rowmonitor->equipo->NOMBRE_EQUIPO }}" src="equipmentImg/{{ $rowmonitor->urlImg }}" class="img-responsive"> </div>
+															    </th>
+															    <td align="right">Comunicación OK <canvas id="circle0"></canvas></td>
+															  </tr>
+															  <tr>
+															    <td align="right">Run BW <canvas id="circle{{chr(ord($rowmonitor->equipo->DP_3))}}"></canvas></td>
+															    <td align="right">Operation Hrs: <strong style="font-size: 16px">{{chr(ord($rowmonitor->equipo->DP_40))}}</strong></td>
+															  </tr>
+															  <tr>
+															    <td align="right">READY <canvas id="circle{{chr(ord($rowmonitor->equipo->DP_4))}}"></canvas></td>
+															    <td align="right">Next Mantenaince: <strong style="font-size: 16px">{{chr(ord($rowmonitor->equipo->DP_39))}}</strong></td>
+															  </tr>
+															  <tr>
+															    <td align="right">At Speed Ref <canvas id="circle{{chr(ord($rowmonitor->equipo->DP_7))}}"></canvas></td>
+															    <td align="right">Temperature: <strong style="font-size: 16px">{{chr(ord($rowmonitor->equipo->DP_44))}}</strong></td>
+															  </tr>
+															  <tr>
+															    <td align="right">Warning <canvas id="circle{{chr(ord($rowmonitor->equipo->DP_1))}}"></canvas></td>
+															    <td align="right">Humidity: <strong style="font-size: 16px">{{chr(ord($rowmonitor->equipo->DP_49))}}</strong></td>
+															  </tr>
+															  <tr>
+															    <td align="right">Flaut <canvas id="circle{{chr(ord($rowmonitor->equipo->DP_0))}}"></canvas></td>
+															    <td align="right">Velocidad: <strong style="font-size: 16px">{{chr(ord($rowmonitor->equipo->DP_16))}}</strong></td>
+															  </tr>
+															  <tr>
+															    <td align="center"></td>
+															    <td align="center"></td>
+															    <td align="center"></td>
+															  </tr>
+															  <tr style="background-color: red;color: white; font-size: 14px;">
+															    <td align="center">Fecha</td>
+															    <td align="center">Evento</td>
+															    <td align="center">Tipo</td>
+															  </tr>
+															</table>
 			                                            </div>
 			                                        </div>
 			                                    </div>
 			                                </div>
-										@endif
+			                        	</td>
+		                                </tr>       
 		                            @endforeach
 	                            @endforeach
                             </tbody>
