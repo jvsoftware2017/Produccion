@@ -68,10 +68,10 @@
 		                                <td>{{$rowmonitor->equipo->NOMBRE_EQUIPO}}</td>
 		                                <td>{{$rowmonitor->plant->name}}</td>
 		                                <td>{{$rowmonitor->equipo->ESTADO_EQUIPO}}</td>
-		                                <td>{{chr(ord($rowmonitor->equipo->DP_1))}}</td>
-		                                <td>{{chr(ord($rowmonitor->equipo->DP_2))}}</td>
-		                                <td>{{chr(ord($rowmonitor->equipo->DP_3))}}</td>
-		                                <td>{{(($rowmonitor->equipo->DP_4))}}</td>		                                
+		                                <td>{{$rowmonitor->equipo->DP_1}}</td>
+		                                <td>{{$rowmonitor->equipo->DP_2}}</td>
+		                                <td>{{$rowmonitor->equipo->DP_3}}</td>
+		                                <td>{{$rowmonitor->equipo->DP_4}}</td>		                                
 			                                <td>
 			                                <button data-toggle="modal" data-target="#edit-item{{$rowmonitor->equipo->ID_EQUIPO}}" class="btn btn-round btn-warning edit-item">Ver</button>
 			                                
@@ -87,31 +87,31 @@
 			                                                
 			                                                <table align="center" style="border-collapse:separate;border-spacing:15px;" border="0">
 															  <tr>
-															    <td align="right">Run FW <canvas id="circle{{(($rowmonitor->equipo->DP_2))}}"></canvas> </td>
+															    <td align="right">Run FW <canvas id="circle{{$rowmonitor->equipo->DP_2}}"></canvas> </td>
 															    <th rowspan="6">
 															    <div align="center"> <img alt="Equipo {{ $rowmonitor->equipo->NOMBRE_EQUIPO }}" src="equipmentImg/{{ $rowmonitor->urlImg }}" class="img-responsive"> </div>
 															    </th>
 															    <td align="right">Comunicación OK <canvas id="circle0"></canvas></td>
 															  </tr>
 															  <tr>
-															    <td align="right">Run BW <canvas id="circle{{chr(ord($rowmonitor->equipo->DP_3))}}"></canvas></td>
-															    <td align="right">Operation Hrs: <strong style="font-size: 16px">{{chr(ord($rowmonitor->equipo->DP_40))}}</strong></td>
+															    <td align="right">Run BW <canvas id="circle{{$rowmonitor->equipo->DP_3}}"></canvas></td>
+															    <td align="right">Operation Hrs: <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_40}}</strong></td>
 															  </tr>
 															  <tr>
-															    <td align="right">READY <canvas id="circle{{chr(ord($rowmonitor->equipo->DP_4))}}"></canvas></td>
-															    <td align="right">Next Mantenaince: <strong style="font-size: 16px">{{chr(ord($rowmonitor->equipo->DP_39))}}</strong></td>
+															    <td align="right">READY <canvas id="circle{{$rowmonitor->equipo->DP_4}}"></canvas></td>
+															    <td align="right">Next Mantenaince: <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_39}}</strong></td>
 															  </tr>
 															  <tr>
-															    <td align="right">At Speed Ref <canvas id="circle{{chr(ord($rowmonitor->equipo->DP_7))}}"></canvas></td>
-															    <td align="right">Temperature: <strong style="font-size: 16px">{{chr(ord($rowmonitor->equipo->DP_44))}}</strong></td>
+															    <td align="right">At Speed Ref <canvas id="circle{{$rowmonitor->equipo->DP_7}}"></canvas></td>
+															    <td align="right">Temperature: <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_44}}</strong></td>
 															  </tr>
 															  <tr>
-															    <td align="right">Warning <canvas id="circle{{chr(ord($rowmonitor->equipo->DP_1))}}"></canvas></td>
-															    <td align="right">Humidity: <strong style="font-size: 16px">{{chr(ord($rowmonitor->equipo->DP_49))}}</strong></td>
+															    <td align="right">Warning <canvas id="circle{{$rowmonitor->equipo->DP_1}}"></canvas></td>
+															    <td align="right">Humidity: <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_49}}</strong></td>
 															  </tr>
 															  <tr>
-															    <td align="right">Flaut <canvas id="circle{{chr(ord($rowmonitor->equipo->DP_0))}}"></canvas></td>
-															    <td align="right">Velocidad: <strong style="font-size: 16px">{{chr(ord($rowmonitor->equipo->DP_16))}}</strong></td>
+															    <td align="right">Flaut <canvas id="circle{{$rowmonitor->equipo->DP_0}}"></canvas></td>
+															    <td align="right">Velocidad: <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_16}}</strong></td>
 															  </tr>
 															  <tr>
 															    <td align="center"></td>
