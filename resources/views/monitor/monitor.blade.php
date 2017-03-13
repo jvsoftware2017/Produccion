@@ -87,7 +87,7 @@
 			                                                
 			                                                <table align="center" style="border-collapse:separate;border-spacing:15px;" border="0">
 															  <tr>
-															    <td align="right">Run FW <canvas id="circle{{chr(htmlspecialchars($rowmonitor->equipo->DP_2))}}"></canvas> </td>
+															    <td align="right">Run FW <canvas id="circle{{(($rowmonitor->equipo->DP_2))}}"></canvas> </td>
 															    <th rowspan="6">
 															    <div align="center"> <img alt="Equipo {{ $rowmonitor->equipo->NOMBRE_EQUIPO }}" src="equipmentImg/{{ $rowmonitor->urlImg }}" class="img-responsive"> </div>
 															    </th>
