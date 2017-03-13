@@ -71,7 +71,7 @@
 		                                <td>{{chr(ord($rowmonitor->equipo->DP_1))}}</td>
 		                                <td>{{chr(ord($rowmonitor->equipo->DP_2))}}</td>
 		                                <td>{{chr(ord($rowmonitor->equipo->DP_3))}}</td>
-		                                <td>{{chr(htmlspecialchars($rowmonitor->equipo->DP_4))}}</td>		                                
+		                                <td>{{(($rowmonitor->equipo->DP_4))}}</td>		                                
 			                                <td>
 			                                <button data-toggle="modal" data-target="#edit-item{{$rowmonitor->equipo->ID_EQUIPO}}" class="btn btn-round btn-warning edit-item">Ver</button>
 			                                
