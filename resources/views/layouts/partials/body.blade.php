@@ -28,7 +28,7 @@
                             <li><a><i class="fa fa-wrench"></i> Panel de Control <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="/clients">Clientes</a></li>
-                                    <li><a href="/plants">Plantas</a></li>
+                                    <li><a href="/plants">Sedes</a></li>
                                     <li><a href="/equipments">Equipos</a></li>
                                     <li><a href="/users">Usuarios</a></li>
                                     <li><a href="/user-access">Acceso Usuario</a></li>

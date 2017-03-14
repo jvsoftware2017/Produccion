@@ -26,6 +26,23 @@ class EquiposController extends Controller
     	}
     	return view('monitor.monitor', compact('dataEquipo'));
     }
+    
+    public function refresh()
+    {
+    	$dataEquipo = array();
+    	$equipos = UserAccess::where('id_user' , Auth::user()->id)->get();
+    	foreach ($equipos as $equipo){
+    		array_push($dataEquipo, Equipment::where('id', $equipo->id_equipment)->get());
+    	}
+    	return view('monitor.monitorRefresh', compact('dataEquipo'));
+    }
+    
+    public function detail($id)
+    {
+    	$dataEquipo = array();
+    	array_push($dataEquipo, Equipment::where('id', $id)->get());
+    	return view('monitor.monitorDetail', compact('dataEquipo'));
+    }
 
     /**
      * Show the form for creating a new resource.

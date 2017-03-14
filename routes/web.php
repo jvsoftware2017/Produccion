@@ -49,4 +49,6 @@ Route::group(['middleware' => 'active'], function () {
 	});
 	
 	Route::get('/monitor', 'EquiposController@index');
+	Route::get('/monitorLoad', 'EquiposController@refresh');
+	Route::get('/monitor/{idEquipment}', 'EquiposController@detail');
 });

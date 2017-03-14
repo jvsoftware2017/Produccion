@@ -8,7 +8,7 @@
 
 		<form  role="form" method="POST" action="{{ route('login') }}">
 			{{ csrf_field() }}
-			<h1>Sistema Monitor</h1>
+			<h1>DriveSysMonitor</h1>
 			@if ($errors->has('inactive')) 
 				<span class="help-block"> <strong>{{ $errors->first('inactive') }}</strong>
 				</span> 
