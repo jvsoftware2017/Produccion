@@ -46,7 +46,7 @@
                                 <th>Id Equipo</th>
                                 <th>TAG ID</th>
                                 <th>Sede</th>
-                                <th>Estado</th>
+                                <th>Status</th>
                                 <th>DP_1</th>
                                 <th>DP_2</th>
                                 <th>DP_3</th>
