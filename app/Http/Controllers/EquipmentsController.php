@@ -67,6 +67,14 @@ class EquipmentsController extends Controller
         $equipment->id_plant = $request->id_plant;
         $equipment->status = $request->status;
         $equipment->id_equipo = $request->id_equipo;
+        $equipment->serialNumber = $request->serialNumber;
+        $equipment->area = $request->area;
+        $equipment->subarea = $request->subarea;
+        $equipment->function = $request->function;
+        $equipment->power = $request->power;
+        $equipment->voltage = $request->voltage;
+        $equipment->lifecycle = $request->lifecycle;
+        
         
         if (isset($request->urlImg) && $request->urlImg != null){
         	$this->validate($request, [
@@ -131,6 +139,13 @@ class EquipmentsController extends Controller
         $equipment->id_plant = $request->id_plant;
         $equipment->status = $request->status;
         $equipment->id_equipo = $request->id_equipo;
+        $equipment->serialNumber = $request->serialNumber;
+        $equipment->area = $request->area;
+        $equipment->subarea = $request->subarea;
+        $equipment->function = $request->function;
+        $equipment->power = $request->power;
+        $equipment->voltage = $request->voltage;
+        $equipment->lifecycle = $request->lifecycle;
         
         if (isset($request->urlImg) && $request->urlImg != null){
         	$this->validate($request, [

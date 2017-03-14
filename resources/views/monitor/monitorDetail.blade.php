@@ -66,7 +66,7 @@
                                                               </tr>
                                                               <tr>
                                                                 <td align="right">Flaut <canvas id="circle{{(($rowmonitor->equipo->DP_0))}}"></canvas></td>
-                                                                <td align="left">Velocidad: <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_16}}</strong></td>
+                                                                <td align="left">Speed: <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_16}}</strong></td>
                                                               </tr>
                                                               <tr>
                                                                 <td align="center"></td>

@@ -41,10 +41,10 @@
 							<thead>
 							<tr>
 								<th>Preview</th>
-								<th>Nombre</th>
+								<th>TAG ID</th>
 								<th>Tipo</th>
-								<th>Planta</th>
-								<th>Modelo</th>
+								<th>Sede</th>
+								<th>Referencia</th>
 								<th>Identificacion</th>
 								<th>Fecha registro</th>
 								<th>Fecha modificación</th>
@@ -92,8 +92,63 @@
 															{{ csrf_field() }}
 															{{ method_field('PUT') }}
 															<div class="form-group">
-																<label class="control-label" for="title">Nombre:</label>
+																<label class="control-label" for="title">TAG_ID:</label>
 																<input type="text" name="name" id="name" class="form-control" value="{{$rowEquipment->name}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+																<div class="help-block with-errors"></div>
+															</div>
+															
+															<div class="form-group">
+																<label class="control-label" for="title">Referencia:</label>
+																<input type="text" name="model" id="model" class="form-control" value="{{$rowEquipment->model}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+																<div class="help-block with-errors"></div>
+															</div>
+															
+															<div class="form-group">
+																<label class="control-label" for="title">Número de Serie:</label>
+																<input type="text" name="serialNumber" id="serialNumber" class="form-control" value="{{$rowEquipment->serialNumber}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+																<div class="help-block with-errors"></div>
+															</div>
+															
+															<div class="form-group">
+																<label class="control-label" for="title">Potencia:</label>
+																<input type="text" name="power" id="power" class="form-control" value="{{$rowEquipment->power}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+																<div class="help-block with-errors"></div>
+															</div>
+															
+															<div class="form-group">
+																<label class="control-label" for="title">Voltaje:</label>
+																<input type="text" name="voltage" id="voltage" class="form-control" value="{{$rowEquipment->voltage}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+																<div class="help-block with-errors"></div>
+															</div>
+															
+															<div class="form-group">
+																<label class="control-label" for="title">Área:</label>
+																<input type="text" name="area" id="area" class="form-control" value="{{$rowEquipment->area}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+																<div class="help-block with-errors"></div>
+															</div>
+															
+															<div class="form-group">
+																<label class="control-label" for="title">Sub-Área:</label>
+																<input type="text" name="subarea" id="subarea" class="form-control" value="{{$rowEquipment->subarea}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+																<div class="help-block with-errors"></div>
+															</div>
+															
+															<div class="form-group">
+																<label class="control-label" for="title">Función:</label>
+																<input type="text" name="function" id="function" class="form-control" value="{{$rowEquipment->function}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+																<div class="help-block with-errors"></div>
+															</div>
+															
+															<div class="form-group">
+																<label class="control-label" for="title">Ciclo de vida:</label>
+																<select class="form-control" name="lifecycle" id="lifecycle">
+																	<option selected value="{{$rowEquipment->lifecycle}}">{{$rowEquipment->lifecycle}}</option>
+																	<option value="PM 300 Active">PM 300 Active</option>
+																	<option value="PM 400 Phase out">PM 400 Phase out</option>
+																	<option value="PM 410 Cancelation">PM 410 Cancelation</option>
+																	<option value="PM 490 Discontinuation">PM 490 Discontinuation</option>
+																	<option value="PM 500 End of Production">PM 500 End of Production</option>
+																</select>
 																<div class="help-block with-errors"></div>
 															</div>
 															
@@ -112,16 +167,10 @@
 																	@endforeach
 																</select>
 																<div class="help-block with-errors"></div>
-															</div>
-	
+															</div>	
+																
 															<div class="form-group">
-																<label class="control-label" for="title">Modelo:</label>
-																<input type="text" name="model" id="model" class="form-control" value="{{$rowEquipment->model}}"" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
-																<div class="help-block with-errors"></div>
-															</div>
-	
-															<div class="form-group">
-																<label class="control-label" for="title">Planta:</label>
+																<label class="control-label" for="title">Sede:</label>
 																<select class="form-control" name="id_plant" id="id_plant">
 																	<option selected value="{{$rowEquipment->plant->id}}">{{$rowEquipment->plant->name}}</option>
 																	@foreach($dataPlant as $rowplant)
@@ -175,8 +224,62 @@
 												{{ csrf_field() }}
 	
 												<div class="form-group">
-													<label class="control-label" for="title">Nombre:</label>
+													<label class="control-label" for="title">TAG ID:</label>
 													<input type="text" name="name" id="name" class="form-control" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+													<div class="help-block with-errors"></div>
+												</div>
+												
+												<div class="form-group">
+													<label class="control-label" for="title">Referencia:</label>
+													<input type="text" name="model" id="model" class="form-control" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+													<div class="help-block with-errors"></div>
+												</div>
+												
+												<div class="form-group">
+													<label class="control-label" for="title">Número de Serie:</label>
+													<input type="text" name="serialNumber" id="serialNumber" class="form-control" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+													<div class="help-block with-errors"></div>
+												</div>
+															
+												<div class="form-group">
+													<label class="control-label" for="title">Potencia:</label>
+													<input type="text" name="power" id="power" class="form-control" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+													<div class="help-block with-errors"></div>
+												</div>
+															
+												<div class="form-group">
+													<label class="control-label" for="title">Voltaje:</label>
+													<input type="text" name="voltage" id="voltage" class="form-control" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+													<div class="help-block with-errors"></div>
+												</div>
+															
+												<div class="form-group">
+													<label class="control-label" for="title">Área:</label>
+													<input type="text" name="area" id="area" class="form-control" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+													<div class="help-block with-errors"></div>
+												</div>
+															
+												<div class="form-group">
+													<label class="control-label" for="title">Sub-Área:</label>
+													<input type="text" name="subarea" id="subarea" class="form-control" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+													<div class="help-block with-errors"></div>
+												</div>
+														
+												<div class="form-group">
+													<label class="control-label" for="title">Función:</label>
+													<input type="text" name="function" id="function" class="form-control" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+													<div class="help-block with-errors"></div>
+												</div>
+													
+												<div class="form-group">
+													<label class="control-label" for="title">Ciclo de vida:</label>
+													<select class="form-control" name="lifecycle" id="lifecycle">														
+														<option value="PM 300 Active">PM 300 Active</option>
+														<option value="PM 400 Phase out">PM 400 Phase out</option>
+														<option value="PM 410 Cancelation">PM 410 Cancelation</option>
+														<option value="PM 490 Discontinuation">PM 490 Discontinuation</option>
+														<option value="PM 500 End of Production">PM 500 End of Production</option>
+													</select>
 													<div class="help-block with-errors"></div>
 												</div>
 												
@@ -194,16 +297,10 @@
 														@endforeach
 													</select>
 													<div class="help-block with-errors"></div>
-												</div>
-	
+												</div>	
+													
 												<div class="form-group">
-													<label class="control-label" for="title">Modelo:</label>
-													<input type="text" name="model" id="model" class="form-control" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
-													<div class="help-block with-errors"></div>
-												</div>
-	
-												<div class="form-group">
-													<label class="control-label" for="title">Planta:</label>
+													<label class="control-label" for="title">Sede:</label>
 													<select class="form-control" name="id_plant" id="id_plant">
 														@foreach($dataPlant as $rowplant)
 															<option value="{{$rowplant->id}}">{{$rowplant->name}}</option>

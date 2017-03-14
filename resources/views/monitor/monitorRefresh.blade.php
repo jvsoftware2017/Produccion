@@ -39,8 +39,8 @@ Aquí podrás visualizar el estado de los equipos a los cuales tienes permiso <p
                             <thead>
                             <tr>
                                 <th>Id Equipo</th>
-                                <th>Nombre</th>
-                                <th>Planta</th>
+                                <th>TAG ID</th>
+                                <th>Sede</th>
                                 <th>Estado</th>
                                 <th>DP_1</th>
                                 <th>DP_2</th>
