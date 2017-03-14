@@ -1,6 +1,6 @@
 
 @extends('layouts.app')
-@section('title', 'Plantas')
+@section('title', 'Sedes | DriveSysMonitor')
 @section('content')
     <!-- page content -->
     <div class="right_col" role="main">
@@ -11,7 +11,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Administrador de Plantas(Sedes)</h2>
+                        <h2>Administrador de Sedes</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
@@ -20,7 +20,7 @@
                     </div>
                     <div class="x_content">
                         <div class="text-muted font-13 m-b-30">
-                            Aquí podrás Ver, Editar, y Crear Plantas según tu Rol
+                            Aquí podrás Ver, Editar, y Crear Sedes según tu Rol
                             @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 	                            <p align="right">
 	                                <button type="button" class="btn btn-round btn-success" data-toggle="modal" data-target="#create-item">Crear</button>
@@ -91,7 +91,7 @@
 	                                            <div class="modal-content">
 	                                                <div class="modal-header">
 	                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	                                                    <h4 class="modal-title" id="myModalLabel">Editar Planta(Sede) <strong>{{ $rowplant->name }}</strong></h4>
+	                                                    <h4 class="modal-title" id="myModalLabel">Editar sede <strong>{{ $rowplant->name }}</strong></h4>
 	                                                </div>
 	                                                <div class="modal-body">
 	
@@ -125,7 +125,6 @@
 	                                                            <label class="control-label" for="title">Nombre:</label>
 	                                                            <input type="text" name="name" id="name" class="form-control" value="{{$rowplant->name}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
 	                                                            <div class="help-block with-errors"></div>
-	                                                            <p class="help-block">El nombre debe ser único</p>
 	                                                        </div>
 	
 	                                                        <div class="form-group">
@@ -166,7 +165,7 @@
 	                                <div class="modal-content">
 	                                    <div class="modal-header">
 	                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	                                        <h4 class="modal-title" id="myModalLabel">Crear Planta(Sede)</h4>
+	                                        <h4 class="modal-title" id="myModalLabel">Crear sede</h4>
 	                                    </div>
 	                                    <div class="modal-body">
 	
@@ -198,7 +197,6 @@
 	                                                <label class="control-label" for="title">Nombre:</label>
 	                                                <input type="text" name="name" id="name" class="form-control" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
 	                                                <div class="help-block with-errors"></div>
-	                                                <p class="help-block">El nombre debe ser único</p>
 	                                            </div>
 	
 	                                            <div class="form-group">

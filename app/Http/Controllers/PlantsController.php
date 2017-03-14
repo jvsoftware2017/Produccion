@@ -31,10 +31,7 @@ class PlantsController extends Controller
     		$dataClient = Client::all();
     		$dataPlant = Plant::All();
     	}
-    	
-    	//$dataPlant = Plant::All();
         $dataCity = City::All();
-        //$dataClient = Client::All();
         return view('plants.plants', compact('dataPlant','dataCity','dataClient'));
     }
 
@@ -57,7 +54,7 @@ class PlantsController extends Controller
     public function store(Request $request)
     {
     	$this->validate($request, [
-    			'name' => 'required|max:255|unique:plants,name',
+    			'name' => 'required|max:255',
     			'id_city' => 'required',
     			'id_client' => 'required',
     			'status' => 'required',
@@ -101,7 +98,7 @@ class PlantsController extends Controller
     public function update(Request $request, Plant $plant)
     {
     	$this->validate($request, [
-    			'name' => 'required|max:255|unique:plants,name',
+    			'name' => 'required|max:255',
     			'id_city' => 'required',
     			'id_client' => 'required',
     			'status' => 'required',
