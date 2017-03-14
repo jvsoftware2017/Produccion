@@ -2,7 +2,7 @@
 @section('title', 'Monitor')
 @section('content')
     <!-- page content -->
-    <div class="right_col" role="main">
+    <div class="right_col" role="main" id="datatablemon">
         {{ csrf_field() }}
         <div class="clearfix"></div>
 
@@ -17,10 +17,10 @@
                         </ul>
                         <div class="clearfix"></div>
                     </div>
-                    <div class="x_content">
+                    <div class="x_content"  >
                         <div class="text-muted font-13 m-b-30">
-                            Aquí podrás visualizar el estado de los equipos a los cuales tienes permiso
-                        </div>
+                            Aquí podrás visualizar el estado de los equipos a los cuales tienes permiso <p align="right"><strong style="color: green;font-size: 16px"><?php echo date('Y-m-d H:i:s');?></strong></p>
+                        </div><br/>
                         @if($flash = session('message'))
                             <div class="alert alert-success alert-dismissible fade in"
                                  role="alert">
@@ -40,7 +40,7 @@
                             </div>
                         @endif
 
-                        <table id="datatable" class="table table-striped table-bordered">
+                        <table id="datatablem" class="table table-striped table-bered">
                             <thead>
                             <tr>
                                 <th>Id Equipo</th>
@@ -68,14 +68,14 @@
 		                                <td>{{$rowmonitor->equipo->NOMBRE_EQUIPO}}</td>
 		                                <td>{{$rowmonitor->plant->name}}</td>
 		                                <td>{{$rowmonitor->equipo->ESTADO_EQUIPO}}</td>
-		                                <td>{{chr(ord($rowmonitor->equipo->DP_1))}}</td>
-		                                <td>{{chr(ord($rowmonitor->equipo->DP_2))}}</td>
-		                                <td>{{chr(ord($rowmonitor->equipo->DP_3))}}</td>
-		                                <td>{{chr(ord($rowmonitor->equipo->DP_4))}}</td>		                                
+		                                <td>{{(($rowmonitor->equipo->DP_1))}}</td>
+		                                <td>{{(($rowmonitor->equipo->DP_2))}}</td>
+		                                <td>{{(($rowmonitor->equipo->DP_3))}}</td>
+		                                <td>{{(($rowmonitor->equipo->DP_4))}}</td>		                                
 			                                <td>
-			                                <button data-toggle="modal" data-target="#edit-item{{$rowmonitor->equipo->ID_EQUIPO}}" class="btn btn-round btn-warning edit-item">Ver</button>
+			                                <a href="/monitor/{{$rowmonitor->id}}"><button class="btn btn-round btn-warning edit-item">Ver</button></a> 
 			                                
-			                                <!-- Edit Item Modal -->
+			                                <!-- Monitor Modal 
 			                                <div class="modal fade" id="edit-item{{$rowmonitor->equipo->ID_EQUIPO}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			                                    <div class="modal-dialog" role="document">
 			                                        <div class="modal-content">
@@ -85,33 +85,33 @@
 			                                            </div>
 			                                            <div class="modal-body">                 
 			                                                
-			                                                <table align="center" style="border-collapse:separate;border-spacing:15px;" border="0">
+			                                                <table align="center" style="ber-collapse:separate;ber-spacing:15px;" ber="0">
 															  <tr>
-															    <td align="right">Run FW <canvas id="circle{{chr(ord($rowmonitor->equipo->DP_2))}}"></canvas> </td>
+															    <td align="right">Run FW <canvas id="circle{{(($rowmonitor->equipo->DP_2))}}"></canvas> </td>
 															    <th rowspan="6">
 															    <div align="center"> <img alt="Equipo {{ $rowmonitor->equipo->NOMBRE_EQUIPO }}" src="equipmentImg/{{ $rowmonitor->urlImg }}" class="img-responsive"> </div>
 															    </th>
 															    <td align="right">Comunicación OK <canvas id="circle0"></canvas></td>
 															  </tr>
 															  <tr>
-															    <td align="right">Run BW <canvas id="circle{{chr(ord($rowmonitor->equipo->DP_3))}}"></canvas></td>
-															    <td align="right">Operation Hrs: <strong style="font-size: 16px">{{chr(ord($rowmonitor->equipo->DP_40))}}</strong></td>
+															    <td align="right">Run BW <canvas id="circle{{(($rowmonitor->equipo->DP_3))}}"></canvas></td>
+															    <td align="right">Operation Hrs: <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_40}}</strong></td>
 															  </tr>
 															  <tr>
-															    <td align="right">READY <canvas id="circle{{chr(ord($rowmonitor->equipo->DP_4))}}"></canvas></td>
-															    <td align="right">Next Mantenaince: <strong style="font-size: 16px">{{chr(ord($rowmonitor->equipo->DP_39))}}</strong></td>
+															    <td align="right">READY <canvas id="circle{{(($rowmonitor->equipo->DP_4))}}"></canvas></td>
+															    <td align="right">Next Mantenaince: <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_39}}</strong></td>
 															  </tr>
 															  <tr>
-															    <td align="right">At Speed Ref <canvas id="circle{{chr(ord($rowmonitor->equipo->DP_7))}}"></canvas></td>
-															    <td align="right">Temperature: <strong style="font-size: 16px">{{chr(ord($rowmonitor->equipo->DP_44))}}</strong></td>
+															    <td align="right">At Speed Ref <canvas id="circle{{(($rowmonitor->equipo->DP_7))}}"></canvas></td>
+															    <td align="right">Temperature: <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_44}}</strong></td>
 															  </tr>
 															  <tr>
-															    <td align="right">Warning <canvas id="circle{{chr(ord($rowmonitor->equipo->DP_1))}}"></canvas></td>
-															    <td align="right">Humidity: <strong style="font-size: 16px">{{chr(ord($rowmonitor->equipo->DP_49))}}</strong></td>
+															    <td align="right">Warning <canvas id="circle{{(($rowmonitor->equipo->DP_1))}}"></canvas></td>
+															    <td align="right">Humidity: <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_49}}</strong></td>
 															  </tr>
 															  <tr>
-															    <td align="right">Flaut <canvas id="circle{{chr(ord($rowmonitor->equipo->DP_0))}}"></canvas></td>
-															    <td align="right">Velocidad: <strong style="font-size: 16px">{{chr(ord($rowmonitor->equipo->DP_16))}}</strong></td>
+															    <td align="right">Flaut <canvas id="circle{{(($rowmonitor->equipo->DP_0))}}"></canvas></td>
+															    <td align="right">Velocidad: <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_16}}</strong></td>
 															  </tr>
 															  <tr>
 															    <td align="center"></td>
@@ -121,13 +121,13 @@
 															  <tr style="background-color: red;color: white; font-size: 14px;">
 															    <td align="center">Fecha</td>
 															    <td align="center">Evento</td>
-															    <td align="center">Tipo</td>
+															    <td align="center">Tipo</td>															    
 															  </tr>
 															</table>
 			                                            </div>
 			                                        </div>
 			                                    </div>
-			                                </div>
+			                                </div> -->
 			                        	</td>
 		                                </tr>       
 		                            @endforeach
@@ -139,5 +139,12 @@
             </div>
         </div>
     </div>
+    <script>
+    	setInterval('refreshMon()',5000);
+    	function refreshMon(){	
+    		 $("#datatablemon").load("/monitorLoad"); 
+    	}
+    	//setTimeout("location.reload()", 5000);
+    </script>
     <!-- /page content -->
 @endsection
