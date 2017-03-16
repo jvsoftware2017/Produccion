@@ -61,7 +61,7 @@ class PlantsController extends Controller
     	]);
         $plant = $request->all();
         Plant::create($plant);
-        session()->flash('message', 'Se ha creado la planta correctamente.');
+        session()->flash('message', 'Se ha creado la sede correctamente.');
         return redirect('/plants');
 
     }
@@ -105,7 +105,7 @@ class PlantsController extends Controller
     	]);
     	$plant->updated_at = Carbon::now();
     	$plant->update($request->all());
-        session()->flash('message', 'Se ha actualizado la información de la planta');
+        session()->flash('message', 'Se ha actualizado la información de la sede');
         return redirect('/plants');
     }
 

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Storage;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Carbon\CarbonInterval;
 
 
 class ClientsController extends Controller
@@ -58,6 +59,8 @@ class ClientsController extends Controller
     			'phone' => 'required|numeric',
     			'status' => 'required',
     			'id_city' => 'required',
+    			'maxUsers' => 'required|numeric',
+    			'validity' => 'required',
     	]);
     	
     	$client = new Client();
@@ -67,6 +70,8 @@ class ClientsController extends Controller
     	$client->adress = $request->adress;
     	$client->status = $request->status;
     	$client->id_city = $request->id_city;
+    	$client->maxUsers = $request->maxUsers;
+    	$client->validity = $request->validity;
     	if (isset($request->urlLogo) && $request->urlLogo != null){
     		$this->validate($request, [
     				'urlLogo' => 'image|max:2000',
@@ -122,6 +127,7 @@ class ClientsController extends Controller
     			'phone' => 'required|numeric',
     			'status' => 'required',
     			'id_city' => 'required',
+    			'maxUsers' => 'required|numeric',
     	]);
     	 
     	$client = Client::find($id);
@@ -142,7 +148,7 @@ class ClientsController extends Controller
 	    	$client->urlLogo = $route_file;
     	}
     	$client->updated_at = Carbon::now();
-    	$client->save();
+    	$client->update();;
         session()->flash('message', 'Se ha actualizado el cliente');
         return redirect('/clients');
     }

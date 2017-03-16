@@ -31,7 +31,8 @@ class CreateSchema extends Migration
         	$table->string('adress', 100);
         	$table->string('urlLogo', 100)->nullable()->default('No Image');
         	$table->integer('maxUsers')->unsigned()->default(1);
-        	$table->timestamp('validity')->default(DB::raw('CURRENT_TIMESTAMP'));
+        	$table->integer('validity')->unsigned()->default(1);
+        	$table->timestamp('dateValidity')->nullable()->default(NULL);
         	$table->timestamps();
         });
         

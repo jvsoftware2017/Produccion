@@ -109,6 +109,30 @@
 													<div class="help-block with-errors"></div>
 												</div>
 												<div class="form-group">
+                                                    <label class="control-label" for="maxUsers">Usuarios Máximos:</label>
+                                                    <input type="number" id="maxUsers" name="maxUsers" min="1" class="form-control" value="" pattern="[0-9]" data-error="Por favor escribir un número válido" oninvalid="this.setCustomValidity('Por favor escribir un número válido')" oninput="setCustomValidity('')" required>
+                                                    <div class="help-block with-errors"></div>
+	                                            </div>                                                     
+												<div class="form-group">
+													<label class="control-label">Vigencia:</label>
+													<p>
+														1 Mes:
+														<input type="radio" class="flat" name="validity" value="1" checked="" required /> 
+														2 Meses:
+														<input type="radio" class="flat" name="validity" value="2" />
+														3 Meses:
+														<input type="radio" class="flat" name="validity" value="3" />
+														6 Meses:
+														<input type="radio" class="flat" name="validity" value="6" />
+														1 Año:
+														<input type="radio" class="flat" name="validity" value="12" />
+														2 Años:
+														<input type="radio" class="flat" name="validity" value="24" />
+														3 Años:
+														<input type="radio" class="flat" name="validity" value="36" />
+													</p>
+												</div>
+												<div class="form-group">
 													<label for="logo">Logo:</label>
 													<input type="file" id="logo" name="urlLogo">
 													<p class="help-block">Seleccionar el logo del cliente, no debe pesar más de 2MB.</p>
@@ -226,19 +250,19 @@
 																<label class="control-label">Vigencia:</label>
 																<p>
 																	1 Mes:
-																	<input type="radio" class="flat" name="gender" value="1" checked="" required /> 
+																	<input type="radio" class="flat" name="validity" value="1" checked="" required /> 
 																	2 Meses:
-																	<input type="radio" class="flat" name="gender" value="2" />
+																	<input type="radio" class="flat" name="validity" value="2" />
 																	3 Meses:
-																	<input type="radio" class="flat" name="gender" value="3" />
+																	<input type="radio" class="flat" name="validity" value="3" />
 																	6 Meses:
-																	<input type="radio" class="flat" name="gender" value="6" />
+																	<input type="radio" class="flat" name="validity" value="6" />
 																	1 Año:
-																	<input type="radio" class="flat" name="gender" value="12" />
+																	<input type="radio" class="flat" name="validity" value="12" />
 																	2 Años:
-																	<input type="radio" class="flat" name="gender" value="24" />
+																	<input type="radio" class="flat" name="validity" value="24" />
 																	3 Años:
-																	<input type="radio" class="flat" name="gender" value="36" />
+																	<input type="radio" class="flat" name="validity" value="36" />
 																</p>
 															</div>
 	                                                        <div class="form-group">
