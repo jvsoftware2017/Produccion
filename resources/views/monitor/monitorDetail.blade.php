@@ -36,10 +36,10 @@
                                 </ul>
                             </div>
                         @endif
-                        
+                    <div><p align="right"><strong style="color: green;font-size: 16px"><?php echo date('Y-m-d H:i:s');?></strong></p></div>   
                     @foreach($dataEquipo as $row)
                                     @foreach($row as $rowmonitor) 
-                    <div><p align="right"><strong style="color: green;font-size: 16px"><?php echo date('Y-m-d H:i:s');?></strong></p></div>
+                    
                     <div align="center"><h4 class="modal-title" id="myModalLabel"> <strong>{{ $rowmonitor->equipo->MODELO_EQUIPO." - ".$rowmonitor->equipo->NOMBRE_EQUIPO }}</strong></h4></div>
                     <table align="center" style="border-collapse:separate;border-spacing:15px;" border="0" width="70%" class="table-responsive">
                                                               <tr>
