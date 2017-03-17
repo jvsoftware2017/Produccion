@@ -40,13 +40,13 @@
                             </div>
                         @endif
 
-                        <table id="datatablem" class="table table-striped table-bered">
+                        <table id="datatablem" class="table table-striped table-bered table-responsive">
                             <thead>
                             <tr>
                                 <th>Id Equipo</th>
                                 <th>TAG ID</th>
                                 <th>Sede</th>
-                                <th>Status</th>
+                                <th>Estado</th>
                                 <th>DP_1</th>
                                 <th>DP_2</th>
                                 <th>DP_3</th>

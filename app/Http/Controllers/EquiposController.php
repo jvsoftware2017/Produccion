@@ -43,6 +43,13 @@ class EquiposController extends Controller
     	array_push($dataEquipo, Equipment::where('id', $id)->get());
     	return view('monitor.monitorDetail', compact('dataEquipo'));
     }
+    
+    public function refreshDetail($id)
+    {
+    	$dataEquipo = array();
+    	array_push($dataEquipo, Equipment::where('id', $id)->get());
+    	return view('monitor.monitorDetailRefresh', compact('dataEquipo'));
+    }
 
     /**
      * Show the form for creating a new resource.

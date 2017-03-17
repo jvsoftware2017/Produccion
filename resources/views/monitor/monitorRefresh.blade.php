@@ -35,7 +35,7 @@ Aquí podrás visualizar el estado de los equipos a los cuales tienes permiso <p
                             </div>
                         @endif
 
-                        <table id="datatablem" class="table table-striped table-bered">
+                        <table id="datatablem" class="table table-striped table-bered table-responsive">
                             <thead>
                             <tr>
                                 <th>Id Equipo</th>

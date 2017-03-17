@@ -14,6 +14,11 @@
 					
 					<div class="x_content">
 						<p class="text-muted font-13 m-b-30">Por medio de este módulo, puedes crear y editar Usuarios.</p>
+						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
+							<p align="right">
+								<button type="button" id="create-client" class="btn btn-round btn-success" data-toggle="modal" data-target="#create-item">Crear</button>
+							</p>
+						@endif
 						@if($flash = session('message'))
 						<div class="alert alert-success alert-dismissible fade in"
 							role="alert">
@@ -32,68 +37,74 @@
 								</ul>
 							</div>
 						@endif
-		
+										
 					<table id="datatable" class="table table-striped table-bordered">
 							<thead>
 								<tr>
 									<th>Id</th>
-									<th>Nombre</th>
-									<th>E-mail</th>
-									<th>Cliente</th>
-									<th>Role</th>
-									<th>Creado</th>
-									<th>Último Acceso</th>
-									<th>Estado</th>
+									<th>Cliente</th>	
+									<th>Usuario</th>
+									<th>Email(Username)</th>									
+									<th>Sede</th>
+									<th>Equipo</th>
+									<th>Fecha Asignación</th>
 									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 										<th>Acción</th>
 									@endif
 								</tr>
 							</thead>
 							<tbody>
-								@foreach($dataUser as $rowuser)
-								@if($rowuser->status == 'inactive')
-									<tr style="background-color: #953b39;color: white">
-								@else
-									<tr>
-								@endif
-										<td>{{ $rowuser->id }}</td>
-										<td>{{ $rowuser->name }}</td>
-										<td>{{ $rowuser->email }}</td>
-										<td>{{ $rowuser->client->name }}</td>
-										<td>{{ $rowuser->role->description }}</td>
-										<td>{{ $rowuser->created_at }}</td>
-										<td>{{ $rowuser->updated_at }}</td>
-										<td>{{ $rowuser->status }}</td>
+								@foreach($dataUserAccess as $rowUserAccess)
+									@if($rowUserAccess->status == 'inactive')
+										<tr style="background-color: #953b39;color: white">
+									@else
+										<tr>
+									@endif
+										<td>{{ $rowUserAccess->id }}</td>
+										<td>{{ $rowUserAccess->user->client->name }}</td>
+										<td>{{ $rowUserAccess->user->name }}</td>
+										<td>{{ $rowUserAccess->user->email }}</td>										
+										<td>{{ $rowUserAccess->plant->name }}</td>
+										<td>{{ $rowUserAccess->equipment->name }}</td>
+										<td>{{ $rowUserAccess->created_at }}</td>
 										@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 											<td>
-												<!-- Large modal -->
-												@if($rowuser->status == 'active')
-													<div type="button" id="access-user" class="btn btn-round btn-dark" data-toggle="modal" data-target="#access-item{{ $rowuser->id }}" >Acceso</div>
-												@endif
+												<div type="button" id="access-user" class="btn btn-round btn-dark" >Eliminar</div>
 											</td>
 
 										@endif
 									</tr>
-									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
-										<!-- Access Item Modal -->
-										<div class="modal fade" id="access-item{{ $rowuser->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
+										<!-- Create Access Item Modal -->
+										<div class="modal fade" id="create-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-header">
 														<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-														<h4 class="modal-title" id="myModalLabel">Asignar permisos a <strong>{{ $rowuser->name }}</strong></h4>
+														<h4 class="modal-title" id="myModalLabel">Asignar acceso Usuario-Equipo</h4>
 													</div>
 													<div class="modal-body">
 
-														<form data-toggle="validator" action="/users_access/{{ $rowuser->id }}" method="POST">
-															{{ csrf_field() }}
-															{{ method_field('PUT') }}
-
+													<form data-toggle="validator" action="/users-access" method="POST">
+													{{ csrf_field() }}
+													
 															<div class="form-group">
 																<label class="control-label" for="plant">Usuario</label>
+																<select class="form-control" name="us_user" id="us_user">
+																<option value="">Seleccione</option>
+																	<@foreach($dataUser as $rowuser)
+																			<option value="{{$rowuser->id}}">{{$rowuser->name}} ({{$rowuser->email}})</option>
+																	@endforeach
+																</select>
+																<div class="help-block with-errors"></div>
+															</div>
+
+															<div class="form-group">
+																<label class="control-label" for="plant">Sede</label>
 																<select class="form-control" name="us_plant" id="us_plant">
+																<option value="">Seleccione</option>
 																	<@foreach($dataPlant as $rowplant)
-																		@if($rowuser->client->id == $rowplant->id_client && $rowplant->status == 'active')
+																		@if($rowUserAccess->user->client->id == $rowplant->id_client && $rowplant->status == 'active')
 																			<option value="{{$rowplant->id}}">{{$rowplant->name}}</option>
 																		@endif
 																	@endforeach
@@ -102,15 +113,6 @@
 															</div>
 															<div class="form-group">
 																<label class="control-label" for="equipment">Equipo</label>
-																<!--<select class="select2_multiple form-control" multiple="multiple">
-																	<option>Choose option</option>
-																	<option>Option one</option>
-																	<option>Option two</option>
-																	<option>Option three</option>
-																	<option>Option four</option>
-																	<option>Option five</option>
-																	<option>Option six</option>
-																</select>-->
 																<select class="form-control" name="us_equipment" id="us_equipment">
 																	<option>Seleccione</option>
 																</select>
@@ -120,14 +122,14 @@
 																<button type="submit" class="btn btn-round crud-submit btn-success">Asignar</button>
 															</div>
 
-														</form>
+													</form>
 
 													</div>
 												</div>
 											</div>
 										</div>
 
-                                    @endif
+                                    @endif	
 								@endforeach
 							</tbody>
 						</table>

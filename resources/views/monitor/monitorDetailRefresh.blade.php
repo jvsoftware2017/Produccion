@@ -1,8 +1,3 @@
-@extends('layouts.app')
-@section('title', 'Monitor')
-@section('content')
-<!-- page content -->
-<div class="right_col" role="main" id="refreshContent">
 {{ csrf_field() }}
 <div class="clearfix"></div>
 
@@ -86,12 +81,3 @@
                 </div>
             </div>
         </div>
-    </div>
-    <script>
-        setInterval('refreshMon()',5000);
-        function refreshMon(){    
-             $("#refreshContent").load("/monitorDetailLoad/{{$rowmonitor->id}}"); 
-        }
-    </script>
-    <!-- /page content -->
-@endsection

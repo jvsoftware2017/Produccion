@@ -39,8 +39,7 @@
 						@endif
 						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 							<!-- Create Item Modal -->
-							<div class="modal fade" id="create-item"
-								tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							<div class="modal fade" id="create-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -52,8 +51,7 @@
 										</div>
 										<div class="modal-body">
 		
-											<form data-toggle="validator"
-												action="/users" method="POST">
+											<form data-toggle="validator" action="/users" method="POST">
 												{{ csrf_field() }}
 												<div class="form-group">
 													<label class="control-label" for="name">Nombre:</label> <input

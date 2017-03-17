@@ -3,7 +3,7 @@
         <div class="col-md-3 left_col menu_fixed">
             <div class="left_col scroll-view">
                 <div align="center" class="navbar nav_title" style="border: 0;background-color: #fff">
-                    <a href="/home"><img style="max-width: 100%; height: 100%;" src="/img/siemens-logo2.fw.png"></a>
+                    <a href="/home"><img style="max-width: 100%; height: 100%;" src="/img/siemens-logo2.fw.png" class="img-responsive"></a>
                 </div>
 
                 <div class="clearfix"></div>
