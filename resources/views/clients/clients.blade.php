@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('title', 'Clientesss | DriveSysMonitor')
+@extends('layouts.app') @section('title', 'Clientes | DriveSysMonitor')
 
 @section('content')
 <!-- page content -->
