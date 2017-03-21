@@ -4,19 +4,19 @@
     <!-- page content -->
 <style>
 #table_container_left {
-	width: 40%;
+	width: 60%;
 	height: 100%;
-	position: relative;
+	position: inherit;
 	float: left;
 	overflow: hidden;
 }
 
 #table_container_right {
-	width: 60%;
+	width: 40%;
 	height: 100%;
 	overflow: scroll;
 	float: left;
-	position: relative;
+	position: inherit;
 }
 </style>
     <div class="right_col" role="main" id="datatablemon">
@@ -95,9 +95,9 @@
 						<table class="table table-striped table-bordered">
 							<thead>
 								<tr>
-                                	<th>Acción</th>
-	                                <th>Id Equipo</th>
-	                                <th>TAG ID</th>
+                                	<th height="30px">Acción</th>
+	                                <th>IdEquipo</th>
+	                                <th>TAG_ID</th>
 	                                <th>Sede</th>
 	                                <th>Estado</th>
 								</tr>
@@ -126,10 +126,11 @@
 					<div id='table_container_right'>
 						<table class="table table-striped table-bordered">
 							<thead>
-								<tr>
+								<tr height="30px">
 									<?php 
 									for($i=0;$i<94;$i++){
 								 		echo "<th>DP_".$i."</th>";
+								 		
 									}
 									?> 
 									<th>Acción</th>

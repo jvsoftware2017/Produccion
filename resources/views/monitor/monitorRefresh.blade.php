@@ -1,18 +1,18 @@
 <style>
 #table_container_left {
-	width: 40%;
+	width: 60%;
 	height: 100%;
-	position: relative;
+	position: inherit;
 	float: left;
 	overflow: hidden;
 }
 
 #table_container_right {
-	width: 60%;
+	width: 40%;
 	height: 100%;
 	overflow: scroll;
 	float: left;
-	position: relative;
+	position: inherit;
 }
 </style>
 
@@ -111,8 +111,8 @@ Aquí podrás visualizar el estado de los equipos a los cuales tienes permiso <p
 							<thead>
 								<tr>
                                 	<th>Acción</th>
-	                                <th>Id Equipo</th>
-	                                <th>TAG ID</th>
+	                                <th>IdEquipo</th>
+	                                <th>TAG_ID</th>
 	                                <th>Sede</th>
 	                                <th>Estado</th>
 								</tr>

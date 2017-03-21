@@ -43,7 +43,7 @@
                                                               </tr>
                                                               <tr>
                                                                 <td align="right">Run FW <canvas id="circle{{(($rowmonitor->equipo->DP_2))}}"></canvas> </td>
-                                                                <th rowspan="6">
+                                                                <th rowspan="6" style="max-height: 80%;max-width: 100%">
                                                                 <div align="center"> <img alt="Equipo {{ $rowmonitor->equipo->NOMBRE_EQUIPO }}" src="../equipmentImg/{{ $rowmonitor->urlImg }}" class="img-responsive"> </div>
                                                                 </th>                                                                
                                                               </tr>
