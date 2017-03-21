@@ -20,29 +20,27 @@ Route::group(['middleware' => 'active'], function () {
 		Route::group(['middleware' => 'admin'], function () {
 			
 			Route::post('/clients', 'ClientsController@store');
+			Route::post('/user-access', 'UserAccessController@store');
+			Route::get('/user-accessDelete/{idUserAccess}', 'UserAccessController@destroy');
 			
 			Route::get('/us_equipments/{plant}', 'PlantsController@getEquipments');
 			
 		});
 		
+		Route::get('/users', 'UsersController@index');
 		Route::post('/users', 'UsersController@store');
 		Route::put('/users/{user}', 'UsersController@update');
 		
+		Route::get('/equipments', 'EquipmentsController@index');
 		Route::post('/equipments', 'EquipmentsController@store');
 		Route::put('/equipments/{equipment}', 'EquipmentsController@update');
 		
+		Route::get('/plants', 'PlantsController@index');
 		Route::post('/plants', 'PlantsController@store');
 		Route::put('/plants/{plant}', 'PlantsController@update');
 		
-		Route::put('/clients/{client}', 'ClientsController@update');
-		
-		Route::get('/plants', 'PlantsController@index');
-		
 		Route::get('/clients', 'ClientsController@index');
-		
-		Route::get('/equipments', 'EquipmentsController@index');
-		
-		Route::get('/users', 'UsersController@index');
+		Route::put('/clients/{client}', 'ClientsController@update');		
 		
 		Route::get('/user-access', 'UserAccessController@index');
 		

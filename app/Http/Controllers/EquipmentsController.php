@@ -71,8 +71,8 @@ class EquipmentsController extends Controller
         $equipment->area = $request->area;
         $equipment->subarea = $request->subarea;
         $equipment->function = $request->function;
-        $equipment->power = $request->power;
-        $equipment->voltage = $request->voltage;
+        $equipment->power = $request->power." ".$request->unit;
+        $equipment->voltage = $request->voltage." ".$request->unitvol;
         $equipment->lifecycle = $request->lifecycle;
         
         
@@ -143,8 +143,10 @@ class EquipmentsController extends Controller
         $equipment->area = $request->area;
         $equipment->subarea = $request->subarea;
         $equipment->function = $request->function;
-        $equipment->power = $request->power;
-        $equipment->voltage = $request->voltage;
+        $powerTran = explode(" ",$request->power);
+        $equipment->power = $powerTran[0]." ".$request->unit;
+        $voltageTran = explode(" ",$request->voltage);
+        $equipment->voltage = $voltageTran[0]." ".$request->unitvol;
         $equipment->lifecycle = $request->lifecycle;
         
         if (isset($request->urlImg) && $request->urlImg != null){

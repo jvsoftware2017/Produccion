@@ -43,11 +43,15 @@
                     <div align="center"><h4 class="modal-title" id="myModalLabel"> <strong>{{ $rowmonitor->equipo->MODELO_EQUIPO." - ".$rowmonitor->equipo->NOMBRE_EQUIPO }}</strong></h4></div>
                     <table align="center" style="border-collapse:separate;border-spacing:15px;" border="0" width="70%" class="table-responsive">
                                                               <tr>
+                                                                <td></td>
+                                                                <td align="center">Comunicación OK <canvas id="circle0"></canvas></td>
+                                                                <th align="left" rowspan="2" style="background-color: gray;color: white;l">{{$rowmonitor->model}}<br/>{{$rowmonitor->serialNumber}}<br/>Power: {{$rowmonitor->power}}<br/>Current: {{$rowmonitor->voltage}}</th>                                                                
+                                                              </tr>
+                                                              <tr>
                                                                 <td align="right">Run FW <canvas id="circle{{(($rowmonitor->equipo->DP_2))}}"></canvas> </td>
                                                                 <th rowspan="6">
                                                                 <div align="center"> <img alt="Equipo {{ $rowmonitor->equipo->NOMBRE_EQUIPO }}" src="../equipmentImg/{{ $rowmonitor->urlImg }}" class="img-responsive"> </div>
                                                                 </th>
-                                                                <td align="left">Comunicación OK <canvas id="circle0"></canvas></td>
                                                               </tr>
                                                               <tr>
                                                                 <td align="right">Run BW <canvas id="circle{{(($rowmonitor->equipo->DP_3))}}"></canvas></td>

@@ -1,3 +1,21 @@
+<style>
+#table_container_left {
+	width: 40%;
+	height: 100%;
+	position: relative;
+	float: left;
+	overflow: hidden;
+}
+
+#table_container_right {
+	width: 60%;
+	height: 100%;
+	overflow: scroll;
+	float: left;
+	position: relative;
+}
+</style>
+
 {{ csrf_field() }}
 <div class="clearfix"></div>
 
@@ -6,10 +24,6 @@
 <div class="x_panel">
 <div class="x_title">
 <h2>Monitor</h2>
-<ul class="nav navbar-right panel_toolbox">
-<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-</li>
-</ul>
 <div class="clearfix"></div>
 </div>
 <div class="x_content"  >
@@ -35,13 +49,21 @@ Aquí podrás visualizar el estado de los equipos a los cuales tienes permiso <p
                             </div>
                         @endif
 
-                        <table id="datatablem" class="table table-striped table-bered table-responsive">
+                        <!--<table id="datatablev" class="table table-striped table-bered table-responsive fht-table">
                             <thead>
                             <tr>
                                 <th>Id Equipo</th>
                                 <th>TAG ID</th>
                                 <th>Sede</th>
                                 <th>Estado</th>
+                                <th>DP_1</th>
+                                <th>DP_2</th>
+                                <th>DP_3</th>
+                                <th>DP_4</th>
+                                <th>DP_1</th>
+                                <th>DP_2</th>
+                                <th>DP_3</th>
+                                <th>DP_4</th>
                                 <th>DP_1</th>
                                 <th>DP_2</th>
                                 <th>DP_3</th>
@@ -66,69 +88,94 @@ Aquí podrás visualizar el estado de los equipos a los cuales tienes permiso <p
 		                                <td>{{(($rowmonitor->equipo->DP_1))}}</td>
 		                                <td>{{(($rowmonitor->equipo->DP_2))}}</td>
 		                                <td>{{(($rowmonitor->equipo->DP_3))}}</td>
-		                                <td>{{(($rowmonitor->equipo->DP_4))}}</td>		                                
+		                                <td>{{(($rowmonitor->equipo->DP_4))}}</td>	
+		                                <td>{{(($rowmonitor->equipo->DP_1))}}</td>
+		                                <td>{{(($rowmonitor->equipo->DP_2))}}</td>
+		                                <td>{{(($rowmonitor->equipo->DP_3))}}</td>
+		                                <td>{{(($rowmonitor->equipo->DP_4))}}</td>
+		                                <td>{{(($rowmonitor->equipo->DP_1))}}</td>
+		                                <td>{{(($rowmonitor->equipo->DP_2))}}</td>
+		                                <td>{{(($rowmonitor->equipo->DP_3))}}</td>
+		                                <td>{{(($rowmonitor->equipo->DP_4))}}</td>	                                
 			                                <td>
 			                                <a href="/monitor/{{$rowmonitor->id}}"><button class="btn btn-round btn-warning edit-item">Ver</button></a> 
-			                                
-			                                <!-- Monitor Modal 
-			                                <div class="modal fade" id="edit-item{{$rowmonitor->equipo->ID_EQUIPO}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			                                    <div class="modal-dialog" role="document">
-			                                        <div class="modal-content">
-			                                            <div class="modal-header">
-			                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			                                                <h4 class="modal-title" id="myModalLabel">Estado monitor <strong>{{ $rowmonitor->equipo->MODELO_EQUIPO." - ".$rowmonitor->equipo->NOMBRE_EQUIPO }}</strong></h4>
-			                                            </div>
-			                                            <div class="modal-body">                 
-			                                                
-			                                                <table align="center" style="ber-collapse:separate;ber-spacing:15px;" ber="0">
-															  <tr>
-															    <td align="right">Run FW <canvas id="circle{{(($rowmonitor->equipo->DP_2))}}"></canvas> </td>
-															    <th rowspan="6">
-															    <div align="center"> <img alt="Equipo {{ $rowmonitor->equipo->NOMBRE_EQUIPO }}" src="equipmentImg/{{ $rowmonitor->urlImg }}" class="img-responsive"> </div>
-															    </th>
-															    <td align="right">Comunicación OK <canvas id="circle0"></canvas></td>
-															  </tr>
-															  <tr>
-															    <td align="right">Run BW <canvas id="circle{{(($rowmonitor->equipo->DP_3))}}"></canvas></td>
-															    <td align="right">Operation Hrs: <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_40}}</strong></td>
-															  </tr>
-															  <tr>
-															    <td align="right">READY <canvas id="circle{{(($rowmonitor->equipo->DP_4))}}"></canvas></td>
-															    <td align="right">Next Mantenaince: <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_39}}</strong></td>
-															  </tr>
-															  <tr>
-															    <td align="right">At Speed Ref <canvas id="circle{{(($rowmonitor->equipo->DP_7))}}"></canvas></td>
-															    <td align="right">Temperature: <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_44}}</strong></td>
-															  </tr>
-															  <tr>
-															    <td align="right">Warning <canvas id="circle{{(($rowmonitor->equipo->DP_1))}}"></canvas></td>
-															    <td align="right">Humidity: <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_49}}</strong></td>
-															  </tr>
-															  <tr>
-															    <td align="right">Flaut <canvas id="circle{{(($rowmonitor->equipo->DP_0))}}"></canvas></td>
-															    <td align="right">Velocidad: <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_16}}</strong></td>
-															  </tr>
-															  <tr>
-															    <td align="center"></td>
-															    <td align="center"></td>
-															    <td align="center"></td>
-															  </tr>
-															  <tr style="background-color: red;color: white; font-size: 14px;">
-															    <td align="center">Fecha</td>
-															    <td align="center">Evento</td>
-															    <td align="center">Tipo</td>															    
-															  </tr>
-															</table>
-			                                            </div>
-			                                        </div>
-			                                    </div>
-			                                </div> -->
 			                        	</td>
 		                                </tr>       
 		                            @endforeach
 	                            @endforeach
                             </tbody>
-                        </table>
+                        </table>-->
+                        
+                        <div id='table_container_left'>
+						<table class="table table-striped table-bordered">
+							<thead>
+								<tr>
+                                	<th>Acción</th>
+	                                <th>Id Equipo</th>
+	                                <th>TAG ID</th>
+	                                <th>Sede</th>
+	                                <th>Estado</th>
+								</tr>
+							</thead>
+							<tbody>
+							@foreach($dataEquipo as $row)
+		                    	@foreach($row as $rowmonitor)  
+									@if($rowmonitor->equipo->ESTADO_EQUIPO != 'ok')
+									<tr class="danger">
+									@else
+									<tr>
+									@endif
+									<td>
+			                        	<a href="/monitor/{{$rowmonitor->id}}"><button class="btn btn-round btn-warning edit-item">Ver</button></a> 		                                
+			                        </td>
+									<td>{{$rowmonitor->equipo->ID_EQUIPO}}</td>
+		                            <td>{{$rowmonitor->equipo->NOMBRE_EQUIPO}}</td>
+		                            <td>{{$rowmonitor->plant->name}}</td>
+		                            <td>{{$rowmonitor->equipo->ESTADO_EQUIPO}}</td>
+									</tr>
+								@endforeach
+	                        @endforeach
+							</tbody>
+						</table>
+					</div>
+					<div id='table_container_right'>
+						<table class="table table-striped table-bordered">
+							<thead>
+								<tr>
+									<?php 
+									for($i=0;$i<94;$i++){
+								 		echo "<th>DP_".$i."</th>";
+									}
+									?> 
+									<th>Acción</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach($dataEquipo as $row)
+		                    	@foreach($row as $rowmonitor)  
+									@if($rowmonitor->equipo->ESTADO_EQUIPO != 'ok')
+									<tr class="danger">
+									@else
+									<tr>
+									@endif
+								
+									<?php 
+									for($i=0;$i<94;$i++){
+										$var = "DP_".$i;
+								 		echo "<td>".(($rowmonitor->equipo->$var))."</td>";
+									
+									}
+									?> 
+									<td>
+			                        	<a href="/monitor/{{$rowmonitor->id}}"><button class="btn btn-round btn-warning edit-item">Ver</button></a> 		                                
+			                        </td>
+									</tr>
+								@endforeach
+	                        @endforeach
+							</tbody>
+						</table>
+					</div>                        
+                        
                     </div>
                 </div>
             </div>

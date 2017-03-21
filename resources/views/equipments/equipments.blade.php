@@ -112,12 +112,26 @@
 															<div class="form-group">
 																<label class="control-label" for="title">Potencia:</label>
 																<input type="text" name="power" id="power" class="form-control" value="{{$rowEquipment->power}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+																<p>
+																	W:
+																	<input type="radio" name="unit" value="W" /> 
+																	kW:
+																	<input type="radio" name="unit" value="kW" />
+																	HP:
+																	<input type="radio" name="unit" value="HP" />
+																</p>
 																<div class="help-block with-errors"></div>
 															</div>
 															
 															<div class="form-group">
 																<label class="control-label" for="title">Voltaje:</label>
 																<input type="text" name="voltage" id="voltage" class="form-control" value="{{$rowEquipment->voltage}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+																<p>
+																	V:
+																	<input type="radio" name="unitvol" value="V" /> 
+																	kV:
+																	<input type="radio" name="unitvol" value="kV" />
+																</p>
 																<div class="help-block with-errors"></div>
 															</div>
 															
@@ -244,12 +258,26 @@
 												<div class="form-group">
 													<label class="control-label" for="title">Potencia:</label>
 													<input type="text" name="power" id="power" class="form-control" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+													<p>
+														W:
+														<input type="radio" name="unit" value="W" checked required /> 
+														kW:
+														<input type="radio" name="unit" value="kW" />
+														HP:
+														<input type="radio" name="unit" value="HP" />
+													</p>
 													<div class="help-block with-errors"></div>
 												</div>
 															
 												<div class="form-group">
 													<label class="control-label" for="title">Voltaje:</label>
 													<input type="text" name="voltage" id="voltage" class="form-control" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+													<p>
+														V:
+														<input type="radio" name="unitvol" value="V" /> 
+														kV:
+														<input type="radio" name="unitvol" value="kV" />
+													</p>
 													<div class="help-block with-errors"></div>
 												</div>
 															

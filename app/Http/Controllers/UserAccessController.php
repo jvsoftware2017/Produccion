@@ -48,7 +48,15 @@ class UserAccessController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    	$this->validate($request, [
+    			'id_user' => 'required|numeric',
+    			'id_plant' => 'required|numeric',
+    			'id_equipment' => 'required|numeric',
+    	]);    	 
+    	$userAccess = $request->all();
+    	UserAccess::create($userAccess);
+    	session()->flash('message', 'Se ha creado el acceso correctamente.');
+    	return redirect('/user-access');
     }
 
     /**
@@ -91,8 +99,12 @@ class UserAccessController extends Controller
      * @param  \App\user_access  $user_access
      * @return \Illuminate\Http\Response
      */
-    public function destroy(user_access $user_access)
+    public function destroy($id)
     {
-        //
+    	$userAccess = UserAccess::find($id);
+    	$userAccess->delete();
+    	
+    	session()->flash('message', 'Se ha eliminado el acceso correctamente.');
+    	return redirect('/user-access');
     }
 }

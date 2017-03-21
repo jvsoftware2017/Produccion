@@ -69,7 +69,7 @@
 										<td>{{ $rowUserAccess->created_at }}</td>
 										@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 											<td>
-												<div type="button" id="access-user" class="btn btn-round btn-dark" >Eliminar</div>
+												<a href="/user-accessDelete/{{ $rowUserAccess->id }}"><button class="btn btn-round btn-dark" onclick="return confirm('¿Desea eliminar el Acceso?')">Eliminar</button></a>
 											</td>
 
 										@endif
@@ -85,12 +85,12 @@
 													</div>
 													<div class="modal-body">
 
-													<form data-toggle="validator" action="/users-access" method="POST">
+													<form data-toggle="validator" action="/user-access" method="POST">
 													{{ csrf_field() }}
 													
 															<div class="form-group">
 																<label class="control-label" for="plant">Usuario</label>
-																<select class="form-control" name="us_user" id="us_user">
+																<select class="form-control" name="id_user" id="id_user">
 																<option value="">Seleccione</option>
 																	<@foreach($dataUser as $rowuser)
 																			<option value="{{$rowuser->id}}">{{$rowuser->name}} ({{$rowuser->email}})</option>
@@ -101,7 +101,7 @@
 
 															<div class="form-group">
 																<label class="control-label" for="plant">Sede</label>
-																<select class="form-control" name="us_plant" id="us_plant">
+																<select class="form-control" name="id_plant" id="id_plant">
 																<option value="">Seleccione</option>
 																	<@foreach($dataPlant as $rowplant)
 																		@if($rowUserAccess->user->client->id == $rowplant->id_client && $rowplant->status == 'active')
@@ -113,7 +113,7 @@
 															</div>
 															<div class="form-group">
 																<label class="control-label" for="equipment">Equipo</label>
-																<select class="form-control" name="us_equipment" id="us_equipment">
+																<select class="form-control" name="id_equipment" id="id_equipment">
 																	<option>Seleccione</option>
 																</select>
 																<div class="help-block with-errors"></div>
