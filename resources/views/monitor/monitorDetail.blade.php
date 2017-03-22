@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Monitor')
+@section('title', 'Monitor | DriveSysMonitor')
 @section('content')
 <!-- page content -->
 <div class="right_col" role="main" id="refreshContent">

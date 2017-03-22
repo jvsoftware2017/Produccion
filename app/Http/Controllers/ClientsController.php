@@ -148,7 +148,7 @@ class ClientsController extends Controller
 	    	$client->urlLogo = $route_file;
     	}
     	$client->updated_at = Carbon::now();
-    	$client->update();;
+    	$client->update();
         session()->flash('message', 'Se ha actualizado el cliente');
         return redirect('/clients');
     }
