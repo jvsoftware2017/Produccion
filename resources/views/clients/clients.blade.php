@@ -112,26 +112,12 @@
                                                     <label class="control-label" for="maxUsers">Usuarios Máximos:</label>
                                                     <input type="number" id="maxUsers" name="maxUsers" min="1" class="form-control" value="" pattern="[0-9]" data-error="Por favor escribir un número válido" oninvalid="this.setCustomValidity('Por favor escribir un número válido')" oninput="setCustomValidity('')" required>
                                                     <div class="help-block with-errors"></div>
+	                                            </div>
+	                                            <div class="form-group">
+                                                    <label class="control-label" for="validity">Vigencia, en meses:</label>
+                                                    <input type="number" id="validity" name="validity" min="1" class="form-control" value="" pattern="[0-9]" data-error="Por favor escribir un número válido" oninvalid="this.setCustomValidity('Por favor escribir un número válido')" oninput="setCustomValidity('')" required>
+                                                    <div class="help-block with-errors"></div>
 	                                            </div>                                                     
-												<div class="form-group">
-													<label class="control-label">Vigencia:</label>
-													<p>
-														1 Mes:
-														<input type="radio" class="flat" name="validity" value="1" checked="" required /> 
-														2 Meses:
-														<input type="radio" class="flat" name="validity" value="2" />
-														3 Meses:
-														<input type="radio" class="flat" name="validity" value="3" />
-														6 Meses:
-														<input type="radio" class="flat" name="validity" value="6" />
-														1 Año:
-														<input type="radio" class="flat" name="validity" value="12" />
-														2 Años:
-														<input type="radio" class="flat" name="validity" value="24" />
-														3 Años:
-														<input type="radio" class="flat" name="validity" value="36" />
-													</p>
-												</div>
 												<div class="form-group">
 													<label for="logo">Logo:</label>
 													<input type="file" id="logo" name="urlLogo">
@@ -156,7 +142,7 @@
 									<th>Dirección</th>
 									<th>Ciudad</th>
 									<th>Fecha de registro</th>
-									<th>Fecha de modificación</th>
+									<th>Fecha de caducidad</th>
 									<th>Estado</th>
 									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 										<th>Acción</th>
@@ -177,7 +163,7 @@
 										<td>{{ $rowclient->adress }}</td>
 										<td>{{ $rowclient->city->name }}</td>
 										<td>{{ $rowclient->created_at }}</td>
-										<td>{{ $rowclient->updated_at }}</td>
+										<td>{{ $rowclient->dateValidity }}</td>
 										<td>{{ $rowclient->status }}</td>
 										@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 											<td>
@@ -232,6 +218,7 @@
 	                                                            </select>
 	                                                            <div class="help-block with-errors"></div>
 	                                                        </div>
+	                                                        @if(Gate::allows('developer', Auth::user()))
 	                                                        <div class="form-group">
 	                                                            <label class="control-label" for="status">Estado:</label>
 	                                                            <select class="form-control" name="status" id="status">
@@ -245,26 +232,21 @@
 	                                                            <label class="control-label" for="maxUsers">Usuarios Máximos:</label>
 	                                                            <input type="number" id="maxUsers" name="maxUsers" min="1" class="form-control" value="{{ $rowclient->maxUsers }}" pattern="[0-9]" data-error="Por favor escribir un número válido" oninvalid="this.setCustomValidity('Por favor escribir un número válido')" oninput="setCustomValidity('')" required>
 	                                                            <div class="help-block with-errors"></div>
-	                                                        </div>                                                     
+	                                                        </div>
 															<div class="form-group">
-																<label class="control-label">Vigencia:</label>
-																<p>
-																	1 Mes:
-																	<input type="radio" class="flat" name="validity" value="1" checked="" required /> 
-																	2 Meses:
-																	<input type="radio" class="flat" name="validity" value="2" />
-																	3 Meses:
-																	<input type="radio" class="flat" name="validity" value="3" />
-																	6 Meses:
-																	<input type="radio" class="flat" name="validity" value="6" />
-																	1 Año:
-																	<input type="radio" class="flat" name="validity" value="12" />
-																	2 Años:
-																	<input type="radio" class="flat" name="validity" value="24" />
-																	3 Años:
-																	<input type="radio" class="flat" name="validity" value="36" />
-																</p>
-															</div>
+																<label class="control-label" for="maxUsers">Reset Vigencia:</label>
+																	<div class="checkbox">
+																		<label>
+																			<input type="checkbox" name="resetDateValidity" value="reset"> {{ $rowclient->dateValidity }}
+																		</label>
+																	</div>
+															</div>                                              
+															<div class="form-group">
+			                                                    <label class="control-label" for="validity">Vigencia, en meses:</label>
+			                                                    <input type="number" id="validity" name="validity" min="1" class="form-control" value="{{ $rowclient->validity }}" pattern="[0-9]" data-error="Por favor escribir un número válido" oninvalid="this.setCustomValidity('Por favor escribir un número válido')" oninput="setCustomValidity('')" required>
+			                                                    <div class="help-block with-errors"></div>
+			                                            	</div>
+			                                            	@endif
 	                                                        <div class="form-group">
 																<label for="logo">Logo:</label>
 																<input type="file" id="logo" name="urlLogo">

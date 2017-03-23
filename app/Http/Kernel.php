@@ -62,5 +62,6 @@ class Kernel extends HttpKernel
     	'reports' => \App\Http\Middleware\ReportsMiddleware::class,
     	'user' => \App\Http\Middleware\UserMiddleware::class,
     	'active' => \App\Http\Middleware\IsActiveUserMiddleware::class,
+    	'validity' => \App\Http\Middleware\CheckClientValidity::class,
     ];
 }

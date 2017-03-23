@@ -125,17 +125,22 @@ class ClientsController extends Controller
     			'name' => 'required|max:255|',
     			'email' => 'required|email|max:255',
     			'phone' => 'required|numeric',
-    			'status' => 'required',
     			'id_city' => 'required',
-    			'maxUsers' => 'required|numeric',
+    			'maxUsers' => 'numeric',
     	]);
     	 
     	$client = Client::find($id);
+    	if (isset($request->resetDateValidity) && $request->resetDateValidity == 'reset') {
+    		$client->dateValidity = null;
+    	}
+    	if (isset($request->validity) && Auth::user()->role->description == 'developer') {
+    		$client->validity = $request->validity;
+    		$client->status = $request->status;
+    	}
     	$client->name = $request->name;
     	$client->email = $request->email;
     	$client->phone = $request->phone;
     	$client->adress = $request->adress;
-    	$client->status = $request->status;
     	$client->id_city = $request->id_city;
     	if (isset($request->urlLogo) && $request->urlLogo != null){
     		$this->validate($request, [

@@ -42,4 +42,10 @@ class LoginController extends Controller
     	$errors = ['email' => 'La cuenta del usuario está inactiva, por favor contacte al administrador.'];
     	return view('auth.login')->withErrors($errors);
     }
+    
+    public function validity()
+    {
+    	$errors = ['email' => 'La licencia del cliente ha cacudaco, por favor contacte al administrador.'];
+    	return view('auth.login')->withErrors($errors);
+    }
 }

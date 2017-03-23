@@ -6,7 +6,9 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>DriveSysMonitor</h3>
+                    <h1>DriveSysMonitor</h1>
+                    <h4>Bienvenido, {{ Auth::user()->name}}</h4>
+                    <p>Tu licencia es válida hasta el: <b>{{ Auth::user()->client->dateValidity }}</b></p>
 					{{ csrf_field() }}
                 </div>
             </div>

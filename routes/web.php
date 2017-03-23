@@ -6,10 +6,11 @@ Route::get('/', function () {
 
 Route::get('/', 'Auth\LoginController@showLoginForm');
 Route::get('/active', 'Auth\LoginController@active');
+Route::get('/validity', 'Auth\LoginController@validity');
 
 Auth::routes();
 
-Route::group(['middleware' => 'active'], function () {
+Route::group(['middleware' => ['validity', 'active']], function () {
 
 	Route::get('/home', 'HomeController@index');
 	Route::get('/user_profile', 'UsersController@showProfile');
