@@ -18,7 +18,7 @@ class CheckClientValidity
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->client->dateValidity < Carbon::now()) {
+    	if (Auth::user()->role->description != 'admin' && Auth::user()->role->description != 'developer' && Auth::user()->client->dateValidity != null && Auth::user()->client->dateValidity < Carbon::now()) {
         	$client = Client::find(Auth::user()->id_client);
         	$client->status = 'inactive';
         	$client->update();
