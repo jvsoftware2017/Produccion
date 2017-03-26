@@ -45,11 +45,11 @@
                         <table id="datatable" class="table table-striped table-bordered">
                             <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Ciudad</th>
                                 <th>Cliente</th>
                                 <th>Nombre</th>
                                 <th>Dirección</th>
+                                <th>Teléfono</th>
                                 <th>Fecha Registro</th>
                                 <th>Fecha Modificación</th>
                                 <th>Estado</th>
@@ -66,11 +66,11 @@
 								@else
 									<tr>
 								@endif
-                                        <td>{{$rowplant->id}}</td>
                                         <td>{{$rowplant->city->name}}</td>
                                         <td>{{$rowplant->client->name}}</td>
                                         <td>{{$rowplant->name}}</td>
                                         <td>{{$rowplant->adress}}</td>
+                                        <td>{{$rowplant->phone}}</td>
                                         <td>{{$rowplant->created_at}}</td>
                                         <td>{{$rowplant->updated_at}}</td>
                                         <td>{{$rowplant->status}}</td>
@@ -126,6 +126,12 @@
 	                                                        <div class="form-group">
 	                                                            <label class="control-label" for="title">Dirección:</label>
 	                                                            <input type="text" name="adress" value="{{$rowplant->adress}}" class="form-control" data-error="Please enter title." />
+	                                                            <div class="help-block with-errors"></div>
+	                                                        </div>
+	                                                        
+	                                                        <div class="form-group">
+	                                                            <label class="control-label" for="phone">Teléfono:</label>
+	                                                            <input type="number" name="phone" value="{{$rowplant->phone}}" class="form-control" data-error="Escriba solo números" />
 	                                                            <div class="help-block with-errors"></div>
 	                                                        </div>
 	
@@ -200,6 +206,12 @@
 	                                                <input type="text" name="adress"  class="form-control" data-error="Please enter title." />
 	                                                <div class="help-block with-errors"></div>
 	                                            </div>
+	                                            
+	                                            <div class="form-group">
+                                                    <label class="control-label" for="phone">Teléfono:</label>
+                                                    <input type="number" name="phone" class="form-control" data-error="Escriba solo números" />
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
 	
 	                                            <div class="form-group">
 	                                                <label class="control-label" for="title">Estado:</label>

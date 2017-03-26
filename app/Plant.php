@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Plant extends Model
 {
-    protected $fillable = ['id_city', 'id_client', 'name', 'adress', 'status'];
+    protected $fillable = ['id_city', 'id_client', 'name', 'adress', 'phone', 'status'];
 
     public function city(){
         return $this->belongsTo('App\City', 'id_city');

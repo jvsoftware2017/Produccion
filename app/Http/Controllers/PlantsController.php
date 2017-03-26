@@ -57,6 +57,7 @@ class PlantsController extends Controller
     			'name' => 'required|max:255',
     			'id_city' => 'required',
     			'id_client' => 'required',
+    			'phone' => 'digits_between:5,20',
     			'status' => 'required',
     	]);
         $plant = $request->all();
@@ -101,6 +102,7 @@ class PlantsController extends Controller
     			'name' => 'required|max:255',
     			'id_city' => 'required',
     			'id_client' => 'required',
+    			'phone' => 'digits_between:5,20',
     			'status' => 'required',
     	]);
     	$plant->updated_at = Carbon::now();
@@ -121,9 +123,7 @@ class PlantsController extends Controller
     }
 
     public function getEquipments(Request $request, $id){
-        //if($request->ajax()){
             $equipments = Equipment::equipmentsByIdPlant($id);
             return response()->json($equipments);
-        //}
     }
 }
