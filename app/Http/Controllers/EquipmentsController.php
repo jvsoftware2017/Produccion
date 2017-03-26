@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Storage;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use App\Client;
 
 class EquipmentsController extends Controller
 {
@@ -28,10 +29,11 @@ class EquipmentsController extends Controller
     		$dataEquipment = Equipment::join('plants', 'equipments.id_plant', '=', 'plants.id')->where('plants.id_client', Auth::user()->id_client)->select('equipments.*')->get();
     	}else{
     		$dataEquipment = Equipment::all();
+    		$dataClient = Client::all();
         	$dataPlant = Plant::All();
     	}
         $dataType = Type::All();
-        return view('equipments.equipments', compact('dataEquipment','dataPlant','dataType'));
+        return view('equipments.equipments', compact('dataEquipment','dataPlant','dataType', 'dataClient'));
     }
 
     /**
@@ -160,7 +162,7 @@ class EquipmentsController extends Controller
         	$equipment->urlImg = $route_file;
         }
         $equipment->updated_at = Carbon::now();
-        $equipment->save();
+        $equipment->update();
         session()->flash('message', 'Se ha actualizado la información del Equipo');
         return redirect('/equipments');
     }

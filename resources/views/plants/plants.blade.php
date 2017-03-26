@@ -106,18 +106,6 @@
 	                                                        </div>
 	
 	                                                        <div class="form-group">
-	                                                            <label class="control-label" for="title">Cliente:</label>
-	                                                            <select class="form-control" name="id_client" id="id_client">
-	                                                                <option selected value="{{$rowplant->client->id}}">{{$rowplant->client->name}}</option>
-	                                                                @foreach($dataClient as $rowclient)
-	                                                                    <option value="{{$rowclient->id}}">{{$rowclient->name}}</option>
-	                                                                @endforeach
-	                                                            </select>
-	                                                            <!--<input type="text" name="clientId" class="form-control" data-error="Please enter title." required />-->
-	                                                            <div class="help-block with-errors"></div>
-	                                                        </div>
-	
-	                                                        <div class="form-group">
 	                                                            <label class="control-label" for="title">Nombre:</label>
 	                                                            <input type="text" name="name" id="name" class="form-control" value="{{$rowplant->name}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
 	                                                            <div class="help-block with-errors"></div>

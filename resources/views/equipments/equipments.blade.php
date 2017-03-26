@@ -43,6 +43,7 @@
 								<th>Preview</th>
 								<th>TAG ID</th>
 								<th>Tipo</th>
+								<th>Cliente</th>
 								<th>Sede</th>
 								<th>Referencia</th>
 								<th>Identificacion</th>
@@ -64,9 +65,10 @@
 											<td><img src="equipmentImg/{{ $rowEquipment->urlImg }}" class="img-responsive" alt="Logo del Cliente" style="max-width: 50px;"></td>
 											<td>{{ $rowEquipment->name }}</td>
 											<td>{{ $rowEquipment->type->name }}</td>
+											<td>{{ $rowEquipment->Plant->client->name }}</td>
 											<td>{{ $rowEquipment->plant->name }}</td>
 											<td>{{ $rowEquipment->model }}</td>
-											<td>{{ $rowEquipment->id_equipo }}</td>
+											<td><a href="/monitor/{{$rowEquipment->id}}">{{ $rowEquipment->id_equipo }}</a></td>
 											<td>{{ $rowEquipment->created_at }}</td>
 											<td>{{ $rowEquipment->updated_at }}</td>
 											<td>{{ $rowEquipment->status }}</td>
@@ -186,9 +188,9 @@
 															<div class="form-group">
 																<label class="control-label" for="title">Sede:</label>
 																<select class="form-control" name="id_plant" id="id_plant">
-																	<option selected value="{{$rowEquipment->plant->id}}">{{$rowEquipment->plant->name}}</option>
+																	<option selected value="{{$rowEquipment->plant->id}}">{{ $rowEquipment->Plant->client->name . ", " }} {{$rowEquipment->plant->name}}</option>
 																	@foreach($dataPlant as $rowplant)
-																		<option value="{{$rowplant->id}}">{{$rowplant->name}}</option>
+																		<option value="{{$rowplant->id}}">{{$rowplant->client->name . ", "}} {{$rowplant->name}}</option>
 																	@endforeach
 																</select>
 																<div class="help-block with-errors"></div>
@@ -331,7 +333,7 @@
 													<label class="control-label" for="title">Sede:</label>
 													<select class="form-control" name="id_plant" id="id_plant">
 														@foreach($dataPlant as $rowplant)
-															<option value="{{$rowplant->id}}">{{$rowplant->name}}</option>
+															<option value="{{$rowplant->id}}">{{$rowplant->client->name . ", "}} {{$rowplant->name}}</option>
 														@endforeach
 													</select>
 													<div class="help-block with-errors"></div>
