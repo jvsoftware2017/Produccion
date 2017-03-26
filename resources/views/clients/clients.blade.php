@@ -51,7 +51,6 @@
 											<h4 class="modal-title" id="myModalLabel">Crear Cliente</h4>
 										</div>
 										<div class="modal-body">
-		
 											<form data-toggle="validator"
 												action="/clients" method="POST" enctype="multipart/form-data">
 												{{ csrf_field() }}
@@ -62,42 +61,6 @@
 														data-error="Por favor escribir un nombre válido"
 														oninvalid="this.setCustomValidity('Por favor escribir un nombre válido')"
 														oninput="setCustomValidity('')" placeholder="Nombre" required />
-													<div class="help-block with-errors"></div>
-												</div>
-												<div class="form-group">
-													<label class="control-label" for="email">Email:</label> <input
-														type="email" name="email" id="email" class="form-control"
-														value=""
-														data-error="Por favor escribir un email válido"
-														oninvalid="this.setCustomValidity('Por favor escribir un email válido')"
-														oninput="setCustomValidity('')" placeholder="Email" required />
-													<div class="help-block with-errors"></div>
-												</div>
-												<div class="form-group">
-													<label class="control-label" for="phone">Teléfono:</label> <input
-														type="tel" name="phone" id="phone" class="form-control"
-														value="" pattern="[0-9]*"
-														data-error="Por favor escribir un Teléfono válido"
-														oninvalid="this.setCustomValidity('Por favor escribir un Teléfono válido')"
-														oninput="setCustomValidity('')" placeholder="Teléfono" required />
-													<div class="help-block with-errors"></div>
-												</div>
-												<div class="form-group">
-													<label class="control-label" for="adress">Dirección:</label>
-													<input type="text" name="adress" id="adress"
-														class="form-control" value=""
-														data-error="Por favor escribir una Dirección válida"
-														oninvalid="this.setCustomValidity('Por favor escribir una Dirección válida')"
-														oninput="setCustomValidity('')" placeholder="Dirección de ubicación" />
-													<div class="help-block with-errors"></div>
-												</div>
-												<div class="form-group">
-													<label class="control-label" for="title">Ciudad:</label> <select
-														class="form-control" name="id_city" id="id_city">
-														@foreach($dataCity as $rowcity)
-														<option value="{{$rowcity->id}}">{{$rowcity->name}}</option>
-														@endforeach
-													</select>
 													<div class="help-block with-errors"></div>
 												</div>
 												<div class="form-group">
@@ -137,10 +100,6 @@
 								<tr>
 									<th>Logo</th>
 									<th>Nombre</th>
-									<th>E-mail</th>
-									<th>Teléfono</th>
-									<th>Dirección</th>
-									<th>Ciudad</th>
 									<th>Fecha de registro</th>
 									<th>Fecha de caducidad</th>
 									<th>Estado</th>
@@ -158,10 +117,6 @@
 								@endif
 										<td><img src="clientLogo/{{ $rowclient->urlLogo }}" class="img-responsive" alt="Logo del Cliente" style="max-width: 50px;"></td>
 										<td>{{ $rowclient->name }}</td>
-										<td>{{ $rowclient->email }}</td>
-										<td>{{ $rowclient->phone }}</td>
-										<td>{{ $rowclient->adress }}</td>
-										<td>{{ $rowclient->city->name }}</td>
 										<td>{{ $rowclient->created_at }}</td>
 										<td>{{ $rowclient->dateValidity }}</td>
 										<td>{{ $rowclient->status }}</td>
@@ -191,31 +146,6 @@
 	                                                            <label class="control-label" for="name">Nombre:</label>
 	                                                            <input type="text" name="name" id="name" class="form-control" value="{{ $rowclient->name }}" data-error="Por favor escribir un nombre válido" oninvalid="this.setCustomValidity('Por favor escribir un nombre válido')" oninput="setCustomValidity('')" required />
 	                                                            <!--<input type="text" name="clientId" class="form-control" data-error="Please enter title." required />-->
-	                                                            <div class="help-block with-errors"></div>
-	                                                        </div>
-	                                                        <div class="form-group">
-	                                                            <label class="control-label" for="email">Email:</label>
-	                                                            <input type="email" name="email" id="email" class="form-control" value="{{ $rowclient->email }}" data-error="Por favor escribir un email válido" oninvalid="this.setCustomValidity('Por favor escribir un email válido')" oninput="setCustomValidity('')" required />
-	                                                            <div class="help-block with-errors"></div>
-	                                                        </div>
-	                                                        <div class="form-group">
-	                                                            <label class="control-label" for="phone">Teléfono:</label>
-	                                                            <input type="tel" name="phone" id="phone" pattern="[0-9]*" class="form-control" value="{{ $rowclient->phone }}" data-error="Por favor escribir un Teléfono válido" oninvalid="this.setCustomValidity('Por favor escribir un Teléfono válido')" oninput="setCustomValidity('')" required />
-	                                                            <div class="help-block with-errors"></div>
-	                                                        </div>
-	                                                        <div class="form-group">
-	                                                            <label class="control-label" for="adress">Dirección:</label>
-	                                                            <input type="text" name="adress" id="adress" class="form-control" value="{{ $rowclient->adress }}" data-error="Por favor escribir una Dirección válida" oninvalid="this.setCustomValidity('Por favor escribir una Dirección válida')" oninput="setCustomValidity('')" required />
-	                                                            <div class="help-block with-errors"></div>
-	                                                        </div>
-	                                                        <div class="form-group">
-	                                                            <label class="control-label" for="title">Ciudad:</label>
-	                                                            <select class="form-control" name="id_city" id="id_city">
-	                                                                    <option selected value="{{$rowclient->city->id}}">{{$rowclient->city->name}}</option>
-	                                                                @foreach($dataCity as $rowcity)
-	                                                                    <option value="{{$rowcity->id}}">{{$rowcity->name}}</option>
-	                                                                @endforeach
-	                                                            </select>
 	                                                            <div class="help-block with-errors"></div>
 	                                                        </div>
 	                                                        @if(Gate::allows('developer', Auth::user()))

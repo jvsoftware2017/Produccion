@@ -55,21 +55,14 @@ class ClientsController extends Controller
     {
     	$this->validate($request, [
     			'name' => 'required|max:255|',
-    			'email' => 'required|email|max:255',
-    			'phone' => 'required|numeric',
     			'status' => 'required',
-    			'id_city' => 'required',
     			'maxUsers' => 'required|numeric',
     			'validity' => 'required',
     	]);
     	
     	$client = new Client();
     	$client->name = $request->name;
-    	$client->email = $request->email;
-    	$client->phone = $request->phone;
-    	$client->adress = $request->adress;
     	$client->status = $request->status;
-    	$client->id_city = $request->id_city;
     	$client->maxUsers = $request->maxUsers;
     	$client->validity = $request->validity;
     	if (isset($request->urlLogo) && $request->urlLogo != null){
@@ -123,9 +116,6 @@ class ClientsController extends Controller
     {
     	$this->validate($request, [
     			'name' => 'required|max:255|',
-    			'email' => 'required|email|max:255',
-    			'phone' => 'required|numeric',
-    			'id_city' => 'required',
     			'maxUsers' => 'numeric',
     	]);
     	 
@@ -138,10 +128,6 @@ class ClientsController extends Controller
     		$client->status = $request->status;
     	}
     	$client->name = $request->name;
-    	$client->email = $request->email;
-    	$client->phone = $request->phone;
-    	$client->adress = $request->adress;
-    	$client->id_city = $request->id_city;
     	if (isset($request->urlLogo) && $request->urlLogo != null){
     		$this->validate($request, [
     				'urlLogo' => 'image|max:2000',
