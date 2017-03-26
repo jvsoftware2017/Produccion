@@ -57,9 +57,13 @@ class PlantsController extends Controller
     			'name' => 'required|max:255',
     			'id_city' => 'required',
     			'id_client' => 'required',
-    			'phone' => 'digits_between:5,20',
     			'status' => 'required',
     	]);
+    	if (isset($request->phone) && $request->phone != null) {
+    		$this->validate($request, [
+    				'phone' => 'digits_between:5,20',
+    		]);
+    	}
         $plant = $request->all();
         Plant::create($plant);
         session()->flash('message', 'Se ha creado la sede correctamente.');
@@ -102,11 +106,20 @@ class PlantsController extends Controller
     			'name' => 'required|max:255',
     			'id_city' => 'required',
     			'id_client' => 'required',
-    			'phone' => 'digits_between:5,20',
     			'status' => 'required',
     	]);
     	$plant->updated_at = Carbon::now();
-    	$plant->update($request->all());
+    	$plant->name = $request->name;
+    	$plant->id_city = $request->id_city;
+    	$plant->id_client = $request->id_client;
+    	$plant->status = $request->status;
+    	if (isset($request->phone) && $request->phone != null) {
+    		$this->validate($request, [
+    			'phone' => 'digits_between:5,20',
+    		]);
+    		$plant->phone = $request->phone;
+    	}
+    	$plant->update();
         session()->flash('message', 'Se ha actualizado la información de la sede');
         return redirect('/plants');
     }
