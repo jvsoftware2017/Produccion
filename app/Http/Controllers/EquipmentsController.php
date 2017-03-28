@@ -35,6 +35,14 @@ class EquipmentsController extends Controller
         $dataType = Type::All();
         return view('equipments.equipments', compact('dataEquipment','dataPlant','dataType', 'dataClient'));
     }
+    
+    public function nav_index($id)
+    {
+    	$dataPlant = Plant::where('id', $id)->get();
+    	$dataEquipment = Equipment::where('id_plant', $id)->get();
+    	$dataType = Type::All();
+    	return view('equipments.equipments', compact('dataEquipment','dataPlant','dataType'));
+    }
 
     /**
      * Show the form for creating a new resource.

@@ -33,10 +33,12 @@ Route::group(['middleware' => ['validity', 'active']], function () {
 		Route::put('/users/{user}', 'UsersController@update');
 		
 		Route::get('/equipments', 'EquipmentsController@index');
+		Route::get('/nav_equipments/{plant}', 'EquipmentsController@nav_index');
 		Route::post('/equipments', 'EquipmentsController@store');
 		Route::put('/equipments/{equipment}', 'EquipmentsController@update');
 		
 		Route::get('/plants', 'PlantsController@index');
+		Route::get('/nav_plants/{client}', 'PlantsController@nav_index');
 		Route::post('/plants', 'PlantsController@store');
 		Route::put('/plants/{plant}', 'PlantsController@update');
 		

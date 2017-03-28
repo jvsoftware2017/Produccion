@@ -34,6 +34,14 @@ class PlantsController extends Controller
         $dataCity = City::All();
         return view('plants.plants', compact('dataPlant','dataCity','dataClient'));
     }
+    
+    public function nav_index($id)
+    {
+    	$dataPlant = Plant::where('id_client', $id)->get();
+    	$dataClient = Client::where('id', $id)->get();
+    	$dataCity = City::All();
+    	return view('plants.plants', compact('dataPlant','dataCity','dataClient'));
+    }
 
     /**
      * Show the form for creating a new resource.

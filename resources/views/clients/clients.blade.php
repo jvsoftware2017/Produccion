@@ -106,6 +106,7 @@
 									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 										<th>Acción</th>
 									@endif
+									<th>Sedes</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -126,6 +127,9 @@
 												<div type="button" id="edit-client" class="btn btn-round btn-warning" data-toggle="modal" data-target="#edit-item{{ $rowclient->id }}" >Editar</div>
 											</td>
 										@endif
+										<td>
+											<a href="/nav_plants/{{ $rowclient->id }} "><div type="button" class="btn btn-round btn-success">Sedes</div></a>
+										</td>
 									</tr>
 									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 										<!-- Edit Item Modal -->

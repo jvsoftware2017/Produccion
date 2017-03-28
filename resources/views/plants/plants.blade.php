@@ -47,7 +47,7 @@
                             <tr>
                                 <th>Ciudad</th>
                                 <th>Cliente</th>
-                                <th>Nombre</th>
+                                <th>Sede</th>
                                 <th>Dirección</th>
                                 <th>Teléfono</th>
                                 <th>Fecha Registro</th>
@@ -56,6 +56,7 @@
                                 @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
                                 	<th>Acción</th>
                                 @endif
+                               	<th>Equipos</th>
                             </tr>
                             </thead>
 
@@ -79,6 +80,9 @@
 	                                            <button data-toggle="modal" data-target="#edit-item{{$rowplant->id}}" class="btn btn-round btn-warning edit-item">Editar</button>
 	                                        </td>
                                         @endif
+                                        <td>
+											<a href="/nav_equipments/{{ $rowplant->id }} "><div type="button" class="btn btn-round btn-success">Equipos</div></a>
+										</td>
                                     </tr>
 									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 	                                    <!-- Edit Item Modal -->

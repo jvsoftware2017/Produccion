@@ -25,7 +25,7 @@
                         <h3>General</h3>
                         <ul class="nav side-menu">
                             @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
-                            <li><a><i class="fa fa-wrench"></i> Panel de Control <span class="fa fa-chevron-down"></span></a>
+                            <li><a><i class="fa fa-wrench"></i> Panel de Administración <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="/clients">Clientes</a></li>
                                     <li><a href="/plants">Sedes</a></li>
@@ -35,6 +35,11 @@
                                 </ul>
                             </li>
                             @endif
+                             <li><a><i class="fa fa-edit"></i> Panel de Usuario <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="/clients">Clientes</a></li>
+                                </ul>
+                            </li>
                             <li><a><i class="fa fa-edit"></i> Monitor <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="/monitor">Monitor</a></li>

@@ -46,13 +46,14 @@
 								<th>Cliente</th>
 								<th>Sede</th>
 								<th>Referencia</th>
-								<th>Identificacion</th>
+								<th>ID</th>
 								<th>Fecha registro</th>
 								<th>Fecha modificación</th>
 								<th>Estado</th>
 								@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 									<th>Acción</th>
 								@endif
+								<th>Monitor</th>
 							</tr>
 							</thead>
 							<tbody>
@@ -78,6 +79,9 @@
 													<div type="button" id="edit-client" class="btn btn-round btn-warning" data-toggle="modal" data-target="#edit-item{{ $rowEquipment->id }}" >Editar</div>
 												</td>
 											@endif
+											<td>
+												<a href="/monitor/{{$rowEquipment->id}}"><div type="button" class="btn btn-round btn-success">Monitor</div></a>
+											</td>
 										</tr>
 									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 										<!-- Edit Item Modal -->
