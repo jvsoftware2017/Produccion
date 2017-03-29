@@ -17,4 +17,8 @@ class Plant extends Model
     public function equipment() {
     	return $this->hasMany('App\Equipment');
     }
+    
+    public function users() {
+    	return $this->hasMany('App\User', 'id_plant');
+    }
 }

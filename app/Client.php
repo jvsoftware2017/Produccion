@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
     public function plant(){
-        return $this->hasMany('App\Plant');
+        return $this->hasMany('App\Plant', 'id_client');
     }
 
     protected $fillable = ['name', 'email', 'status', 'urlLogo', 'maxUsers', 'validity'];

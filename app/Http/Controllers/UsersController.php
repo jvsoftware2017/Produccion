@@ -58,6 +58,7 @@ class UsersController extends Controller
     			'name' => 'required|max:255|',
     			'email' => 'required|email|max:255',
     			'id_client' => 'required|numeric',
+    			'id_plant' => 'required|numeric',
     			'id_role' => 'required|numeric',
     			'status' => 'required',
     			'password' => 'required|min:6',
@@ -118,6 +119,7 @@ class UsersController extends Controller
     			'name' => 'required|max:255|',
     			'email' => 'required|email|max:255',
     			'id_client' => 'required|numeric',
+    			'id_plant' => 'required|numeric',
     			'id_role' => 'required|numeric',
     			'status' => 'required',
     			'password' => $passwordValidation
@@ -136,8 +138,9 @@ class UsersController extends Controller
     	$user->id_client = $request->id_client;
     	$user->id_role = $request->id_role;
     	$user->status = $request->status;
+    	$user->id_plant= $request->id_plant;
     	$user->updated_at = Carbon::now();
-    	$user->save();
+    	$user->update();
     	session()->flash('message', 'Se ha editado el usuario correctamente.');
     	return redirect('/users');
     }

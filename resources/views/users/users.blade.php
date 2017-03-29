@@ -81,6 +81,29 @@
 													</select>
 													<div class="help-block with-errors"></div>
 												</div>
+												@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+												<div class="form-group">
+													<label class="control-label" for="plant">Sede:</label>
+													<select class="form-control" name="id_plant" id="plant">
+														@foreach($dataClient as $rowclient)
+															@foreach($rowclient->plant as $clientPlant)
+																<option value="{{$clientPlant->id}}">{{$clientPlant->name}}</option>
+															@endforeach
+														@endforeach
+													</select>
+													<div class="help-block with-errors"></div>
+												</div>
+												@else
+												<div class="form-group">
+													<label class="control-label" for="plant">Sede:</label>
+													<select class="form-control" name="id_plant" id="plant">
+														@foreach(Auth::user()->client->plant as $clientPlant)
+															<option value="{{$clientPlant->id}}">{{$clientPlant->name}}</option>
+														@endforeach
+													</select>
+													<div class="help-block with-errors"></div>
+												</div>
+												@endif
 												<div class="form-group">
 													<label class="control-label" for="role">Role:</label> <select
 														class="form-control" name="id_role" id="role">
@@ -116,10 +139,10 @@
 					<table id="datatable" class="table table-striped table-bordered">
 							<thead>
 								<tr>
-									<th>Id</th>
 									<th>Nombre</th>
 									<th>E-mail</th>
 									<th>Cliente</th>
+									<th>Sede</th>
 									<th>Role</th>
 									<th>Creado</th>
 									<th>Último Acceso</th>
@@ -137,10 +160,10 @@
 								@else
 									<tr>
 								@endif
-										<td>{{ $rowuser->id }}</td>
 										<td>{{ $rowuser->name }}</td>
 										<td>{{ $rowuser->email }}</td>
 										<td>{{ $rowuser->client->name }}</td>
+										<td>{{ $rowuser->plant->name }}</td>
 										<td>{{ $rowuser->role->description }}</td>
 										<td>{{ $rowuser->created_at }}</td>
 										<td>{{ $rowuser->last_login }}</td>
@@ -190,6 +213,31 @@
 	                                                            </select>
 	                                                            <div class="help-block with-errors"></div>
 	                                                        </div>
+	                                                        @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+															<div class="form-group">
+																<label class="control-label" for="plant">Sede:</label>
+																<select class="form-control" name="id_plant" id="plant">
+																	<option selected value="{{$rowuser->plant->id}}">{{$rowuser->plant->name}}</option>
+																	@foreach($dataClient as $rowclient)
+																		@foreach($rowclient->plant as $clientPlant)
+																			<option value="{{$clientPlant->id}}">{{$clientPlant->name}}</option>
+																		@endforeach
+																	@endforeach
+																</select>
+																<div class="help-block with-errors"></div>
+															</div>
+															@else
+															<div class="form-group">
+																<label class="control-label" for="plant">Sede auth:</label>
+																<select class="form-control" name="id_plant" id="plant">
+																	<option selected value="{{$rowuser->plant->id}}">{{$rowuser->plant->name}}</option>
+																	@foreach(Auth::user()->client->plant as $clientPlant)
+																		<option value="{{$clientPlant->id}}">{{$clientPlant->name}}</option>
+																	@endforeach
+																</select>
+																<div class="help-block with-errors"></div>
+															</div>
+															@endif
 	                                                        <div class="form-group">
 	                                                            <label class="control-label" for="role">Role:</label>
 	                                                            <select class="form-control" name="id_role" id="role">
