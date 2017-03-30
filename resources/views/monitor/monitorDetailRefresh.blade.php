@@ -32,8 +32,8 @@
                             </div>
                         @endif
                     <div><p align="right"><strong style="color: green;font-size: 16px"><?php echo date('Y-m-d H:i:s');?></strong></p></div>    
-                    @foreach($dataEquipo as $row)
-                                    @foreach($row as $rowmonitor)                     
+                    @foreach($dataEquipo as $rowmonitor)
+                               
                     <div align="center"><h4 class="modal-title" id="myModalLabel"> <strong>{{ $rowmonitor->equipo->MODELO_EQUIPO." - ".$rowmonitor->equipo->NOMBRE_EQUIPO }}</strong></h4></div>
                     <table align="center" style="border-collapse:separate;border-spacing:15px;" border="0" width="70%" class="table-responsive">
                                                               <tr>
@@ -77,8 +77,15 @@
                                                                 <td align="center">Evento</td>
                                                                 <td align="center">Tipo</td>                                                                
                                                               </tr>
+                                                              @foreach($dataEvent as $rowevent)
+                                                              	<tr>
+	                                                                <td align="center">{{$rowevent->created_at}}</td>
+	                                                                <td align="center">{{$rowevent->state->name}}</td>
+	                                                                <td align="center">{{$rowevent->type}}</td>                                                                
+                                                              	</tr>
+                                                              @endforeach
                                                             </table>
-                            @endforeach
+                        
                             @endforeach
                     </div>
                 </div>

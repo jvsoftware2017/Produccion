@@ -43,12 +43,7 @@
                                 <th>Id Equipo</th>
                                 <th>TAG ID</th>
                                 <th>Sede</th>
-                                <th>Estado</th>
-                                <th>GStat_bit0</th>
-                                <th>GStat_bit1</th>
-                                <th>GStat_bit2</th>
-                                <th>GStat_bit3</th>
-                                <th>GStat_bit4</th>      
+                                <th>Estado</th>  
                                 <th>Variables...</th>                          
                             </tr>
                             </thead>
@@ -61,17 +56,12 @@
 											<tr>
 										@endif
 										<td>
-			                                <a href="/monitor/{{$rowmonitor->id}}"><button class="btn btn-round btn-warning edit-item">Ver</button></a> 		                                
+			                                <a href="/monitor/{{$rowmonitor->id_equipo}}"><button class="btn btn-round btn-warning edit-item">Ver</button></a> 		                                
 			                        	</td>
 		                                <td>{{$rowmonitor->equipo->ID_EQUIPO}}</td>
 		                                <td>{{$rowmonitor->equipo->NOMBRE_EQUIPO}}</td>
 		                                <td>{{$rowmonitor->plant->name}}</td>
 		                                <td>{{$rowmonitor->equipo->ESTADO_EQUIPO}}</td>
-		                                <td>{{(($rowmonitor->equipo->DP_0))}}</td>
-		                                <td>{{(($rowmonitor->equipo->DP_1))}}</td>
-		                                <td>{{(($rowmonitor->equipo->DP_2))}}</td>
-		                                <td>{{(($rowmonitor->equipo->DP_3))}}</td>
-		                                <td>{{(($rowmonitor->equipo->DP_4))}}</td> 
 		                                <td align="center">		 									
 		 									<input type="button" value="Ver Más" onclick="mostrar({{$rowmonitor->equipo->ID_EQUIPO}})">	
 					                    </td>                           
@@ -84,7 +74,7 @@
 					                                <td colspan="2" align="center"><input type="button" value="Ver Menos" onclick="ocultar({{$rowmonitor->equipo->ID_EQUIPO}})"></td> 
 					                                </tr>
 			                                		<?php 
-													for($i=5;$i<94;$i++){
+													for($i=0;$i<94;$i++){
 														$var = "DP_".$i;
 											 			echo "<tr><td align='center' width='10%'>".$nameVariables[$var]."</td>";											 			
 											 			echo "<td align='center' width='10%'>".(($rowmonitor->equipo->$var))."</td></tr>";
