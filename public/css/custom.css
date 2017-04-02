@@ -38,4 +38,14 @@
 	border-radius: 50px;
 }
 
+#circle2 {
+	width: 10px;
+	height: 10px;
+	background: yellow;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+}
+
+
 

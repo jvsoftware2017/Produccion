@@ -138,14 +138,14 @@ class EquiposController extends Controller
     public function detail($id)
     {
     	$dataEquipo = Equipment::where('id_equipo', $id)->get();
-    	$dataEvent = Event::where('id_equipo', $id)->get();
+    	$dataEvent = Event::where('id_equipo', $id)->orderby('id', 'desc')->limit('10')->get();
     	return view('monitor.monitorDetail', compact('dataEquipo', 'dataEvent'));
     }
     
     public function refreshDetail($id)
     {
     	$dataEquipo = Equipment::where('id_equipo', $id)->get();
-    	$dataEvent = Event::where('id_equipo', $id)->get();
+    	$dataEvent = Event::where('id_equipo', $id)->orderby('id', 'desc')->limit('10')->get();
     	return view('monitor.monitorDetailRefresh', compact('dataEquipo', 'dataEvent'));
     }
 

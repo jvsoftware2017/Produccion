@@ -37,51 +37,82 @@
                     <div align="center"><h4 class="modal-title" id="myModalLabel"> <strong>{{ $rowmonitor->equipo->MODELO_EQUIPO." - ".$rowmonitor->equipo->NOMBRE_EQUIPO }}</strong></h4></div>
                     <table align="center" style="border-collapse:separate;border-spacing:15px;" border="0" width="70%" class="table-responsive">
                                                               <tr>
-                                                                <td></td>
-                                                                <td align="center">Comunicación OK <canvas id="circle0"></canvas></td>
-                                                                <th align="left" rowspan="2" style="background-color: gray;color: white;l">{{$rowmonitor->model}}<br/>{{$rowmonitor->serialNumber}}<br/>Power: {{$rowmonitor->power}}<br/>Current: {{$rowmonitor->voltage}}</th>                                                                
-                                                              </tr>
-                                                              <tr>
-                                                                <td align="right">Run FW <canvas id="circle{{(($rowmonitor->equipo->DP_2))}}"></canvas> </td>
-                                                                <th rowspan="6" style="max-height: 80%;max-width: 100%">
+                                                                @if((($rowmonitor->equipo->DP_2))== 1)
+                                                                <td align="right">Run FW <canvas id="circle0"></canvas> </td>
+                                                                @else
+                                                                <td align="right"></td>
+                                                                @endif
+                                                                <td align="center" rowspan="6" style="max-height: 80%;max-width: 100%">
                                                                 <div align="center"> <img alt="Equipo {{ $rowmonitor->equipo->NOMBRE_EQUIPO }}" src="../equipmentImg/{{ $rowmonitor->urlImg }}" class="img-responsive"> </div>
-                                                                </th>                                                                
+                                                                </td> 
+                                                                <td align="left">Comunicación OK <canvas id="circle0"></canvas></td>     
+                                                                <td align="left"></td>                                                          
                                                               </tr>
                                                               <tr>
-                                                                <td align="right">Run BW <canvas id="circle{{(($rowmonitor->equipo->DP_3))}}"></canvas></td>
-                                                                <td align="left">Operation Hrs: <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_40}}</strong></td>
+                                                              	@if((($rowmonitor->equipo->DP_3))== 1)
+                                                                <td align="right">Run BW <canvas id="circle0"></canvas></td>
+                                                                @else
+                                                                <td align="right"></td>
+                                                                @endif                                                                
+                                                                <td align="left">Operation Hrs: </td>
+                                                                <td align="left"><strong style="font-size: 16px">{{$rowmonitor->equipo->DP_40}} Hrs</strong></td>
                                                               </tr>
                                                               <tr>
-                                                                <td align="right">READY <canvas id="circle{{(($rowmonitor->equipo->DP_4))}}"></canvas></td>
-                                                                <td align="left">Next Mantenaince: <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_39}}</strong></td>
+                                                                @if((($rowmonitor->equipo->DP_4))== 1)
+                                                                <td align="right">READY <canvas id="circle0"></canvas></td>
+                                                                @else
+                                                                <td align="right"></td>
+                                                                @endif
+                                                                <td align="left">Next Mantenaince: </td>
+                                                                <td align="left"><strong style="font-size: 16px">{{$rowmonitor->equipo->DP_39}} Hrs</strong></td>
                                                               </tr>
                                                               <tr>
-                                                                <td align="right">At Speed Ref <canvas id="circle{{(($rowmonitor->equipo->DP_7))}}"></canvas></td>
-                                                                <td align="left">Temperature: <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_44}}</strong></td>
+                                                              	@if((($rowmonitor->equipo->DP_7))== 1)
+                                                                <td align="right">At Speed Ref <canvas id="circle0"></canvas></td>
+                                                                @else
+                                                                <td align="right"></td>
+                                                                @endif
+                                                               	<td align="left">Temperature: </td>
+                                                                <td align="left"><strong style="font-size: 16px">{{$rowmonitor->equipo->DP_44}} °C</strong></td>
                                                               </tr>
                                                               <tr>
-                                                                <td align="right">Warning <canvas id="circle{{(($rowmonitor->equipo->DP_1))}}"></canvas></td>
-                                                                <td align="left">Humidity: <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_49}}</strong></td>
+                                                              	@if((($rowmonitor->equipo->DP_1))== 1)
+                                                                <td align="right">Warning <canvas id="circle2"></canvas></td>
+                                                                @else
+                                                                <td align="right"></td>
+                                                                @endif
+                                                                <td align="left">Humidity: </td>
+                                                                <td align="left"><strong style="font-size: 16px">{{$rowmonitor->equipo->DP_49}} %</strong></td>
                                                               </tr>
                                                               <tr>
-                                                                <td align="right">Flaut <canvas id="circle{{(($rowmonitor->equipo->DP_0))}}"></canvas></td>
-                                                                <td align="left">Speed: <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_16}}</strong></td>
-                                                              </tr>
+                                                              	@if((($rowmonitor->equipo->DP_0))== 1)
+                                                                <td align="right">Fault <canvas id="circle1"></canvas></td>
+                                                                @else
+                                                                <td align="right"></td>
+                                                                @endif
+                                                                <td align="left">Speed: </td>
+                                                                <td align="left"><strong style="font-size: 16px">{{$rowmonitor->equipo->DP_16}}</strong></td>
+                                                             </tr>
                                                               <tr>
                                                                 <td align="center"></td>
                                                                 <td align="center"></td>
                                                                 <td align="center"></td>
+                                                                <td align="center"></td>
                                                               </tr>
-                                                              <tr style="background-color: red;color: white; font-size: 14px;">
+                                                              <tr style="background-color: gray;color: white; font-size: 14px;">
                                                                 <td align="center">Fecha</td>
-                                                                <td align="center">Evento</td>
-                                                                <td align="center">Tipo</td>                                                                
+                                                                <td align="center" colspan="2">Evento</td>
+                                                                <td align="center">Tipo</td>                                                           
                                                               </tr>
                                                               @foreach($dataEvent as $rowevent)
-                                                              	<tr>
+                                                              	@if($rowevent->type == 'alarm')
+                                                              	<tr style="background-color: red;color: white;">
+                                                              	@else
+																<tr>
+																@endif
 	                                                                <td align="center">{{$rowevent->created_at}}</td>
-	                                                                <td align="center">{{$rowevent->state->name}}</td>
-	                                                                <td align="center">{{$rowevent->type}}</td>                                                                
+	                                                                <td align="center" colspan="2">{{$rowevent->state->name}}</td>
+	                                                                <td align="center">{{$rowevent->type}}</td>                                                            
                                                               	</tr>
                                                               @endforeach
                                                             </table>

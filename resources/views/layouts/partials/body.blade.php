@@ -61,6 +61,10 @@
                     <div class="nav toggle">
                         <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                     </div>
+                    
+                    <div class="nav toggle">
+                        <p style="font-size: 22px">DriveSysMonitor</p>
+                    </div>
 
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">

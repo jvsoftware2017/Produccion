@@ -48,8 +48,9 @@
 								<th>Referencia</th>
 								<th>ID</th>
 								<th>Fecha registro</th>
-								<th>Fecha modificación</th>
-								<th>Estado</th>
+								<th>Activo (S/N)</th>
+								<th>Alarma</th>
+								<th>Falla</th>
 								@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 									<th>Acción</th>
 								@endif
@@ -71,8 +72,18 @@
 											<td>{{ $rowEquipment->model }}</td>
 											<td><a href="/monitor/{{$rowEquipment->id}}">{{ $rowEquipment->id_equipo }}</a></td>
 											<td>{{ $rowEquipment->created_at }}</td>
-											<td>{{ $rowEquipment->updated_at }}</td>
 											<td>{{ $rowEquipment->status }}</td>
+											@if((($rowEquipment->equipo->DP_1)) == 1)
+											<td align="center"><canvas id="circle2"></canvas></td>
+											@else
+											<td align="center"><canvas id="circle0"></canvas></td>
+											@endif
+											@if((($rowEquipment->equipo->DP_0)) == 1)
+											<td align="center"><canvas id="circle1"></canvas></td>
+											@else
+											<td align="center"><canvas id="circle0"></canvas></td>
+											@endif
+											
 											@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 												<td>
 													<!-- Large modal -->
