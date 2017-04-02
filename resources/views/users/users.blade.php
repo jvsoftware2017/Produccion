@@ -74,7 +74,7 @@
 												<div class="form-group">
 													<label class="control-label" for="client">Cliente:</label>
 													<select
-														class="form-control" name="id_client" id="client">
+														class="form-control" name="id_client" id="id_client">
 														@foreach($dataClient as $rowclient)
 														<option value="{{$rowclient->id}}">{{$rowclient->name}}</option>
 														@endforeach
@@ -84,12 +84,8 @@
 												@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 												<div class="form-group">
 													<label class="control-label" for="plant">Sede:</label>
-													<select class="form-control" name="id_plant" id="plant">
-														@foreach($dataClient as $rowclient)
-															@foreach($rowclient->plant as $clientPlant)
-																<option value="{{$clientPlant->id}}">{{$clientPlant->name}}</option>
-															@endforeach
-														@endforeach
+													<select class="form-control" name="id_plant" id="id_plant">
+
 													</select>
 													<div class="help-block with-errors"></div>
 												</div>
@@ -205,7 +201,7 @@
 	                                                        </div>
 	                                                        <div class="form-group">
 	                                                            <label class="control-label" for="client">Cliente:</label>
-	                                                            <select class="form-control" name="id_client" id="client">
+	                                                            <select class="form-control" name="id_client" id="id_client_editModal">
 	                                                                    <option selected value="{{$rowuser->client->id}}">{{$rowuser->client->name}}</option>
 	                                                                <@foreach($dataClient as $rowclient)
 	                                                                 <option value="{{$rowclient->id}}">{{$rowclient->name}}</option>
@@ -216,13 +212,9 @@
 	                                                        @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 															<div class="form-group">
 																<label class="control-label" for="plant">Sede:</label>
-																<select class="form-control" name="id_plant" id="plant">
+																<select class="form-control" name="id_plant" id="id_plant_editModal">
 																	<option selected value="{{$rowuser->plant->id}}">{{$rowuser->plant->name}}</option>
-																	@foreach($dataClient as $rowclient)
-																		@foreach($rowclient->plant as $clientPlant)
-																			<option value="{{$clientPlant->id}}">{{$clientPlant->name}}</option>
-																		@endforeach
-																	@endforeach
+
 																</select>
 																<div class="help-block with-errors"></div>
 															</div>

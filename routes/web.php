@@ -25,6 +25,7 @@ Route::group(['middleware' => ['validity', 'active']], function () {
 			Route::get('/user-accessDelete/{idUserAccess}', 'UserAccessController@destroy');
 			
 			Route::get('/us_equipments/{plant}', 'PlantsController@getEquipments');
+			Route::get('/clientPlants/{idClient}', 'ClientsController@getPlants');
 			
 		});
 		

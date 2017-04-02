@@ -143,6 +143,12 @@ class ClientsController extends Controller
         session()->flash('message', 'Se ha actualizado el cliente');
         return redirect('/clients');
     }
+    
+    public  function getPlants($id){
+    	$client = Client::find($id);
+    	$plants = $client->plant;
+    	return response()->json($plants);
+    }
 
     /**
      * Remove the specified resource from storage.

@@ -9,6 +9,8 @@ use App\Client;
 use App\Role;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Welcome;
 
 class UsersController extends Controller
 {
@@ -68,10 +70,11 @@ class UsersController extends Controller
     	    		$request->merge(['id_role' => 2]);
     	}
     	
+    	$password = $request->password;
     	$request->merge(['password' => bcrypt($request->password)]);
-    	
     	$user = $request->all();
     	User::create($user);
+    	Mail::to($request->email)->send(new Welcome($password));
     	session()->flash('message', 'Se ha creado el usuario correctamente.');
     	return redirect('/users');
     }
