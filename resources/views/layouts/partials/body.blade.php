@@ -34,12 +34,13 @@
                                     <li><a href="/user-access">Acceso Usuario</a></li>
                                 </ul>
                             </li>
-                            @endif
+                            
                              <li><a><i class="fa fa-edit"></i> Panel de Usuario <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="/clients">Clientes</a></li>
                                 </ul>
                             </li>
+                            @endif
                             <li><a><i class="fa fa-edit"></i> Monitor <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="/monitor">Monitor</a></li>

@@ -7,6 +7,7 @@ use App\User;
 use App\Plant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Equipment;
 
 class UserAccessController extends Controller
 {
@@ -18,15 +19,17 @@ class UserAccessController extends Controller
     public function index()
     {
     	if(Auth::user()->role->description == 'client'){
-    		$dataUser = User::where('id_client', Auth::user()->id_client)->get();
-    		$dataPlant = Plant::where('id_client', Auth::user()->id_client)->get();
-    		$dataUserAccess = UserAccess::where('id_client', Auth::user()->id_client)->get();
+    		$dataUser = User::where('id_client', Auth::user()->id_client)->where('id_role', '>', '3')->get();
+    		$dataPlant = Plant::where('id', Auth::user()->id_plant)->get();
+    		$dataEquipment = Equipment::where('id_plant', Auth::user()->id_plant)->get();
+    		$dataUserAccess = UserAccess::all();
     	}else{
     		$dataUser = User::all();
     		$dataPlant = Plant::all();
+    		$dataEquipment = Equipment::all();
     		$dataUserAccess = UserAccess::all();
     	}
-    	return view('usersAccess.usersAccess', compact('dataUserAccess', 'dataPlant', 'dataUser'));
+    	return view('usersAccess.usersAccess', compact('dataUserAccess', 'dataPlant', 'dataUser', 'dataEquipment'));
     	
     }
 
@@ -50,7 +53,6 @@ class UserAccessController extends Controller
     {
     	$this->validate($request, [
     			'id_user' => 'required|numeric',
-    			'id_plant' => 'required|numeric',
     			'id_equipment' => 'required|numeric',
     	]);    	 
     	$userAccess = $request->all();

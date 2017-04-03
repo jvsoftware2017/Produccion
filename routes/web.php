@@ -21,10 +21,9 @@ Route::group(['middleware' => ['validity', 'active']], function () {
 		Route::group(['middleware' => 'admin'], function () {
 			
 			Route::post('/clients', 'ClientsController@store');
-			Route::post('/user-access', 'UserAccessController@store');
+			
 			Route::get('/user-accessDelete/{idUserAccess}', 'UserAccessController@destroy');
 			
-			Route::get('/us_equipments/{plant}', 'PlantsController@getEquipments');
 			Route::get('/clientPlants/{idClient}', 'ClientsController@getPlants');
 			
 		});
@@ -47,6 +46,8 @@ Route::group(['middleware' => ['validity', 'active']], function () {
 		Route::put('/clients/{client}', 'ClientsController@update');		
 		
 		Route::get('/user-access', 'UserAccessController@index');
+		Route::post('/user-access', 'UserAccessController@store');
+		Route::get('/us_equipments/{plant}', 'PlantsController@getEquipments');
 		
 	});
 	

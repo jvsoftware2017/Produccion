@@ -91,8 +91,16 @@
                                                                 <td align="right"></td>
                                                                 @endif
                                                                 <td align="left">Speed: </td>
-                                                                <td align="left"><strong style="font-size: 16px">{{$rowmonitor->equipo->DP_16}}</strong></td>
-                                                             </tr>
+                                                                @if((($rowmonitor->equipo->DP_8))== 1)
+                                                                <td align="left"><strong style="font-size: 16px">{{$rowmonitor->equipo->DP_16}} %</strong></td>
+                                                                @endif
+                                                                @if((($rowmonitor->equipo->DP_9))== 1)
+                                                                <td align="left"><strong style="font-size: 16px">{{$rowmonitor->equipo->DP_16}} RPM</strong></td>
+                                                                @endif
+                                                                @if((($rowmonitor->equipo->DP_10))== 1)
+                                                                <td align="left"><strong style="font-size: 16px">{{$rowmonitor->equipo->DP_16}} Hz</strong></td>
+                                                                @endif
+                                                              </tr>
                                                               <tr>
                                                                 <td align="center"></td>
                                                                 <td align="center"></td>

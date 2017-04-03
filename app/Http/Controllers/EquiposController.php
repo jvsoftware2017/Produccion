@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\UserAccess;
 use App\Equipment;
 use App\Event;
+use App\Plant;
 
 class EquiposController extends Controller
 {
@@ -116,10 +117,21 @@ class EquiposController extends Controller
     public function index()
     {
     	$dataEquipo = array();
-    	$equipos = UserAccess::where('id_user' , Auth::user()->id)->get();
-    	foreach ($equipos as $equipo){
-    		array_push($dataEquipo, Equipment::where('id', $equipo->id_equipment)->get());
+    	if(Auth::user()->role->description == 'admin' || Auth::user()->role->description == 'developer'){
+    		array_push($dataEquipo,Equipment::all());
+    	}elseif(Auth::user()->role->description == 'client'){
+    		$plants = Plant::where('id_client' , Auth::user()->id_client)->get();
+    		foreach ($plants as $plant){
+    			array_push($dataEquipo, Equipment::where('id_plant', $plant->id)->get());
+    		}
+    		
+    	}else{
+    		$equipos = UserAccess::where('id_user' , Auth::user()->id)->get();
+    		foreach ($equipos as $equipo){
+    			array_push($dataEquipo, Equipment::where('id', $equipo->id_equipment)->get());
+    		}
     	}
+    	
    		$nameVariables = $this->nameVariablesG;
     	return view('monitor.monitor', compact('dataEquipo','nameVariables'));
     }
@@ -127,9 +139,18 @@ class EquiposController extends Controller
     public function refresh()
     {
     	$dataEquipo = array();
-    	$equipos = UserAccess::where('id_user' , Auth::user()->id)->get();
-    	foreach ($equipos as $equipo){
-    		array_push($dataEquipo, Equipment::where('id', $equipo->id_equipment)->get());
+    	if(Auth::user()->role->description == 'admin' || Auth::user()->role->description == 'developer'){
+    		array_push($dataEquipo,Equipment::all());
+    	}elseif(Auth::user()->role->description == 'client'){
+    		$plants = Plant::where('id_client' , Auth::user()->id_client)->get();
+    		foreach ($plants as $plant){
+    			array_push($dataEquipo, Equipment::where('id_plant', $plant->id)->get());
+    		}
+    	}else{
+    		$equipos = UserAccess::where('id_user' , Auth::user()->id)->get();
+    		foreach ($equipos as $equipo){
+    			array_push($dataEquipo, Equipment::where('id', $equipo->id_equipment)->get());
+    		}
     	}
     	$nameVariables = $this->nameVariablesG;
     	return view('monitor.monitorRefresh', compact('dataEquipo','nameVariables'));

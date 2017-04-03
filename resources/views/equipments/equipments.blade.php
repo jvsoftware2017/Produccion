@@ -70,7 +70,7 @@
 											<td>{{ $rowEquipment->Plant->client->name }}</td>
 											<td>{{ $rowEquipment->plant->name }}</td>
 											<td>{{ $rowEquipment->model }}</td>
-											<td><a href="/monitor/{{$rowEquipment->id}}">{{ $rowEquipment->id_equipo }}</a></td>
+											<td><a href="/monitor/{{$rowEquipment->id_equipo}}">{{ $rowEquipment->id_equipo }}</a></td>
 											<td>{{ $rowEquipment->created_at }}</td>
 											<td>{{ $rowEquipment->status }}</td>
 											@if((($rowEquipment->equipo->DP_1)) == 1)
@@ -91,7 +91,7 @@
 												</td>
 											@endif
 											<td>
-												<a href="/monitor/{{$rowEquipment->id}}"><div type="button" class="btn btn-round btn-success">Monitor</div></a>
+												<a href="/monitor/{{$rowEquipment->id_equipo}}"><div type="button" class="btn btn-round btn-success">Monitor</div></a>
 											</td>
 										</tr>
 									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))

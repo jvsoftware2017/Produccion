@@ -12,9 +12,6 @@ class UserAccess extends Model
 		return $this->belongsTo('App\User', 'id_user');
 	}
 	
-	public function plant() {
-		return $this->belongsTo('App\Plant', 'id_plant');
-	}
 	
 	public function equipment() {
 		return $this->belongsTo('App\Equipment', 'id_equipment');

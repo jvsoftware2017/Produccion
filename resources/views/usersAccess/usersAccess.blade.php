@@ -45,7 +45,6 @@
 									<th>Cliente</th>	
 									<th>Usuario</th>
 									<th>Email(Username)</th>									
-									<th>Sede</th>
 									<th>Equipo</th>
 									<th>Fecha Asignación</th>
 									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
@@ -64,8 +63,7 @@
 										<td>{{ $rowUserAccess->user->client->name }}</td>
 										<td>{{ $rowUserAccess->user->name }}</td>
 										<td>{{ $rowUserAccess->user->email }}</td>										
-										<td>{{ $rowUserAccess->plant->name }}</td>
-										<td>{{ $rowUserAccess->equipment->name }}</td>
+										<td>fgg</td>
 										<td>{{ $rowUserAccess->created_at }}</td>
 										@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 											<td>
@@ -74,7 +72,9 @@
 
 										@endif
 									</tr>
-								@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
+								@endforeach
+							</tbody>
+							@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 										<!-- Create Access Item Modal -->
 										<div class="modal fade" id="create-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 											<div class="modal-dialog" role="document">
@@ -104,9 +104,7 @@
 																<select class="form-control" name="id_plant" id="id_plant">
 																<option value="">Seleccione</option>
 																	<@foreach($dataPlant as $rowplant)
-																		@if($rowUserAccess->user->client->id == $rowplant->id_client && $rowplant->status == 'active')
 																			<option value="{{$rowplant->id}}">{{$rowplant->name}}</option>
-																		@endif
 																	@endforeach
 																</select>
 																<div class="help-block with-errors"></div>
@@ -129,10 +127,7 @@
 											</div>
 										</div>
 
-                                    @endif	
-								@endforeach
-							</tbody>
-						</table>
+                                    @endif
 					</div>
 				</div>
 			</div>
