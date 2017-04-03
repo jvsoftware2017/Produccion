@@ -110,6 +110,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+    	$user = User::find($id);
     	$passwordValidation = '';
     	
     	if (isset($request->password)){
@@ -135,7 +136,6 @@ class UsersController extends Controller
     		$request->merge(['id_role' => 3]);
     	}
     	
-    	$user = User::find($id);
     	$user->name = $request->name;
     	$user->email = $request->email;
     	$user->id_client = $request->id_client;
