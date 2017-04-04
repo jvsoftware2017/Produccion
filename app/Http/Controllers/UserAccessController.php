@@ -20,13 +20,9 @@ class UserAccessController extends Controller
     {
     	if(Auth::user()->role->description == 'client'){
     		$dataUser = User::where('id_client', Auth::user()->id_client)->where('id_role', '>', '3')->get();
-    		//$dataPlant = Plant::where('id', Auth::user()->id_plant)->get();
-    		//$dataEquipment = Equipment::where('id_plant', Auth::user()->id_plant)->get();
     		$dataUserAccess = UserAccess::all();
     	}else{
     		$dataUser = User::where('id_role', '>', '3')->get();
-    		//$dataPlant = Plant::all();
-    		//$dataEquipment = Equipment::all();
     		$dataUserAccess = UserAccess::all();
     	}
     	return view('usersAccess.usersAccess', compact('dataUserAccess', 'dataUser'));
@@ -54,10 +50,16 @@ class UserAccessController extends Controller
     	$this->validate($request, [
     			'id_user' => 'required|numeric',
     			'id_equipment' => 'required|numeric',
-    	]);    	 
-    	$userAccess = $request->all();
-    	UserAccess::create($userAccess);
-    	session()->flash('message', 'Se ha creado el acceso correctamente.');
+    	]); 
+    	$validExist = UserAccess::where('id_user', $request->id_user)->where('id_equipment', $request->id_equipment)->get();
+    	if( !count($validExist)){
+    		$userAccess = $request->all();
+    		UserAccess::create($userAccess);
+    		session()->flash('message', 'Se ha creado el acceso correctamente.');
+    	}else{
+    		session()->flash('message', 'El registro ya existe!!!');
+    	}
+    	
     	return redirect('/user-access');
     }
 
