@@ -20,16 +20,16 @@ class UserAccessController extends Controller
     {
     	if(Auth::user()->role->description == 'client'){
     		$dataUser = User::where('id_client', Auth::user()->id_client)->where('id_role', '>', '3')->get();
-    		$dataPlant = Plant::where('id', Auth::user()->id_plant)->get();
-    		$dataEquipment = Equipment::where('id_plant', Auth::user()->id_plant)->get();
+    		//$dataPlant = Plant::where('id', Auth::user()->id_plant)->get();
+    		//$dataEquipment = Equipment::where('id_plant', Auth::user()->id_plant)->get();
     		$dataUserAccess = UserAccess::all();
     	}else{
-    		$dataUser = User::all();
-    		$dataPlant = Plant::all();
-    		$dataEquipment = Equipment::all();
+    		$dataUser = User::where('id_role', '>', '3')->get();
+    		//$dataPlant = Plant::all();
+    		//$dataEquipment = Equipment::all();
     		$dataUserAccess = UserAccess::all();
     	}
-    	return view('usersAccess.usersAccess', compact('dataUserAccess', 'dataPlant', 'dataUser', 'dataEquipment'));
+    	return view('usersAccess.usersAccess', compact('dataUserAccess', 'dataUser'));
     	
     }
 

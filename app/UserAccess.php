@@ -10,8 +10,7 @@ class UserAccess extends Model
 	protected $table = 'user_access';
 	public function user() {
 		return $this->belongsTo('App\User', 'id_user');
-	}
-	
+	}	
 	
 	public function equipment() {
 		return $this->belongsTo('App\Equipment', 'id_equipment');

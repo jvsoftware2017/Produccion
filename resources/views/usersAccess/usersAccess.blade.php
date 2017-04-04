@@ -63,7 +63,7 @@
 										<td>{{ $rowUserAccess->user->client->name }}</td>
 										<td>{{ $rowUserAccess->user->name }}</td>
 										<td>{{ $rowUserAccess->user->email }}</td>										
-										<td>fgg</td>
+										<td>{{ $rowUserAccess->equipment->name }}</td>
 										<td>{{ $rowUserAccess->created_at }}</td>
 										@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
 											<td>
@@ -87,26 +87,18 @@
 
 													<form data-toggle="validator" action="/user-access" method="POST">
 													{{ csrf_field() }}
-													
+															
 															<div class="form-group">
 																<label class="control-label" for="plant">Usuario</label>
 																<select class="form-control" name="id_user" id="id_user">
 																<option value="">Seleccione</option>
-																	<@foreach($dataUser as $rowuser)
+																	@foreach($dataUser as $rowuser)
 																			<option value="{{$rowuser->id}}">{{$rowuser->name}} ({{$rowuser->email}})</option>
 																	@endforeach
 																</select>
-																<div class="help-block with-errors"></div>
-															</div>
-
-															<div class="form-group">
-																<label class="control-label" for="plant">Sede</label>
-																<select class="form-control" name="id_plant" id="id_plant">
-																<option value="">Seleccione</option>
-																	<@foreach($dataPlant as $rowplant)
-																			<option value="{{$rowplant->id}}">{{$rowplant->name}}</option>
-																	@endforeach
-																</select>
+																@foreach($dataUser as $rowuser)
+																	<input type="hidden" id="id_plant{{$rowuser->id}}" value="{{$rowuser->id_plant}}"/>
+																@endforeach
 																<div class="help-block with-errors"></div>
 															</div>
 															<div class="form-group">
@@ -128,6 +120,7 @@
 										</div>
 
                                     @endif
+                                    </table>
 					</div>
 				</div>
 			</div>
