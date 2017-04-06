@@ -36,6 +36,7 @@
                                
                     <div align="center"><h4 class="modal-title" id="myModalLabel"> <strong>{{ $rowmonitor->equipo->MODELO_EQUIPO." - ".$rowmonitor->equipo->NOMBRE_EQUIPO }}</strong></h4></div>
                     <table align="center" style="border-collapse:separate;border-spacing:15px;" border="0" width="70%" class="table-responsive">
+                                                              <td><img src="{{ URL::to('/') }}/clientLogo/{{ $rowmonitor->plant->client->urlLogo }}" class="img-responsive" alt="Logo del Cliente" style="max-width: 100px;"></td>
                                                               <tr>
                                                                 @if((($rowmonitor->equipo->DP_2))== 1)
                                                                 <td align="right">Run FW <canvas id="circle0"></canvas> </td>
