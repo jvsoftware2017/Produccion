@@ -47,6 +47,22 @@
                                     <li><a href="form.html">Reportes</a></li>
                                 </ul>
                             </li>
+                            <li><a><i class="fa fa-phone"></i> Contacto <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a>Correos</a>
+                                    	<ul class="nav child_menu">
+                                    		<li><a href="mailto:raul.torres_zarate@siemens.com?Subject=Soporte DriveSysMonitor" target="_blank">Raul Torres</a></li>
+                                    		<li><a href="mailto:alberto.cruz@siemens.com?Subject=Soporte DriveSysMonitor" target="_blank">Alberto Cruz</a></li>
+                                    	</ul>
+                                    </li>
+                                    <li><a>Teléfonos</a>
+                                    	<ul class="nav child_menu">
+                                    		<li><a>+57 310 309 00 77</a></li>
+                                    		<li><a>+57 320 469 93 75</a></li>
+                                    	</ul>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>
