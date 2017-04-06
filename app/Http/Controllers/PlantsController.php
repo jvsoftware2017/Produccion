@@ -115,12 +115,14 @@ class PlantsController extends Controller
     			'id_city' => 'required',
     			'id_client' => 'required',
     			'status' => 'required',
+    			'name' => 'max:255',
     	]);
     	$plant->updated_at = Carbon::now();
     	$plant->name = $request->name;
     	$plant->id_city = $request->id_city;
     	$plant->id_client = $request->id_client;
     	$plant->status = $request->status;
+    	$plant->adress = $request->adress;
     	if (isset($request->phone) && $request->phone != null) {
     		$this->validate($request, [
     			'phone' => 'digits_between:5,20',
