@@ -29,12 +29,13 @@ class UsersController extends Controller
     		$dataClient = Client::where('id', Auth::user()->id_client)->get();
     		$dataUser = User::where('id_client', Auth::user()->id_client)->get();
     		$dataPlant = Plant::where('id_client', Auth::user()->id_client)->get();
+    		$dataRole = Role::where('id', '>' , Auth::user()->id_role)->get();
     	}else{
     		$dataClient = Client::all();
     		$dataUser = User::all();
     		$dataPlant = Plant::all();
+    		$dataRole = Role::where('id', '>=' , Auth::user()->id_role)->get();
     	}
-    	$dataRole = Role::where('id', '>' , Auth::user()->id_role)->get();
     	return view('users.users', compact('dataClient', 'dataUser', 'dataRole', 'dataPlant'));
     }
 
