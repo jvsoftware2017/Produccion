@@ -135,7 +135,7 @@
 	                                                        
 	                                                        <div class="form-group">
 	                                                            <label class="control-label" for="phone">Teléfono:</label>
-	                                                            <input type="number" name="phone" value="{{$rowplant->phone}}" class="form-control" data-error="Escriba solo números" />
+	                                                            <input type="text" name="phone" value="{{$rowplant->phone}}" class="form-control" data-error="Escriba solo números" />
 	                                                            <div class="help-block with-errors"></div>
 	                                                        </div>
 	

@@ -125,7 +125,7 @@ class PlantsController extends Controller
     	$plant->adress = $request->adress;
     	if (isset($request->phone) && $request->phone != null) {
     		$this->validate($request, [
-    			'phone' => 'digits_between:5,20',
+    			'phone' => 'string',
     		]);
     		$plant->phone = $request->phone;
     	}
