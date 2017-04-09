@@ -7,7 +7,9 @@
             <div class="page-title">
                 <div class="title_left">
                     <h1>DriveSysMonitor</h1>
-                    <h2>Tu licencia es válida hasta el: <b>{{ Auth::user()->client->dateValidity }}</b></h2>
+                    @if(!(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user())))
+                    	<h2>Tu licencia es válida hasta el: <b>{{ Auth::user()->client->dateValidity }}</b></h2>
+                    @endif
                         <div class="x_panel">
                           <div class="x_title">
                             <h2>Cambiar password?</h2>

@@ -30,7 +30,7 @@ class LogSuccessfulLogin
     public function handle(Login $event)
     {
     	$user = User::find($event->user->id);
-    	if ($user->client->dateValidity == null) {
+    	if ($user->role->description != 'developer' || $user->role->description != 'admin' && $user->client->dateValidity == null) {
     		$client = Client::find($user->id_client);
     		$client->dateValidity = Carbon::now()->addMonth($client->validity);
     		$client->update();

@@ -17,7 +17,7 @@ class IsActiveUserMiddleware
     public function handle($request, Closure $next)
     {
     	
-    	if (Auth::user()->status == 'active' && Auth::user()->client->status == 'active'){
+    	if (Auth::user()->role->description == 'developer' || Auth::user()->role->description == 'admin'|| (Auth::user()->status == 'active' && Auth::user()->client->status == 'active')){
     		return $next($request);
     	}
     	
