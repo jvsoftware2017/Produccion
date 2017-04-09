@@ -16,8 +16,8 @@
                     </div>
                     <div class="x_content">
                         <div class="text-muted font-13 m-b-30">
-                            Aquí podrás Ver, Editar, y Crear Sedes según tu Rol
-                            @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
+                            Por medio de este módulo, puedes ver la información de las sedes
+                            @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 	                            <p align="right">
 	                                <button type="button" class="btn btn-round btn-success" data-toggle="modal" data-target="#create-item">Crear</button>
 	                            </p>
@@ -53,7 +53,7 @@
                                 <th>Fecha Registro</th>
                                 <th>Fecha Modificación</th>
                                 <th>Estado</th>
-                                @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
+                                @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
                                 	<th>Acción</th>
                                 @endif
                                	<th>Equipos</th>
@@ -75,7 +75,7 @@
                                         <td>{{$rowplant->created_at}}</td>
                                         <td>{{$rowplant->updated_at}}</td>
                                         <td>{{$rowplant->status}}</td>
-                                        @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
+                                        @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 	                                        <td>
 	                                            <button data-toggle="modal" data-target="#edit-item{{$rowplant->id}}" class="btn btn-round btn-warning edit-item">Editar</button>
 	                                        </td>
@@ -84,7 +84,7 @@
 											<a href="/nav_equipments/{{ $rowplant->id }} "><div type="button" class="btn btn-round btn-success">Equipos</div></a>
 										</td>
                                     </tr>
-									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
+									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 	                                    <!-- Edit Item Modal -->
 	                                    <div class="modal fade" id="edit-item{{$rowplant->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	                                        <div class="modal-dialog" role="document">
@@ -164,7 +164,7 @@
                                     @endforeach
                             </tbody>
                         </table>
-						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
+						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 	                        <!-- Create Item Modal -->
 	                        <div class="modal fade" id="create-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	                            <div class="modal-dialog" role="document">

@@ -13,8 +13,8 @@
 					</div>
 
 					<div class="x_content">
-						<p class="text-muted font-13 m-b-30">Por medio de este módulo, puedes crear y editar equipos.</p>
-						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
+						<p class="text-muted font-13 m-b-30">Por medio de este módulo, puedes ver la información de los equipos</p>
+						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 							<p align="right">
 								<button type="button" class="btn btn-round btn-success" data-toggle="modal" data-target="#create-item">Crear</button>
 							</p>
@@ -51,7 +51,7 @@
 								<th>Activo (S/N)</th>
 								<th>Alarma</th>
 								<th>Falla</th>
-								@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
+								@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 									<th>Acción</th>
 								@endif
 								<th>Monitor</th>
@@ -84,7 +84,7 @@
 											<td align="center"><canvas id="circle0"></canvas></td>
 											@endif
 											
-											@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
+											@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 												<td>
 													<!-- Large modal -->
 													<div type="button" id="edit-client" class="btn btn-round btn-warning" data-toggle="modal" data-target="#edit-item{{ $rowEquipment->id }}" >Editar</div>
@@ -94,7 +94,7 @@
 												<a href="/monitor/{{$rowEquipment->id_equipo}}"><div type="button" class="btn btn-round btn-success">Monitor</div></a>
 											</td>
 										</tr>
-									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
+									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 										<!-- Edit Item Modal -->
 										<div class="modal fade" id="edit-item{{$rowEquipment->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 											<div class="modal-dialog" role="document">
@@ -240,7 +240,7 @@
 								@endforeach
 							</tbody>
 						</table>
-						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
+						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 							<!-- Create Item Modal -->
 							<div class="modal fade" id="create-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 								<div class="modal-dialog" role="document">

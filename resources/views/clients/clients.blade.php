@@ -13,7 +13,7 @@
 					</div>
 					
 					<div class="x_content">
-						<p class="text-muted font-13 m-b-30">Por medio de este módulo, puedes crear y editar clientes.</p>
+						<p class="text-muted font-13 m-b-30">Por medio de este módulo, puedes ver la información de los clientes.</p>
 						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 							<p align="right">
 							<button type="button" id="create-client" class="btn btn-round btn-success" data-toggle="modal" data-target="#create-item">Crear</button>
@@ -37,7 +37,7 @@
 								</ul>
 							</div>
 						@endif
-						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
+						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 							<!-- Create Item Modal -->
 							<div class="modal fade" id="create-item"
 								tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -103,10 +103,10 @@
 									<th>Fecha de registro</th>
 									<th>Fecha de caducidad</th>
 									<th>Estado</th>
-									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
+									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 										<th>Acción</th>
+										<th>Sedes</th>
 									@endif
-									<th>Sedes</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -121,17 +121,17 @@
 										<td>{{ $rowclient->created_at }}</td>
 										<td>{{ $rowclient->dateValidity }}</td>
 										<td>{{ $rowclient->status }}</td>
-										@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
+										@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 											<td>
 												<!-- Large modal -->
 												<div type="button" id="edit-client" class="btn btn-round btn-warning" data-toggle="modal" data-target="#edit-item{{ $rowclient->id }}" >Editar</div>
 											</td>
-										@endif
-										<td>
+											<td>
 											<a href="/nav_plants/{{ $rowclient->id }} "><div type="button" class="btn btn-round btn-success">Sedes</div></a>
-										</td>
+											</td>
+										@endif
 									</tr>
-									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
+									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 										<!-- Edit Item Modal -->
 	                                    <div class="modal fade" id="edit-item{{ $rowclient->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	                                        <div class="modal-dialog" role="document">

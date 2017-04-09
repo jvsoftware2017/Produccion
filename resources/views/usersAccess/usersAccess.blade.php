@@ -13,8 +13,8 @@
 					</div>
 					
 					<div class="x_content">
-						<p class="text-muted font-13 m-b-30">Por medio de este módulo, puedes crear y editar Usuarios.</p>
-						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
+						<p class="text-muted font-13 m-b-30">Por medio de este módulo, puedes ver los equipos asociados a un Usuario.</p>
+						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 							<p align="right">
 								<button type="button" id="create-client" class="btn btn-round btn-success" data-toggle="modal" data-target="#create-item">Crear</button>
 							</p>
@@ -47,7 +47,7 @@
 									<th>Email(Username)</th>									
 									<th>Equipo</th>
 									<th>Fecha Asignación</th>
-									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
+									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 										<th>Acción</th>
 									@endif
 								</tr>
@@ -65,7 +65,7 @@
 										<td>{{ $rowUserAccess->user->email }}</td>										
 										<td>{{ $rowUserAccess->equipment->name }}</td>
 										<td>{{ $rowUserAccess->created_at }}</td>
-										@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
+										@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 											<td>
 												<a href="/user-accessDelete/{{ $rowUserAccess->id }}"><button class="btn btn-round btn-dark" onclick="return confirm('¿Desea eliminar el Acceso?')">Eliminar</button></a>
 											</td>
@@ -74,7 +74,7 @@
 									</tr>
 								@endforeach
 							</tbody>
-							@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()) || Gate::allows('client', Auth::user()))
+							@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 										<!-- Create Access Item Modal -->
 										<div class="modal fade" id="create-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 											<div class="modal-dialog" role="document">

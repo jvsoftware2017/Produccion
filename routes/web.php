@@ -22,28 +22,32 @@ Route::group(['middleware' => ['validity', 'active']], function () {
 			
 			Route::post('/clients', 'ClientsController@store');				
 			Route::get('/clientPlants/{idClient}', 'ClientsController@getPlants');
+			Route::put('/clients/{client}', 'ClientsController@update');
 			
+			Route::post('/users', 'UsersController@store');
+			Route::put('/users/{user}', 'UsersController@update');
+			
+			Route::post('/equipments', 'EquipmentsController@store');
+			Route::put('/equipments/{equipment}', 'EquipmentsController@update');
+			
+			Route::post('/plants', 'PlantsController@store');
+			Route::put('/plants/{plant}', 'PlantsController@update');
+			
+			Route::post('/user-access', 'UserAccessController@store');
+			
+			Route::get('/equipments', 'EquipmentsController@index');
+			Route::get('/nav_equipments/{plant}', 'EquipmentsController@nav_index');
+			
+			Route::get('/plants', 'PlantsController@index');
+			Route::get('/nav_plants/{client}', 'PlantsController@nav_index');
 		});
 		
 		Route::get('/users', 'UsersController@index');
-		Route::post('/users', 'UsersController@store');
-		Route::put('/users/{user}', 'UsersController@update');
 		
-		Route::get('/equipments', 'EquipmentsController@index');
-		Route::get('/nav_equipments/{plant}', 'EquipmentsController@nav_index');
-		Route::post('/equipments', 'EquipmentsController@store');
-		Route::put('/equipments/{equipment}', 'EquipmentsController@update');
 		
-		Route::get('/plants', 'PlantsController@index');
-		Route::get('/nav_plants/{client}', 'PlantsController@nav_index');
-		Route::post('/plants', 'PlantsController@store');
-		Route::put('/plants/{plant}', 'PlantsController@update');
-		
-		Route::get('/clients', 'ClientsController@index');
-		Route::put('/clients/{client}', 'ClientsController@update');		
+		Route::get('/clients', 'ClientsController@index');		
 		
 		Route::get('/user-access', 'UserAccessController@index');
-		Route::post('/user-access', 'UserAccessController@store');
 		Route::get('/user-accessDelete/{idUserAccess}', 'UserAccessController@destroy');
 		Route::get('/us_equipments/{plant}', 'PlantsController@getEquipments');
 		

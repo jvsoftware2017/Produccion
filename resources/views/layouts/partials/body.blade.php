@@ -28,8 +28,10 @@
                             <li><a><i class="fa fa-wrench"></i> Panel de Administración <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="/clients">Clientes</a></li>
+                                    @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
                                     <li><a href="/plants">Sedes</a></li>
                                     <li><a href="/equipments">Equipos</a></li>
+                                    @endif
                                     <li><a href="/users">Usuarios</a></li>
                                     <li><a href="/user-access">Acceso Usuario</a></li>
                                 </ul>
@@ -89,7 +91,6 @@
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
                                 <li><a href="/home">Home</a></li>
                                 <li><a href="/user_profile"><i class="fa fa-user pull-right"></i>Perfil</a></li>
-                                <li><a href="javascript:;">Ayuda</a></li>
                                 <li>
                                     <a href="#" onclick="document.getElementById('logout-form').submit();">
                                         <form id="logout-form" action="{{ url('/../logout') }}" method="POST" style="display: none;">
