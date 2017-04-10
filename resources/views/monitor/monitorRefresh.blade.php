@@ -64,14 +64,14 @@
 		                                <tr>
 		                                <td colspan="11" align="right">
 			                                <div id="variables{{$rowmonitor->equipo->ID_EQUIPO}}" style="display: none;">
-			                                	<table style="width: 20%" border="1">
+			                              		<table style="width: 20%" border="1">
 			                                		<tr>
 					                                <td colspan="2" align="center"><input type="button" value="Ver Menos" onclick="ocultar({{$rowmonitor->equipo->ID_EQUIPO}})"></td> 
 					                                </tr>
 			                                		<?php 
 			                                		for($i=0;$i<94;$i++){
 			                                			$var = "DP_".$i;
-			                                			echo "<tr><td align='center' width='10%'>".$nameVariables[$var]."</td>";
+			                                			echo "<tr><td align='left' width='10%'>".$nameVariables[$var]."</td>";
 			                                			echo "<td align='center' width='10%'>".(($rowmonitor->equipo->$var))."</td></tr>";
 			                                		}
 													?> 

@@ -76,7 +76,7 @@
 			                                		<?php 
 													for($i=0;$i<94;$i++){
 														$var = "DP_".$i;
-											 			echo "<tr><td align='center' width='10%'>".$nameVariables[$var]."</td>";											 			
+											 			echo "<tr><td align='left' width='10%'>".$nameVariables[$var]."</td>";											 			
 											 			echo "<td align='center' width='10%'>".(($rowmonitor->equipo->$var))."</td></tr>";
 													}
 													?> 
@@ -100,9 +100,15 @@
 	<script type="text/javascript">
 		var ban = 0; 
     	setInterval('refreshMon()', 5000);
-    	function refreshMon(){	
-        	if(ban == 0)
-    			$("#datatablemon").load("/monitorLoad"); 
+    	function refreshMon(){
+        	if(ban == 0){
+        		if({{$filtro}}){
+        			$("#datatablemon").load("/nav_monitorLoad/{{$rowmonitor->id_equipo}}");
+        		}
+        		else{
+    				$("#datatablemon").load("/monitorLoad");
+        		}
+        	} 
     	}
     	//setTimeout("location.reload()", 5000);
 

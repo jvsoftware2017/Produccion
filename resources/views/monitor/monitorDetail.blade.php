@@ -41,31 +41,35 @@
                     
                     <div align="center"><h4 class="modal-title" id="myModalLabel"> <strong>{{ $rowmonitor->equipo->MODELO_EQUIPO." - ".$rowmonitor->equipo->NOMBRE_EQUIPO }}</strong></h4></div>
                     <table align="center" style="border-collapse:separate;border-spacing:15px;" border="0" width="70%" class="table-responsive">
-                                                              <td><img src="{{ URL::to('/') }}/clientLogo/{{ $rowmonitor->plant->client->urlLogo }}" class="img-responsive" alt="Logo del Cliente" style="max-width: 100px;"></td>
                                                               <tr>
-                                                              	@if((($rowmonitor->equipo->DP_2))== 1)
-                                                                <td align="right">Run FW <canvas id="circle0"></canvas> </td>
+                                                              	<td><img src="{{ URL::to('/') }}/clientLogo/{{ $rowmonitor->plant->client->urlLogo }}" class="img-responsive" alt="Logo del Cliente" style="max-width: 100px;"></td>
+                                                              	<td colspan="2" align="center">ON LINE <canvas id="circle0"></canvas></td>
+                                                              	<td></td>
+                                                              	</tr>
+                                                              <tr>
+                                                              	@if((($rowmonitor->equipo->DP_2))== 1 || (($rowmonitor->equipo->DP_3))== 1)
+                                                                <td align="right">Run <canvas id="circle0"></canvas> </td>
                                                                 @else
                                                                 <td align="right"></td>
                                                                 @endif
                                                                 <th align="center" rowspan="6" style="max-height: 80%;max-width: 100%">
                                                                 <div align="center"> <img alt="Equipo {{ $rowmonitor->equipo->NOMBRE_EQUIPO }}" src="../equipmentImg/{{ $rowmonitor->urlImg }}" class="img-responsive"> </div>
                                                                 </th>
-                                                                <td align="left">Comunicación OK <canvas id="circle0"></canvas></td>
+                                                                <td align="left"></td>
                                                                 <td align="left"></td>
                                                               </tr>
                                                               <tr>
-                                                              	@if((($rowmonitor->equipo->DP_3))== 1)
-                                                                <td align="right">Run BW <canvas id="circle0"></canvas></td>
+                                                              @if((($rowmonitor->equipo->DP_7))== 1)
+                                                                <td align="right">READY <canvas id="circle0"></canvas></td>
                                                                 @else
                                                                 <td align="right"></td>
-                                                                @endif   
+                                                                @endif                                                                
                                                                 <td align="left">Operation Hrs: </td>
                                                                 <td align="left"><strong style="font-size: 16px">{{$rowmonitor->equipo->DP_40}} Hrs</strong></td>
                                                               </tr>
                                                               <tr>
-                                                              	@if((($rowmonitor->equipo->DP_4))== 1)
-                                                                <td align="right">READY <canvas id="circle0"></canvas></td>
+                                                              	@if((($rowmonitor->equipo->DP_7))== 1)
+                                                                <td align="right">At Speed Ref <canvas id="circle0"></td>
                                                                 @else
                                                                 <td align="right"></td>
                                                                 @endif
@@ -73,8 +77,8 @@
                                                                 <td align="left"><strong style="font-size: 16px">{{$rowmonitor->equipo->DP_39}} Hrs</strong></td>
                                                               </tr>
                                                               <tr>
-                                                                @if((($rowmonitor->equipo->DP_7))== 1)
-                                                                <td align="right">At Speed Ref <canvas id="circle0"></canvas></td>
+                                                                @if((($rowmonitor->equipo->DP_1))== 1)
+                                                                <td align="right">Warning <canvas id="circle2"></canvas></canvas></td>
                                                                 @else
                                                                 <td align="right"></td>
                                                                 @endif
@@ -82,8 +86,8 @@
                                                                 <td align="left"><strong style="font-size: 16px">{{$rowmonitor->equipo->DP_44}} °C</strong></td>
                                                               </tr>
                                                               <tr>
-                                                                @if((($rowmonitor->equipo->DP_1))== 1)
-                                                                <td align="right">Warning <canvas id="circle2"></canvas></td>
+                                                                @if((($rowmonitor->equipo->DP_0))== 1)
+                                                                <td align="right">Fault <canvas id="circle1"></td>
                                                                 @else
                                                                 <td align="right"></td>
                                                                 @endif
@@ -91,8 +95,8 @@
                                                                 <td align="left"><strong style="font-size: 16px">{{$rowmonitor->equipo->DP_49}} %</strong></td>
                                                               </tr>
                                                               <tr>
-                                                                @if((($rowmonitor->equipo->DP_0))== 1)
-                                                                <td align="right">Fault <canvas id="circle1"></canvas></td>
+                                                                @if((($rowmonitor->equipo->DP_67))== 1)
+                                                                <td align="right"></canvas>Comunicación OK <canvas id="circle0"></canvas></td>
                                                                 @else
                                                                 <td align="right"></td>
                                                                 @endif
@@ -109,8 +113,11 @@
   	                                                          </tr>
                                                               <tr>
                                                                 <td align="center"></td>
-                                                                <td align="center"></td>
-                                                                <td align="center"></td>
+                                                                <td align="center" colspan="2">
+                                                                	<a href="#"><div type="button" class="btn btn-round btn-success">Alarms/Event</div></a>
+                                                                	<a href="#"><div type="button" class="btn btn-round btn-success">Details</div></a>
+                                                                	<a href="/report/{{ $rowmonitor->id_equipo }}"><div type="button" class="btn btn-round btn-success">Reportes</div></a>
+                                                                </td>
                                                                 <td align="center"></td>
                                                               </tr>
                                                               <tr style="background-color: gray;color: white; font-size: 14px;">

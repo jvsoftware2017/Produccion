@@ -47,13 +47,14 @@
 								<th>Sede</th>
 								<th>Referencia</th>
 								<th>ID</th>
-								<th>Fecha registro</th>
-								<th>Activo (S/N)</th>
 								<th>Alarma</th>
 								<th>Falla</th>
+								<th>Comunic. OK</th>
+								<th>On Line</th>
 								@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 									<th>Acción</th>
 								@endif
+								<th>Variables</th>
 								<th>Monitor</th>
 							</tr>
 							</thead>
@@ -71,14 +72,24 @@
 											<td>{{ $rowEquipment->plant->name }}</td>
 											<td>{{ $rowEquipment->model }}</td>
 											<td><a href="/monitor/{{$rowEquipment->id_equipo}}">{{ $rowEquipment->id_equipo }}</a></td>
-											<td>{{ $rowEquipment->created_at }}</td>
-											<td>{{ $rowEquipment->status }}</td>
+											<!--<td>{{ $rowEquipment->created_at }}</td>
+											<td>{{ $rowEquipment->status }}</td> -->
 											@if((($rowEquipment->equipo->DP_1)) == 1)
 											<td align="center"><canvas id="circle2"></canvas></td>
 											@else
 											<td align="center"><canvas id="circle0"></canvas></td>
 											@endif
 											@if((($rowEquipment->equipo->DP_0)) == 1)
+											<td align="center"><canvas id="circle1"></canvas></td>
+											@else
+											<td align="center"><canvas id="circle0"></canvas></td>
+											@endif
+											@if((($rowEquipment->equipo->DP_67)) == 1)
+											<td align="center"><canvas id="circle2"></canvas></td>
+											@else
+											<td align="center"><canvas id="circle0"></canvas></td>
+											@endif
+											@if((($rowEquipment->equipo->DP_68)) == 1)
 											<td align="center"><canvas id="circle1"></canvas></td>
 											@else
 											<td align="center"><canvas id="circle0"></canvas></td>
@@ -90,6 +101,9 @@
 													<div type="button" id="edit-client" class="btn btn-round btn-warning" data-toggle="modal" data-target="#edit-item{{ $rowEquipment->id }}" >Editar</div>
 												</td>
 											@endif
+											<td>
+												<a href="/nav_monitor/{{$rowEquipment->id_equipo}}"><div type="button" class="btn btn-round btn-success">Variables</div></a>
+											</td>
 											<td>
 												<a href="/monitor/{{$rowEquipment->id_equipo}}"><div type="button" class="btn btn-round btn-success">Monitor</div></a>
 											</td>

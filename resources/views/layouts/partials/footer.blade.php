@@ -42,7 +42,9 @@
 <!-- starrr -->
 <script src="../vendors/starrr/dist/starrr.js"></script>
 <!-- Custom Theme Scripts -->
-<script src="/dashboard/build/js/custom.min.js"></script>
+<script src="/dashboard/build/js/custom.js"></script>
+<!-- Chart.js -->
+<script src="/dashboard/vendors/Chart.js/dist/Chart.min.js"></script>
 
 <!-- Datatables -->
 <script src="/dashboard/vendors/iCheck/icheck.min.js"></script>

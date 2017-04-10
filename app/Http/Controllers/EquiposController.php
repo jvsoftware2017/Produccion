@@ -25,49 +25,49 @@ class EquiposController extends Controller
 'DP_8' => 'Speed in Percent',
 'DP_9' => 'Speed in RPM',
 'DP_10' => 'Speed in Hz',
-'DP_11' => 'GStat bit11',
-'DP_12' => 'GStat bit12',
-'DP_13' => 'GStat bit13',
-'DP_14' => 'GStat bit14',
-'DP_15' => 'GStat bit15',
+'DP_11' => 'Spare Bit',
+'DP_12' => 'Spare Bit',
+'DP_13' => 'Spare Bit',
+'DP_14' => 'Spare Bit',
+'DP_15' => 'Spare Bit',
 'DP_16' => 'Motor speed',
-'DP_17' => 'Motor voltage',
-'DP_18' => 'Total current',
-'DP_19' => 'Output Power',
-'DP_20' => 'Speed demand',
-'DP_21' => 'Speed reference',
+'DP_17' => 'Motor voltage (Volts)',
+'DP_18' => 'Total current (Amps)',
+'DP_19' => 'Output Power (kW)',
+'DP_20' => 'Speed demand (%)',
+'DP_21' => 'Speed reference (%)',
 'DP_22' => 'Heartbeat',
-'DP_23' => 'Input RMS Current',
-'DP_24' => 'Input Frequency',
-'DP_25' => 'Input power avg',
-'DP_26' => 'Torque Current',
-'DP_27' => 'Magnetizing current',
-'DP_28' => 'Motor Flux',
-'DP_29' => 'Motor torque',
-'DP_30' => 'Input voltage',
-'DP_31' => 'Input power fact',
-'DP_32' => 'Input KVARS',
-'DP_33' => 'Max available out voltage',
-'DP_34' => 'Hottest cell temp',
+'DP_23' => 'Input RMS Current (Amps)',
+'DP_24' => 'Input Frequency (Hz)',
+'DP_25' => 'Input power avg (kW)',
+'DP_26' => 'Torque Current (Amps)',
+'DP_27' => 'Magnetizing current (Amps)',
+'DP_28' => 'Motor Flux (%)',
+'DP_29' => 'Motor torque (%)',
+'DP_30' => 'Input voltage (Volts)',
+'DP_31' => 'Input power fact (%)',
+'DP_32' => 'Input KVARS (kVAR)',
+'DP_33' => 'Max available out voltage (Volts)',
+'DP_34' => 'Hottest cell temp (%)',
 'DP_35' => 'Spare21 VFD',
 'DP_36' => 'Spare22 VFD',
 'DP_37' => 'Spare23 VFD',
 'DP_38' => 'Spare24 VFD',
-'DP_39' => 'Next Mant. Hours',
-'DP_40' => 'Hours act',
-'DP_41' => 'Hours HH',
-'DP_42' => 'Hours H',
-'DP_43' => 'Hours DELT',
-'DP_44' => 'Temp room',
-'DP_45' => 'Temp room HH',
-'DP_46' => 'Temp room H',
-'DP_47' => 'Temp room L',
-'DP_48' => 'Temp room LL',
-'DP_49' => 'HumR room',
-'DP_50' => 'HumR room HH',
-'DP_51' => 'HumR room H',
-'DP_52' => 'HumR room L',
-'DP_53' => 'HumR room LL',
+'DP_39' => 'Next Mant. Hours (Hrs)',
+'DP_40' => 'Hours act (Hrs)',
+'DP_41' => 'Hours HH (Hrs)',
+'DP_42' => 'Hours H (Hrs)',
+'DP_43' => 'Hours DELT (Hrs)',
+'DP_44' => 'Temp room (°C)',
+'DP_45' => 'Temp room HH (°C)',
+'DP_46' => 'Temp room H (°C)',
+'DP_47' => 'Temp room L (°C)',
+'DP_48' => 'Temp room LL (°C)',
+'DP_49' => 'HumR room (%)',
+'DP_50' => 'HumR room HH (%)',
+'DP_51' => 'HumR room H (%)',
+'DP_52' => 'HumR room L (%)',
+'DP_53' => 'HumR room LL (%)',
 'DP_54' => 'Spare001 PLC',
 'DP_55' => 'Spare002 PLC',
 'DP_56' => 'Spare003 PLC',
@@ -75,19 +75,19 @@ class EquiposController extends Controller
 'DP_58' => 'Fault PLC',
 'DP_59' => 'Mant PLC',
 'DP_60' => 'Run/Stop',
-'DP_61' => 'GStat1 bit3',
-'DP_62' => 'GStat1 bit4',
+'DP_61' => 'Spare Bit',
+'DP_62' => 'Spare Bit',
 'DP_63' => 'Charge PLC by UPS',
 'DP_64' => 'GStat1 bit6',
 'DP_65' => 'Fail SENAL Temp. room',
 'DP_66' => 'Fail SENAL Hum. Relative',
 'DP_67' => 'Comunication Fail MB PLC VFD',
 'DP_68' => 'Comunication Fail Pulse TCB',
-'DP_69' => 'GStat1 bit11',
-'DP_70' => 'GStat1 bit12',
-'DP_71' => 'GStat1 bit13',
-'DP_72' => 'GStat1 bit14',
-'DP_73' => 'GStat1 bit15',
+'DP_69' => 'Spare Bit',
+'DP_70' => 'Spare Bit',
+'DP_71' => 'Spare Bit',
+'DP_72' => 'Spare Bit',
+'DP_73' => 'Spare Bit',
 'DP_74' => 'HH Hours Oper. Alarm',
 'DP_75' => 'HH Hours Oper. Warning',
 'DP_76' => 'Delt Hours Oper. Warning',
@@ -99,15 +99,15 @@ class EquiposController extends Controller
 'DP_82' => 'H Hum. Rel. Warning',
 'DP_83' => 'L Hum. Rel. Warning',
 'DP_84' => 'LL Hum. Rel. Alarm',
-'DP_85' => 'GStat2 bit11',
-'DP_86' => 'GStat2 bit12',
-'DP_87' => 'GStat2 bit13',
-'DP_88' => 'GStat2 bit14',
-'DP_89' => 'GStat2 bit15',
-'DP_90' => 'SPARE006',
-'DP_91' => 'SPARE007',
-'DP_92' => 'SPARE008',
-'DP_93' => 'SPARE009'
+'DP_85' => 'Spare Bit',
+'DP_86' => 'Spare Bit',
+'DP_87' => 'Spare Bit',
+'DP_88' => 'Spare Bit',
+'DP_89' => 'Spare Bit',
+'DP_90' => 'Spare Real',
+'DP_91' => 'Spare Real',
+'DP_92' => 'Spare Real',
+'DP_93' => 'Spare Real'
 	);
     /**
      * Display a listing of the resource.
@@ -131,9 +131,18 @@ class EquiposController extends Controller
     			array_push($dataEquipo, Equipment::where('id', $equipo->id_equipment)->get());
     		}
     	}
-    	
+    	$filtro = 0;
    		$nameVariables = $this->nameVariablesG;
-    	return view('monitor.monitor', compact('dataEquipo','nameVariables'));
+    	return view('monitor.monitor', compact('dataEquipo','nameVariables','filtro'));
+    }
+    
+    public function nav_index($id)
+    {
+    	$dataEquipo = array();
+    	array_push($dataEquipo, Equipment::where('id_equipo', $id)->get());
+    	$nameVariables = $this->nameVariablesG;
+    	$filtro = 1;
+    	return view('monitor.monitor', compact('dataEquipo','nameVariables','filtro'));
     }
     
     public function refresh()
@@ -154,6 +163,15 @@ class EquiposController extends Controller
     	}
     	$nameVariables = $this->nameVariablesG;
     	return view('monitor.monitorRefresh', compact('dataEquipo','nameVariables'));
+    }
+    
+    public function nav_refresh($id)
+    {
+    	$dataEquipo = array();
+    	array_push($dataEquipo, Equipment::where('id_equipo', $id)->get());
+    	$nameVariables = $this->nameVariablesG;
+    	$filtro = 1;
+    	return view('monitor.monitorRefresh', compact('dataEquipo','nameVariables','filtro'));
     }
     
     public function detail($id)

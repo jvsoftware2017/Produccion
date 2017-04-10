@@ -46,7 +46,7 @@
                             <li><a><i class="fa fa-edit"></i> Monitor <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="/monitor">Monitor</a></li>
-                                    <li><a href="form.html">Reportes</a></li>
+                                    <li><a href="/reports">Reportes</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-envelope"></i> Email Contacto <span class="fa fa-chevron-down"></span></a>

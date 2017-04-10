@@ -44,6 +44,9 @@
 
     <!-- Custom Theme Style -->
     <link href="/dashboard/vendors/modal/modal-toastr.css" rel="stylesheet">
+    
+    <!-- Custom Theme Scripts -->
+    <script src="/dashboard/build/js/custom.min.js"></script>
 
     <!-- Scripts -->
     <script>
