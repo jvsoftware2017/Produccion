@@ -30,6 +30,7 @@ $("#id_client_editModal").change(function (event){
 });
 
 $("#id_equipoRep").change(function (event){
+    alert('entroooo');	
     window.location.href = "/report/"+event.target.value+"";
 });
 
