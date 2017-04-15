@@ -255,7 +255,7 @@
 							</tbody>
 						</table>
 						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
-							<!-- Create Item Modal -->
+							<!-- Create Item Modal Equipo-->
 							<div class="modal fade" id="create-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
