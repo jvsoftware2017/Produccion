@@ -2291,13 +2291,81 @@ if (typeof NProgress != 'undefined') {
 					pointBorderColor: "rgba(38, 185, 154, 0.7)",
 					pointHoverBackgroundColor: "#fff",
 					pointBorderWidth: 1,
-					data: arrdp18Y,
+					data: arrdp18Yp,
 				  }]
 				},
 			  });
 			});
 			}
 			
+			// DP19			
+			if ($('#DP19_current').length ){	
+				
+				var id_equipo = $('#id_equipo').val();
+				var arrdp19X = new Array('0');
+				var arrdp19Y = new Array('0');
+			    $.get("/gr_reports/DP19/"+id_equipo+"/"+ (dateNow.getMonth()+1),function(response) {	
+			    	var fecha; var dia;
+			        for(i=0; i<response.length; i++){
+			        	fecha = response[i].date;
+			        	fecha = fecha.split("-");
+			        	dia = fecha[2] + "-" + meses[(fecha[1]-1)];
+			            arrdp19X.push(dia);
+			            arrdp19Y.push(response[i].value);
+			        }
+
+			  var ctx = document.getElementById("DP19_current");
+			  var lineChart = new Chart(ctx, {
+				type: 'line',
+				data: {
+				  labels: arrdp19X,
+				  datasets: [{
+					label: "Volts ",
+					borderColor: "rgba(38, 185, 154, 0.7)",
+					pointBorderColor: "rgba(38, 185, 154, 0.7)",
+					pointHoverBackgroundColor: "#fff",
+					pointBorderWidth: 1,
+					data: arrdp19Y,
+				  }]
+				},
+			  });
+			});
+			}
+			
+			if ($('#DP19_previus').length ){	
+				
+				var id_equipo = $('#id_equipo').val();
+				var arrdp19Xp = new Array('0');
+				var arrdp19Yp = new Array('0');
+			    $.get("/gr_reports/DP19/"+id_equipo+"/" + (dateNow.getMonth()),function(response) {	
+			    	var fecha; var dia;
+			        for(i=0; i<response.length; i++){
+			        	fecha = response[i].date;
+			        	fecha = fecha.split("-");
+			        	dia = fecha[2] + "-" + meses[(fecha[1]-1)];
+			            arrdp19Xp.push(dia);
+			            arrdp19Yp.push(response[i].value);
+			        }
+
+			  var ctx = document.getElementById("DP19_previus");
+			  var lineChart = new Chart(ctx, {
+				type: 'line',
+				data: {
+				  labels: arrdp19Xp,
+				  datasets: [{
+					label: "Volts ",
+					borderColor: "rgba(38, 185, 154, 0.7)",
+					pointBorderColor: "rgba(38, 185, 154, 0.7)",
+					pointHoverBackgroundColor: "#fff",
+					pointBorderWidth: 1,
+					data: arrdp19Yp,
+				  }]
+				},
+			  });
+			});
+			}
+			
+			// DP30
 			if ($('#DP30_current').length ){	
 			
 				var id_equipo = $('#id_equipo').val();
@@ -2363,24 +2431,368 @@ if (typeof NProgress != 'undefined') {
 			  });
 			});
 			}
+			
+			// DP31
+			if ($('#DP31_current').length ){	
+				
+				var id_equipo = $('#id_equipo').val();
+				var arrdp31X = new Array('0');
+				var arrdp31Y = new Array('0');
+			    $.get("/gr_reports/DP31/"+id_equipo+"/"+ (dateNow.getMonth()+1),function(response) {	
+			    	var fecha; var dia;
+			        for(i=0; i<response.length; i++){
+			        	fecha = response[i].date;
+			        	fecha = fecha.split("-");
+			        	dia = fecha[2] + "-" + meses[(fecha[1]-1)];
+			            arrdp31X.push(dia);
+			            arrdp31Y.push(response[i].value);
+			        }
+
+			  var ctx = document.getElementById("DP31_current");
+			  var lineChart = new Chart(ctx, {
+				type: 'line',
+				data: {
+				  labels: arrdp31X,
+				  datasets: [{
+					label: "Volts ",
+					borderColor: "rgba(38, 185, 154, 0.7)",
+					pointBorderColor: "rgba(38, 185, 154, 0.7)",
+					pointHoverBackgroundColor: "#fff",
+					pointBorderWidth: 1,
+					data: arrdp31Y,
+				  }]
+				},
+			  });
+			});
+			}
+			
+			if ($('#DP31_previus').length ){	
+				
+				var id_equipo = $('#id_equipo').val();
+				var arrdp31Xp = new Array('0');
+				var arrdp31Yp = new Array('0');
+			    $.get("/gr_reports/DP31/"+id_equipo+"/" + (dateNow.getMonth()),function(response) {	
+			    	var fecha; var dia;
+			        for(i=0; i<response.length; i++){
+			        	fecha = response[i].date;
+			        	fecha = fecha.split("-");
+			        	dia = fecha[2] + "-" + meses[(fecha[1]-1)];
+			            arrdp31Xp.push(dia);
+			            arrdp31Yp.push(response[i].value);
+			        }
+
+			  var ctx = document.getElementById("DP31_previus");
+			  var lineChart = new Chart(ctx, {
+				type: 'line',
+				data: {
+				  labels: arrdp31Xp,
+				  datasets: [{
+					label: "Volts ",
+					borderColor: "rgba(38, 185, 154, 0.7)",
+					pointBorderColor: "rgba(38, 185, 154, 0.7)",
+					pointHoverBackgroundColor: "#fff",
+					pointBorderWidth: 1,
+					data: arrdp31Yp,
+				  }]
+				},
+			  });
+			});
+			}
+			
+			//DP32
+			if ($('#DP32_current').length ){	
+				
+				var id_equipo = $('#id_equipo').val();
+				var arrdp32X = new Array('0');
+				var arrdp32Y = new Array('0');
+			    $.get("/gr_reports/DP32/"+id_equipo+"/"+ (dateNow.getMonth()+1),function(response) {	
+			    	var fecha; var dia;
+			        for(i=0; i<response.length; i++){
+			        	fecha = response[i].date;
+			        	fecha = fecha.split("-");
+			        	dia = fecha[2] + "-" + meses[(fecha[1]-1)];
+			            arrdp32X.push(dia);
+			            arrdp32Y.push(response[i].value);
+			        }
+
+			  var ctx = document.getElementById("DP32_current");
+			  var lineChart = new Chart(ctx, {
+				type: 'line',
+				data: {
+				  labels: arrdp32X,
+				  datasets: [{
+					label: "Volts ",
+					borderColor: "rgba(38, 185, 154, 0.7)",
+					pointBorderColor: "rgba(38, 185, 154, 0.7)",
+					pointHoverBackgroundColor: "#fff",
+					pointBorderWidth: 1,
+					data: arrdp32Y,
+				  }]
+				},
+			  });
+			});
+			}
+			
+			if ($('#DP32_previus').length ){	
+				
+				var id_equipo = $('#id_equipo').val();
+				var arrdp32Xp = new Array('0');
+				var arrdp32Yp = new Array('0');
+			    $.get("/gr_reports/DP32/"+id_equipo+"/" + (dateNow.getMonth()),function(response) {	
+			    	var fecha; var dia;
+			        for(i=0; i<response.length; i++){
+			        	fecha = response[i].date;
+			        	fecha = fecha.split("-");
+			        	dia = fecha[2] + "-" + meses[(fecha[1]-1)];
+			            arrdp32Xp.push(dia);
+			            arrdp32Yp.push(response[i].value);
+			        }
+
+			  var ctx = document.getElementById("DP32_previus");
+			  var lineChart = new Chart(ctx, {
+				type: 'line',
+				data: {
+				  labels: arrdp32Xp,
+				  datasets: [{
+					label: "Volts ",
+					borderColor: "rgba(38, 185, 154, 0.7)",
+					pointBorderColor: "rgba(38, 185, 154, 0.7)",
+					pointHoverBackgroundColor: "#fff",
+					pointBorderWidth: 1,
+					data: arrdp32Yp,
+				  }]
+				},
+			  });
+			});
+			}
+			
+			//DP34
+			if ($('#DP34_current').length ){	
+				
+				var id_equipo = $('#id_equipo').val();
+				var arrdp34X = new Array('0');
+				var arrdp34Y = new Array('0');
+			    $.get("/gr_reports/DP34/"+id_equipo+"/"+ (dateNow.getMonth()+1),function(response) {	
+			    	var fecha; var dia;
+			        for(i=0; i<response.length; i++){
+			        	fecha = response[i].date;
+			        	fecha = fecha.split("-");
+			        	dia = fecha[2] + "-" + meses[(fecha[1]-1)];
+			            arrdp34X.push(dia);
+			            arrdp34Y.push(response[i].value);
+			        }
+
+			  var ctx = document.getElementById("DP34_current");
+			  var lineChart = new Chart(ctx, {
+				type: 'line',
+				data: {
+				  labels: arrdp34X,
+				  datasets: [{
+					label: "Volts ",
+					borderColor: "rgba(38, 185, 154, 0.7)",
+					pointBorderColor: "rgba(38, 185, 154, 0.7)",
+					pointHoverBackgroundColor: "#fff",
+					pointBorderWidth: 1,
+					data: arrdp34Y,
+				  }]
+				},
+			  });
+			});
+			}
+			
+			if ($('#DP34_previus').length ){	
+				
+				var id_equipo = $('#id_equipo').val();
+				var arrdp34Xp = new Array('0');
+				var arrdp34Yp = new Array('0');
+			    $.get("/gr_reports/DP34/"+id_equipo+"/" + (dateNow.getMonth()),function(response) {	
+			    	var fecha; var dia;
+			        for(i=0; i<response.length; i++){
+			        	fecha = response[i].date;
+			        	fecha = fecha.split("-");
+			        	dia = fecha[2] + "-" + meses[(fecha[1]-1)];
+			            arrdp34Xp.push(dia);
+			            arrdp34Yp.push(response[i].value);
+			        }
+
+			  var ctx = document.getElementById("DP34_previus");
+			  var lineChart = new Chart(ctx, {
+				type: 'line',
+				data: {
+				  labels: arrdp34Xp,
+				  datasets: [{
+					label: "Volts ",
+					borderColor: "rgba(38, 185, 154, 0.7)",
+					pointBorderColor: "rgba(38, 185, 154, 0.7)",
+					pointHoverBackgroundColor: "#fff",
+					pointBorderWidth: 1,
+					data: arrdp34Yp,
+				  }]
+				},
+			  });
+			});
+			}
+			
+			//DP44
+			if ($('#DP44_current').length ){	
+				
+				var id_equipo = $('#id_equipo').val();
+				var arrdp44X = new Array('0');
+				var arrdp44Y = new Array('0');
+			    $.get("/gr_reports/DP44/"+id_equipo+"/"+ (dateNow.getMonth()+1),function(response) {	
+			    	var fecha; var dia;
+			        for(i=0; i<response.length; i++){
+			        	fecha = response[i].date;
+			        	fecha = fecha.split("-");
+			        	dia = fecha[2] + "-" + meses[(fecha[1]-1)];
+			            arrdp44X.push(dia);
+			            arrdp44Y.push(response[i].value);
+			        }
+
+			  var ctx = document.getElementById("DP44_current");
+			  var lineChart = new Chart(ctx, {
+				type: 'line',
+				data: {
+				  labels: arrdp44X,
+				  datasets: [{
+					label: "Volts ",
+					borderColor: "rgba(38, 185, 154, 0.7)",
+					pointBorderColor: "rgba(38, 185, 154, 0.7)",
+					pointHoverBackgroundColor: "#fff",
+					pointBorderWidth: 1,
+					data: arrdp44Y,
+				  }]
+				},
+			  });
+			});
+			}
+			
+			if ($('#DP44_previus').length ){	
+				
+				var id_equipo = $('#id_equipo').val();
+				var arrdp44Xp = new Array('0');
+				var arrdp44Yp = new Array('0');
+			    $.get("/gr_reports/DP44/"+id_equipo+"/" + (dateNow.getMonth()),function(response) {	
+			    	var fecha; var dia;
+			        for(i=0; i<response.length; i++){
+			        	fecha = response[i].date;
+			        	fecha = fecha.split("-");
+			        	dia = fecha[2] + "-" + meses[(fecha[1]-1)];
+			            arrdp44Xp.push(dia);
+			            arrdp44Yp.push(response[i].value);
+			        }
+
+			  var ctx = document.getElementById("DP44_previus");
+			  var lineChart = new Chart(ctx, {
+				type: 'line',
+				data: {
+				  labels: arrdp44Xp,
+				  datasets: [{
+					label: "Volts ",
+					borderColor: "rgba(38, 185, 154, 0.7)",
+					pointBorderColor: "rgba(38, 185, 154, 0.7)",
+					pointHoverBackgroundColor: "#fff",
+					pointBorderWidth: 1,
+					data: arrdp44Yp,
+				  }]
+				},
+			  });
+			});
+			}
+			
+			//DP49
+			if ($('#DP49_current').length ){	
+				
+				var id_equipo = $('#id_equipo').val();
+				var arrdp49X = new Array('0');
+				var arrdp49Y = new Array('0');
+			    $.get("/gr_reports/DP49/"+id_equipo+"/"+ (dateNow.getMonth()+1),function(response) {	
+			    	var fecha; var dia;
+			        for(i=0; i<response.length; i++){
+			        	fecha = response[i].date;
+			        	fecha = fecha.split("-");
+			        	dia = fecha[2] + "-" + meses[(fecha[1]-1)];
+			            arrdp49X.push(dia);
+			            arrdp49Y.push(response[i].value);
+			        }
+
+			  var ctx = document.getElementById("DP49_current");
+			  var lineChart = new Chart(ctx, {
+				type: 'line',
+				data: {
+				  labels: arrdp49X,
+				  datasets: [{
+					label: "Volts ",
+					borderColor: "rgba(38, 185, 154, 0.7)",
+					pointBorderColor: "rgba(38, 185, 154, 0.7)",
+					pointHoverBackgroundColor: "#fff",
+					pointBorderWidth: 1,
+					data: arrdp49Y,
+				  }]
+				},
+			  });
+			});
+			}
+			
+			if ($('#DP49_previus').length ){	
+				
+				var id_equipo = $('#id_equipo').val();
+				var arrdp49Xp = new Array('0');
+				var arrdp49Yp = new Array('0');
+			    $.get("/gr_reports/DP49/"+id_equipo+"/" + (dateNow.getMonth()),function(response) {	
+			    	var fecha; var dia;
+			        for(i=0; i<response.length; i++){
+			        	fecha = response[i].date;
+			        	fecha = fecha.split("-");
+			        	dia = fecha[2] + "-" + meses[(fecha[1]-1)];
+			            arrdp49Xp.push(dia);
+			            arrdp49Yp.push(response[i].value);
+			        }
+
+			  var ctx = document.getElementById("DP49_previus");
+			  var lineChart = new Chart(ctx, {
+				type: 'line',
+				data: {
+				  labels: arrdp49Xp,
+				  datasets: [{
+					label: "Volts ",
+					borderColor: "rgba(38, 185, 154, 0.7)",
+					pointBorderColor: "rgba(38, 185, 154, 0.7)",
+					pointHoverBackgroundColor: "#fff",
+					pointBorderWidth: 1,
+					data: arrdp49Yp,
+				  }]
+				},
+			  });
+			});
+			}
 				
 			  // Bar chart
 			  
-			if ($('#mybarChart').length ){ 
+			if ($('#DP0_current').length ){ 
+				
+				var id_equipo = $('#id_equipo').val();
+				var arrdp0X = new Array();
+				var arrdp0Y = new Array();
+			    $.get("/gr_reports_event/2/"+id_equipo+"/" + (dateNow.getMonth()+1),function(response) {	
+			    	var fecha; var dia;
+			        for(i=0; i<response.length; i++){
+			        	fecha = response[i].date;
+			        	fecha = fecha.split("-");
+			        	dia = fecha[2] + "-" + meses[(fecha[1]-1)];
+			            arrdp0X.push(dia);
+			            arrdp0Y.push(response[i].total);
+			        }	
 			  
-			  var ctx = document.getElementById("mybarChart");
+			  var ctx = document.getElementById("DP0_current");
 			  var mybarChart = new Chart(ctx, {
 				type: 'bar',
 				data: {
-				  labels: ["January", "February", "March", "April", "May", "June", "July"],
+				  labels: arrdp0X, //["January", "February", "March", "April", "May", "June", "July"],
 				  datasets: [{
 					label: '# of Votes',
 					backgroundColor: "#26B99A",
-					data: [51, 30, 40, 28, 92, 50, 45]
-				  }, {
-					label: '# of Votes',
-					backgroundColor: "#03586A",
-					data: [41, 56, 25, 48, 72, 34, 12]
+					data: arrdp0Y //[51, 30, 40, 28, 92, 50, 45]
 				  }]
 				},
 
@@ -2388,14 +2800,58 @@ if (typeof NProgress != 'undefined') {
 				  scales: {
 					yAxes: [{
 					  ticks: {
-						beginAtZero: true
+						max: 10,
+						min: 0,
+						stepSize: 2
 					  }
 					}]
 				  }
 				}
 			  });
-			  
-			} 
+			 }); 
+			}
+			
+			if ($('#DP0_previus').length ){ 
+				
+				var id_equipo = $('#id_equipo').val();
+				var arrdp0Xp = new Array();
+				var arrdp0Yp = new Array();
+			    $.get("/gr_reports_event/2/"+id_equipo+"/" + (dateNow.getMonth()),function(response) {	
+			    	var fecha; var dia;
+			        for(i=0; i<response.length; i++){
+			        	fecha = response[i].date;
+			        	fecha = fecha.split("-");
+			        	dia = fecha[2] + "-" + meses[(fecha[1]-1)];
+			            arrdp0Xp.push(dia);
+			            arrdp0Yp.push(response[i].total);
+			        }
+				  
+				  var ctx = document.getElementById("DP0_previus");
+				  var mybarChart = new Chart(ctx, {
+					type: 'bar',
+					data: {
+					  labels: arrdp0Xp, //["January", "February", "March", "April", "May", "June", "July"],
+					  datasets: [{
+						label: '# of Votes',
+						backgroundColor: "#26B99A",
+						data: arrdp0Yp //[51, 30, 40, 28, 92, 50, 45]
+					  }]
+					},
+
+					options: {
+					  scales: {
+						yAxes: [{
+						  ticks: {
+							max: 10,
+							min: 0,
+							stepSize: 2
+						  }
+						}]
+					  }
+					}
+				  });
+			    }); 
+				}
 			  
 
 			  // Doughnut chart

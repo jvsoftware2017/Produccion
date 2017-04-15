@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Report;
 use App\UserAccess;
 use App\Equipment;
+use App\Event;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
@@ -112,4 +113,10 @@ class ReportsController extends Controller
     	$response = Report::getValuesToGraphic($var, $id_equipo, $month);
     	return response()->json($response);
     }
+
+	public function returnValuesEvent(Request $request, $var, $id_equipo, $month){
+    	$response = Event::getCountEventByReports($var, $id_equipo, $month);
+    	return response()->json($response);
+    }
+	
 }
