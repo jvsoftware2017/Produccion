@@ -89,12 +89,16 @@
 											@else
 											<td align="center"><canvas id="circle0"></canvas></td>
 											@endif
-											@if((($rowEquipment->equipo->DP_68)) == 1)
-											<td align="center"><canvas id="circle1"></canvas></td>
-											@else
-											<td align="center"><canvas id="circle0"></canvas></td>
-											@endif
-											
+											<td align="center">
+											<?php 
+			                            	$restaMin = strtotime('now')-strtotime($rowEquipment->equipo->date_DP68);                            	
+			                            	?>
+			                            	@if($restaMin > 65)
+			                            	<canvas id="circle1"></canvas>
+			                        		@else
+			                            	<canvas id="circle0"></canvas>
+			                        		@endif 
+											</td>
 											@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 												<td>
 													<!-- Large modal -->

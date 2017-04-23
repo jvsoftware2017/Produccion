@@ -43,7 +43,11 @@
                                 <th>Id Equipo</th>
                                 <th>TAG ID</th>
                                 <th>Sede</th>
-                                <th>Estado</th>  
+                                <th>Estado</th>
+                                <th>Alarma</th>
+								<th>Falla</th>
+								<th>Comunic. OK</th>
+								<th>On Line</th> 
                                 <th>Variables...</th>                          
                             </tr>
                             </thead>
@@ -62,6 +66,31 @@
 		                                <td>{{$rowmonitor->equipo->NOMBRE_EQUIPO}}</td>
 		                                <td>{{$rowmonitor->plant->name}}</td>
 		                                <td>{{$rowmonitor->equipo->ESTADO_EQUIPO}}</td>
+		                                @if((($rowmonitor->equipo->DP_1)) == 1)
+											<td align="center"><canvas id="circle2"></canvas></td>
+											@else
+											<td align="center"><canvas id="circle0"></canvas></td>
+											@endif
+											@if((($rowmonitor->equipo->DP_0)) == 1)
+											<td align="center"><canvas id="circle1"></canvas></td>
+											@else
+											<td align="center"><canvas id="circle0"></canvas></td>
+											@endif
+											@if((($rowmonitor->equipo->DP_67)) == 1)
+											<td align="center"><canvas id="circle2"></canvas></td>
+											@else
+											<td align="center"><canvas id="circle0"></canvas></td>
+											@endif
+											<td align="center">
+											<?php 
+			                            	$restaMin = strtotime('now')-strtotime($rowmonitor->equipo->date_DP68);                            	
+			                            	?>
+			                            	@if($restaMin > 65)
+			                            	<canvas id="circle1"></canvas>
+			                        		@else
+			                            	<canvas id="circle0"></canvas>
+			                        		@endif 
+											</td>
 		                                <td align="center">		 									
 		 									<input type="button" value="Ver Más" onclick="mostrar({{$rowmonitor->equipo->ID_EQUIPO}})">	
 					                    </td>                           
