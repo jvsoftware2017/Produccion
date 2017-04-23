@@ -15,7 +15,7 @@ class EventsController extends Controller
     public function index($id)
     {
         //
-        $dataEvent = Event::where('id_equipo', $id)->get();
+        $dataEvent = Event::where('id_equipo', $id)->orderby('id', 'desc')->get();
         return view('events.events', compact('dataEvent'));
     }
 
