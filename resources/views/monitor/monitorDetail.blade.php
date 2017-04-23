@@ -43,7 +43,16 @@
                     <table align="center" style="border-collapse:separate;border-spacing:15px;" border="0" width="70%" class="table-responsive">
                     	<tr>
                         	<td><img src="{{ URL::to('/') }}/clientLogo/{{ $rowmonitor->plant->client->urlLogo }}" class="img-responsive" alt="Logo del Cliente" style="max-width: 100px;"></td>
-                            <td colspan="2" align="center">ON LINE <canvas id="circle0"></canvas></td>
+                            <td colspan="2" align="center">
+                            	<?php 
+                            	$restaMin = strtotime('now')-strtotime($rowmonitor->equipo->date_DP68);                            	
+                            	?>
+                            	@if($restaMin > 65)
+                            	OFF LINE <canvas id="circle1"></canvas>
+                        		@else
+                            	ON LINE  <canvas id="circle0"></canvas>
+                        		@endif                            	
+                            </td>
                             <td></td>
                         </tr>
                         <tr>
@@ -114,7 +123,7 @@
                          <tr>
                          	<td align="center"></td>
                             <td align="center" colspan="2">
-                            	<a href="#"><div type="button" class="btn btn-round btn-success">Alarms/Event</div></a>
+                            	<a href="/events/{{$rowmonitor->id_equipo}}"><div type="button" class="btn btn-round btn-success">Alarms/Event</div></a>
                                 <button type="button" class="btn btn-round btn-success" data-toggle="modal" data-target="#detail-item" onclick="mostrar()">Details</button>
                                 <a href="/report/{{ $rowmonitor->id_equipo }}"><div type="button" class="btn btn-round btn-success">Reportes</div></a>
                            	</td>

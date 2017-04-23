@@ -12,9 +12,11 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
         //
+        $dataEvent = Event::where('id_equipo', $id)->get();
+        return view('events.events', compact('dataEvent'));
     }
 
     /**

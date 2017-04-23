@@ -63,4 +63,6 @@ Route::group(['middleware' => ['validity', 'active']], function () {
 	Route::get('/report/{id_equipo}', 'ReportsController@report');
 	Route::get('/gr_reports/{variable}/{id_equipo}/{mes}', 'ReportsController@returnValues');
 	Route::get('/gr_reports_event/{variable}/{id_equipo}/{mes}', 'ReportsController@returnValuesEvent');
+	Route::get('/events/{id_equipo}', 'EventsController@index');
+	
 });
