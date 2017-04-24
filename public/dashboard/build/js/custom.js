@@ -2253,7 +2253,7 @@ if (typeof NProgress != 'undefined') {
 				data: {
 				  labels: arrdp18X,
 				  datasets: [{
-					label: "Volts ",
+					label: "Amps ",
 					borderColor: "rgba(38, 185, 154, 0.7)",
 					pointBorderColor: "rgba(38, 185, 154, 0.7)",
 					pointHoverBackgroundColor: "#fff",
@@ -2286,7 +2286,7 @@ if (typeof NProgress != 'undefined') {
 				data: {
 				  labels: arrdp18Xp,
 				  datasets: [{
-					label: "Volts ",
+					label: "Amps ",
 					borderColor: "rgba(38, 185, 154, 0.7)",
 					pointBorderColor: "rgba(38, 185, 154, 0.7)",
 					pointHoverBackgroundColor: "#fff",
@@ -2320,7 +2320,7 @@ if (typeof NProgress != 'undefined') {
 				data: {
 				  labels: arrdp19X,
 				  datasets: [{
-					label: "Volts ",
+					label: "kW ",
 					borderColor: "rgba(38, 185, 154, 0.7)",
 					pointBorderColor: "rgba(38, 185, 154, 0.7)",
 					pointHoverBackgroundColor: "#fff",
@@ -2353,7 +2353,7 @@ if (typeof NProgress != 'undefined') {
 				data: {
 				  labels: arrdp19Xp,
 				  datasets: [{
-					label: "Volts ",
+					label: "kW ",
 					borderColor: "rgba(38, 185, 154, 0.7)",
 					pointBorderColor: "rgba(38, 185, 154, 0.7)",
 					pointHoverBackgroundColor: "#fff",
@@ -2454,7 +2454,7 @@ if (typeof NProgress != 'undefined') {
 				data: {
 				  labels: arrdp31X,
 				  datasets: [{
-					label: "Volts ",
+					label: "% ",
 					borderColor: "rgba(38, 185, 154, 0.7)",
 					pointBorderColor: "rgba(38, 185, 154, 0.7)",
 					pointHoverBackgroundColor: "#fff",
@@ -2487,7 +2487,7 @@ if (typeof NProgress != 'undefined') {
 				data: {
 				  labels: arrdp31Xp,
 				  datasets: [{
-					label: "Volts ",
+					label: "% ",
 					borderColor: "rgba(38, 185, 154, 0.7)",
 					pointBorderColor: "rgba(38, 185, 154, 0.7)",
 					pointHoverBackgroundColor: "#fff",
@@ -2521,7 +2521,7 @@ if (typeof NProgress != 'undefined') {
 				data: {
 				  labels: arrdp32X,
 				  datasets: [{
-					label: "Volts ",
+					label: "kVAR ",
 					borderColor: "rgba(38, 185, 154, 0.7)",
 					pointBorderColor: "rgba(38, 185, 154, 0.7)",
 					pointHoverBackgroundColor: "#fff",
@@ -2554,7 +2554,7 @@ if (typeof NProgress != 'undefined') {
 				data: {
 				  labels: arrdp32Xp,
 				  datasets: [{
-					label: "Volts ",
+					label: "kVAR ",
 					borderColor: "rgba(38, 185, 154, 0.7)",
 					pointBorderColor: "rgba(38, 185, 154, 0.7)",
 					pointHoverBackgroundColor: "#fff",
@@ -2588,7 +2588,7 @@ if (typeof NProgress != 'undefined') {
 				data: {
 				  labels: arrdp34X,
 				  datasets: [{
-					label: "Volts ",
+					label: "% ",
 					borderColor: "rgba(38, 185, 154, 0.7)",
 					pointBorderColor: "rgba(38, 185, 154, 0.7)",
 					pointHoverBackgroundColor: "#fff",
@@ -2621,7 +2621,7 @@ if (typeof NProgress != 'undefined') {
 				data: {
 				  labels: arrdp34Xp,
 				  datasets: [{
-					label: "Volts ",
+					label: "% ",
 					borderColor: "rgba(38, 185, 154, 0.7)",
 					pointBorderColor: "rgba(38, 185, 154, 0.7)",
 					pointHoverBackgroundColor: "#fff",
@@ -2655,7 +2655,7 @@ if (typeof NProgress != 'undefined') {
 				data: {
 				  labels: arrdp44X,
 				  datasets: [{
-					label: "Volts ",
+					label: "°C ",
 					borderColor: "rgba(38, 185, 154, 0.7)",
 					pointBorderColor: "rgba(38, 185, 154, 0.7)",
 					pointHoverBackgroundColor: "#fff",
@@ -2688,7 +2688,7 @@ if (typeof NProgress != 'undefined') {
 				data: {
 				  labels: arrdp44Xp,
 				  datasets: [{
-					label: "Volts ",
+					label: "°C ",
 					borderColor: "rgba(38, 185, 154, 0.7)",
 					pointBorderColor: "rgba(38, 185, 154, 0.7)",
 					pointHoverBackgroundColor: "#fff",
@@ -2722,7 +2722,7 @@ if (typeof NProgress != 'undefined') {
 				data: {
 				  labels: arrdp49X,
 				  datasets: [{
-					label: "Volts ",
+					label: "% ",
 					borderColor: "rgba(38, 185, 154, 0.7)",
 					pointBorderColor: "rgba(38, 185, 154, 0.7)",
 					pointHoverBackgroundColor: "#fff",
@@ -2755,7 +2755,7 @@ if (typeof NProgress != 'undefined') {
 				data: {
 				  labels: arrdp49Xp,
 				  datasets: [{
-					label: "Volts ",
+					label: "% ",
 					borderColor: "rgba(38, 185, 154, 0.7)",
 					pointBorderColor: "rgba(38, 185, 154, 0.7)",
 					pointHoverBackgroundColor: "#fff",
@@ -2790,7 +2790,7 @@ if (typeof NProgress != 'undefined') {
 				data: {
 				  labels: arrdp0X, //["January", "February", "March", "April", "May", "June", "July"],
 				  datasets: [{
-					label: '# of Votes',
+					label: 'Cant',
 					backgroundColor: "#26B99A",
 					data: arrdp0Y //[51, 30, 40, 28, 92, 50, 45]
 				  }]
@@ -2832,7 +2832,7 @@ if (typeof NProgress != 'undefined') {
 					data: {
 					  labels: arrdp0Xp, //["January", "February", "March", "April", "May", "June", "July"],
 					  datasets: [{
-						label: '# of Votes',
+						label: 'Cant',
 						backgroundColor: "#26B99A",
 						data: arrdp0Yp //[51, 30, 40, 28, 92, 50, 45]
 					  }]

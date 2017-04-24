@@ -81,7 +81,7 @@
 			            <div class="col-md-6 col-sm-6 col-xs-12">
 			                <div class="x_panel">
 			                	<div class="x_title">
-				                    <h2>Previus VFD on Fail <small>cantidad</small></h2>
+				                    <h2>Previous VFD on Fail <small>cantidad</small></h2>
 				                    <ul class="nav navbar-right panel_toolbox">
 				                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 				                      </li>
@@ -125,7 +125,7 @@
 			            <div class="col-md-6 col-sm-6 col-xs-12">
 			                <div class="x_panel">
 			                  <div class="x_title">
-			                    <h2>Previus Motor Voltage<small>Volts</small></h2>
+			                    <h2>Previous Motor Voltage<small>Volts</small></h2>
 			                    <ul class="nav navbar-right panel_toolbox">
 			                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 			                      </li>
@@ -160,7 +160,7 @@
 			            <div class="col-md-6 col-sm-6 col-xs-12">
 			                <div class="x_panel">
 			                  <div class="x_title">
-			                    <h2>Previus Total Current<small>Amps</small></h2>
+			                    <h2>Previous Total Current<small>Amps</small></h2>
 			                    <ul class="nav navbar-right panel_toolbox">
 			                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 			                      </li>
@@ -195,7 +195,7 @@
 			            <div class="col-md-6 col-sm-6 col-xs-12">
 			                <div class="x_panel">
 			                  <div class="x_title">
-			                    <h2>Previus Output Power<small>kW</small></h2>
+			                    <h2>Previous Output Power<small>kW</small></h2>
 			                    <ul class="nav navbar-right panel_toolbox">
 			                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 			                      </li>
@@ -230,7 +230,7 @@
 			            <div class="col-md-6 col-sm-6 col-xs-12">
 			                <div class="x_panel">
 			                  <div class="x_title">
-			                    <h2>Previus Input Voltage<small>Volts</small></h2>
+			                    <h2>Previous Input Voltage<small>Volts</small></h2>
 			                    <ul class="nav navbar-right panel_toolbox">
 			                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 			                      </li>
@@ -265,7 +265,7 @@
 			            <div class="col-md-6 col-sm-6 col-xs-12">
 			                <div class="x_panel">
 			                  <div class="x_title">
-			                    <h2>Previus Input Power Fact.<small>%</small></h2>
+			                    <h2>Previous Input Power Fact.<small>%</small></h2>
 			                    <ul class="nav navbar-right panel_toolbox">
 			                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 			                      </li>
@@ -300,7 +300,7 @@
 			            <div class="col-md-6 col-sm-6 col-xs-12">
 			                <div class="x_panel">
 			                  <div class="x_title">
-			                    <h2>Previus Input kVARS<small>kVAR</small></h2>
+			                    <h2>Previous Input kVARS<small>kVAR</small></h2>
 			                    <ul class="nav navbar-right panel_toolbox">
 			                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 			                      </li>
@@ -335,7 +335,7 @@
 			            <div class="col-md-6 col-sm-6 col-xs-12">
 			                <div class="x_panel">
 			                  <div class="x_title">
-			                    <h2>Previus Hottest Cell Temp<small>%</small></h2>
+			                    <h2>Previous Hottest Cell Temp<small>%</small></h2>
 			                    <ul class="nav navbar-right panel_toolbox">
 			                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 			                      </li>
@@ -370,7 +370,7 @@
 			            <div class="col-md-6 col-sm-6 col-xs-12">
 			                <div class="x_panel">
 			                  <div class="x_title">
-			                    <h2>Previus Temp. Room<small>°C</small></h2>
+			                    <h2>Previous Temp. Room<small>°C</small></h2>
 			                    <ul class="nav navbar-right panel_toolbox">
 			                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 			                      </li>
@@ -405,7 +405,7 @@
 			            <div class="col-md-6 col-sm-6 col-xs-12">
 			                <div class="x_panel">
 			                  <div class="x_title">
-			                    <h2>Previus Hum. Rel. Room<small>%</small></h2>
+			                    <h2>Previous Hum. Rel. Room<small>%</small></h2>
 			                    <ul class="nav navbar-right panel_toolbox">
 			                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 			                      </li>

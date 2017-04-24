@@ -154,8 +154,12 @@ class EquipmentsController extends Controller
         $equipment->subarea = $request->subarea;
         $equipment->function = $request->function;
         $powerTran = explode(" ",$request->power);
+        if($request->unit == '')
+        	$request->unit = $powerTran[1];
         $equipment->power = $powerTran[0]." ".$request->unit;
         $voltageTran = explode(" ",$request->voltage);
+        if($request->unitvol == '')
+        	$request->unitvol = $voltageTran[1];
         $equipment->voltage = $voltageTran[0]." ".$request->unitvol;
         $equipment->lifecycle = $request->lifecycle;
         

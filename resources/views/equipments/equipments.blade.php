@@ -65,7 +65,7 @@
 									@else
 										<tr>
 									@endif
-											<td><img src="equipmentImg/{{ $rowEquipment->urlImg }}" class="img-responsive" alt="Logo del Cliente" style="max-width: 50px;"></td>
+											<td><img src="../equipmentImg/{{ $rowEquipment->urlImg }}" class="img-responsive" alt="Logo del Cliente" style="max-width: 50px;"></td>
 											<td>{{ $rowEquipment->name }}</td>
 											<td>{{ $rowEquipment->type->name }}</td>
 											<td>{{ $rowEquipment->Plant->client->name }}</td>
