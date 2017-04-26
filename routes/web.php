@@ -40,6 +40,9 @@ Route::group(['middleware' => ['validity', 'active']], function () {
 			
 			Route::get('/plants', 'PlantsController@index');
 			Route::get('/nav_plants/{client}', 'PlantsController@nav_index');
+			
+			Route::get('/equipoEdit/{idEquipo}', 'EquiposController@getVariablesWrite');
+			Route::put('/equipos/{idEquipo}', 'EquiposController@update');
 		});
 		
 		Route::get('/users', 'UsersController@index');

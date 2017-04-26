@@ -238,9 +238,22 @@ class EquiposController extends Controller
      * @param  \App\equipo  $equipo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, equipo $equipo)
+    public function update(Request $request, $id)
     {
-        //
+    	$values=array(	'DP_41'=>$request->dp41,
+    					'DP_42'=>$request->dp42,
+    					'DP_43'=>$request->dp43,
+    					'DP_45'=>$request->dp45,
+    					'DP_46'=>$request->dp46,
+    					'DP_47'=>$request->dp47,
+    					'DP_48'=>$request->dp48,
+    					'DP_50'=>$request->dp50,
+    					'DP_51'=>$request->dp51,
+    					'DP_52'=>$request->dp52,
+    					'DP_53'=>$request->dp53);
+    	$equipo = Equipo::where('ID_EQUIPO',$id)->update($values);;
+    	session()->flash('message', 'Se han actualizado las variables del Equipo');
+    	return redirect('/equipoEdit/'.$id);
     }
 
     /**
@@ -252,5 +265,10 @@ class EquiposController extends Controller
     public function destroy(equipo $equipo)
     {
         //
+    }
+    
+    public function getVariablesWrite($id_equipo){
+    	$variablesWrite = Equipo::where('ID_EQUIPO', $id_equipo)->select('ID_EQUIPO','NOMBRE_EQUIPO','DP_41','DP_42','DP_43','DP_45','DP_46','DP_47','DP_48','DP_50','DP_51','DP_52','DP_53')->get();
+    	return view('monitor.variablesEdit', compact('variablesWrite'));
     }
 }
