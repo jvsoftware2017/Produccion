@@ -42,6 +42,7 @@
 										<div id="edit-item" tabindex="-1">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
+												
 													<div class="modal-header">
 														<h4 class="modal-title" id="myModalLabel">Editar Variables del Equipo <strong>{{ $rowEquipo->NOMBRE_EQUIPO }}</strong></h4>
 													</div>
