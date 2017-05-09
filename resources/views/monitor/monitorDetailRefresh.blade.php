@@ -50,12 +50,8 @@
 							</td>
                             <td></td>
                         </tr>
-                        <tr>
-                        @if((($rowmonitor->equipo->DP_2))== 1 || (($rowmonitor->equipo->DP_3))== 1)
-                            <td align="right">Run <canvas id="circle0"></canvas> </td>
-                        @else
-                            <td align="right"></td>
-                        @endif
+                        <tr>                       
+                            <td align="right"></td>                        
                             <th align="center" rowspan="6" style="max-height: 80%;max-width: 100%">
                         	    <div align="center"> <img alt="Equipo {{ $rowmonitor->equipo->NOMBRE_EQUIPO }}" src="../equipmentImg/{{ $rowmonitor->urlImg }}" class="img-responsive"> </div>
                             </th>
@@ -63,20 +59,22 @@
                             <td align="left"></td>
                        	</tr>
                         <tr>
-                       	@if((($rowmonitor->equipo->DP_7))== 1)
-                        	<td align="right">READY <canvas id="circle0"></canvas></td>
+                        @if((($rowmonitor->equipo->DP_2))== 1 || (($rowmonitor->equipo->DP_3))== 1)
+                            <td align="right">Run <canvas id="circle0"></canvas> </td>
                         @else
-                        	<td align="right"></td>
-                        @endif                                                                
+                            <td align="right">Run <canvas id="circle1"></canvas></td>
+                        @endif
+                       	                                                             
                         	<td align="left">Operation Hrs: </td>
                          	<td align="left"><strong style="font-size: 16px">{{$rowmonitor->equipo->DP_40}} Hrs</strong></td>
                         </tr>
                         <tr>
-                       	@if((($rowmonitor->equipo->DP_7))== 1)
-                        	<td align="right"></td>
+                        @if((($rowmonitor->equipo->DP_7))== 1)
+                        	<td align="right">READY <canvas id="circle1"></canvas></td>
                         @else
-                        	<td align="right"></td>
-                        @endif
+                        	<td align="right">READY <canvas id="circle0"></canvas></td>
+                        @endif  
+                       	
                             <td align="left">Next Mantenaince: </td>
                         	<td align="left"><strong style="font-size: 16px">{{$rowmonitor->equipo->DP_39}} Hrs</strong></td>
                         </tr>
@@ -84,8 +82,9 @@
                         @if((($rowmonitor->equipo->DP_1))== 1)
                         	<td align="right">Warning <canvas id="circle2"></canvas></td>
                         @else
-                            <td align="right"></td>
+                            <td align="right">Warning <canvas id="circle0"></canvas></td>
                         @endif
+                        
                         	<td align="left">Temperature: </td>
                             <td align="left"><strong style="font-size: 16px">{{$rowmonitor->equipo->DP_44}} °C</strong></td>
                          </tr>
@@ -93,17 +92,23 @@
                          @if((($rowmonitor->equipo->DP_0))== 1)
                          	<td align="right">Fault <canvas id="circle1"></canvas></td>
                          @else
-                            <td align="right"></td>
+                            <td align="right">Fault <canvas id="circle0"></canvas></td>
                          @endif
+                         
                             <td align="left">Humidity: </td>
                          	<td align="left"><strong style="font-size: 16px">{{$rowmonitor->equipo->DP_49}} %</strong></td>
                          </tr>
                          <tr>
-                         @if((($rowmonitor->equipo->DP_67))== 1)
-                          	<td align="right"></canvas>Comunicación OK <canvas id="circle0"></canvas></td>
-                         @else
-                         	<td align="right"></td>
-                         @endif
+                         	<td align="right">Comunicación OK
+								<?php 
+				                $restaMin = strtotime('now')-strtotime($rowmonitor->equipo->date_DP68);                            	
+				                ?>
+				                @if($restaMin > 65)
+				                <canvas id="circle1"></canvas>
+				                @else
+				                <canvas id="circle0"></canvas>
+				                @endif 
+							</td>
                             <td align="left">Speed: </td>
                          @if((($rowmonitor->equipo->DP_8)) == 1)
                          	<td align="left"><strong style="font-size: 16px">{{$rowmonitor->equipo->DP_16}} %</strong></td>
