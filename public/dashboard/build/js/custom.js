@@ -2830,11 +2830,11 @@ if (typeof NProgress != 'undefined') {
 				  var mybarChart1 = new Chart(ctx, {
 					type: 'bar',
 					data: {
-					  labels: arrdp0X, //["January", "February", "March", "April", "May", "June", "July"],
+					  labels: arrdp0Xp, //["January", "February", "March", "April", "May", "June", "July"],
 					  datasets: [{
 						label: 'Cant',
 						backgroundColor: "#26B99A",
-						data: arrdp0Y, //[5, 3, 4, 2, 9, 0, 4]
+						data: arrdp0Yp, //[5, 3, 4, 2, 9, 0, 4]
 					  }]
 					},
 
