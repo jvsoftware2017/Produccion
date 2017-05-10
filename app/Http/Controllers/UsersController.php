@@ -71,6 +71,14 @@ class UsersController extends Controller
     	    		$request->merge(['id_role' => 2]);
     	}
     	
+    	$dataClient = Client::find($request->id_client);
+    	$clientUsers = User::where('id_client', $request->id_client)->count();
+    	
+    	if ($clientUsers >= $dataClient->maxUsers) {
+    		//session()->flash('message', 'El cliente ha alcanzado el máximo de usuarios');
+    		return redirect('/users')->withErrors('El cliente ha alcanzado el máximo de usuarios');
+    	}
+    	
     	$password = $request->password;
     	$request->merge(['password' => bcrypt($request->password)]);
     	$user = $request->all();
