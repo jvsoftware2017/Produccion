@@ -37,227 +37,229 @@
 								</ul>
 							</div>
 						@endif
-						<table id="datatable" class="table table-striped table-bordered">
-							<thead>
-							<tr>
-								<th>Preview</th>
-								<th>TAG ID</th>
-								<th>Tipo</th>
-								<th>Cliente</th>
-								<th>Sede</th>
-								<th>Referencia</th>
-								<th>ID</th>
-								<th>Alarma</th>
-								<th>Falla</th>
-								<th>Comunic. OK</th>
-								<th>On Line</th>
-								@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
-									<th>Acción</th>
-								@endif
-								<th>Variables</th>
-								<th>Monitor</th>
-							</tr>
-							</thead>
-							<tbody>
-								@foreach($dataEquipment as $rowEquipment)
-									@if($rowEquipment->status == 'inactive')
-										<tr class="danger"">
-									@else
-										<tr>
-									@endif
-											<td><img src="../equipmentImg/{{ $rowEquipment->urlImg }}" class="img-responsive" alt="Logo del Cliente" style="max-width: 50px;"></td>
-											<td>{{ $rowEquipment->name }}</td>
-											<td>{{ $rowEquipment->type->name }}</td>
-											<td>{{ $rowEquipment->Plant->client->name }}</td>
-											<td>{{ $rowEquipment->plant->name }}</td>
-											<td>{{ $rowEquipment->model }}</td>
-											<td><a href="/monitor/{{$rowEquipment->id_equipo}}">{{ $rowEquipment->id_equipo }}</a></td>
-											<!--<td>{{ $rowEquipment->created_at }}</td>
-											<td>{{ $rowEquipment->status }}</td> -->
-											@if((($rowEquipment->equipo->DP_1)) == 1)
-											<td align="center"><canvas id="circle2"></canvas></td>
-											@else
-											<td align="center"><canvas id="circle0"></canvas></td>
-											@endif
-											@if((($rowEquipment->equipo->DP_0)) == 1)
-											<td align="center"><canvas id="circle1"></canvas></td>
-											@else
-											<td align="center"><canvas id="circle0"></canvas></td>
-											@endif
-											@if((($rowEquipment->equipo->DP_67)) == 1)
-											<td align="center"><canvas id="circle2"></canvas></td>
-											@else
-											<td align="center"><canvas id="circle0"></canvas></td>
-											@endif
-											<td align="center">
-											<?php 
-			                            	$restaMin = strtotime('now')-strtotime($rowEquipment->equipo->date_DP68);                            	
-			                            	?>
-			                            	@if($restaMin > 65)
-			                            	<canvas id="circle1"></canvas>
-			                        		@else
-			                            	<canvas id="circle0"></canvas>
-			                        		@endif 
-											</td>
-											@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
-												<td>
-													<!-- Large modal -->
-													<div type="button" id="edit-client" class="btn btn-round btn-warning" data-toggle="modal" data-target="#edit-item{{ $rowEquipment->id }}" >Editar</div>
-												</td>
-											@endif
-											<td>
-												<a href="/nav_monitor/{{$rowEquipment->id_equipo}}"><div type="button" class="btn btn-round btn-success">Variables</div></a>
-											</td>
-											<td>
-												<a href="/monitor/{{$rowEquipment->id_equipo}}"><div type="button" class="btn btn-round btn-success">Monitor</div></a>
-											</td>
-										</tr>
+						<div class="table-responsive">
+							<table id="datatable" class="table table-striped table-bordered">
+								<thead>
+								<tr>
+									<th>Preview</th>
+									<th>TAG ID</th>
+									<th>Tipo</th>
+									<th>Cliente</th>
+									<th>Sede</th>
+									<th>Referencia</th>
+									<th>ID</th>
+									<th>Alarma</th>
+									<th>Falla</th>
+									<th>Comunic. OK</th>
+									<th>On Line</th>
 									@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
-										<!-- Edit Item Modal -->
-										<div class="modal fade" id="edit-item{{$rowEquipment->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-header">
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-														<h4 class="modal-title" id="myModalLabel">Editar Equipo <strong>{{ $rowEquipment->name }}</strong></h4>
-													</div>
-													<div class="modal-body">
-	
-														<form data-toggle="validator" action="/equipments/{{$rowEquipment->id}}" method="POST" enctype="multipart/form-data">
-															{{ csrf_field() }}
-															{{ method_field('PUT') }}
-															<div class="form-group">
-																<label class="control-label" for="title">TAG_ID:</label>
-																<input type="text" name="name" id="name" class="form-control" value="{{$rowEquipment->name}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
-																<div class="help-block with-errors"></div>
-															</div>
-															
-															<div class="form-group">
-																<label class="control-label" for="title">Referencia:</label>
-																<input type="text" name="model" id="model" class="form-control" value="{{$rowEquipment->model}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
-																<div class="help-block with-errors"></div>
-															</div>
-															
-															<div class="form-group">
-																<label class="control-label" for="title">Número de Serie:</label>
-																<input type="text" name="serialNumber" id="serialNumber" class="form-control" value="{{$rowEquipment->serialNumber}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
-																<div class="help-block with-errors"></div>
-															</div>
-															
-															<div class="form-group">
-																<label class="control-label" for="title">Potencia:</label>
-																<input type="text" name="power" id="power" class="form-control" value="{{$rowEquipment->power}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
-																<p>
-																	W:
-																	<input type="radio" name="unit" value="W" /> 
-																	kW:
-																	<input type="radio" name="unit" value="kW" />
-																	HP:
-																	<input type="radio" name="unit" value="HP" />
-																</p>
-																<div class="help-block with-errors"></div>
-															</div>
-															
-															<div class="form-group">
-																<label class="control-label" for="title">Voltaje:</label>
-																<input type="text" name="voltage" id="voltage" class="form-control" value="{{$rowEquipment->voltage}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
-																<p>
-																	V:
-																	<input type="radio" name="unitvol" value="V" /> 
-																	kV:
-																	<input type="radio" name="unitvol" value="kV" />
-																</p>
-																<div class="help-block with-errors"></div>
-															</div>
-															
-															<div class="form-group">
-																<label class="control-label" for="title">Área:</label>
-																<input type="text" name="area" id="area" class="form-control" value="{{$rowEquipment->area}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
-																<div class="help-block with-errors"></div>
-															</div>
-															
-															<div class="form-group">
-																<label class="control-label" for="title">Sub-Área:</label>
-																<input type="text" name="subarea" id="subarea" class="form-control" value="{{$rowEquipment->subarea}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
-																<div class="help-block with-errors"></div>
-															</div>
-															
-															<div class="form-group">
-																<label class="control-label" for="title">Función:</label>
-																<input type="text" name="function" id="function" class="form-control" value="{{$rowEquipment->function}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
-																<div class="help-block with-errors"></div>
-															</div>
-															
-															<div class="form-group">
-																<label class="control-label" for="title">Ciclo de vida:</label>
-																<select class="form-control" name="lifecycle" id="lifecycle">
-																	<option selected value="{{$rowEquipment->lifecycle}}">{{$rowEquipment->lifecycle}}</option>
-																	<option value="PM 300 Active">PM 300 Active</option>
-																	<option value="PM 400 Phase out">PM 400 Phase out</option>
-																	<option value="PM 410 Cancelation">PM 410 Cancelation</option>
-																	<option value="PM 490 Discontinuation">PM 490 Discontinuation</option>
-																	<option value="PM 500 End of Production">PM 500 End of Production</option>
-																</select>
-																<div class="help-block with-errors"></div>
-															</div>
-															
-															<div class="form-group">
-																<label class="control-label" for="title">Identificación (Id Equipo):</label>
-																<input type="text" name="id_equipo" id="id_equipo" class="form-control" value="{{$rowEquipment->id_equipo}}"" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
-																<div class="help-block with-errors"></div>
-															</div>
-	
-															<div class="form-group">
-																<label class="control-label" for="title">Tipo Equipo:</label>
-																<select class="form-control" name="id_type" id="id_type">
-																	<option selected value="{{$rowEquipment->type->id}}">{{$rowEquipment->type->name}}</option>
-																	@foreach($dataType as $rowtype)
-																		<option value="{{$rowtype->id}}">{{$rowtype->name}}</option>
-																	@endforeach
-																</select>
-																<div class="help-block with-errors"></div>
-															</div>	
+										<th>Acción</th>
+									@endif
+									<th>Variables</th>
+									<th>Monitor</th>
+								</tr>
+								</thead>
+								<tbody>
+									@foreach($dataEquipment as $rowEquipment)
+										@if($rowEquipment->status == 'inactive')
+											<tr class="danger"">
+										@else
+											<tr>
+										@endif
+												<td><img src="../equipmentImg/{{ $rowEquipment->urlImg }}" class="img-responsive" alt="Logo del Cliente" style="max-width: 50px;"></td>
+												<td>{{ $rowEquipment->name }}</td>
+												<td>{{ $rowEquipment->type->name }}</td>
+												<td>{{ $rowEquipment->Plant->client->name }}</td>
+												<td>{{ $rowEquipment->plant->name }}</td>
+												<td>{{ $rowEquipment->model }}</td>
+												<td><a href="/monitor/{{$rowEquipment->id_equipo}}">{{ $rowEquipment->id_equipo }}</a></td>
+												<!--<td>{{ $rowEquipment->created_at }}</td>
+												<td>{{ $rowEquipment->status }}</td> -->
+												@if((($rowEquipment->equipo->DP_1)) == 1)
+												<td align="center"><canvas id="circle2"></canvas></td>
+												@else
+												<td align="center"><canvas id="circle0"></canvas></td>
+												@endif
+												@if((($rowEquipment->equipo->DP_0)) == 1)
+												<td align="center"><canvas id="circle1"></canvas></td>
+												@else
+												<td align="center"><canvas id="circle0"></canvas></td>
+												@endif
+												@if((($rowEquipment->equipo->DP_67)) == 1)
+												<td align="center"><canvas id="circle2"></canvas></td>
+												@else
+												<td align="center"><canvas id="circle0"></canvas></td>
+												@endif
+												<td align="center">
+												<?php 
+				                            	$restaMin = strtotime('now')-strtotime($rowEquipment->equipo->date_DP68);                            	
+				                            	?>
+				                            	@if($restaMin > 65)
+				                            	<canvas id="circle1"></canvas>
+				                        		@else
+				                            	<canvas id="circle0"></canvas>
+				                        		@endif 
+												</td>
+												@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+													<td>
+														<!-- Large modal -->
+														<div type="button" id="edit-client" class="btn btn-round btn-warning" data-toggle="modal" data-target="#edit-item{{ $rowEquipment->id }}" >Editar</div>
+													</td>
+												@endif
+												<td>
+													<a href="/nav_monitor/{{$rowEquipment->id_equipo}}"><div type="button" class="btn btn-round btn-success">Variables</div></a>
+												</td>
+												<td>
+													<a href="/monitor/{{$rowEquipment->id_equipo}}"><div type="button" class="btn btn-round btn-success">Monitor</div></a>
+												</td>
+											</tr>
+										@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+											<!-- Edit Item Modal -->
+											<div class="modal fade" id="edit-item{{$rowEquipment->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+															<h4 class="modal-title" id="myModalLabel">Editar Equipo <strong>{{ $rowEquipment->name }}</strong></h4>
+														</div>
+														<div class="modal-body">
+		
+															<form data-toggle="validator" action="/equipments/{{$rowEquipment->id}}" method="POST" enctype="multipart/form-data">
+																{{ csrf_field() }}
+																{{ method_field('PUT') }}
+																<div class="form-group">
+																	<label class="control-label" for="title">TAG_ID:</label>
+																	<input type="text" name="name" id="name" class="form-control" value="{{$rowEquipment->name}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+																	<div class="help-block with-errors"></div>
+																</div>
 																
-															<div class="form-group">
-																<label class="control-label" for="title">Sede:</label>
-																<select class="form-control" name="id_plant" id="id_plant">
-																	<option selected value="{{$rowEquipment->plant->id}}">{{ $rowEquipment->Plant->client->name . ", " }} {{$rowEquipment->plant->name}}</option>
-																	@foreach($dataPlant as $rowplant)
-																		<option value="{{$rowplant->id}}">{{$rowplant->client->name . ", "}} {{$rowplant->name}}</option>
-																	@endforeach
-																</select>
-																<div class="help-block with-errors"></div>
-															</div>
-	
-															<div class="form-group">
-																<label class="control-label" for="title">Estado:</label>
-																<select class="form-control" name="status" id="status">
-																	<option selected value="{{$rowEquipment->status}}">{{$rowEquipment->status}}</option>
-																	<option value="active">Active</option>
-																	<option value="inactive">Inactive</option>
-																</select>
-																<div class="help-block with-errors"></div>
-															</div>
-															<div class="form-group">
-																<label for="img">Imagen:</label>
-																<input type="file" id="img" name="urlImg">
-																<p class="help-block">Seleccionar imagen para el equipo, no debe pesar más de 2MB.</p>
-															</div>
-															<input class="hide" type="text" name="prevImg" value="{{ $rowEquipment->urlImg }}" >
-															<div class="form-group">
-																<button type="submit" class="btn btn-round crud-submit btn-success">Editar</button>
-															</div>
-	
-														</form>
-	
+																<div class="form-group">
+																	<label class="control-label" for="title">Referencia:</label>
+																	<input type="text" name="model" id="model" class="form-control" value="{{$rowEquipment->model}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+																	<div class="help-block with-errors"></div>
+																</div>
+																
+																<div class="form-group">
+																	<label class="control-label" for="title">Número de Serie:</label>
+																	<input type="text" name="serialNumber" id="serialNumber" class="form-control" value="{{$rowEquipment->serialNumber}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+																	<div class="help-block with-errors"></div>
+																</div>
+																
+																<div class="form-group">
+																	<label class="control-label" for="title">Potencia:</label>
+																	<input type="text" name="power" id="power" class="form-control" value="{{$rowEquipment->power}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+																	<p>
+																		W:
+																		<input type="radio" name="unit" value="W" /> 
+																		kW:
+																		<input type="radio" name="unit" value="kW" />
+																		HP:
+																		<input type="radio" name="unit" value="HP" />
+																	</p>
+																	<div class="help-block with-errors"></div>
+																</div>
+																
+																<div class="form-group">
+																	<label class="control-label" for="title">Voltaje:</label>
+																	<input type="text" name="voltage" id="voltage" class="form-control" value="{{$rowEquipment->voltage}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+																	<p>
+																		V:
+																		<input type="radio" name="unitvol" value="V" /> 
+																		kV:
+																		<input type="radio" name="unitvol" value="kV" />
+																	</p>
+																	<div class="help-block with-errors"></div>
+																</div>
+																
+																<div class="form-group">
+																	<label class="control-label" for="title">Área:</label>
+																	<input type="text" name="area" id="area" class="form-control" value="{{$rowEquipment->area}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+																	<div class="help-block with-errors"></div>
+																</div>
+																
+																<div class="form-group">
+																	<label class="control-label" for="title">Sub-Área:</label>
+																	<input type="text" name="subarea" id="subarea" class="form-control" value="{{$rowEquipment->subarea}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+																	<div class="help-block with-errors"></div>
+																</div>
+																
+																<div class="form-group">
+																	<label class="control-label" for="title">Función:</label>
+																	<input type="text" name="function" id="function" class="form-control" value="{{$rowEquipment->function}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+																	<div class="help-block with-errors"></div>
+																</div>
+																
+																<div class="form-group">
+																	<label class="control-label" for="title">Ciclo de vida:</label>
+																	<select class="form-control" name="lifecycle" id="lifecycle">
+																		<option selected value="{{$rowEquipment->lifecycle}}">{{$rowEquipment->lifecycle}}</option>
+																		<option value="PM 300 Active">PM 300 Active</option>
+																		<option value="PM 400 Phase out">PM 400 Phase out</option>
+																		<option value="PM 410 Cancelation">PM 410 Cancelation</option>
+																		<option value="PM 490 Discontinuation">PM 490 Discontinuation</option>
+																		<option value="PM 500 End of Production">PM 500 End of Production</option>
+																	</select>
+																	<div class="help-block with-errors"></div>
+																</div>
+																
+																<div class="form-group">
+																	<label class="control-label" for="title">Identificación (Id Equipo):</label>
+																	<input type="text" name="id_equipo" id="id_equipo" class="form-control" value="{{$rowEquipment->id_equipo}}"" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
+																	<div class="help-block with-errors"></div>
+																</div>
+		
+																<div class="form-group">
+																	<label class="control-label" for="title">Tipo Equipo:</label>
+																	<select class="form-control" name="id_type" id="id_type">
+																		<option selected value="{{$rowEquipment->type->id}}">{{$rowEquipment->type->name}}</option>
+																		@foreach($dataType as $rowtype)
+																			<option value="{{$rowtype->id}}">{{$rowtype->name}}</option>
+																		@endforeach
+																	</select>
+																	<div class="help-block with-errors"></div>
+																</div>	
+																	
+																<div class="form-group">
+																	<label class="control-label" for="title">Sede:</label>
+																	<select class="form-control" name="id_plant" id="id_plant">
+																		<option selected value="{{$rowEquipment->plant->id}}">{{ $rowEquipment->Plant->client->name . ", " }} {{$rowEquipment->plant->name}}</option>
+																		@foreach($dataPlant as $rowplant)
+																			<option value="{{$rowplant->id}}">{{$rowplant->client->name . ", "}} {{$rowplant->name}}</option>
+																		@endforeach
+																	</select>
+																	<div class="help-block with-errors"></div>
+																</div>
+		
+																<div class="form-group">
+																	<label class="control-label" for="title">Estado:</label>
+																	<select class="form-control" name="status" id="status">
+																		<option selected value="{{$rowEquipment->status}}">{{$rowEquipment->status}}</option>
+																		<option value="active">Active</option>
+																		<option value="inactive">Inactive</option>
+																	</select>
+																	<div class="help-block with-errors"></div>
+																</div>
+																<div class="form-group">
+																	<label for="img">Imagen:</label>
+																	<input type="file" id="img" name="urlImg">
+																	<p class="help-block">Seleccionar imagen para el equipo, no debe pesar más de 2MB.</p>
+																</div>
+																<input class="hide" type="text" name="prevImg" value="{{ $rowEquipment->urlImg }}" >
+																<div class="form-group">
+																	<button type="submit" class="btn btn-round crud-submit btn-success">Guardar</button>
+																</div>
+		
+															</form>
+		
+														</div>
 													</div>
 												</div>
 											</div>
-										</div>
-									@endif
-								@endforeach
-							</tbody>
-						</table>
+										@endif
+									@endforeach
+								</tbody>
+							</table>
+						</div>
 						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 							<!-- Create Item Modal Equipo-->
 							<div class="modal fade" id="create-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

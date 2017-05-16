@@ -35,6 +35,7 @@
                     @foreach($dataEquipo as $rowmonitor)                                 
                     
                     <div align="center"><h4 class="modal-title" id="myModalLabel"> <strong>{{ $rowmonitor->equipo->MODELO_EQUIPO." - ".$rowmonitor->equipo->NOMBRE_EQUIPO }}</strong></h4></div>
+                    <div class="table-responsive">
                     <table align="center" style="border-collapse:separate;border-spacing:15px;" border="0" width="70%" class="table-responsive">
                     	<tr>
                         	<td><img src="{{ URL::to('/') }}/clientLogo/{{ $rowmonitor->plant->client->urlLogo }}" class="img-responsive" alt="Logo del Cliente" style="max-width: 100px;"></td>
@@ -146,7 +147,7 @@
                          </tr>
                          @endforeach
                     </table>
-                    
+                    </div>
 										<!-- View details Modal -->
 										<div class="modal fade" id="detail-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
 											<div class="modal-dialog" role="document">

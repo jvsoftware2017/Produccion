@@ -78,7 +78,7 @@
 													<div class="help-block with-errors"></div>
 												</div>
 												<div class="form-group">
-													<button type="submit" class="btn btn-round crud-submit btn-success">Editar</button>
+													<button type="submit" class="btn btn-round crud-submit btn-success">Guardar</button>
 												</div>
 											</form>
 										</div>
