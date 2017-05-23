@@ -20,14 +20,18 @@ $("#id_client").change(function (event){
     });
 });
 
-$("#id_client_editModal").change(function (event){
-    $.get("/clientPlants/"+event.target.value+"",function(response,plant) {
-        $("#id_plant_editModal").empty();
-        for(i=0; i<response.length; i++){
-            $("#id_plant_editModal").append("<option value='"+response[i].id+"'>"+response[i].name+"</option>");
-        }
-    });
+for (j = 1; j < 20; j++) { // buscar cantidad de usuarios
+
+	$("#id_client_editModal-"+j).change(function (event){
+		var arrVar = event.target.id.split("-");
+	    $.get("/clientPlants/"+event.target.value+"",function(response,plant) {
+	        $("#id_plant_editModal" + arrVar[1]).empty();
+	        for(i=0; i<response.length; i++){
+	            $("#id_plant_editModal" + arrVar[1]).append("<option value='"+response[i].id+"'>"+response[i].name+"</option>");
+	        }
+	    });
 });
+}
 
 $("#id_equipoRep").change(function (event){
     window.location.href = "/report/"+event.target.value+"";

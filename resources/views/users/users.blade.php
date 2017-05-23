@@ -188,7 +188,6 @@
 		                                                    <form data-toggle="validator" action="/users/{{ $rowuser->id }}" method="POST">
 		                                                        {{ csrf_field() }}
 																{{ method_field('PUT') }}
-																
 		                                                        <div class="form-group">
 		                                                            <label class="control-label" for="name">Nombre:</label>
 		                                                            <input type="text" name="name" id="name" class="form-control" value="{{ $rowuser->name }}" data-error="Por favor escribir un nombre válido" oninvalid="this.setCustomValidity('Por favor escribir un nombre válido')" oninput="setCustomValidity('')" required />
@@ -202,10 +201,13 @@
 		                                                        </div>
 		                                                        <div class="form-group">
 		                                                            <label class="control-label" for="client">Cliente:</label>
-		                                                            <select class="form-control" name="id_client" id="id_client_editModal">
-		                                                                    <option selected value="{{$rowuser->client->id}}">{{$rowuser->client->name}}</option>
-		                                                                <@foreach($dataClient as $rowclient)
-		                                                                 <option value="{{$rowclient->id}}">{{$rowclient->name}}</option>
+		                                                            <select class="form-control" name="id_client" id="id_client_editModal-{{ $rowuser->id }}">		                                                           
+		                                                                @foreach($dataClient as $rowclient)
+		                                                                	@if($rowuser->client->id == $rowclient->id)
+		                                                                	<option selected="selected" value="{{$rowclient->id}}">{{$rowclient->name}}</option>
+		                                                                	@else
+		                                                                	<option value="{{$rowclient->id}}">{{$rowclient->name}}</option>
+		                                                                	@endif
 		                                                                @endforeach
 		                                                            </select>
 		                                                            <div class="help-block with-errors"></div>
@@ -213,9 +215,16 @@
 		                                                        @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 																<div class="form-group">
 																	<label class="control-label" for="plant">Sede:</label>
-																	<select class="form-control" name="id_plant" id="id_plant_editModal">
-																		<option selected value="{{$rowuser->plant->id}}">{{$rowuser->plant->name}}</option>
-	
+																	<select class="form-control" name="id_plant" id="id_plant_editModal{{ $rowuser->id }}">
+																		@foreach($dataPlant as $rowplant)
+																		@if($rowuser->client->id == $rowplant->id_client)
+		                                                                	@if($rowuser->plant->id == $rowplant->id)
+		                                                                	<option selected="selected" value="{{$rowplant->id}}">{{$rowplant->name}}</option>
+		                                                                	@else
+		                                                                	<option value="{{$rowplant->id}}">{{$rowplant->name}}</option>
+		                                                                	@endif
+		                                                                @endif
+		                                                                @endforeach
 																	</select>
 																	<div class="help-block with-errors"></div>
 																</div>
@@ -265,7 +274,7 @@
 		                                            </div>
 		                                        </div>
 		                                    </div>
-	
+
 	                                    @endif
 									@endforeach
 								</tbody>

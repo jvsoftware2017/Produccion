@@ -2879,21 +2879,21 @@ if (typeof NProgress != 'undefined') {
 						var canvas20 = document.querySelector('#DP49_current');				
 															
 						//var canvasImg1 = canvas1.toDataURL("image/jpeg", 0.5);
-						var canvasImg2 = canvas2.toDataURL("image/jpeg", 0.5);
+						var canvasImg2 = canvas2.toDataURL("image/png", 0.5);
 						//var canvasImg3 = canvas3.toDataURL("image/jpeg", 0.5);
-						var canvasImg4 = canvas4.toDataURL("image/jpeg", 0.5);
+						var canvasImg4 = canvas4.toDataURL("image/png", 0.5);
 						//var canvasImg5 = canvas5.toDataURL("image/jpeg", 1.0);
-						var canvasImg6 = canvas6.toDataURL("image/jpeg", 0.5);
+						var canvasImg6 = canvas6.toDataURL("image/png", 0.5);
 						//var canvasImg7 = canvas7.toDataURL("image/jpeg", 1.0);
-						var canvasImg8 = canvas8.toDataURL("image/jpeg", 0.5);
+						var canvasImg8 = canvas8.toDataURL("image/png", 0.5);
 						//var canvasImg9 = canvas9.toDataURL("image/jpeg", 1.0);
-						var canvasImg10 = canvas10.toDataURL("image/jpeg", 0.5);
+						var canvasImg10 = canvas10.toDataURL("image/png", 0.5);
 						//var canvasImg11 = canvas11.toDataURL("image/jpeg", 1.0);
-						var canvasImg12 = canvas12.toDataURL("image/jpeg", 0.5);
+						var canvasImg12 = canvas12.toDataURL("image/png", 0.5);
 						//var canvasImg13 = canvas13.toDataURL("image/jpeg", 1.0);
-						var canvasImg14 = canvas14.toDataURL("image/jpeg", 0.5);
+						var canvasImg14 = canvas14.toDataURL("image/png", 0.5);
 						//var canvasImg15 = canvas15.toDataURL("image/jpeg", 1.0);
-						var canvasImg16 = canvas16.toDataURL("image/jpeg", 0.5);
+						var canvasImg16 = canvas16.toDataURL("image/png", 0.5);
 						//var canvasImg17 = canvas17.toDataURL("image/jpeg", 1.0);
 						var canvasImg18 = canvas18.toDataURL("image/jpeg", 0.5);
 						//var canvasImg19 = canvas19.toDataURL("image/jpeg", 1.0);
@@ -2901,39 +2901,34 @@ if (typeof NProgress != 'undefined') {
 						
 						//creates PDF from img
 						var doc = new jsPDF('p','mm','letter');
-						doc.setFontSize(20);
-						doc.text(10, 10, 'Current VFD on Fail (Cantidad)');
-						doc.addImage(canvasImg2, 'PNG', 10, 20, 190, 90 );						
-						doc.text(10, 140, 'Current Motor Voltage (Volts)');
-						doc.addImage(canvasImg4, 'PNG', 10, 150, 190, 90 );
+						doc.setFontSize(8);						
 						
-						doc.addPage();
+						doc.text(10, 15, 'Current VFD on Fail (Cantidad)');
+						doc.addImage(canvasImg2, 'jpeg', 10, 20, 50, 20 );						
+						doc.text(10, 45, 'Current Motor Voltage (Volts)');
+						doc.addImage(canvasImg4, 'jpeg', 10, 50, 50, 20 );						
+			
+						doc.text(10, 75, 'Current Total Current (Amps)');
+						doc.addImage(canvasImg6, 'jpeg', 10, 80, 50, 20 );
+						doc.text(10, 105, 'Current Output Power (kW)');
+						doc.addImage(canvasImg8, 'jpeg', 10, 110, 50, 20 );
 						
-						doc.text(10, 10, 'Current Total Current (Amps)');
-						doc.addImage(canvasImg6, 'PNG', 10, 20, 190, 90 );
-						doc.text(10, 140, 'Current Output Power (kW)');
-						doc.addImage(canvasImg8, 'PNG', 10, 150, 190, 90 );
+						doc.text(10, 135, 'Current Input Voltage (volts)');
+						doc.addImage(canvasImg10, 'jpeg', 10, 140, 50, 20 );
+						doc.text(10, 165, 'Current Input Power Fact (%)');
+						doc.addImage(canvasImg12, 'jpeg', 10, 170, 50, 20 );
 						
-						doc.addPage();
+						doc.text(10, 195, 'Current Input kVARS (kVAR)');
+						doc.addImage(canvasImg14, 'jpeg', 10, 200, 50, 20 );
+						doc.text(10, 225, 'Current Hottest Cell Temp (%)');
+						doc.addImage(canvasImg16, 'jpeg', 10, 230, 50, 20 );						
 						
-						doc.text(10, 10, 'Current Input Voltage (volts)');
-						doc.addImage(canvasImg10, 'PNG', 10, 20, 190, 90 );
-						doc.text(10, 140, 'Current Input Power Fact (%)');
-						doc.addImage(canvasImg12, 'PNG', 10, 150, 190, 90 );
-						
-						doc.addPage();
-						
-						doc.text(10, 10, 'Current Input kVARS (kVAR)');
-						doc.addImage(canvasImg14, 'PNG', 10, 20, 190, 90 );
-						doc.text(10, 140, 'Current Hottest Cell Temp (%)');
-						doc.addImage(canvasImg16, 'PNG', 10, 150, 190, 90 );						
-						
-						doc.addPage();
+						/*doc.addPage();
 						
 						doc.text(10, 10, 'Current Temp. Room (°C)');
 						doc.addImage(canvasImg18, 'PNG', 10, 20, 190, 90 );
 						doc.text(10, 140, 'Current Hum. Rel. Room (%)');
-						doc.addImage(canvasImg20, 'PNG', 10, 150, 190, 90 );
+						doc.addImage(canvasImg20, 'PNG', 10, 150, 190, 90 );*/
 						
 						doc.save('canvas.pdf');
 					

@@ -71,9 +71,9 @@
                         </tr>
                         <tr>
                         @if((($rowmonitor->equipo->DP_7))== 1)
-                        	<td align="right">READY <canvas id="circle1"></canvas></td>
-                        @else
                         	<td align="right">READY <canvas id="circle0"></canvas></td>
+                        @else
+                        	<td align="right">READY <canvas id="circle1"></canvas></td>
                         @endif  
                        	
                             <td align="left">Next Mantenaince: </td>
