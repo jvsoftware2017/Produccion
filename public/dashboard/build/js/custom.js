@@ -2895,40 +2895,40 @@ if (typeof NProgress != 'undefined') {
 						//var canvasImg15 = canvas15.toDataURL("image/jpeg", 1.0);
 						var canvasImg16 = canvas16.toDataURL("image/png", 0.5);
 						//var canvasImg17 = canvas17.toDataURL("image/jpeg", 1.0);
-						var canvasImg18 = canvas18.toDataURL("image/jpeg", 0.5);
+						var canvasImg18 = canvas18.toDataURL("image/png", 0.5);
 						//var canvasImg19 = canvas19.toDataURL("image/jpeg", 1.0);
-						var canvasImg20 = canvas20.toDataURL("image/jpeg", 0.5);
+						var canvasImg20 = canvas20.toDataURL("image/png", 0.5);
 						
 						//creates PDF from img
 						var doc = new jsPDF('p','mm','letter');
-						doc.setFontSize(8);						
+						doc.setFontSize(8);	
 						
-						doc.text(10, 15, 'Current VFD on Fail (Cantidad)');
-						doc.addImage(canvasImg2, 'jpeg', 10, 20, 50, 20 );						
-						doc.text(10, 45, 'Current Motor Voltage (Volts)');
-						doc.addImage(canvasImg4, 'jpeg', 10, 50, 50, 20 );						
-			
-						doc.text(10, 75, 'Current Total Current (Amps)');
-						doc.addImage(canvasImg6, 'jpeg', 10, 80, 50, 20 );
-						doc.text(10, 105, 'Current Output Power (kW)');
-						doc.addImage(canvasImg8, 'jpeg', 10, 110, 50, 20 );
+						var x = 30;
+						var y = 40;
+						var ancho = 70;
+						var alto = 30;
 						
-						doc.text(10, 135, 'Current Input Voltage (volts)');
-						doc.addImage(canvasImg10, 'jpeg', 10, 140, 50, 20 );
-						doc.text(10, 165, 'Current Input Power Fact (%)');
-						doc.addImage(canvasImg12, 'jpeg', 10, 170, 50, 20 );
+						doc.text(x, y, 'Current VFD on Fail (Cantidad)');
+						doc.addImage(canvasImg2, 'jpeg', x, y+5, ancho, alto );						
+						doc.text(x, y+5+alto+5, 'Current Motor Voltage (Volts)');
+						doc.addImage(canvasImg4, 'jpeg', x, y+5+alto+10, ancho, alto );			
+						doc.text(x, y+5+alto*2+15, 'Current Total Current (Amps)');
+						doc.addImage(canvasImg6, 'jpeg', x, y+5+alto*2+20, ancho, alto );
+						doc.text(x, y+5+alto*3+25, 'Current Output Power (kW)');
+						doc.addImage(canvasImg8, 'jpeg', x, y+5+alto*3+30, ancho, alto );						
+						doc.text(x, y+5+alto*4+35, 'Current Input Voltage (volts)');
+						doc.addImage(canvasImg10, 'jpeg', x, y+5+alto*4+40, ancho, alto );
 						
-						doc.text(10, 195, 'Current Input kVARS (kVAR)');
-						doc.addImage(canvasImg14, 'jpeg', 10, 200, 50, 20 );
-						doc.text(10, 225, 'Current Hottest Cell Temp (%)');
-						doc.addImage(canvasImg16, 'jpeg', 10, 230, 50, 20 );						
-						
-						/*doc.addPage();
-						
-						doc.text(10, 10, 'Current Temp. Room (°C)');
-						doc.addImage(canvasImg18, 'PNG', 10, 20, 190, 90 );
-						doc.text(10, 140, 'Current Hum. Rel. Room (%)');
-						doc.addImage(canvasImg20, 'PNG', 10, 150, 190, 90 );*/
+						doc.text(x+ancho+10, y, 'Current Input Power Fact (%)');
+						doc.addImage(canvasImg12, 'jpeg', x+ancho+10, y+5, ancho, alto );						
+						doc.text(x+ancho+10, y+5+alto+5, 'Current Input kVARS (kVAR)');
+						doc.addImage(canvasImg14, 'jpeg', x+ancho+10, y+5+alto+10, ancho, alto );
+						doc.text(x+ancho+10, y+5+alto*2+15, 'Current Hottest Cell Temp (%)');
+						doc.addImage(canvasImg16, 'jpeg', x+ancho+10, y+5+alto*2+20, ancho, alto );				
+						doc.text(x+ancho+10, y+5+alto*3+25, 'Current Temp. Room (°C)');
+						doc.addImage(canvasImg18, 'PNG', x+ancho+10, y+5+alto*3+30, ancho, alto );
+						doc.text(x+ancho+10, y+5+alto*4+35, 'Current Hum. Rel. Room (%)');
+						doc.addImage(canvasImg20, 'PNG', x+ancho+10, y+5+alto*4+40, ancho, alto );
 						
 						doc.save('canvas.pdf');
 					
