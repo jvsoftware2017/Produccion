@@ -2852,6 +2852,7 @@ if (typeof NProgress != 'undefined') {
 				  });
 			    }); 
 				}
+			downloadPDF();
 			  		//add event listener to button
 					document.getElementById('download-pdf').addEventListener("click", downloadPDF);
 
