@@ -399,7 +399,7 @@
 			                  </div>
 			                </div>
 			            </div>
-						<button type="button" id="download-pdf" class="btn btn-round btn-success"> Descargar PDF </button>
+						<button type="button" id="download-pdf" class="btn btn-round btn-success">Descargar PDF</button>
 					</div>
 				</div>
 			</div>

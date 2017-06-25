@@ -4,6 +4,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/scraping', 'ReportsController@reportScraping');
 Route::get('/', 'Auth\LoginController@showLoginForm');
 Route::get('/active', 'Auth\LoginController@active');
 Route::get('/validity', 'Auth\LoginController@validity');
