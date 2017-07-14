@@ -2,8 +2,10 @@
 
 namespace App\Console;
 
+use DB;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Mail\ReportRecordatory;
 
 class Kernel extends ConsoleKernel
 {
@@ -26,6 +28,15 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+    	$schedule->call(function () {
+    		$users = DB::table('users')->where([
+    				['id_role', '=', '1'],
+    				['status', '=', 'active'],
+    		])->get();
+    		foreach ($users as $user){
+    			\Mail::to($user)->send(new ReportRecordatory());
+    		}
+    	})->everyMinute();//->monthlyOn(28, '08:00');
     }
 
     /**

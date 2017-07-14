@@ -16,6 +16,7 @@ Route::group(['middleware' => ['validity', 'active']], function () {
 	Route::get('/home', 'HomeController@index');
 	Route::get('/user_profile', 'UsersController@showProfile');
 	Route::put('/user_profile', 'UsersController@updateProfile');
+	Route::get('/sendmail', 'UsersController@sendReportRecordatoryEmail');
 	
 	Route::group(['middleware' => 'client'], function () {
 		

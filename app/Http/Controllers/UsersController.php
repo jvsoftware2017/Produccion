@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Welcome;
+use App\Mail\ReportRecordatory;
+use Illuminate\Support\Facades\DB;
+
 
 class UsersController extends Controller
 {
@@ -193,5 +196,24 @@ class UsersController extends Controller
     	$user->save();
     	session()->flash('message', 'Se ha editado el usuario correctamente.');
     	return redirect('/user_profile');
+    }
+    
+    /**
+     * Send Report Recordatory Email.
+     *
+     * 
+     */
+    public function sendReportRecordatoryEmail()
+    {
+    	//$users = 'jose.miller.liscano@gmail.com';
+    	$users = DB::table('users')->where([
+    			['id_role', '=', '3'],
+    			['status', '=', 'active'],
+    	])->get();
+    	//dd($users);
+    	foreach ($users as $user){
+    		Mail::to($user)->send(new ReportRecordatory());
+    	}
+    	echo "finish";
     }
 }
