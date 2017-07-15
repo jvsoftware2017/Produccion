@@ -36,7 +36,8 @@ class Kernel extends ConsoleKernel
     		foreach ($users as $user){
     			\Mail::to($user)->send(new ReportRecordatory());
     		}
-    	})->everyMinute();//->monthlyOn(28, '08:00');
+    	})->monthlyOn(28, '08:00')
+    	->timezone('America/Bogota');//->monthlyOn(28, '08:00');
     }
 
     /**
