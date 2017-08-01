@@ -34,7 +34,8 @@
 						@endif
 						@if(isset($equipo))
 						<div align="center" id="logoClient"> 
-								<img src="{{ URL::to('/') }}/clientLogo/{{ $url }}" class="img-responsive" alt="Logo del Cliente" style="max-width: 100px;">
+							<img src="{{ URL::to('/') }}/clientLogo/{{ $url }}" class="img-responsive" alt="Logo del Cliente" style="max-width: 100px;">
+							<input type="hidden" value="{{ URL::to('/') }}/clientLogo/{{ $url }}" id="urlPath" />
 						</div>
 						<div align="center"><h4 class="modal-title" id="myModalLabel"> REPORTE EQUIPO <strong>{{$equipo}}</strong></h4></div>						
 						<input type="hidden" id="id_equipo" value="{{$equipo}}"/>

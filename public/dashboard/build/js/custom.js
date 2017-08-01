@@ -2858,7 +2858,16 @@ if (typeof NProgress != 'undefined') {
 					document.getElementById('download-pdf-previous').addEventListener("click", downloadPDFprevious);
 			
 					function downloadPDF() {
-						var logoClient = document.querySelector('#logoClient');
+						var img = new Image();
+					    var dataURL;
+					    img.src = document.getElementById("urlPath").value;					    					    
+					    var canvas = document.createElement('canvas');
+					    canvas.width = img.width;
+					    canvas.height = img.height;
+					    var context = canvas.getContext('2d');
+					    context.drawImage(img, 0, 0);
+					    dataURL = canvas.toDataURL('image/jpeg');
+
 						var canvas2 = document.querySelector('#DP0_current');
 						var canvas4 = document.querySelector('#DP17_current');
 						var canvas6 = document.querySelector('#DP18_current');
@@ -2870,7 +2879,6 @@ if (typeof NProgress != 'undefined') {
 						var canvas18 = document.querySelector('#DP44_current');
 						var canvas20 = document.querySelector('#DP49_current');				
 							
-						var logoClientImg = logoClient.toDataURL("image/png", 0.5);
 						var canvasImg2 = canvas2.toDataURL("image/png", 0.5);
 						var canvasImg4 = canvas4.toDataURL("image/png", 0.5);
 						var canvasImg6 = canvas6.toDataURL("image/png", 0.5);
@@ -2885,12 +2893,12 @@ if (typeof NProgress != 'undefined') {
 						var doc = new jsPDF('p','mm','letter');
 						doc.setFontSize(8);	
 						
-						doc.addImage(logoClientImg, 'jpeg', 100, 10, ancho, alto );
-						
 						var x = 30;
 						var y = 40;
 						var ancho = 70;
-						var alto = 30;
+						var alto = 30;						
+						
+						doc.addImage(dataURL, 'jpeg', 60, 10, ancho, alto );
 						
 						doc.text(x, y, 'Current VFD on Fail (Cantidad)');
 						doc.addImage(canvasImg2, 'jpeg', x, y+5, ancho, alto );						
@@ -2919,6 +2927,16 @@ if (typeof NProgress != 'undefined') {
 					}
 					
 					function downloadPDFprevious() {
+						var img = new Image();
+					    var dataURL;
+					    img.src = document.getElementById("urlPath").value;					    					    
+					    var canvas = document.createElement('canvas');
+					    canvas.width = img.width;
+					    canvas.height = img.height;
+					    var context = canvas.getContext('2d');
+					    context.drawImage(img, 0, 0);
+					    dataURL = canvas.toDataURL('image/jpeg');
+					    
 						var canvas1 = document.querySelector('#DP0_previus');
 						var canvas3 = document.querySelector('#DP17_previus');
 						var canvas5 = document.querySelector('#DP18_previus');
@@ -2949,6 +2967,8 @@ if (typeof NProgress != 'undefined') {
 						var y = 40;
 						var ancho = 70;
 						var alto = 30;
+						
+						doc.addImage(dataURL, 'jpeg', 60, 10, ancho, alto );
 						
 						doc.text(x, y, 'Previous VFD on Fail (Cantidad)');
 						doc.addImage(canvasImg1, 'jpeg', x, y+5, ancho, alto );						
