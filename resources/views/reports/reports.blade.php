@@ -33,6 +33,9 @@
 							</div>
 						@endif
 						@if(isset($equipo))
+						<div align="center" id="logoClient"> 
+								<img src="{{ URL::to('/') }}/clientLogo/{{ $url }}" class="img-responsive" alt="Logo del Cliente" style="max-width: 100px;">
+						</div>
 						<div align="center"><h4 class="modal-title" id="myModalLabel"> REPORTE EQUIPO <strong>{{$equipo}}</strong></h4></div>						
 						<input type="hidden" id="id_equipo" value="{{$equipo}}"/>
 						@else
@@ -399,7 +402,8 @@
 			                  </div>
 			                </div>
 			            </div>
-						<button type="button" id="download-pdf" class="btn btn-round btn-success">Descargar PDF</button>
+						<span align="left"><button type="button" id="download-pdf" class="btn btn-round btn-success">Descargar Current PDF</button></span> 
+						<span align="right"><button type="button" id="download-pdf-previous" class="btn btn-round btn-success">Descargar Previous PDF</button></span>
 					</div>
 				</div>
 			</div>

@@ -41,7 +41,9 @@ class ReportsController extends Controller
     public function report($id)
     {
     	$equipo = $id;
-    	return view('reports.reports',compact('equipo'));
+    	$dataEquipo = Equipment::where('id_equipo', $id)->get();
+    	$url = $dataEquipo[0]->plant->client->urlLogo;
+    	return view('reports.reports',compact('equipo','url'));
     }
 
     /**

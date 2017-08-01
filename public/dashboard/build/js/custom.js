@@ -2425,7 +2425,7 @@ if (typeof NProgress != 'undefined') {
 					pointBorderColor: "rgba(38, 185, 154, 0.7)",
 					pointHoverBackgroundColor: "#fff",
 					pointBorderWidth: 1,
-					data: arrdp30Y,
+					data: arrdp30Yp,
 				  }]
 				},
 			  });
@@ -2852,57 +2852,40 @@ if (typeof NProgress != 'undefined') {
 				  });
 			    }); 
 				}
-			downloadPDF();
+			//downloadPDF();
 			  		//add event listener to button
 					document.getElementById('download-pdf').addEventListener("click", downloadPDF);
-
-					//donwload pdf from original canvas
+					document.getElementById('download-pdf-previous').addEventListener("click", downloadPDFprevious);
+			
 					function downloadPDF() {
-						//var canvas1 = document.querySelector('#DP0_previus');
+						var logoClient = document.querySelector('#logoClient');
 						var canvas2 = document.querySelector('#DP0_current');
-						//var canvas3 = document.querySelector('#DP17_previus');
 						var canvas4 = document.querySelector('#DP17_current');
-						//var canvas5 = document.querySelector('#DP18_previus');
 						var canvas6 = document.querySelector('#DP18_current');
-						//var canvas7 = document.querySelector('#DP19_previus');
 						var canvas8 = document.querySelector('#DP19_current');
-						//var canvas9 = document.querySelector('#DP30_previus');
 						var canvas10 = document.querySelector('#DP30_current');
-						//var canvas11 = document.querySelector('#DP31_previus');
 						var canvas12 = document.querySelector('#DP31_current');
-						//var canvas13 = document.querySelector('#DP32_previus');
 						var canvas14 = document.querySelector('#DP32_current');
-						//var canvas15 = document.querySelector('#DP34_previus');
 						var canvas16 = document.querySelector('#DP34_current');
-						//var canvas17 = document.querySelector('#DP44_previus');
 						var canvas18 = document.querySelector('#DP44_current');
-						//var canvas19 = document.querySelector('#DP49_previus');
 						var canvas20 = document.querySelector('#DP49_current');				
-															
-						//var canvasImg1 = canvas1.toDataURL("image/jpeg", 0.5);
+							
+						var logoClientImg = logoClient.toDataURL("image/png", 0.5);
 						var canvasImg2 = canvas2.toDataURL("image/png", 0.5);
-						//var canvasImg3 = canvas3.toDataURL("image/jpeg", 0.5);
 						var canvasImg4 = canvas4.toDataURL("image/png", 0.5);
-						//var canvasImg5 = canvas5.toDataURL("image/jpeg", 1.0);
 						var canvasImg6 = canvas6.toDataURL("image/png", 0.5);
-						//var canvasImg7 = canvas7.toDataURL("image/jpeg", 1.0);
 						var canvasImg8 = canvas8.toDataURL("image/png", 0.5);
-						//var canvasImg9 = canvas9.toDataURL("image/jpeg", 1.0);
 						var canvasImg10 = canvas10.toDataURL("image/png", 0.5);
-						//var canvasImg11 = canvas11.toDataURL("image/jpeg", 1.0);
 						var canvasImg12 = canvas12.toDataURL("image/png", 0.5);
-						//var canvasImg13 = canvas13.toDataURL("image/jpeg", 1.0);
 						var canvasImg14 = canvas14.toDataURL("image/png", 0.5);
-						//var canvasImg15 = canvas15.toDataURL("image/jpeg", 1.0);
 						var canvasImg16 = canvas16.toDataURL("image/png", 0.5);
-						//var canvasImg17 = canvas17.toDataURL("image/jpeg", 1.0);
 						var canvasImg18 = canvas18.toDataURL("image/png", 0.5);
-						//var canvasImg19 = canvas19.toDataURL("image/jpeg", 1.0);
 						var canvasImg20 = canvas20.toDataURL("image/png", 0.5);
 						
-						//creates PDF from img
 						var doc = new jsPDF('p','mm','letter');
 						doc.setFontSize(8);	
+						
+						doc.addImage(logoClientImg, 'jpeg', 100, 10, ancho, alto );
 						
 						var x = 30;
 						var y = 40;
@@ -2931,7 +2914,65 @@ if (typeof NProgress != 'undefined') {
 						doc.text(x+ancho+10, y+5+alto*4+35, 'Current Hum. Rel. Room (%)');
 						doc.addImage(canvasImg20, 'PNG', x+ancho+10, y+5+alto*4+40, ancho, alto );
 						
-						doc.save('canvas.pdf');
+						doc.save('CurrentGraphic.pdf');
+					
+					}
+					
+					function downloadPDFprevious() {
+						var canvas1 = document.querySelector('#DP0_previus');
+						var canvas3 = document.querySelector('#DP17_previus');
+						var canvas5 = document.querySelector('#DP18_previus');
+						var canvas7 = document.querySelector('#DP19_previus');
+						var canvas9 = document.querySelector('#DP30_previus');
+						var canvas11 = document.querySelector('#DP31_previus');
+						var canvas13 = document.querySelector('#DP32_previus');
+						var canvas15 = document.querySelector('#DP34_previus');
+						var canvas17 = document.querySelector('#DP44_previus');
+						var canvas19 = document.querySelector('#DP49_previus');
+															
+						var canvasImg1 = canvas2.toDataURL("image/png", 0.5);
+						var canvasImg3 = canvas4.toDataURL("image/png", 0.5);
+						var canvasImg5 = canvas6.toDataURL("image/png", 0.5);
+						var canvasImg7 = canvas8.toDataURL("image/png", 0.5);
+						var canvasImg9 = canvas10.toDataURL("image/png", 0.5);
+						var canvasImg11 = canvas12.toDataURL("image/png", 0.5);
+						var canvasImg13 = canvas14.toDataURL("image/png", 0.5);
+						var canvasImg15 = canvas16.toDataURL("image/png", 0.5);
+						var canvasImg17 = canvas18.toDataURL("image/png", 0.5);
+						var canvasImg19 = canvas20.toDataURL("image/png", 0.5);
+						
+						//creates PDF from img
+						var doc = new jsPDF('p','mm','letter');
+						doc.setFontSize(8);	
+						
+						var x = 30;
+						var y = 40;
+						var ancho = 70;
+						var alto = 30;
+						
+						doc.text(x, y, 'Previous VFD on Fail (Cantidad)');
+						doc.addImage(canvasImg1, 'jpeg', x, y+5, ancho, alto );						
+						doc.text(x, y+5+alto+5, 'Previous Motor Voltage (Volts)');
+						doc.addImage(canvasImg3, 'jpeg', x, y+5+alto+10, ancho, alto );			
+						doc.text(x, y+5+alto*2+15, 'Previous Total Current (Amps)');
+						doc.addImage(canvasImg5, 'jpeg', x, y+5+alto*2+20, ancho, alto );
+						doc.text(x, y+5+alto*3+25, 'Previous Output Power (kW)');
+						doc.addImage(canvasImg7, 'jpeg', x, y+5+alto*3+30, ancho, alto );						
+						doc.text(x, y+5+alto*4+35, 'Previous Input Voltage (volts)');
+						doc.addImage(canvasImg9, 'jpeg', x, y+5+alto*4+40, ancho, alto );
+						
+						doc.text(x+ancho+10, y, 'Previous Input Power Fact (%)');
+						doc.addImage(canvasImg11, 'jpeg', x+ancho+10, y+5, ancho, alto );						
+						doc.text(x+ancho+10, y+5+alto+5, 'Previous Input kVARS (kVAR)');
+						doc.addImage(canvasImg13, 'jpeg', x+ancho+10, y+5+alto+10, ancho, alto );
+						doc.text(x+ancho+10, y+5+alto*2+15, 'Previous Hottest Cell Temp (%)');
+						doc.addImage(canvasImg15, 'jpeg', x+ancho+10, y+5+alto*2+20, ancho, alto );				
+						doc.text(x+ancho+10, y+5+alto*3+25, 'Previous Temp. Room (°C)');
+						doc.addImage(canvasImg17, 'PNG', x+ancho+10, y+5+alto*3+30, ancho, alto );
+						doc.text(x+ancho+10, y+5+alto*4+35, 'Previous Hum. Rel. Room (%)');
+						doc.addImage(canvasImg19, 'PNG', x+ancho+10, y+5+alto*4+40, ancho, alto );
+						
+						doc.save('PreviousGraphic.pdf');
 					
 					}
 
