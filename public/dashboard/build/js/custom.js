@@ -2896,9 +2896,10 @@ if (typeof NProgress != 'undefined') {
 						var y = 50;
 						var ancho = 70;
 						var alto = 30;						
-						
-						doc.addImage(dataURL, 'jpeg', 70, 5, 10, 5);
-						
+						if(img.width > img.height)
+							doc.addImage(dataURL, 'jpeg', 80, 5, 15, 5);
+						else
+							doc.addImage(dataURL, 'jpeg', 80, 5, 5, 15);	
 						doc.text(x, y, 'Current VFD on Fail (Cantidad)');
 						doc.addImage(canvasImg2, 'jpeg', x, y+5, ancho, alto );						
 						doc.text(x, y+5+alto+5, 'Current Motor Voltage (Volts)');
