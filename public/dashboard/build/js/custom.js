@@ -2858,7 +2858,7 @@ if (typeof NProgress != 'undefined') {
 					document.getElementById('download-pdf-previous').addEventListener("click", downloadPDFprevious);
 			
 					function downloadPDF() {
-						var img = new Image();
+						/*var img = new Image();
 					    var dataURL;
 					    img.src = document.getElementById("urlPath").value;					    					    
 					    var canvas = document.createElement('canvas');
@@ -2866,8 +2866,8 @@ if (typeof NProgress != 'undefined') {
 					    canvas.height = img.height;
 					    var context = canvas.getContext('2d');
 					    context.drawImage(img, 0, 0);
-					    dataURL = canvas.toDataURL('image/jpeg');
-
+					    dataURL = canvas.toDataURL('image/jpeg');*/
+						alert(document.getElementById("urlPath").value);
 						var canvas2 = document.querySelector('#DP0_current');
 						var canvas4 = document.querySelector('#DP17_current');
 						var canvas6 = document.querySelector('#DP18_current');
@@ -2898,7 +2898,7 @@ if (typeof NProgress != 'undefined') {
 						var ancho = 70;
 						var alto = 30;						
 						
-						doc.addImage(dataURL, 'jpeg', 60, 10, ancho, alto );
+						//doc.addImage(dataURL, 'jpeg', 60, 10, ancho, alto );
 						
 						doc.text(x, y, 'Current VFD on Fail (Cantidad)');
 						doc.addImage(canvasImg2, 'jpeg', x, y+5, ancho, alto );						
