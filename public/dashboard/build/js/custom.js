@@ -2897,7 +2897,7 @@ if (typeof NProgress != 'undefined') {
 						var ancho = 70;
 						var alto = 30;						
 						
-						doc.addImage(dataURL, 'jpeg', 70, 5, 30, 20);
+						doc.addImage(dataURL, 'jpeg', 70, 5, 10, 5);
 						
 						doc.text(x, y, 'Current VFD on Fail (Cantidad)');
 						doc.addImage(canvasImg2, 'jpeg', x, y+5, ancho, alto );						
