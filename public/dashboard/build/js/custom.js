@@ -2893,11 +2893,11 @@ if (typeof NProgress != 'undefined') {
 						doc.setFontSize(8);	
 						
 						var x = 30;
-						var y = 40;
+						var y = 50;
 						var ancho = 70;
 						var alto = 30;						
 						
-						doc.addImage(dataURL, 'jpeg', 70, 5, canvas.width, canvas.height );
+						doc.addImage(dataURL, 'jpeg', 70, 5, 50, 40);
 						
 						doc.text(x, y, 'Current VFD on Fail (Cantidad)');
 						doc.addImage(canvasImg2, 'jpeg', x, y+5, ancho, alto );						
