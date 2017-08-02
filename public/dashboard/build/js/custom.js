@@ -2855,7 +2855,7 @@ if (typeof NProgress != 'undefined') {
 			//downloadPDF();
 			  		//add event listener to button
 					document.getElementById('download-pdf').addEventListener("click", downloadPDF);
-					document.getElementById('download-pdf-previous').addEventListener("click", downloadPDFprevious);
+					//document.getElementById('download-pdf-previous').addEventListener("click", downloadPDFprevious);
 			
 					function downloadPDF() {
 					   	var img = new Image();					    
@@ -2925,7 +2925,7 @@ if (typeof NProgress != 'undefined') {
 					
 					}
 					
-					function downloadPDFprevious() {
+					/*function downloadPDFprevious() {
 						var img = new Image();
 					   	img.src = document.getElementById("urlPath").value;					    					    
 					    	var canvas = document.createElement('canvas');
@@ -2992,7 +2992,7 @@ if (typeof NProgress != 'undefined') {
 						
 						doc.save('PreviousGraphic.pdf');
 					
-					}
+					}*/
 
 					
 			  // Doughnut chart
