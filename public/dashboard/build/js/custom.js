@@ -2967,7 +2967,7 @@ if (typeof NProgress != 'undefined') {
 						var y = 40;
 						var ancho = 70;
 						var alto = 30;
-						
+						// logo
 						doc.addImage(dataURL, 'jpeg', 60, 10, ancho, alto );
 						
 						doc.text(x, y, 'Previous VFD on Fail (Cantidad)');
