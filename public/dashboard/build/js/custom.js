@@ -2992,7 +2992,7 @@ if (typeof NProgress != 'undefined') {
 						
 						doc.save('PreviousGraphic.pdf');
 					
-					}*/
+					}
 
 					
 			  // Doughnut chart
