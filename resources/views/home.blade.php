@@ -16,7 +16,7 @@
                             <div class="clearfix"></div>
                             <div class="x_content">
                             <br />
-                            En la parte superior derecha, en el link de tu pertíl, puedes cambiar tu password!.
+                            En la parte superior derecha, en el link de tu pertíl, puedes cambiar tu password.
                             </div>
                           </div>
 					{{ csrf_field() }}
