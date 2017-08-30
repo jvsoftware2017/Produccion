@@ -2859,12 +2859,13 @@ if (typeof NProgress != 'undefined') {
 			
 					function downloadPDF() {
 					   	var img = new Image();					    
-					    	img.src = document.getElementById("urlPath").value;					    					    
-					    	var canvas = document.createElement('canvas');
-					    	canvas.width = img.width;
-					    	canvas.height = img.height;
-					    	var context = canvas.getContext('2d');
-					    	context.drawImage(img, 0, 0);					    
+					    img.src = document.getElementById("urlPath").value;					    					    
+					    var canvas = document.createElement('canvas');
+					    canvas.width = img.width;
+					    canvas.height = img.height;
+					    var context = canvas.getContext('2d');
+					    context.drawImage(img, 0, 0);
+					    var dataURL = canvas.toDataURL('image/png', 0.5);
 						
 						var canvas2 = document.querySelector('#DP0_current');
 						var canvas4 = document.querySelector('#DP17_current');
@@ -2877,7 +2878,7 @@ if (typeof NProgress != 'undefined') {
 						var canvas18 = document.querySelector('#DP44_current');
 						var canvas20 = document.querySelector('#DP49_current');				
 							
-						var dataURL = canvas.toDataURL('image/png', 0.5);
+						
 						var canvasImg2 = canvas2.toDataURL("image/png", 0.5);
 						var canvasImg4 = canvas4.toDataURL("image/png", 0.5);
 						var canvasImg6 = canvas6.toDataURL("image/png", 0.5);
@@ -2897,9 +2898,13 @@ if (typeof NProgress != 'undefined') {
 						var ancho = 70;
 						var alto = 30;						
 						if(img.width > img.height)
-							doc.addImage(dataURL, 'jpeg', 80, 5, 35, 25);
+							doc.addImage(dataURL, 'jpeg', 20, 5, 35, 25);
 						else
-							doc.addImage(dataURL, 'jpeg', 80, 5, 25, 35);	
+							doc.addImage(dataURL, 'jpeg', 20, 5, 25, 35);	
+						
+						doc.text(90, 30, 'GRAFICAS CORRESPONDIENTES AL MES 8');
+						doc.text(90, 35, 'EQUIPO:' + document.getElementById("id_equipo").value);
+						
 						doc.text(x, y, 'Current VFD on Fail (Cantidad)');
 						doc.addImage(canvasImg2, 'jpeg', x, y+5, ancho, alto );						
 						doc.text(x, y+5+alto+5, 'Current Motor Voltage (Volts)');
