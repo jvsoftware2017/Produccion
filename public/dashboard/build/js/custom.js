@@ -2977,7 +2977,7 @@ if (typeof NProgress != 'undefined') {
 						doc.setFontSize(8);	
 						
 						var x = 30;
-						var y = 40;
+						var y = 50;
 						var ancho = 70;
 						var alto = 30;
 						// logo
