@@ -2855,7 +2855,7 @@ if (typeof NProgress != 'undefined') {
 			//downloadPDF();
 			  		//add event listener to button
 					document.getElementById('download-pdf').addEventListener("click", downloadPDF);
-					//document.getElementById('download-pdf-previous').addEventListener("click", downloadPDFprevious);
+					document.getElementById('download-pdf-previous').addEventListener("click", downloadPDFprevious);
 			
 					function downloadPDF() {
 					   	var img = new Image();					    
@@ -2926,8 +2926,9 @@ if (typeof NProgress != 'undefined') {
 					
 					}
 					
-					/*function downloadPDFprevious() {
-						var img = new Image();
+					function downloadPDFprevious() {
+						alert("entro");
+						/*var img = new Image();
 					   	img.src = document.getElementById("urlPath").value;					    					    
 					    	var canvas = document.createElement('canvas');
 					    	canvas.width = img.width;
@@ -2991,9 +2992,9 @@ if (typeof NProgress != 'undefined') {
 						doc.text(x+ancho+10, y+5+alto*4+35, 'Previous Hum. Rel. Room (%)');
 						doc.addImage(canvasImg19, 'PNG', x+ancho+10, y+5+alto*4+40, ancho, alto );
 						
-						doc.save('PreviousGraphic.pdf');
+						doc.save('PreviousGraphic.pdf');*/
 					
-					}*/
+					}
 
 					
 			  // Doughnut chart
