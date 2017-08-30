@@ -2961,16 +2961,16 @@ if (typeof NProgress != 'undefined') {
 						var canvas17 = document.querySelector('#DP44_previus');
 						var canvas19 = document.querySelector('#DP49_previus');
 								
-						var canvasImg1 = canvas2.toDataURL("image/png", 0.5);
-						var canvasImg3 = canvas4.toDataURL("image/png", 0.5);
-						var canvasImg5 = canvas6.toDataURL("image/png", 0.5);
-						var canvasImg7 = canvas8.toDataURL("image/png", 0.5);
-						var canvasImg9 = canvas10.toDataURL("image/png", 0.5);
-						var canvasImg11 = canvas12.toDataURL("image/png", 0.5);
-						var canvasImg13 = canvas14.toDataURL("image/png", 0.5);
-						var canvasImg15 = canvas16.toDataURL("image/png", 0.5);
-						var canvasImg17 = canvas18.toDataURL("image/png", 0.5);
-						var canvasImg19 = canvas20.toDataURL("image/png", 0.5);
+						var canvasImg1 = canvas1.toDataURL("image/png", 0.5);
+						var canvasImg3 = canvas3.toDataURL("image/png", 0.5);
+						var canvasImg5 = canvas5.toDataURL("image/png", 0.5);
+						var canvasImg7 = canvas7.toDataURL("image/png", 0.5);
+						var canvasImg9 = canvas9.toDataURL("image/png", 0.5);
+						var canvasImg11 = canvas11.toDataURL("image/png", 0.5);
+						var canvasImg13 = canvas13.toDataURL("image/png", 0.5);
+						var canvasImg15 = canvas15.toDataURL("image/png", 0.5);
+						var canvasImg17 = canvas17.toDataURL("image/png", 0.5);
+						var canvasImg19 = canvas19.toDataURL("image/png", 0.5);
 						
 						//creates PDF from img
 						var doc = new jsPDF('p','mm','letter');
