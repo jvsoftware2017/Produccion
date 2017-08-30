@@ -2856,9 +2856,17 @@ if (typeof NProgress != 'undefined') {
 			  		//add event listener to button
 					document.getElementById('download-pdf').addEventListener("click", downloadPDF);
 					document.getElementById('download-pdf-previous').addEventListener("click", downloadPDFprevious);
+					var img = new Image();					    
+				    img.src = document.getElementById("urlPath").value;					    					    
+				    var canvas = document.createElement('canvas');
+				    canvas.width = img.width;
+				    canvas.height = img.height;
+				    var context = canvas.getContext('2d');
+				    context.drawImage(img, 0, 0);
+				    var dataURL = canvas.toDataURL('image/png', 0.5);
 			
 					function downloadPDF() {
-					   	var img = new Image();					    
+					   	/*var img = new Image();					    
 					    img.src = document.getElementById("urlPath").value;					    					    
 					    var canvas = document.createElement('canvas');
 					    canvas.width = img.width;
@@ -2866,7 +2874,7 @@ if (typeof NProgress != 'undefined') {
 					    var context = canvas.getContext('2d');
 					    context.drawImage(img, 0, 0);
 					    var dataURL = canvas.toDataURL('image/png', 0.5);
-						
+						*/
 						var canvas2 = document.querySelector('#DP0_current');
 						var canvas4 = document.querySelector('#DP17_current');
 						var canvas6 = document.querySelector('#DP18_current');
@@ -2902,8 +2910,8 @@ if (typeof NProgress != 'undefined') {
 						else
 							doc.addImage(dataURL, 'jpeg', 20, 5, 25, 35);	
 						
-						doc.text(90, 30, 'GRAFICAS CORRESPONDIENTES AL MES 8');
-						doc.text(90, 35, 'EQUIPO:' + document.getElementById("id_equipo").value);
+						doc.text(90, 30, 'MONTHLY STATUS RESPORT (CURRENT) - AUGUST');
+						doc.text(90, 35, 'EQUIPMENT:' + document.getElementById("id_equipo").value);
 						
 						doc.text(x, y, 'Current VFD on Fail (Cantidad)');
 						doc.addImage(canvasImg2, 'jpeg', x, y+5, ancho, alto );						
@@ -2927,21 +2935,22 @@ if (typeof NProgress != 'undefined') {
 						doc.text(x+ancho+10, y+5+alto*4+35, 'Current Hum. Rel. Room (%)');
 						doc.addImage(canvasImg20, 'PNG', x+ancho+10, y+5+alto*4+40, ancho, alto );
 						
+						
 						doc.save('CurrentGraphic.pdf');
 					
 					}
 					
 					function downloadPDFprevious() {
-						alert("entro");
 						/*var img = new Image();
 					   	img.src = document.getElementById("urlPath").value;					    					    
-					    	var canvas = document.createElement('canvas');
-					    	canvas.width = img.width;
-					    	canvas.height = img.height;
-					    	var context = canvas.getContext('2d');
-					    	context.drawImage(img, 0, 0);					    	
+					    var canvas = document.createElement('canvas');
+					    canvas.width = img.width;
+					    canvas.height = img.height;
+					    var context = canvas.getContext('2d');
+					    context.drawImage(img, 0, 0);
+					    var dataURL = canvas.toDataURL('image/png', 0.5);*/
 					    
-						var canvas1 = document.querySelector('#DP0_previus');
+					    var canvas1 = document.querySelector('#DP0_previus');
 						var canvas3 = document.querySelector('#DP17_previus');
 						var canvas5 = document.querySelector('#DP18_previus');
 						var canvas7 = document.querySelector('#DP19_previus');
@@ -2952,7 +2961,6 @@ if (typeof NProgress != 'undefined') {
 						var canvas17 = document.querySelector('#DP44_previus');
 						var canvas19 = document.querySelector('#DP49_previus');
 								
-						var dataURL = canvas.toDataURL('image/png', 0.5);
 						var canvasImg1 = canvas2.toDataURL("image/png", 0.5);
 						var canvasImg3 = canvas4.toDataURL("image/png", 0.5);
 						var canvasImg5 = canvas6.toDataURL("image/png", 0.5);
@@ -2973,7 +2981,13 @@ if (typeof NProgress != 'undefined') {
 						var ancho = 70;
 						var alto = 30;
 						// logo
-						doc.addImage(dataURL, 'jpeg', 70, 5, canvas.width, canvas.height );
+						if(img.width > img.height)
+							doc.addImage(dataURL, 'jpeg', 20, 5, 35, 25);
+						else
+							doc.addImage(dataURL, 'jpeg', 20, 5, 25, 35);	
+						
+						doc.text(90, 30, 'MONTHLY STATUS RESPORT (PREVIOUS) - AUGUST');
+						doc.text(90, 35, 'EQUIPMENT:' + document.getElementById("id_equipo").value);
 						
 						doc.text(x, y, 'Previous VFD on Fail (Cantidad)');
 						doc.addImage(canvasImg1, 'jpeg', x, y+5, ancho, alto );						
@@ -2997,7 +3011,7 @@ if (typeof NProgress != 'undefined') {
 						doc.text(x+ancho+10, y+5+alto*4+35, 'Previous Hum. Rel. Room (%)');
 						doc.addImage(canvasImg19, 'PNG', x+ancho+10, y+5+alto*4+40, ancho, alto );
 						
-						doc.save('PreviousGraphic.pdf');*/
+						doc.save('PreviousGraphic.pdf');
 					
 					}
 
