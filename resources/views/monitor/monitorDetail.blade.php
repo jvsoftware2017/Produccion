@@ -72,7 +72,13 @@
 		                        @endif
 		                       	                                                             
 		                        	<td align="left">Operation Hrs: </td>
-		                         	<td align="left"><strong style="font-size: 16px">{{$rowmonitor->equipo->DP_40}} Hrs</strong></td>
+		                        	@if((($rowmonitor->equipo->DP_40)) > (($rowmonitor->equipo->DP_41)))
+		                            	<td align="left"><strong style="font-size: 16px;color: yellow;">Maintenance Required </strong></td>
+			                        @else
+			                            <td align="left"><strong style="font-size: 16px">{{$rowmonitor->equipo->DP_40}} Hrs</strong></td>
+			                        @endif
+		                       	        
+		                         	<!-- <td align="left"><strong style="font-size: 16px">{{$rowmonitor->equipo->DP_40}} Hrs</strong></td> -->
 		                        </tr>
 		                        <tr>
 		                        @if((($rowmonitor->equipo->DP_7))== 1)

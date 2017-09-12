@@ -2910,7 +2910,7 @@ if (typeof NProgress != 'undefined') {
 						else
 							doc.addImage(dataURL, 'jpeg', 20, 5, 25, 35);	
 						
-						doc.text(90, 30, 'MONTHLY STATUS RESPORT (CURRENT) - AUGUST');
+						doc.text(90, 30, 'MONTHLY STATUS RESPORT (CURRENT) - '+ meses[dateNow.getMonth()+1]);
 						doc.text(90, 35, 'EQUIPMENT:' + document.getElementById("id_equipo").value);
 						
 						doc.text(x, y, 'Current VFD on Fail (Cantidad)');
@@ -2986,7 +2986,7 @@ if (typeof NProgress != 'undefined') {
 						else
 							doc.addImage(dataURL, 'jpeg', 20, 5, 25, 35);	
 						
-						doc.text(90, 30, 'MONTHLY STATUS RESPORT (PREVIOUS) - AUGUST');
+						doc.text(90, 30, 'MONTHLY STATUS RESPORT (PREVIOUS) -'+ meses[dateNow.getMonth()+1]);
 						doc.text(90, 35, 'EQUIPMENT:' + document.getElementById("id_equipo").value);
 						
 						doc.text(x, y, 'Previous VFD on Fail (Cantidad)');
