@@ -2866,15 +2866,7 @@ if (typeof NProgress != 'undefined') {
 				    var dataURL = canvas.toDataURL('image/png', 0.5);
 			
 					function downloadPDF() {
-					   	/*var img = new Image();					    
-					    img.src = document.getElementById("urlPath").value;					    					    
-					    var canvas = document.createElement('canvas');
-					    canvas.width = img.width;
-					    canvas.height = img.height;
-					    var context = canvas.getContext('2d');
-					    context.drawImage(img, 0, 0);
-					    var dataURL = canvas.toDataURL('image/png', 0.5);
-						*/
+
 						var canvas2 = document.querySelector('#DP0_current');
 						var canvas4 = document.querySelector('#DP17_current');
 						var canvas6 = document.querySelector('#DP18_current');
@@ -2910,7 +2902,7 @@ if (typeof NProgress != 'undefined') {
 						else
 							doc.addImage(dataURL, 'jpeg', 20, 5, 25, 35);	
 						
-						doc.text(90, 30, 'MONTHLY STATUS RESPORT (CURRENT) - '+ meses[dateNow.getMonth()+1]);
+						doc.text(90, 30, 'MONTHLY STATUS RESPORT (CURRENT) - '+ meses[dateNow.getMonth()]);
 						doc.text(90, 35, 'EQUIPMENT:' + document.getElementById("id_equipo").value);
 						
 						doc.text(x, y, 'Current VFD on Fail (Cantidad)');
@@ -2941,14 +2933,6 @@ if (typeof NProgress != 'undefined') {
 					}
 					
 					function downloadPDFprevious() {
-						/*var img = new Image();
-					   	img.src = document.getElementById("urlPath").value;					    					    
-					    var canvas = document.createElement('canvas');
-					    canvas.width = img.width;
-					    canvas.height = img.height;
-					    var context = canvas.getContext('2d');
-					    context.drawImage(img, 0, 0);
-					    var dataURL = canvas.toDataURL('image/png', 0.5);*/
 					    
 					    var canvas1 = document.querySelector('#DP0_previus');
 						var canvas3 = document.querySelector('#DP17_previus');
@@ -2986,7 +2970,7 @@ if (typeof NProgress != 'undefined') {
 						else
 							doc.addImage(dataURL, 'jpeg', 20, 5, 25, 35);	
 						
-						doc.text(90, 30, 'MONTHLY STATUS RESPORT (PREVIOUS) -'+ meses[dateNow.getMonth()+1]);
+						doc.text(90, 30, 'MONTHLY STATUS RESPORT (PREVIOUS) -'+ meses[dateNow.getMonth()-1]);
 						doc.text(90, 35, 'EQUIPMENT:' + document.getElementById("id_equipo").value);
 						
 						doc.text(x, y, 'Previous VFD on Fail (Cantidad)');
