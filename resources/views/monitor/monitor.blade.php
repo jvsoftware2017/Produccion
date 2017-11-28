@@ -15,7 +15,7 @@
                     </div>
                     <div class="x_content"  >
                         <div class="text-muted font-13 m-b-30">
-                            Aquí podrás visualizarr el estado de los equiposs a los cuales tienes permiso <p align="right"><strong style="color: green;font-size: 16px"><?php echo date('Y-m-d H:i:s');?></strong></p>                            
+                            Aquí podrás visualizar el estado de los equipos a los cuales tienes permiso <p align="right"><strong style="color: green;font-size: 16px"><?php echo date('Y-m-d H:i:s');?></strong></p>                            
                         </div>                                               
                         <br/>
                         @if($flash = session('message'))
