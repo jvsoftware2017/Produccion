@@ -2909,7 +2909,7 @@ if (typeof NProgress != 'undefined') {
 							doc.addImage(dataURL, 'jpeg', 20, 5, 25, 35);	
 						
 						doc.setFontSize(12);	
-						doc.text(80, 10, 'MONTHLY STATUS RESPORT (CURRENT) - '+ meses[dateNow.getMonth()]);
+						doc.text(80, 10, 'MONTHLY STATUS REPORT (CURRENT) - '+ meses[dateNow.getMonth()]);
 
 						doc.setFontSize(8);	
 						doc.text(70, 15, 'CUSTOMER:   ' + document.getElementById("nameClient").value);
@@ -2989,7 +2989,7 @@ if (typeof NProgress != 'undefined') {
 							doc.addImage(dataURL, 'jpeg', 20, 5, 25, 35);	
 						
 						doc.setFontSize(12);	
-						doc.text(80, 10, 'MONTHLY STATUS RESPORT (PREVIOUS) -'+ meses[dateNow.getMonth()-1]);
+						doc.text(80, 10, 'MONTHLY STATUS REPORT (PREVIOUS) -'+ meses[dateNow.getMonth()-1]);
 
 						doc.setFontSize(8);	
 						doc.text(70, 15, 'CUSTOMER:   ' + document.getElementById("nameClient").value);
@@ -3003,7 +3003,7 @@ if (typeof NProgress != 'undefined') {
 						doc.text(130, 23, 'PERIOD:   ' + meses[dateNow.getMonth()] +  ' - ' + year);
 						doc.text(130, 27, 'CONTACT PERSON:   Raul Torres. +57 310 309 00 77' );
 						doc.text(130, 31, 'CONTACT PERSON:   Alberto Cruz. +57 320 469 93 75' );
-						
+
 						doc.text(x, y, 'Previous VFD on Fail (Cantidad)');
 						doc.addImage(canvasImg1, 'jpeg', x, y+5, ancho, alto );						
 						doc.text(x, y+5+alto+5, 'Previous Motor Voltage (Volts)');
