@@ -49,10 +49,10 @@ class ReportsController extends Controller
         array_push($dataEquipoRep, $dataEquipoTmp[0]["attributes"]["serialNumber"]);
         array_push($dataEquipoRep, $dataEquipoTmp[0]["attributes"]["area"]);
         array_push($dataEquipoRep, $dataEquipoTmp[0]["attributes"]["subarea"]);
-        array_push($dataEquipoRep, $dataEquipoTmp[0]["attributes"]["function"]);
+        array_push($dataEquipoRep, $dataEquipoTmp[0]["attributes"]["model"]);
         array_push($dataEquipoRep, $dataEquipoTmp[0]["attributes"]["power"]);
         array_push($dataEquipoRep, $dataEquipoTmp[0]["attributes"]["voltage"]);
-        array_push($dataEquipoRep, $dataEquipoTmp[0]["attributes"]["lifecycle"]);
+        array_push($dataEquipoRep, $dataEquipoTmp[0]->plant->client->name);
         //var_dump($dataEquipoTmp);
     	return view('reports.reports',compact('dataEquipoRep'));
     }

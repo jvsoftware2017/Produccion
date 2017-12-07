@@ -38,9 +38,13 @@
 							<input type="hidden" value="{{ URL::to('/') }}/clientLogo/{{ $dataEquipoRep[1] }}" id="urlPath" />
 							<input type="hidden" value="{{ $dataEquipoRep[2] }}" id="nameEquipment" />
 							<input type="hidden" value="{{ $dataEquipoRep[3] }}" id="serial" />
+							<input type="hidden" value="{{ $dataEquipoRep[4] }}" id="area" />
+							<input type="hidden" value="{{ $dataEquipoRep[5] }}" id="subarea" />
+							<input type="hidden" value="{{ $dataEquipoRep[6] }}" id="model" />
 							<input type="hidden" value="{{ $dataEquipoRep[7] }}" id="power" />
 							<input type="hidden" value="{{ $dataEquipoRep[8] }}" id="voltage" />
-							<input type="hidden" value="{{ $dataEquipoRep[4] }}" id="area" />
+							<input type="hidden" value="{{ $dataEquipoRep[9] }}" id="nameClient" />
+							
 						</div>
 						<div align="center"><h4 class="modal-title" id="myModalLabel"> REPORTE EQUIPO <strong>{{$dataEquipoRep[0]}}</strong></h4></div>						
 						<input type="hidden" id="id_equipo" value="{{$dataEquipoRep[0]}}"/>
