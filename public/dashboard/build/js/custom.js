@@ -2897,8 +2897,7 @@ if (typeof NProgress != 'undefined') {
 						var canvasImg18 = canvas18.toDataURL("image/png", 0.5);
 						var canvasImg20 = canvas20.toDataURL("image/png", 0.5);
 						
-						var doc = new jsPDF('p','mm','letter');
-						
+						var doc = new jsPDF('p','mm','letter');						
 						
 						var x = 30;
 						var y = 50;
@@ -2909,8 +2908,8 @@ if (typeof NProgress != 'undefined') {
 						else
 							doc.addImage(dataURL, 'jpeg', 20, 5, 25, 35);	
 						
-						doc.setFontSize(10);	
-						doc.text(90, 10, 'MONTHLY STATUS RESPORT (CURRENT) - '+ meses[dateNow.getMonth()]);
+						doc.setFontSize(12);	
+						doc.text(80, 10, 'MONTHLY STATUS RESPORT (CURRENT) - '+ meses[dateNow.getMonth()]);
 
 						doc.setFontSize(8);	
 						doc.text(70, 15, 'CUSTOMER:   ' + document.getElementById("nameClient").value);
@@ -2923,7 +2922,7 @@ if (typeof NProgress != 'undefined') {
 						doc.text(130, 19, 'LOCATION:   ' + document.getElementById("area").value + ' ' + document.getElementById("subarea").value);
 						doc.text(130, 23, 'PERIOD:   ' + meses[dateNow.getMonth()] +  ' - ' + year);
 						doc.text(130, 27, 'CONTACT PERSON:   Raul Torres. +57 310 309 00 77' );
-						doc.text(130, 27, 'CONTACT PERSON:   Alberto Cruz. +57 320 469 93 75' );
+						doc.text(130, 31, 'CONTACT PERSON:   Alberto Cruz. +57 320 469 93 75' );
 												
 						doc.text(x, y, 'Current VFD on Fail (Cantidad)');
 						doc.addImage(canvasImg2, 'jpeg', x, y+5, ancho, alto );						
@@ -2977,8 +2976,7 @@ if (typeof NProgress != 'undefined') {
 						var canvasImg19 = canvas19.toDataURL("image/png", 0.5);
 						
 						//creates PDF from img
-						var doc = new jsPDF('p','mm','letter');
-						doc.setFontSize(8);	
+						var doc = new jsPDF('p','mm','letter');	
 						
 						var x = 30;
 						var y = 50;
@@ -2990,17 +2988,21 @@ if (typeof NProgress != 'undefined') {
 						else
 							doc.addImage(dataURL, 'jpeg', 20, 5, 25, 35);	
 						
-						doc.text(90, 10, 'MONTHLY STATUS RESPORT (PREVIOUS) -'+ meses[dateNow.getMonth()-1]);
-						doc.text(70, 15, 'CUSTOMER:   Siemens');
+						doc.setFontSize(12);	
+						doc.text(80, 10, 'MONTHLY STATUS RESPORT (PREVIOUS) -'+ meses[dateNow.getMonth()-1]);
+
+						doc.setFontSize(8);	
+						doc.text(70, 15, 'CUSTOMER:   ' + document.getElementById("nameClient").value);
 						doc.text(70, 19, 'EQUIPMENT:   ' + document.getElementById("nameEquipment").value);
-						doc.text(70, 23, 'REFERENCE:   ');
+						doc.text(70, 23, 'REFERENCE:   ' + document.getElementById("model").value);
 						doc.text(70, 27, 'SERIAL:   ' + document.getElementById("serial").value);
 						doc.text(70, 31, 'POWER:   ' + document.getElementById("power").value);
 						
 						doc.text(130, 15, 'CURENT:   ' + document.getElementById("voltage").value);
-						doc.text(130, 19, 'LOCATION:   ' + document.getElementById("area").value);
-						doc.text(130, 23, 'PERIOD:   ');
-						doc.text(130, 27, 'CONTACT PERSON:   ');
+						doc.text(130, 19, 'LOCATION:   ' + document.getElementById("area").value + ' ' + document.getElementById("subarea").value);
+						doc.text(130, 23, 'PERIOD:   ' + meses[dateNow.getMonth()] +  ' - ' + year);
+						doc.text(130, 27, 'CONTACT PERSON:   Raul Torres. +57 310 309 00 77' );
+						doc.text(130, 31, 'CONTACT PERSON:   Alberto Cruz. +57 320 469 93 75' );
 						
 						doc.text(x, y, 'Previous VFD on Fail (Cantidad)');
 						doc.addImage(canvasImg1, 'jpeg', x, y+5, ancho, alto );						
