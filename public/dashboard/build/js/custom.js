@@ -2913,10 +2913,10 @@ if (typeof NProgress != 'undefined') {
 						doc.text(70, 27, 'SERIAL: ' + document.getElementById("serial").value);
 						doc.text(70, 31, 'POWER:' + document.getElementById("power").value);
 						
-						doc.text(100, 15, 'CURENT: ' + document.getElementById("voltage").value);
-						doc.text(100, 19, 'LOCATION: ' + document.getElementById("area").value);
-						doc.text(100, 23, 'PERIOD:');
-						doc.text(100, 27, 'CONTACT PERSON: ');
+						doc.text(130, 15, 'CURENT: ' + document.getElementById("voltage").value);
+						doc.text(130, 19, 'LOCATION: ' + document.getElementById("area").value);
+						doc.text(130, 23, 'PERIOD:');
+						doc.text(130, 27, 'CONTACT PERSON: ');
 						
 						doc.text(x, y, 'Current VFD on Fail (Cantidad)');
 						doc.addImage(canvasImg2, 'jpeg', x, y+5, ancho, alto );						
@@ -2983,8 +2983,17 @@ if (typeof NProgress != 'undefined') {
 						else
 							doc.addImage(dataURL, 'jpeg', 20, 5, 25, 35);	
 						
-						doc.text(90, 30, 'MONTHLY STATUS RESPORT (PREVIOUS) -'+ meses[dateNow.getMonth()-1]);
-						doc.text(90, 35, 'EQUIPMENT:' + document.getElementById("id_equipo").value);
+						doc.text(90, 10, 'MONTHLY STATUS RESPORT (PREVIOUS) -'+ meses[dateNow.getMonth()-1]);
+						doc.text(70, 15, 'CUSTOMER: Siemens');
+						doc.text(70, 19, 'EQUIPMENT:' + document.getElementById("nameEquipment").value);
+						doc.text(70, 23, 'REFERENCE: ');
+						doc.text(70, 27, 'SERIAL: ' + document.getElementById("serial").value);
+						doc.text(70, 31, 'POWER:' + document.getElementById("power").value);
+						
+						doc.text(130, 15, 'CURENT: ' + document.getElementById("voltage").value);
+						doc.text(130, 19, 'LOCATION: ' + document.getElementById("area").value);
+						doc.text(130, 23, 'PERIOD:');
+						doc.text(130, 27, 'CONTACT PERSON: ');
 						
 						doc.text(x, y, 'Previous VFD on Fail (Cantidad)');
 						doc.addImage(canvasImg1, 'jpeg', x, y+5, ancho, alto );						
