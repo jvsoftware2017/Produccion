@@ -2864,6 +2864,10 @@ if (typeof NProgress != 'undefined') {
 				    var context = canvas.getContext('2d');
 				    context.drawImage(img, 0, 0);
 				    var dataURL = canvas.toDataURL('image/png', 0.5);
+
+				   /* var serial = document.getElementById("serial").value;	
+				    var nameEquipment = document.getElementById("nameEquipment").value;
+				    alert(serial + "-" + nameEquipment);*/
 			
 					function downloadPDF() {
 
@@ -2902,8 +2906,17 @@ if (typeof NProgress != 'undefined') {
 						else
 							doc.addImage(dataURL, 'jpeg', 20, 5, 25, 35);	
 						
-						doc.text(90, 30, 'MONTHLY STATUS RESPORT (CURRENT) - '+ meses[dateNow.getMonth()]);
-						doc.text(90, 35, 'EQUIPMENT:' + document.getElementById("id_equipo").value);
+						doc.text(90, 10, 'MONTHLY STATUS RESPORT (CURRENT) - '+ meses[dateNow.getMonth()]);
+						doc.text(70, 15, 'CUSTOMER: Siemens');
+						doc.text(70, 18, 'EQUIPMENT:' + document.getElementById("nameEquipment").value);
+						doc.text(70, 21, 'REFERENCE: ');
+						doc.text(70, 24, 'SERIAL: ' + document.getElementById("serial").value);
+						doc.text(70, 27, 'POWER:');
+						
+						doc.text(150, 15, 'CURENT: ');
+						doc.text(150, 18, 'LOCATION: ');
+						doc.text(150, 21, 'PERIOD:');
+						doc.text(150, 24, 'CONTACT PERSON: ');
 						
 						doc.text(x, y, 'Current VFD on Fail (Cantidad)');
 						doc.addImage(canvasImg2, 'jpeg', x, y+5, ancho, alto );						

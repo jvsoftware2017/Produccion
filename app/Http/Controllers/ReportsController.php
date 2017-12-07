@@ -40,10 +40,21 @@ class ReportsController extends Controller
     
     public function report($id)
     {
-    	$equipo = $id;
-    	$dataEquipo = Equipment::where('id_equipo', $id)->get();
-    	$url = $dataEquipo[0]->plant->client->urlLogo;
-    	return view('reports.reports',compact('equipo','url'));
+    	$dataEquipoRep = array();
+    	$dataEquipoTmp = Equipment::where('id_equipo', $id)->get();
+        
+        array_push($dataEquipoRep, $id);
+        array_push($dataEquipoRep, $dataEquipoTmp[0]->plant->client->urlLogo);
+        array_push($dataEquipoRep, $dataEquipoTmp[0]["attributes"]["name"]);
+        array_push($dataEquipoRep, $dataEquipoTmp[0]["attributes"]["serialNumber"]);
+        array_push($dataEquipoRep, $dataEquipoTmp[0]["attributes"]["area"]);
+        array_push($dataEquipoRep, $dataEquipoTmp[0]["attributes"]["subarea"]);
+        array_push($dataEquipoRep, $dataEquipoTmp[0]["attributes"]["function"]);
+        array_push($dataEquipoRep, $dataEquipoTmp[0]["attributes"]["power"]);
+        array_push($dataEquipoRep, $dataEquipoTmp[0]["attributes"]["voltage"]);
+        array_push($dataEquipoRep, $dataEquipoTmp[0]["attributes"]["lifecycle"]);
+        //var_dump($dataEquipoTmp);
+    	return view('reports.reports',compact('dataEquipoRep'));
     }
 
     /**

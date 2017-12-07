@@ -70,7 +70,11 @@
                          	@if((($rowmonitor->equipo->DP_40)) > (($rowmonitor->equipo->DP_41)))
                                 <td align="left">
                                     <strong style="font-size: 16px">{{$rowmonitor->equipo->DP_40}} Hrs</strong>
-                                    <strong style="font-size: 16px;color: red;">Maintenance Required </strong>
+                                    <br>
+                                    <span class="parpadea text">
+                                        <img src="../img/maintenance.png" width="30px" height="30px" />
+                                        <strong style="font-size: 14px;color: orange;">Maintenance Required</strong>
+                                    </span>                                         
                                 </td>
                             @else
                                 <td align="left"><strong style="font-size: 16px">{{$rowmonitor->equipo->DP_40}} Hrs</strong></td>
