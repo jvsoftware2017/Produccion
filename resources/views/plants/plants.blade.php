@@ -77,94 +77,24 @@
 	                                        <td>{{$rowplant->status}}</td>
 	                                        @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 		                                        <td>
-		                                            <button data-toggle="modal" data-target="#edit-item{{$rowplant->id}}" class="btn btn-round btn-warning edit-item">Editar</button>
+		                                            <button data-toggle="modal" data-target="#edit-item" class="btn btn-round btn-warning edit-item" onclick="getPlant({{$rowplant->id}})">Editar</button>
 		                                        </td>
 	                                        @endif
 	                                        <td>
 												<a href="/nav_equipments/{{ $rowplant->id }} "><div type="button" class="btn btn-round btn-success">Equipos</div></a>
 											</td>
 	                                    </tr>
-										@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
-		                                    <!-- Edit Item Modal -->
-		                                    <div class="modal fade" id="edit-item{{$rowplant->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		                                        <div class="modal-dialog" role="document">
-		                                            <div class="modal-content">
-		                                                <div class="modal-header">
-		                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		                                                    <h4 class="modal-title" id="myModalLabel">Editar sede <strong>{{ $rowplant->name }}</strong></h4>
-		                                                </div>
-		                                                <div class="modal-body">
-		
-		                                                    <form data-toggle="validator" action="/plants/{{$rowplant->id}}" method="POST">
-		                                                        {{ csrf_field() }}
-		                                                        {{ method_field('PUT') }}
-		                                                        <div class="form-group">
-		                                                            <label class="control-label" for="title">Ciudad:</label>
-		                                                            <select class="form-control" name="id_city" id="id_city">
-		                                                                <option selected value="{{$rowplant->city->id}}">{{$rowplant->city->name}}</option>
-		                                                                @foreach($dataCity as $rowcity)
-		                                                                    <option value="{{$rowcity->id}}">{{$rowcity->name}}</option>
-		                                                                @endforeach
-		                                                            </select>
-		                                                            <div class="help-block with-errors"></div>
-		                                                        </div>
-		                                                        
-		                                                        <div class="form-group">
-					                                                <label class="control-label" for="title">Cliente:</label>
-					                                                <select class="form-control" name="id_client" id="id_client">
-					                                                    <option selected value="{{$rowplant->client->id}}">{{$rowplant->client->name}}</option>
-					                                                    @foreach($dataClient as $rowclient)
-					                                                        <option value="{{$rowclient->id}}">{{$rowclient->name}}</option>
-					                                                    @endforeach
-					                                                </select>
-					                                                <!--<input type="text" name="clientId" class="form-control" data-error="Please enter title." required />-->
-					                                                <div class="help-block with-errors"></div>
-					                                            </div>
-		
-		                                                        <div class="form-group">
-		                                                            <label class="control-label" for="title">Nombre:</label>
-		                                                            <input type="text" name="name" id="name" class="form-control" value="{{$rowplant->name}}" data-error="Please enter title." oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')" required />
-		                                                            <div class="help-block with-errors"></div>
-		                                                        </div>
-		
-		                                                        <div class="form-group">
-		                                                            <label class="control-label" for="title">Dirección:</label>
-		                                                            <input type="text" name="adress" value="{{$rowplant->adress}}" class="form-control" data-error="Please enter title." />
-		                                                            <div class="help-block with-errors"></div>
-		                                                        </div>
-		                                                        
-		                                                        <div class="form-group">
-		                                                            <label class="control-label" for="phone">Teléfono:</label>
-		                                                            <input type="text" name="phone" value="{{$rowplant->phone}}" class="form-control" data-error="Escriba solo números" />
-		                                                            <div class="help-block with-errors"></div>
-		                                                        </div>
-		
-		                                                        <div class="form-group">
-		                                                            <label class="control-label" for="title">Estado:</label>
-		                                                            <select class="form-control" name="status" id="status">
-		                                                                <option selected value="{{$rowplant->status}}">{{$rowplant->status}}</option>
-		                                                                <option value="active">Active</option>
-		                                                                <option value="inactive">Inactive</option>
-		                                                            </select>
-		                                                            <div class="help-block with-errors"></div>
-		                                                        </div>
-		
-		
-		                                                        <div class="form-group">
-		                                                            <button type="submit" class="btn btn-round crud-submit btn-success">Guardar</button>
-		                                                        </div>
-		
-		                                                    </form>
-		
-		                                                </div>
-		                                            </div>
-		                                        </div>
-		                                    </div>
-										@endif
-	                                    @endforeach
+	                            @endforeach
+	                            
 	                            </tbody>
 	                        </table>
 	                    </div>
+	                    @if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
+                                    <!-- Edit Item Modal -->
+                                    <div class="modal fade" id="edit-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                        <!--edit modal goes here -->
+                                    </div>
+								@endif
 						@if(Gate::allows('developer', Auth::user()) || Gate::allows('admin', Auth::user()))
 	                        <!-- Create Item Modal -->
 	                        <div class="modal fade" id="create-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

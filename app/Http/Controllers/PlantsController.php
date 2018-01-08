@@ -98,7 +98,88 @@ class PlantsController extends Controller
      */
     public function edit(Plant $plant)
     {
-        //
+        
+        $dataCity = City::All();
+        $dataClient = Client::all();
+        $dataCityHtml = '';
+        $dataClientHtml = '';
+        foreach($dataCity as $rowcity){
+            $dataCityHtml .= '<option value="' . $rowcity->id . '">' . $rowcity->name . '</option>';
+        }
+        foreach($dataClient as $rowclient){
+            $dataClientHtml .= '<option value="' . $rowclient->id . '">' . $rowclient->name . '</option>';
+        }
+
+        $html = '<div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Editar sede <strong>' . $plant->name . '</strong></h4>
+                        </div>
+                        <div class="modal-body">
+
+                            <form data-toggle="validator" action="/plants/' . $plant->id . '" method="POST">
+                                ' . csrf_field() . '
+                                ' . method_field('PUT') . '
+                                <div class="form-group">
+                                    <label class="control-label" for="title">Ciudad:</label>
+                                    <select class="form-control" name="id_city" id="id_city">
+                                        <option selected value="' . $plant->city->id . '">' . $plant->city->name . '</option>
+                                        ' . $dataCityHtml . '
+                                    </select>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="control-label" for="title">Cliente:</label>
+                                    <select class="form-control" name="id_client" id="id_client">
+                                        <option selected value="' . $plant->client->id . '">' . $plant->client->name . '</option>
+                                        ' . $dataClientHtml . '
+                                    </select>
+                                    <!--<input type="text" name="clientId" class="form-control" data-error="Please enter title." required />-->
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label" for="title">Nombre:</label>
+                                    <input type="text" name="name" id="name" class="form-control" value="' . $plant->name . '" data-error="Please enter title." oninvalid="this.setCustomValidity("Campo requerido")" oninput="setCustomValidity("")" required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label" for="title">Dirección:</label>
+                                    <input type="text" name="adress" value="' . $plant->adress . '" class="form-control" data-error="Please enter title." />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="control-label" for="phone">Teléfono:</label>
+                                    <input type="text" name="phone" value="' . $plant->phone . '" class="form-control" data-error="Escriba solo números" />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label" for="title">Estado:</label>
+                                    <select class="form-control" name="status" id="status">
+                                        <option selected value="' . $plant->status . '">' . $plant->status . '</option>
+                                        <option value="active">Active</option>
+                                        <option value="inactive">Inactive</option>
+                                    </select>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-round crud-submit btn-success">Guardar</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>';
+        header('Content-Type: application/json');
+        echo  json_encode($html, JSON_PRETTY_PRINT);
     }
 
     /**

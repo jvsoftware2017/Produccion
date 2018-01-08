@@ -32,7 +32,10 @@ class Kernel extends ConsoleKernel
     		$users = DB::table('users')->where([
     				['id_role', '=', '1'],
     				['status', '=', 'active'],
-    		])->get();
+    		])->orWhere([
+    		        ['id_role', '=', '2'],
+    		        ['status', '=', 'active'],
+    		    ])->get();
     		foreach ($users as $user){
     			\Mail::to($user)->send(new ReportRecordatory());
     		}

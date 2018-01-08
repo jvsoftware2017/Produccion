@@ -37,3 +37,9 @@ $("#id_equipoRep").change(function (event){
     window.location.href = "/report/"+event.target.value+"";
 });
 
+function getPlant (id) {
+	$.get("/plants/" + id + "", function(data, status){
+        $("#edit-item").html(data);
+    });
+}
+

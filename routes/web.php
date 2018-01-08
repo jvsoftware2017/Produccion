@@ -41,6 +41,7 @@ Route::group(['middleware' => ['validity', 'active']], function () {
 			Route::get('/nav_equipments/{plant}', 'EquipmentsController@nav_index');
 			
 			Route::get('/plants', 'PlantsController@index');
+			Route::get('/plants/{plant}', 'PlantsController@edit');
 			Route::get('/nav_plants/{client}', 'PlantsController@nav_index');
 			
 			Route::get('/equipoEdit/{idEquipo}', 'EquiposController@getVariablesWrite');
