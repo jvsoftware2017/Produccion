@@ -37,6 +37,11 @@ $("#id_equipoRep").change(function (event){
     window.location.href = "/report/"+event.target.value+"";
 });
 
+
+$('#datatable').dataTable( {
+    "paging": true
+} );
+
 function getPlant (id) {
 	$.get("/plants/" + id + "", function(data, status){
         $("#edit-item").html(data);
