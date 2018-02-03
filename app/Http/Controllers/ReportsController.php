@@ -133,24 +133,4 @@ class ReportsController extends Controller
     	return response()->json($response);
     }
     
-    public function reportScraping(){
-    	$client = new Client();
-    	$view = $client->request("Get","https://deitydev.com/home");
-    	// Select Login form
-    	$form = $view->selectButton("Iniciar Sesión")->form();
-    	
-    	// Submit form
-    	$view = $client->submit($form, array(
-    			'email' => 'victor.18090@gmail.com',
-    			'password' => 'developer',
-    	));
-    	$view = $client->request("GET","https://deitydev.com/report/1101");
-    	//dd($view);
-    	echo $view->html();
-    	// PHP Configuration page
-    	
-    	//dd($view);
-    	//return redirect("/report/1102");
-    }
-	
 }

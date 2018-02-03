@@ -2164,14 +2164,18 @@ if (typeof NProgress != 'undefined') {
 				
 			}			  
 						
-			// Line chart 
+			// Line chart
+			var mesActual = dateNow.getMonth()+1;
+			var mesAnterior = dateNow.getMonth();
+			if(mesActual == 1)
+				mesAnterior = 12; 
 			
 			if ($('#DP17_current').length ){	
 				
 				var id_equipo = $('#id_equipo').val();
 				var arrdp17X = new Array('0');
 				var arrdp17Y = new Array('0');
-			    $.get("/gr_reports/DP17/"+id_equipo+"/"+ (dateNow.getMonth()+1),function(response) {	
+			    $.get("/gr_reports/DP17/"+id_equipo+"/"+ (mesActual),function(response) {	
 			    	var fecha; var dia;
 			        for(i=0; i<response.length; i++){
 			        	fecha = response[i].date;
@@ -2204,7 +2208,7 @@ if (typeof NProgress != 'undefined') {
 				var id_equipo = $('#id_equipo').val();
 				var arrdp17Xp = new Array('0');
 				var arrdp17Yp = new Array('0');
-			    $.get("/gr_reports/DP17/"+id_equipo+"/" + (dateNow.getMonth()),function(response) {	
+			    $.get("/gr_reports/DP17/"+id_equipo+"/" + (mesAnterior),function(response) {	
 			    	var fecha; var dia;
 			        for(i=0; i<response.length; i++){
 			        	fecha = response[i].date;
@@ -2237,7 +2241,7 @@ if (typeof NProgress != 'undefined') {
 				var id_equipo = $('#id_equipo').val();
 				var arrdp18X = new Array('0');
 				var arrdp18Y = new Array('0');
-			    $.get("/gr_reports/DP18/"+id_equipo+"/"+ (dateNow.getMonth()+1),function(response) {	
+			    $.get("/gr_reports/DP18/"+id_equipo+"/"+ (mesActual),function(response) {	
 			    	var fecha; var dia;
 			        for(i=0; i<response.length; i++){
 			        	fecha = response[i].date;
@@ -2270,7 +2274,7 @@ if (typeof NProgress != 'undefined') {
 				var id_equipo = $('#id_equipo').val();
 				var arrdp18Xp = new Array('0');
 				var arrdp18Yp = new Array('0');
-			    $.get("/gr_reports/DP18/"+id_equipo+"/" + (dateNow.getMonth()),function(response) {	
+			    $.get("/gr_reports/DP18/"+id_equipo+"/" + (mesAnterior),function(response) {	
 			    	var fecha; var dia;
 			        for(i=0; i<response.length; i++){
 			        	fecha = response[i].date;
@@ -2304,7 +2308,7 @@ if (typeof NProgress != 'undefined') {
 				var id_equipo = $('#id_equipo').val();
 				var arrdp19X = new Array('0');
 				var arrdp19Y = new Array('0');
-			    $.get("/gr_reports/DP19/"+id_equipo+"/"+ (dateNow.getMonth()+1),function(response) {	
+			    $.get("/gr_reports/DP19/"+id_equipo+"/"+ (mesActual),function(response) {	
 			    	var fecha; var dia;
 			        for(i=0; i<response.length; i++){
 			        	fecha = response[i].date;
@@ -2337,7 +2341,7 @@ if (typeof NProgress != 'undefined') {
 				var id_equipo = $('#id_equipo').val();
 				var arrdp19Xp = new Array('0');
 				var arrdp19Yp = new Array('0');
-			    $.get("/gr_reports/DP19/"+id_equipo+"/" + (dateNow.getMonth()),function(response) {	
+			    $.get("/gr_reports/DP19/"+id_equipo+"/" + (mesAnterior),function(response) {	
 			    	var fecha; var dia;
 			        for(i=0; i<response.length; i++){
 			        	fecha = response[i].date;
@@ -2371,7 +2375,7 @@ if (typeof NProgress != 'undefined') {
 				var id_equipo = $('#id_equipo').val();
 				var arrdp30X = new Array('0');
 				var arrdp30Y = new Array('0');
-			    $.get("/gr_reports/DP30/"+id_equipo+"/"+ (dateNow.getMonth()+1),function(response) {	
+			    $.get("/gr_reports/DP30/"+id_equipo+"/"+ (mesActual),function(response) {	
 			    	var fecha; var dia;
 			        for(i=0; i<response.length; i++){
 			        	fecha = response[i].date;
@@ -2404,7 +2408,7 @@ if (typeof NProgress != 'undefined') {
 				var id_equipo = $('#id_equipo').val();
 				var arrdp30Xp = new Array('0');
 				var arrdp30Yp = new Array('0');
-			    $.get("/gr_reports/DP30/"+id_equipo+"/" + (dateNow.getMonth()),function(response) {	
+			    $.get("/gr_reports/DP30/"+id_equipo+"/" + (mesAnterior),function(response) {	
 			    	var fecha; var dia;
 			        for(i=0; i<response.length; i++){
 			        	fecha = response[i].date;
@@ -2438,7 +2442,7 @@ if (typeof NProgress != 'undefined') {
 				var id_equipo = $('#id_equipo').val();
 				var arrdp31X = new Array('0');
 				var arrdp31Y = new Array('0');
-			    $.get("/gr_reports/DP31/"+id_equipo+"/"+ (dateNow.getMonth()+1),function(response) {	
+			    $.get("/gr_reports/DP31/"+id_equipo+"/"+ (mesActual),function(response) {	
 			    	var fecha; var dia;
 			        for(i=0; i<response.length; i++){
 			        	fecha = response[i].date;
@@ -2471,7 +2475,7 @@ if (typeof NProgress != 'undefined') {
 				var id_equipo = $('#id_equipo').val();
 				var arrdp31Xp = new Array('0');
 				var arrdp31Yp = new Array('0');
-			    $.get("/gr_reports/DP31/"+id_equipo+"/" + (dateNow.getMonth()),function(response) {	
+			    $.get("/gr_reports/DP31/"+id_equipo+"/" + (mesAnterior),function(response) {	
 			    	var fecha; var dia;
 			        for(i=0; i<response.length; i++){
 			        	fecha = response[i].date;
@@ -2505,7 +2509,7 @@ if (typeof NProgress != 'undefined') {
 				var id_equipo = $('#id_equipo').val();
 				var arrdp32X = new Array('0');
 				var arrdp32Y = new Array('0');
-			    $.get("/gr_reports/DP32/"+id_equipo+"/"+ (dateNow.getMonth()+1),function(response) {	
+			    $.get("/gr_reports/DP32/"+id_equipo+"/"+ (mesActual),function(response) {	
 			    	var fecha; var dia;
 			        for(i=0; i<response.length; i++){
 			        	fecha = response[i].date;
@@ -2538,7 +2542,7 @@ if (typeof NProgress != 'undefined') {
 				var id_equipo = $('#id_equipo').val();
 				var arrdp32Xp = new Array('0');
 				var arrdp32Yp = new Array('0');
-			    $.get("/gr_reports/DP32/"+id_equipo+"/" + (dateNow.getMonth()),function(response) {	
+			    $.get("/gr_reports/DP32/"+id_equipo+"/" + (mesAnterior),function(response) {	
 			    	var fecha; var dia;
 			        for(i=0; i<response.length; i++){
 			        	fecha = response[i].date;
@@ -2572,7 +2576,7 @@ if (typeof NProgress != 'undefined') {
 				var id_equipo = $('#id_equipo').val();
 				var arrdp34X = new Array('0');
 				var arrdp34Y = new Array('0');
-			    $.get("/gr_reports/DP34/"+id_equipo+"/"+ (dateNow.getMonth()+1),function(response) {	
+			    $.get("/gr_reports/DP34/"+id_equipo+"/"+ (mesActual),function(response) {	
 			    	var fecha; var dia;
 			        for(i=0; i<response.length; i++){
 			        	fecha = response[i].date;
@@ -2605,7 +2609,7 @@ if (typeof NProgress != 'undefined') {
 				var id_equipo = $('#id_equipo').val();
 				var arrdp34Xp = new Array('0');
 				var arrdp34Yp = new Array('0');
-			    $.get("/gr_reports/DP34/"+id_equipo+"/" + (dateNow.getMonth()),function(response) {	
+			    $.get("/gr_reports/DP34/"+id_equipo+"/" + (mesAnterior),function(response) {	
 			    	var fecha; var dia;
 			        for(i=0; i<response.length; i++){
 			        	fecha = response[i].date;
@@ -2639,7 +2643,7 @@ if (typeof NProgress != 'undefined') {
 				var id_equipo = $('#id_equipo').val();
 				var arrdp44X = new Array('0');
 				var arrdp44Y = new Array('0');
-			    $.get("/gr_reports/DP44/"+id_equipo+"/"+ (dateNow.getMonth()+1),function(response) {	
+			    $.get("/gr_reports/DP44/"+id_equipo+"/"+ (mesActual),function(response) {	
 			    	var fecha; var dia;
 			        for(i=0; i<response.length; i++){
 			        	fecha = response[i].date;
@@ -2672,7 +2676,7 @@ if (typeof NProgress != 'undefined') {
 				var id_equipo = $('#id_equipo').val();
 				var arrdp44Xp = new Array('0');
 				var arrdp44Yp = new Array('0');
-			    $.get("/gr_reports/DP44/"+id_equipo+"/" + (dateNow.getMonth()),function(response) {	
+			    $.get("/gr_reports/DP44/"+id_equipo+"/" + (mesAnterior),function(response) {	
 			    	var fecha; var dia;
 			        for(i=0; i<response.length; i++){
 			        	fecha = response[i].date;
@@ -2706,7 +2710,7 @@ if (typeof NProgress != 'undefined') {
 				var id_equipo = $('#id_equipo').val();
 				var arrdp49X = new Array('0');
 				var arrdp49Y = new Array('0');
-			    $.get("/gr_reports/DP49/"+id_equipo+"/"+ (dateNow.getMonth()+1),function(response) {	
+			    $.get("/gr_reports/DP49/"+id_equipo+"/"+ mesActual,function(response) {	
 			    	var fecha; var dia;
 			        for(i=0; i<response.length; i++){
 			        	fecha = response[i].date;
@@ -2739,7 +2743,7 @@ if (typeof NProgress != 'undefined') {
 				var id_equipo = $('#id_equipo').val();
 				var arrdp49Xp = new Array('0');
 				var arrdp49Yp = new Array('0');
-			    $.get("/gr_reports/DP49/"+id_equipo+"/" + (dateNow.getMonth()),function(response) {	
+			    $.get("/gr_reports/DP49/"+id_equipo+"/" + mesAnterior,function(response) {	
 			    	var fecha; var dia;
 			        for(i=0; i<response.length; i++){
 			        	fecha = response[i].date;
@@ -2774,7 +2778,8 @@ if (typeof NProgress != 'undefined') {
 				var id_equipo = $('#id_equipo').val();
 				var arrdp0X = new Array();
 				var arrdp0Y = new Array();
-			    $.get("/gr_reports_event/2/"+id_equipo+"/" + (dateNow.getMonth()+1),function(response) {	
+				
+			    $.get("/gr_reports_event/2/"+id_equipo+"/" + (mesActual),function(response) {	
 			    	var fecha; var dia;
 			        for(i=0; i<response.length; i++){
 			        	fecha = response[i].date;
@@ -2816,7 +2821,7 @@ if (typeof NProgress != 'undefined') {
 				var id_equipo = $('#id_equipo').val();
 				var arrdp0Xp = new Array();
 				var arrdp0Yp = new Array();
-			    $.get("/gr_reports_event/2/"+id_equipo+"/" + (dateNow.getMonth()),function(response) {	
+			    $.get("/gr_reports_event/2/"+id_equipo+"/" + (mesAnterior),function(response) {	
 			    	var fecha; var dia;
 			        for(i=0; i<response.length; i++){
 			        	fecha = response[i].date;
