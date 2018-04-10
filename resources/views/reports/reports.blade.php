@@ -51,7 +51,7 @@
 						@else
 						<div class="form-group">
 							<label class="control-label" for="title">Seleccione Equipo:</label>
-							<select class="form-control" name="id_equipoRep" id="id_equipoRep">
+							<select class="form-control" name="id_equipoRep" id="id_equipoRep" disabled="true">
 								<option>Seleccione</option>
 								@foreach($dataEquipo as $rowEquipo)
 									@foreach($rowEquipo as $row)
