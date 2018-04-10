@@ -123,13 +123,13 @@ class ReportsController extends Controller
         //
     }
     
-    public function returnValues(Request $request, $var, $id_equipo, $month){
-    	$response = Report::getValuesToGraphic($var, $id_equipo, $month);
+    public function returnValues(Request $request, $var, $id_equipo, $month, $anio){
+    	$response = Report::getValuesToGraphic($var, $id_equipo, $month, $anio);
     	return response()->json($response);
     }
 
-	public function returnValuesEvent(Request $request, $var, $id_equipo, $month){
-    	$response = Event::getCountEventByReports($var, $id_equipo, $month);
+	public function returnValuesEvent(Request $request, $var, $id_equipo, $month, $anio){
+    	$response = Event::getCountEventByReports($var, $id_equipo, $month, $anio);
     	return response()->json($response);
     }
     
