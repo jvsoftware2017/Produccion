@@ -49,7 +49,9 @@ function getPlant (id) {
 }
 
 function habilitar(){
-        $("#id_equipoRep").disabled = false;
-    }
+    console.log("AQUIIIII ONLOAD");
+    document.getElementById("id_equipoRep").disabled = false;
+    $("#id_equipoRep").disabled = false;
+}
     
 window.onload = habilitar();
