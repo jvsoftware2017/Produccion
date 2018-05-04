@@ -2474,6 +2474,13 @@ if (typeof NProgress != 'undefined') {
 					pointHoverBackgroundColor: "#fff",
 					pointBorderWidth: 1,
 					data: arrdp31Y,
+				  }, {
+					label: "Volts ",
+					borderColor: "rgba(255, 0, 0, 0.8)",
+					pointBorderColor: "rgba(255, 0, 0, 0.8)",
+					pointHoverBackgroundColor: "#fff",
+					pointBorderWidth: 1,
+					data: arrdp17Y,
 				  }]
 				},
 			  });
