@@ -2176,6 +2176,7 @@ if (typeof NProgress != 'undefined') {
 				var id_equipo = $('#id_equipo').val();
 				var arrdp17X = new Array('0');
 				var arrdp17Y = new Array('0');
+				var arrdp17Ytmp = new Array('0');
 			    $.get("/gr_reports/DP17/"+id_equipo+"/"+ mesActual +"/"+ anio,function(response) {	
 			    	var fecha; var dia;
 			        for(i=0; i<response.length; i++){
@@ -2184,6 +2185,7 @@ if (typeof NProgress != 'undefined') {
 			        	dia = fecha[2] + "-" + meses[(fecha[1]-1)];
 			            arrdp17X.push(dia);
 			            arrdp17Y.push(response[i].value);
+			            arrdp17Ytmp.push(response[i].value + 5);
 			        }
 
 			  var ctx = document.getElementById("DP17_current");
@@ -2198,6 +2200,13 @@ if (typeof NProgress != 'undefined') {
 					pointHoverBackgroundColor: "#fff",
 					pointBorderWidth: 1,
 					data: arrdp17Y,
+				  }, {
+					label: "Volts ",
+					borderColor: "rgba(32, 165, 154, 0.7)",
+					pointBorderColor: "rgba(32, 165, 154, 0.7)",
+					pointHoverBackgroundColor: "#ccc",
+					pointBorderWidth: 1,
+					data: arrdp17Ytmp,
 				  }]
 				},
 			  });
